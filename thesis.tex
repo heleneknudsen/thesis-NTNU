@@ -1,19 +1,20 @@
 \documentclass[british,titlepage]{ntnuthesis}
 
-\title{An NTNU Thesis \LaTeX{} Document Class}
+\title{Private Information Inference on Air Quality Monitors}
 \shorttitle{An NTNU Thesis Document Class}
-\author{Community of Practice in Computer Science Education at NTNU}
+\author{Helene Skjelsbæk Knudsen}
 \shortauthor{CoPCSE$@$NTNU}
-\date{CC-BY \ntnuthesisdate}
+\date{01.06.2023}
 
 \addbibresource{thesis.bib}
 
 \input{glossary.tex} % add glossary and acronym lists before document
 
 \begin{document}
-
-\input{chapters/0a-abstract.tex}
-\input{chapters/0b-sammendrag.tex}
+\input{chapters/0a-problemdescription.tex}
+\input{chapters/0b-abstract.tex}
+\input{chapters/0c-sammendrag.tex}
+\input{chapters/0d-Preface.tex}
 
 \tableofcontents
 \listoffigures
@@ -24,9 +25,14 @@
 \printglossary                    % Print glossary
 
 \input{chapters/1-introduction}
-\input{chapters/2-usage.tex}
-\input{chapters/3-structure.tex}
-\input{chapters/4-conclusion.tex}
+\input{chapters/2-Background.tex}
+\input{chapters/3-RelevantWork.tex}
+\input{chapters/4-Method.tex}
+\input{chapters/5-Environment.tex}
+\input{chapters/6-Testcases.tex}
+\input{chapters/7-Results.tex}
+\input{chapters/8-Discussion.tex}
+\input{chapters/9-Conclusion.tex}
 
 \chapter*{\bibname}
 \printbibliography[heading=none]
