@@ -1,11 +1,10 @@
 \documentclass[british,titlepage]{ntnuthesis}
+\usepackage[utf8]{inputenc}
 
 \title{Private Information Inference on Air Quality Monitors}
-\shorttitle{An NTNU Thesis Document Class}
 \author{Helene Skjelsbæk Knudsen}
-\shortauthor{CoPCSE$@$NTNU}
 \date{01.06.2023}
-
+\pagenumbering{roman}
 \addbibresource{thesis.bib}
 
 \input{glossary.tex} % add glossary and acronym lists before document
@@ -24,9 +23,10 @@
 \printglossary[type=\acronymtype] % Print acronyms
 \printglossary                    % Print glossary
 
+\pagenumbering{arabic}
 \input{chapters/1-Introduction}
 \input{chapters/2-Background.tex}
-\input{chapters/3-RelevantWork.tex}
+\input{chapters/3-RelatedWork.tex}
 \input{chapters/4-Method.tex}
 \input{chapters/5-Environment.tex}
 \input{chapters/6-Testcases.tex}
