@@ -2,21 +2,36 @@
 
 \section*{Air Quality Monitors}
 \addcontentsline{toc}{section}{Air Quality Monitors}
-Air quality monitors are used to collect sensor data from different sources in the air. \cite{GeneralAirQualityMonitor} Air quality monitors can specialize in one measuring unit in the air or have the functionality to measure several air quality factors, such as gas, particulate pollutants, CO2, VOCs, humidity or temperature. The air quality monitors are incorporated in users homes and therefore the apperance of the device will also be a considerable factor for choosing the right device. \cite{IAQMonitorCommunicationReview} 
-\\
+Air quality monitors are used as sensors to collect sensor data from different sources in the air. \cite{GeneralAirQualityMonitor} Air quality monitors can specialize in one measuring unit in the air or have the functionality to measure several air quality factors, such as CO2, radon, HCHO, noise, VOC, humidity or temperature. The air quality monitors are incorporated in users homes and therefore the appearance of the device will also be a considerable factor for choosing the right device. \cite{IAQMonitorCommunicationReview} 
+\\\\
+As indoor air quality monitors can be equipped with different features, a brief explanation of some of the features an air quality monitor can sensor is necessary to understand why and how private information can be gathered from these sensors:
+\begin{itemize}
+    \item \(CO_2\)\\
+        Carbon Dioxide, \(CO_2\), is a chemical formula that is made by human or animal combustion, in addition to other larger combustion processes. \cite{CO2} This implicates that the more humans or animals that are in the same indoor environment as the air quality monitor, the higher occurrence of \(CO_2\) will be collected by the sensor and transmitted to the air quality monitors receiver. However, plants and sunlight can bind \(CO_2\) and reduce the amount of \(CO_2\) particles in an indoor environment. 
+    \item Radon\\
+        Radon is a radioactive gas that is strongly recommended to be measured in Norwegian indoor environments. \cite{Radon} The gas does not have any smell and is invisible and is carcinogenic which makes it an attractive feature to include on the air quality monitor. 
+    \item Noise\\
+        Noise is an interesting feature of some air quality monitors as it considered a health problem. \cite{Noise} Exposure to loud noises at a small amount of time or long-term noise can both harm peoples health. Especially when considering a work environment where workers need to concentrate, noises over long periods of time can result in hearing difficulties or problems communicating. As many work from home and we use a lot of time in our home, the problem is also applicable here. 
+    \item VOC\\
+        Volatile organic compounds, VOC, is a collective term for any combination of carbon, with the exception of carbon monoxide, carbon dioxide, carbonic acid, metallic carbides or carbonates and ammonium carbonate. \cite{VOC} These harmful compounds can be found in gases from building materials or smoking, cleaning articles, painting or cooking to mention some. TVOC is a term for defining the total amount of VOCs. The amount of VOC in the indoor environment can be simply reduced by ensuring fresh air and using kitchen fans to prevent the articles from circulating the indoor air to be breathed by users. \cite{RecommendedIAQ}
+     \item HCHO\\
+        HCHO is the chemical formula for formaldehyde which is a gas that can cause severe health effects. \cite{HCHO} The gas contains a strong odor and is flammable when it has room temperature, but is colorless. People can be exposed to HCHO from several different sources such as manufacture wood products, building materials, fertilizers, cigarettes, paint, glue or even medicines and cosmetics. Formaldehyde is classified as a VOC.
+    \item Humidity\\
+        Humidity is calculated from the ratio between water vapor in the air compared to the maximum amount of water vapor possible in the air if the air was saturated. \cite{RecommendedIAQ} Even tough humans can endure high variations in humidity, very low percentages of humidity can result in health problems such as irritated eyes, dry skin or dry moucus membranes. The humidity is correlated by temperature, which means that variations in temperature can effect the humidity percentage.
+    \item Temperature\\
+        Temperature is a measure unit for how hot or cold the environment is and is measured using a thermometer. Temperature is the most commonly used unit for how comfortable humans feel. Temperature can affect humans health on both ends of the scale. A too high temperature can result in lack of energy and sleepiness and a too low temperature can result in reduced muscle function or heighten symptoms of rheumatism. \cite{Temp}
+\end{itemize}
 
-
-\subsection*{Privacy and Security in Air Quality Monitors}
+\subsection*{Security in Air Quality Monitors}
 \addcontentsline{toc}{section}{Privacy and Security in Air Quality Monitors}
+
 General security 
 Encryption etc
-
-Considering the amount of information an air quality monitor can collect about an individual or a smart home, privacy leakage is a vulnerability. \cite{SecPrivSmartCity} 
 
 
 \subsection*{Private Information Inference}
 \addcontentsline{toc}{subsection}{Private Information Inference}
-
+Considering the amount of information an air quality monitor can collect about an individual or a smart home, privacy leakage is a vulnerability. \cite{SecPrivSmartCity} When malicious attackers tries to gather sensitive information about an individual user or group of users, a privacy attack is carried out. \cite{CyberEntitySecInIoT} The aim of the attacker is then to target the confidentiality of the user, while gathering information such as location, preferences, personal behaviour or similar private information.
 
 \subsection*{Passive network Eavesdropping}
 \addcontentsline{toc}{subsection}{Passive network Eavesdropping}
@@ -29,21 +44,13 @@ Air Quality Monitors exists with different functionality and therefore also comm
 \addcontentsline{toc}{subsection}{IEEE 802.11 - Wi-Fi}
 Wireless Fidelity (Wi-Fi) \cite{WiFiAlliance} is one of the worlds most used technology for communicating and is defined, developed and standarized by WiFi Alliance. \cite{WiFiAlliance} Wi-Fi is based on the standard IEEE 802.11 Wireless LAN set by IEEE Standard for Information Technology. \cite{WifiStandard} The transmission range for Wi-Fi is up to 100 meters and it uses 5-60GHz in the frequency band. \cite{IAQMonitorCommunicationReview}
 
-Wi-Fi packets transmitted follows the MAC frame format and is defined in Figure \ref{MACFrameFormat}. \cite{WifiStandard} 
-\begin{figure}
-    \centering
-    \includegraphics{figures/MACFrameFormat.png}
-    \caption{MAC Frame Format \cite{WifiStandard}}
-    \label{MACFrameFormat}
-\end{figure}    
-
 \subsection*{Bluetooth}
 \addcontentsline{toc}{subsection}{Bluetooth}
-The frequency band for Bluetooth is 2.4GHz and the transmission rate is up to 10 meters, which is relatively shorter compared to Wi-Fi. \cite{IAQMonitorCommunicationReview}
+Bluetooth is a communication protocol based on the IEEE 802.15.1 standard set out by the IEEE Standard for Information Technology. The frequency band for Bluetooth is 2.4GHz and the transmission rate is up to 10 meters, which is relatively shorter compared to Wi-Fi. \cite{IAQMonitorCommunicationReview} Due to the transmission range of Bluetooth it is mainly used for short-range communication, which can be very suitable for air quality monitors configured to transmit data to a hub or nearby other wireless devices, such as mobile phones. 
 
 \subsection*{ZigBee}
 \addcontentsline{toc}{subsection}{ZigBee}
-ZigBee is also a popular choice for communication protocol when it comes to IoT devices. The protocol is based on the IEEE802.15.4 standard set by IEEE Standard for Information Technology. \cite{ZigBeeStandard} ZigBee uses the same frequency band as Bluetooth, 2.4GHz, but does obtain a longer transmission rate up to 20 meters. \cite{IAQMonitorCommunicationReview} 
+ZigBee is also a popular choice for communication protocol when it comes to IoT devices. The protocol is based on the IEEE 802.15.4 standard set by IEEE Standard for Information Technology. \cite{ZigBeeStandard} ZigBee uses the same frequency band as Bluetooth, 2.4GHz, but does obtain a longer transmission rate up to 20 meters. \cite{IAQMonitorCommunicationReview} 
 
 \subsection*{Ethernet}
 \addcontentsline{toc}{subsection}{Ethernet}
