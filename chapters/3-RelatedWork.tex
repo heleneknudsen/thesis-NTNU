@@ -6,6 +6,11 @@ A research conducted on several IoT devices included two types of Air Quality mo
 
 \section*{Privacy inference on air quality monitors}
 \addcontentsline{toc}{section}{Privacy inference on air quality monitors}
+The fact that indoor air quality monitors does monitor users environment risks that private information about users living, working or habits can be leaked. \cite{IAQMonitorCommunicationReview} The research done in \cite{IAQMonitorCommunicationReview} reviews several aspects of security in communication protocols for indoor air quality monitors. The change in Co2 in users environment can reveal information about when a user is sleeping or working and can be misused by a malicious attacker. The research investigated 91 papers and only 2 of them looked into the challenges and possible solutions to data privacy-related issues.  
+\\\\
+In \cite{PrivacyAndFrameworkDecentAQM} a decentralized framework for wireless communication protocols for air quality monitors are proposed. The framework uses encryption and onion routing technology to send data. The onions that transmits the packets does not access the encryption keys that encrypts the body of the onion, as the keys are only included in the last layer of the onion message. The framework can therefore protect against malicious attackers eavesdropping private information from the air quality monitors. The sensors nodes communicates with sink nodes that initiates the communication, which means that a change in the environment for the user will not result in data being transmitted immediately. Other techniques such as padding, data-link-layer encryption, timing intervals and randomized paths are also used to prevent eavesdropping. 
+\\
+
 
 \section*{Misusing of private information from IoT devices}
 \addcontentsline{toc}{section}{Misusing of private information from IoT devices}
