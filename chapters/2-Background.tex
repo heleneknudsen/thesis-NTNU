@@ -2,7 +2,9 @@
 This chapter gives an overview of the necessary background information required for this research. Air quality monitors are explained in a general way with its use, capabilities and sensors. Passive network eavesdropping and private information inference are introduced as this will be the vulnerability exploit in this research. Lastly, this chapter gives an overview of Wi-Fi, Bluetooth, ZigBee and Ethernet that are communication protocols which air quality monitors use to communicate over. \\\\
 \section*{Air Quality Monitors}
 \addcontentsline{toc}{section}{Air Quality Monitors}
-Air quality monitors are used as sensors to collect sensor data from different sources in the air. \cite{GeneralAirQualityMonitor} Air quality monitors can specialize in one measuring unit in the air or have the functionality to measure several air quality factors, such as CO2, radon, HCHO, noise, VOC, humidity or temperature. The air quality monitors are incorporated in users homes and therefore the appearance of the device will also be a considerable factor for choosing the right device. \cite{IAQMonitorCommunicationReview} 
+Air quality monitors are used as sensors to collect sensor data from different sources in the air. \cite{GeneralAirQualityMonitor} The IoT devices can store data in different ways. Cloud storing is the most preferred storage solution for IoT devices, but also local servers, internal storage and SD cards can be used to store data from IoT devices and air quality monitors. \cite{AQMBigSource} Displaying data to users of air quality monitors is an important factor to give the user either just information about the indoor quality, or recommendations on how to better the air. \cite{AQMBigSource} The most developed and recent method of doing so, is through an app on the users mobile phone, but also solutions where users can login to a web-site exists. Many air quality monitors also have the functionality of an screen on the device that shows certain values from the sensors. Some of these can also be interactive. \cite{AQMBigSource}
+\\\\
+Several factors plays a key part when selecting which air quality monitor most suitable for the users needs. Even tough many devices are pre-calibrated when available in store, a test on the specific environment should be done. Considering the different functionality an air quality monitor can have, it is also important to look into transmission range, power consumption and requirements for maintenance. \cite{AQMBigSource} However, the main goal of an air quality monitor is to monitor the air and therefore looking into which kind of sensors the devices have should be a top priority when selecting your device. Air quality monitors can specialize in one measuring unit in the air or have the functionality to measure several air quality factors, such as CO2, radon, HCHO, noise, VOC, humidity or temperature. The air quality monitors are incorporated in users homes and therefore the appearance of the device will also be a considerable factor for choosing the right device. \cite{IAQMonitorCommunicationReview} 
 \\\\
 As indoor air quality monitors can be equipped with different features, a brief explanation of some of the features an air quality monitor can sensor is necessary to understand why and how private information can be gathered from these sensors:
 \begin{itemize}
@@ -24,7 +26,11 @@ As indoor air quality monitors can be equipped with different features, a brief 
 
 \subsection*{Privacy and Security in Air Quality Monitors}
 \addcontentsline{toc}{section}{Privacy and Security in Air Quality Monitors}
+\\\\
 Considering security in air quality monitors, the standard and functionality varies. \cite{AQMHowFarFunctionality} Some vendors of air quality monitors use secure communication channels and authentication to access data, while others have not authentication to collect data from their devices. However, as technology evolves to support more efficient and greater computing power for the air quality monitors, it becomes easier to develop and implement stronger security. One the other side, air quality monitors are beginning to become more popular as they are increasing in functionality on which sensors they have implemented, and therefore the focus on security are being down-prioritized. \cite{SecurityAndDataIntInAQM} 
+\\\\
+As air quality monitors can be a part of a smart home care system, it can also include in a Wireless Body Area Network (WBAN) to sensor the indoor environment. Therefore, it can be vulnerable to several security threats and attacks by malicious actors. \cite{AttackstoAQMs} 
+\\\\
 
 \subsection*{Private Information Inference}
 \addcontentsline{toc}{subsection}{Private Information Inference}
@@ -38,7 +44,7 @@ There are security measures to implement to reduce the chance of being eavesdrop
 \\\\
 \section*{Communication Protocols}
 \addcontentsline{toc}{section}{Communication Protocols}
-Air Quality Monitors exists with different functionality and therefore also communicate over different communication protocols. Wi-Fi is the most preferred protocol with Bluetooth and Zigbee following. \cite{saini2020indoor} As this thesis is delimited to air quality monitor devices that uses Wi-Fi, Bluetooth, Zigbee or wired communication trough Ethernet as communication protocols, the next subsections will elaborate on these protocols and specifications to be used further in this thesis through testing and analysis. 
+Air Quality Monitors send their sensoring data to remote server for storing and analyzing the data. As they exists with different functionality and specifications, their communication protocols differs, like other groups of IoT devices. \cite{AQMBigSource} Wi-Fi is the most preferred protocol with Bluetooth and Zigbee following. \cite{saini2020indoor} As this thesis is delimited to air quality monitor devices that uses Wi-Fi, Bluetooth, Zigbee or wired communication trough Ethernet as communication protocols, the next subsections will elaborate on these protocols and specifications to be used further in this thesis through testing and analysis. 
 
 \subsection*{IEEE 802.11 - Wi-Fi}
 \addcontentsline{toc}{subsection}{IEEE 802.11 - Wi-Fi}
@@ -46,7 +52,20 @@ Wireless Fidelity (Wi-Fi) \cite{WiFiAlliance} is one of the worlds most used tec
 
 \subsection*{Bluetooth}
 \addcontentsline{toc}{subsection}{Bluetooth}
-Bluetooth is a communication protocol based on the IEEE 802.15.1 standard set out by the IEEE Standard for Information Technology. The frequency band for Bluetooth is 2.4GHz and the transmission rate is up to 10 meters, which is relatively shorter compared to Wi-Fi. \cite{IAQMonitorCommunicationReview} Due to the transmission range of Bluetooth it is mainly used for short-range communication, which can be very suitable for air quality monitors configured to transmit data to a hub or nearby other wireless devices, such as mobile phones. Since many IoT devices are designed to communicate in short ranges within a house, Bluetooth Low Energy (BLE) was introduced as a version suitable for this specific communication. \cite{SecurityofCommunicationProt} 
+Bluetooth is a communication protocol based on the IEEE 802.15.1 standard set out by the IEEE Standard for Information Technology. The frequency band for Bluetooth is 2.4GHz and the transmission rate is up to 10 meters, which is relatively shorter compared to Wi-Fi. \cite{IAQMonitorCommunicationReview} Due to the transmission range of Bluetooth it is mainly used for short-range communication, which can be very suitable for air quality monitors configured to transmit data to a hub or nearby other wireless devices, such as mobile phones. Since many IoT devices are designed to communicate in short ranges within a house, Bluetooth Low Energy (BLE) was introduced as a version suitable for this specific communication. \cite{SecurityofCommunicationProt} As the name says, BLE has a reduced power consumption, compared to WiFi, and is therefore often chosen as communication protocol for IoT devices. 
+\\\\
+Bluetooth packets contains the following fields, also shown in figure X
+
+\begin{itemize}
+    \item \textbf{Channel Access Code:} Identifies the communication on the specific physical channel. 
+    \item \textbf{Packet Header:} Includes source and destination for the packet and are used to route the packet. Also includes link control protocol. 
+    \item \textbf{Guard & Sync:} Only used for enhanced data rate packets where guard time and synchronization is necessary before the payload is examined.
+    \item \textbf{Payload Header:} Includes logic link identifier used for further routing and the size of the following payload.
+    \item \textbf{Payload Body:} The field where the actual data transmitted relies. 
+    \item \textbf{Message Integrity Check:} Only used with AES-CCM encryption.
+    \item \textbf{Cyclic Redundancy Check:} Detects if packets have errors. 
+\end{itemize}
+
 
 \subsection*{ZigBee}
 \addcontentsline{toc}{subsection}{ZigBee}
@@ -59,14 +78,14 @@ ZigBee is also a popular choice for communication protocol when it comes to IoT 
 \addcontentsline{toc}{subsection}{Comparison of the different communication protocols}
 In Table \ref{CommunicationProtocolsComparison} a comparison of the different communication protocols that will be used during tests in this thesis and their specifications are presented. \\
 \begin{table}[!hbtp]
-\begin{tabular}{||c | c | c ||} 
+\begin{tabular}{||c | c | c | c ||} 
  \hline
- Communication Protocol & Frequency Band & Transmission Range  \\ [0.5ex]
+ Communication Protocol & Frequency Band & Transmission Range  & Power consumption\\ [0.5ex]
  \hline\hline
- Wi-Fi & 5-60GHz & 100m \\ 
- Bluetooth & 2.4GHz & 10m \\
- ZigBee & 2.4GHz & 20m \\
- Ethernet & ? & NA \\ [1ex] 
+ Wi-Fi & 5-60GHz & 100m & High\\ 
+ Bluetooth & 2.4GHz & 10m & Low\\
+ ZigBee & 2.4GHz & 20m & Low \\
+ Ethernet & ? & NA & NA\\ [1ex] 
  \hline
 \end{tabular}
 \caption{Communication Protocols Comparison}
