@@ -1,12 +1,12 @@
-\chapter*{Introduction}
+\chapter{Introduction}
 This chapter introduces the master thesis while presenting the background and motivation for this thesis, followed by the research objectives and research questions that will be answered through this research. Scope and delimitation together with the thesis structure outlines the master thesis. This thesis contribution are presented in the introduction in a separate subsection. 
-\section*{Background and motivation}
+\section{Background and motivation}
 \addcontentsline{toc}{section}{Background and motivation}
 The Internet of Things (IoT) exists of a growing number of physical devices connected to the Internet to perform smart tasks. \cite{IoTSurveyAl-Fuqaha} Every-day devices can be equipped with smart functionality to improve our lives, but also to improve critical societal functions such as in health care or industrial technology. The devices range from a robot vacuum cleaner that users can control through their phone or cameras installed for elders that stream to a nurse. These smart devices can communicate and connect to each other and other services on the Internet and makes out an IoT system. The devices analyzes how users, machines or eco-systems behave and act accordingly. An emerging request for smart devices has resulted in an rapid growth in IoT devices worldwide. \cite{IoTAndPrivacy}
 \\\\
 We spend a lot of our lives inside, breathing in the air that is available in the indoor space. \cite{IndoorAirQualityMonitorIoT} The air affects our health and can potentially cause several chronic health problems, for example lung cancer or respiratory infections. \cite{IAQMonitorReview} Common air pollution's, such as smoke or car exhaust,  are easy to sense and avoid for people not trying to get effected by the dangerous particles they emit. It is also more wide-known that good outdoor air is beneficial for your health, not considering that the air indoor can also severely affect your health. \cite{IndoorAirQuality} Therefore including the fact that Internet of Things devices are evolving, indoor air quality monitors are increasing in popularity and functionality. \cite{SecurityAndDataIntInAQM} The devices are developing into becoming smaller, more affordable and appealing to include in your home environment while adopting several different sensors to report on the indoor air quality. 
 
-\section*{Research Objectives and Research Questions}
+\section{Research Objectives and Research Questions}
 \addcontentsline{toc}{section}{Research Objectives and Research Questions}
 
 The following research questions (RQs) have been raised and will be answered through this master:
@@ -21,16 +21,19 @@ The following research questions (RQs) have been raised and will be answered thr
     \textbf{RQ4:} How can the private information gathered be misused by an adversary?\\
 \end{itemize}
 
-\section*{Research Scope and Delimitation}
+\section{Research Scope and Delimitation}
 \addcontentsline{toc}{section}{Research Scope and Delimitation}
 This research will present 5 different air quality monitors, all selected from different vendors. The air quality monitors communicates over the different protocols: Wi-Fi, Bluetooth, ZigBee and Ethernet and corresponding sniffers will be used to sniff traffic from the sensors. The goal is to investigate what kind of private information, if any, it is possible to collect from conducting a passive network eavesdropping attack on the different devices. 
 \\\\
 This thesis will not look into decrypting traffic if the air quality monitors encrypt the communication. The focus will be on conducting a passive network privacy inference attack and therefore only look at non-encrypted data whether it is the whole packet or only the header. The research will also not look into different factors of how to do a successful attack, such as distance, materials of the building or power of the sniffer. 
+\\\\ 
+The thesis will not cover all phases of a passive network eavesdropping attack, but a prerequisite of doing this research is that the attacker has gained a strong enough wireless access and wired access to the users SSID. It will not look into how to identify the IoT devices as they are already known with MAC address in this research. However, there are a numerous of research that have look into this. 
 
-\section*{Contribution}
+\section{Contribution}
 \addcontentsline{toc}{section}{Contribution}
+A lot of research has been conducted on private information inference from carrying out a passive network eavesdropping attack. However, a lot of the researches investigate on IoT devices that can clearly pose a threat to users privacy if inferred, such as cameras, watches or motion sensors. This thesis looks into air quality monitors and how private information can be inferred from them. The thesis also looks into different communication protocols and vendors to see if there are wide differences, not from different devices, but from the same type of devices with the same goal. 
 
-\section*{Thesis Structure}
+\section{Thesis Structure}
 \addcontentsline{toc}{section}{Thesis Structure}
 This thesis is organized in the following structure:\\\\
 \textbf{Background}

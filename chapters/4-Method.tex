@@ -1,6 +1,6 @@
-\chapter*{Method}
+\chapter{Method}
 This chapter describes the material used for testing, the method for testing, the environment setup and the test cases that has been conducted. First, a survey for selecting the air quality monitors that will be used in this research are introduced. Then, the technical architecture and setup for each device are explained. The test environment for the devices and the hardware and software are presented to ensure reproducibility. At last, the test cases conducted are derived and presented. 
-\section*{Air Quality Monitor Survey}
+\section{Air Quality Monitor Survey}
 \addcontentsline{toc}{section}{Airthings Quality Monitor Survey}
 For selection of material, the problem description and research questions have been used as a reference. In order to answer the RQs the air quality monitors needs to be manufactured from different vendors and communicate over different communication protocols. To find the specific AQMs to use in this research, several online sources are used and compared. As this research is conducted on NTNU Gjøvik in Norway, it is also preferable that the devices are bought in Norwegian stores or online pages. The devices chosen should also be popular and easy accessible for any user. Considering these factors, the following points are made out to select the devices:
 \begin{itemize}
@@ -40,37 +40,51 @@ The research will consists of air quality monitors from 5 different vendors. The
 \end{table}
 \\\\
 \FloatBarrier
-\subsection*{Netatmo Smart Indoor Air Quality Monitor}
+\subsection{Netatmo Smart Indoor Air Quality Monitor}
 \addcontentsline{toc}{subsection}{Netatmo Smart Indoor Air Quality Monitor}
 The Netatmo Smart Indoor Air Quality Monitor entails 4 different sensors; humidity, \(CO_2\), noise and temperature. It can be integrated with several smart indoor air quality monitor devices placed around in users home. It communicates over WiFi to their own app called \textit{Healthy Home Coach}. 
 \\\\
 In the privacy policy of Netatmo, the following personal data is stated that Netatmo store; unique ID of cookie, IP address, information about the equipment, information about user activity on webpage and app. 
 \\\\
-\subsection*{Airthings Home Kit}
+\subsection{Airthings Home Kit}
 \addcontentsline{toc}{subsection}{Airthings Home Kit}
-
+The Airthings Home Kit consists of three different units, the Hub, the Wave Mini and the Wave Radon \cite{AirthingsProducts}. The kit in its whole measures radon, mold risk, humidity, temperature, VOC and pollen levels. When the air quality devices, Wave Radon and Wave Mini, are connected to the Hub, they communicate over SmartLink to the Hub and the Hub is connected with Ethernet to the Internet. However, if the devices do not use a hub, they communicate over Bluetooth. The data from the AQMs are uploaded live to their app called \textit{Airthings Wave}. 
 \\\\
-\subsection*{Mill Sense Air Quality Monitor}
+\subsection{Mill Sense Air Quality Monitor}
 \addcontentsline{toc}{subsection}{Mill Sense Air Quality Monitor}
-Mill Sense Air Quality Monitor measures the indoor air quality with 5 different sensors: humidity, TVOC, Temperature and \(eCO_2\). \cite{Mill} The monitor communicates to the users mobile phone through WiFi and connects it data to Mills own app called \textit{Mill Norway}. 
+Mill Sense Air Quality Monitor measures the indoor air quality with 5 different sensors: humidity, TVOC, Temperature and \(eCO_2\). \cite{Mill} The monitor communicates to the users mobile phone through WiFi and connects it data to Mills own app called \textit{Mill Norway}. It is possible to choose interval for sensoring data, from every minute to every hour. 
 \\\\
 Mill has a privacy policy regarding their collection of user data from all of their devices. \cite{MillPrivacy} The personal data described to be collected are User Profile, Usage, Device, Location and Crash data. User Profile data includes name, address, telephone number, e-mail address, users daily schedule and other information attached to functions of the device. Usage data contains performance and climate conditions in the users house. The Device data will gather information about when to update and mobile user identification information unique for each mobile phone. Location data sends the SSID for the device to the app, even though the app is not in use. Crash data are used to gather information when the device is not working properly. \cite{MillPrivacy} 
 \\\\
-\subsection*{Nedis Smart Sensor}
+\subsection{Nedis Smart Sensor}
 \addcontentsline{toc}{subsection}{Nedis Smart Sensor}
 
-\subsection*{Aqara TVOC Air Quality Monitor}
+\subsection{Aqara TVOC Air Quality Monitor}
 \addcontentsline{toc}{subsection}{Aqara TVOC Air Quality Monitor}
 
-\section*{Environment Setup}
+\section{Environment Setup}
 \addcontentsline{toc}{section}{Environment Setup}
-
-\subsection*{How to setup the environment}
+\subsection{Hardware}
+\addcontentsline{toc}{subsection}{Hardware}
+\subsection{Software}
+\addcontentsline{toc}{subsection}{Software}
+\subsection{How to setup the environment}
 \addcontentsline{toc}{section}{How to setup the environment}
 
-\section*{Test Cases}
+\section{Test Cases}
 \addcontentsline{toc}{section}{Test Cases}
-\subsection*{How to design the test cases}
+\subsection{How to design the test cases}
 \addcontentsline{toc}{section}{How to design the test cases}
-\subsection*{Introduction to each test case}
+\subsection{Introduction to each test case}
 \addcontentsline{toc}{section}{Introduction to each test case}
+
+Test 1: Humidity
+Test 2: CO2 and temperature
+Test 3: VOC
+Test 4: 
+
+Is there a party/many people inside?
+Is there a window open at night?
+Are someone taking a shower or hanging clothes to dry?
+Are someone making dinner?
+Are the residents away for a longer period?
