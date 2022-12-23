@@ -4,15 +4,13 @@ This chapter describes the material used for testing, the method for testing, th
 For selection of material, the problem description and research questions have been used as a reference. In order to answer the RQs the air quality monitors needs to be manufactured from different vendors and communicate over different communication protocols. To find the specific AQMs to use in this research, several online sources are used and compared. As this research is conducted on NTNU Gjøvik in Norway, it is also preferable that the devices are bought in Norwegian stores or online pages. The devices chosen should also be popular and easy accessible for any user. Considering these factors, the following points are made out to select the devices:
 \begin{itemize}
     \item The devices should be manufactured from different vendors
-    \item The devices should use different communication protocols
     \item The devices should preferably be available in Norwegian stores
     \item The devices should be popular and available for any user
+    \item The devices should not have other functionality then to monitor indoor air quality
 \end{itemize}
-Tibber \cite{Tibber} is a Norwegian power company that specializes in combining smart technology, as with IoT devices, and live app representaion of the power consumption and smart devices. \cite{Tibber} On their webpage it is possible to buy several IoT smart devices for your home. Here they recommend two different AQMs, Netatmo Healthy Home Coach and Aqara TVOC Air Quality Monitor. Netatmo communicates over WiFi, while Aqara communicates over Zigbee. It is therefore a natural choice to choose these two devices for this research as Tibber has over 400.000 users in Northern Europe. \cite{TibberUsers}
+Tibber \cite{Tibber} is a Norwegian power company that specializes in combining smart technology, as with IoT devices, and live app representaion of the power consumption and smart devices \cite{Tibber}. On their webpage it is possible to buy several IoT smart devices for your home. Here they recommend two different AQMs, Netatmo Healthy Home Coach and Aqara TVOC Air Quality Monitor. Netatmo communicates over WiFi, while Aqara communicates over Zigbee. It is therefore a natural choice to choose these two devices for this research as Tibber has over 400.000 users in Northern Europe \cite{TibberUsers}.
 \\\\
-When searching for "Indoor Air Quality Monitor Tests" many of the online pages test several different air quality monitors, but many of them test different devices from the same manufacturer, Airthings. \cite{AQMTest1} \cite{AQMTest2} \cite{AQMTest3} Airthings \cite{Airthings} is a company that manufactures and sells smart radon and indoor air quality monitors. They offer a range of air quality monitors that can measure a variety of indoor air quality parameters such as radon, particulate matter, mold, CO2, humidity, temperature, VOCs, pressure and pollen. \cite{AirthingsProducts} To bring a wider variety of communication protocols to investigate in this research, the House Kit was chosen as traffic can be capture over Ethernet. It consists of the Wave Mini, the Wave Radon and a Hub that is connected with Ethernet. \cite{AirthingsProducts} However, the Wave Mini can also be used without the hub and then it communicates through Bluetooth. 
-\\\\
-Elkjøp \cite{Elkjøp} and Komplett \cite{Komplett} are two of Norways biggest electrical stores with a wide range of different smart home devices both in store and online. These are therefore a natural choice when users are looking for smart devices. When searching for "Air Quality Monitors" on their webpages, Elkjøps results are from 4 different vendors and Komplett from 8 different vendors. A part from the previous chosen devices, both Elkjøp and Komplett sells Mill Sense Air Quality monitors. Mill \cite{Mill} is a Norwegian company that manufactures and sells products for indoor climate and heating, with the goal of developing devices that fits the indoor interior environment. They offer one air quality monitor called Mill Sense. The Mill Sense air quality monitor communicates over WiFi and connects to the users app to provide insight on the indoor climate. When sorting the devices on client reviews on Komplett, another manufacturer scores high on air quality monitors, Nedis. \cite{Komplett} Nedis \cite{Nedis} is an electronic company with the goal of making electronic-related solutions based on the newest technology. Their air quality monitor can measure CO2, HCHO, humidity, temperature and VOCs and communicates over WiFi. 
+Elkjøp \cite{Elkjøp} and Komplett \cite{Komplett} are two of Norways biggest electrical stores with a wide range of different smart home devices both in store and online. These are therefore a natural choice when users are looking for smart devices. When searching for "Air Quality Monitors" on their webpages, Elkjøps results are from 4 different vendors and Komplett from 8 different vendors. A part from the previous chosen devices, both Elkjøp and Komplett sells Mill Sense Air Quality monitors. Mill \cite{Mill} is a Norwegian company that manufactures and sells products for indoor climate and heating, with the goal of developing devices that fits the indoor interior environment. They offer one air quality monitor called Mill Sense. The Mill Sense air quality monitor communicates over WiFi and connects to the users app to provide insight on the indoor climate. When sorting the devices on client reviews on Komplett, another manufacturer scores high on air quality monitors, Nedis \cite{Komplett}. Nedis \cite{Nedis} is an electronic company with the goal of making electronic-related solutions based on the newest technology. Their air quality monitor can measure CO2, HCHO, humidity, temperature and VOCs and communicates over WiFi. 
 \\\\
 The research will consists of air quality monitors from 5 different vendors. The devices communicates over different communicating protocols and have a wide variety of sensors. Even tough different vendors, communication protocols and sensors are included, some of the devices have similar protocol or sensor and can be used to classify together. The chosen devices from the survey are represented underneath in a summarized table. 
 \begin{table}[!hbtp]
@@ -23,10 +21,6 @@ The research will consists of air quality monitors from 5 different vendors. The
         \textbf{Vendor} & \textbf{AQM} & \textbf{Communication protocol} & \textbf{Sensors} \\
         \hline
         Netatmo & Smart Air Quality Monitor & WiFi & \(CO_2\) \newline Humidity \newline Temperature \\
-        \hline
-        Aqara & TVOC Air Quality Monitor & ZigBee & \(eCO_2\) \newline Humidity \newline Temperature \\
-        \hline
-        Airthings & Airthings House Kit & Bluetooth and Ethernet & Radon \newline Humidity \newline Temperature \newline Mold \newline VOC \newline Pollen Levels \\
         \hline
         Mill & Sense Smart Climatesensor & WiFi & \(eCO_2\) \newline Humidity \newline Temperature \newline TVOC \\
         \hline
@@ -43,18 +37,15 @@ The research will consists of air quality monitors from 5 different vendors. The
 The Netatmo Smart Indoor Air Quality Monitor entails 4 different sensors; humidity, \(CO_2\), noise and temperature. It can be integrated with several smart indoor air quality monitor devices placed around in users home. It communicates over WiFi to their own app called \textit{Healthy Home Coach}. 
 \\\\
 In the privacy policy of Netatmo, the following personal data is stated that Netatmo store; unique ID of cookie, IP address, information about the equipment, information about user activity on webpage and app. 
-\\\\
-\subsection{Airthings Home Kit}
-The Airthings Home Kit consists of three different units, the Hub, the Wave Mini and the Wave Radon \cite{AirthingsProducts}. The kit in its whole measures radon, mold risk, humidity, temperature, VOC and pollen levels. When the air quality devices, Wave Radon and Wave Mini, are connected to the Hub, they communicate over SmartLink to the Hub and the Hub is connected with Ethernet to the Internet. However, if the devices do not use a hub, they communicate over Bluetooth. The data from the AQMs are uploaded live to their app called \textit{Airthings Wave}. 
+
 \\\\
 \subsection{Mill Sense Air Quality Monitor}
 Mill Sense Air Quality Monitor measures the indoor air quality with 5 different sensors: humidity, TVOC, Temperature and \(eCO_2\). \cite{Mill} The monitor communicates to the users mobile phone through WiFi and connects it data to Mills own app called \textit{Mill Norway}. It is possible to choose interval for sensoring data, from every minute to every hour. 
 \\\\
-Mill has a privacy policy regarding their collection of user data from all of their devices. \cite{MillPrivacy} The personal data described to be collected are User Profile, Usage, Device, Location and Crash data. User Profile data includes name, address, telephone number, e-mail address, users daily schedule and other information attached to functions of the device. Usage data contains performance and climate conditions in the users house. The Device data will gather information about when to update and mobile user identification information unique for each mobile phone. Location data sends the SSID for the device to the app, even though the app is not in use. Crash data are used to gather information when the device is not working properly. \cite{MillPrivacy} 
+Mill has a privacy policy regarding their collection of user data from all of their devices \cite{MillPrivacy}. The personal data described to be collected are User Profile, Usage, Device, Location and Crash data. User Profile data includes name, address, telephone number, e-mail address, users daily schedule and other information attached to functions of the device. Usage data contains performance and climate conditions in the users house. The Device data will gather information about when to update and mobile user identification information unique for each mobile phone. Location data sends the SSID for the device to the app, even though the app is not in use. Crash data are used to gather information when the device is not working properly \cite{MillPrivacy}. 
 \\\\
 \subsection{Nedis Smart Sensor}
 
-\subsection{Aqara TVOC Air Quality Monitor}
 
 \section{Environment Setup}
 \subsection{Hardware}
@@ -66,13 +57,6 @@ Mill has a privacy policy regarding their collection of user data from all of th
 \subsection{How to design the test cases}
 \subsection{Introduction to each test case}
 
-Test 1: Humidity
-Test 2: CO2 and temperature
-Test 3: VOC
-Test 4: 
-
-Is there a party/many people inside?
-Is there a window open at night?
-Are someone taking a shower or hanging clothes to dry?
-Are someone making dinner?
-Are the residents away for a longer period?
+Test 1: Cooking
+Test 2: Showering
+Test 3: Window open at night
