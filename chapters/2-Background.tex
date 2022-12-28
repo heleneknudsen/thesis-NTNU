@@ -47,28 +47,27 @@ Air Quality Monitors send their sensor data to remote server for storing and ana
 \subsection{IEEE 802.11 - Wi-Fi}
 Wireless Fidelity (Wi-Fi) \cite{WiFiAlliance} is one of the worlds most used technology for communicating and is defined, developed and standardized by WiFi Alliance \cite{WiFiAlliance}. Wi-Fi is based on the standard IEEE 802.11 Wireless LAN set by IEEE Standard for Information Technology \cite{WifiStandard}. The transmission range for Wi-Fi is up to 100 meters and it uses 5-60GHz in the frequency band \cite{IAQMonitorCommunicationReview}.
 \\\\
+\textit{Figure \ref{fig:WiFiStandard}} illustrates how a Wi-Fi network works. 
+\begin{figure} [!ht]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/WiFiStandard.png}
+    \caption{Wi-Fi Network \cite{Datacom}}
+    \label{fig:WiFiStandard}
+\end{figure}
+\\\\
 In a Wi-Fi Local Area Network (LAN) each communicating node, such as computers, IoT devices or mobile phones, connects to an Access Point (AP), which connects the devices to the Internet \cite{Datacom}. The AP works as a base station of the devices and these units makes up the fundamental for Wi-Fi, called Basic Service Set (BSS). The AP connects to the Internet commonly using a switch or router, which can be integrated in the same physical device. When connecting to a Wi-Fi network, an identifier, often set as a default name by the Internet Service Provider (ISP) or a customized name made by the administrator of the network, is visible for devices trying to connect the network. This identifier is called a Service Set Identifier (SSID) and is used to distinguish multiple APs to choose the right one to connect to. Each AP will periodically send out broadcast messages in a beacon frame containing their MAC address and SSID. When the device has chosen the right AP to connect to based on the beacon frame, an association begins between the AP and the device to create a wireless link between the two. This link will be used by both the AP, to send packets from the Internet directed to the device and from the device to Internet, and by the device, to receive and send packets to the Internet \cite{Datacom}. 
 \\\\
 A network packet sent from a device communicating in a Wi-Fi network is called a data frame \cite{Datacom}. The data frame is illustrated in figure \ref{fig:WiFiDataframe}.
 
-\begin{figure}
+\begin{figure} [!h]
     \includegraphics[width=1\textwidth]{figures/WifiDataFrame.png}
     \caption{Wi-Fi Data Frame \cite{Datacom}}
     \centering
     \label{fig:WiFiDataframe}
 \end{figure}
 
-The frame control field contains several different fields for encryption, acknowledgment and the association to mention some \cite{Datacom}. The duration field holds the value of how long a to reserve a channel to transmit the data frame and acknowledgement. Sequence numbers are used for a receiver to be able to make up the order of which the packets are sent if they arrive in the wrong order over the medium. As shown in the figure \ref{fig:WiFiDataframe}, there are 4 different MAC address fields. Address 1 contains the MAC address to the destination of the packet and address 2 contains the MAC address for the source of the packet. Address 3 contains the MAC address of the router connected to the BSS and address 4 contains the MAC address for XXXXX. The Cyclic-Redundancy Check (CRC) field is controlled by the receiver to check for bit errors. The final field is the payload where the transmitted data relies in an IP or ARP packet. 
+The frame control field contains several different fields for encryption, acknowledgment and the association to mention some \cite{Datacom}. The duration field holds the value of how long a to reserve a channel to transmit the data frame and acknowledgement. Sequence numbers are used for a receiver to be able to make up the order of which the packets are sent if they arrive in the wrong order over the medium. As shown in the figure \ref{fig:WiFiDataframe}, there are 4 different MAC address fields. Address 1 contains the MAC address to the destination of the packet and address 2 contains the MAC address for the source of the packet. Address 3 contains the MAC address of the router connected to the BSS and address 4 are used dependent on two subfields in the frame control field and are not used on every data frame transmitted \cite{WifiStandard}. The Cyclic-Redundancy Check (CRC) field is controlled by the receiver to check for bit errors. The final field is the payload where the transmitted data relies in an IP or ARP packet \cite{Datacom}. 
 \\\\
-Understanding different packets in a Wi-Fi network
-ACK
-    Data
-    QoS
-    Authentication
+For an attacker sniffing network traffic on a Wi-Fi network, different packets will be observed. Wi-Fi uses three different categories of frames, management, control and data frames \cite{WiFiFrameMGMT}. As the name implies, management frames are used to management of Wi-Fi traffic. When connecting to a network association and authentication packets are sent while when disconnecting a network, disassociation and de-authentication packets are transmitted. Also beacon and probe frames are sent for finding the right network and managing the connection. The control frames are used to assist both management and data traffic \cite{WiFiFrames}. The frames does not contain any body, but rather contains header information that can be used to ensure management and data frames. Examples of frames sent as control frames are, Request-To-Send (RTS), Clear-To-Send (CTS) and acknowledgement frames (ACK). The last group of frames sent on a Wi-Fi network is data frames. The data frames is where the actual data that the the parties wants to transmit to each other relies. 
 \\\\
-Traffic patterns of IoT devices communicating on Wifi
-    Association
-    User behaviour
-    Updates
-\\\\
-Wifi security - network eavesdropping and privacy.
+The first security feature of Wi-Fi was Wired Equivalent Privacy (WEP), that was initially standardized in the 802.11 standard \cite{Datacom}. However, this standard uses symmetric keys and have security flaws in it and therefore a new security mechanism called Wi-Fi Protected Access (WPA) was introduced \cite{WAP}. Newer versions of the security mechanism called WPA-2 and WPA-3 are now more commonly used, where stronger encryption, integrity and defense against attacks are implemented. This thesis will not investigate any further on security mechanisms of Wi-Fi, but more information about WEP and the WPA versions can be found in \cite{WAP}. 
