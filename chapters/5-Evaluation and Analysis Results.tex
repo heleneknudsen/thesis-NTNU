@@ -1,7 +1,106 @@
 \chapter{Evaluation and Analysis Results}
-\section{Specifications}
-\section{Environment}
-\section{Test cases}
+\section{General}
+
+\section{Baseline}
+\subsection{General}
+The capturing of baseline traffic were conducted over the course of 10 days in the same environment as the devices were when conducting the events. During the baseline, the devices have not been affected by the specific events, such as cooking, showering or window open in the same room as the devices resides. 
+\subsection{Netatmo Home Coach}
+\subsection{Mill Sense}
+\subsection{Nedis}
+
+\section{Test Case 1: Cooking}
+This chapter presents the results and analysis conducted on Test Case 1: Cooking.
+\subsection{General}
+The cooking events are 15 in total and are presented in table XXX. Every device have the same dates for this event. 
+\begin{table}[!hbtp]
+    \centering
+    \begin{adjustbox}{width=1\textwidth}
+            \begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+            \cline{2-16} 
+            & 08.01 & 09.01 & 10.01 & 11.01 & 12.01 & 16.01 & 18.01 & 19.01 & 24.01 & 25.01 & 26.01 & 30.01 & 31.01 & 01.02 & 02.02 \\
+            \hline
+            \multicolumn{1}{|l|}{Started event}  & 15:58 & 15:59 & 16:01 & 16:05 & 16:10 & 16:02 & 16:04 & 16:01 & 15:57 & 16:02 & 16:01 & 16:01 & 16:01 & 16:02 & 16:02 \\ 
+            \hline
+            \multicolumn{1}{|l|}{Finished event} & 16:22 & 16:21 & 16:27 & 16:37 & 16:28 & 16:25 & 16:25 & 16:18 & 16:20 & 16:13 & 16:25 & 16:19 & 16:21 & 16:22 & 16:22 \\ 
+            \hline
+            \end{tabular}
+    \end{adjustbox}
+    \caption{Date and time for cooking events}
+    \label{tab:CookingDates}
+\end{table}
+\FloatBarrier
+
+To be able to look even further into differences from when the devices are in an environment when an event is ongoing and when it is in the same environment, but without any event ongoing, graphs and calculations from the baseline traffic are used to compare. To choose a time for the baseline traffic, all start values from the actual events in table XXX are used to calculate an average value for starting time. The same applies to end time. 
+
+
+\subsection{Netatmo Home Coach}
+\subsection{Mill Sense}
+\subsection{Nedis}
+
+\section{Test Case 2: Showering}
+This chapter presents the results and analysis conducted on Test Case 2: Showering. 
+\subsection{General}
+\begin{table}[!hbtp]
+    \centering
+    \begin{adjustbox}{width=1\textwidth} 
+        \begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+            \cline{2-16}
+                & 08.01 & 09.01 & 11.01 & 12.01 & 16.01 & 18.01 & 19.01 & 23.01 & 24.01 & 26.01 & 30.01 & 31.01 & 01.02 & 02.02 & 06.02 \\ \hline
+            \multicolumn{1}{|l|}{Started event}  & 19:59 & 20:14 & 20:01 & 19:59 & 20:12 & 20:02 & 20:00 & 20:00 & 20:03 & 20:03 & 20:00 & 20:01 & 20:00 & 20:00 & 20:00 \\ \hline
+            \multicolumn{1}{|l|}{Finished event} & 20:14 & 20:34 & 20:17 & 20:21 & 20:31 & 20:19 & 20:16 & 20:21 & 20:19 & 20:19 & 20:18 & 20:17 & 20:16 & 20:17 & 20:17 \\ \hline
+        \end{tabular}
+    \end{adjustbox}
+    \caption{Date and time for Test Case 2: Showering events}
+    \label{tab:ShoweringDates}
+\end{table}
+
+\subsection{Netatmo Home Coach}
+\subsection{Mill Sense}
+\subsection{Nedis}
+
+\section{Test Case 3: Window Open}
+This chapter presents the results and analysis conducted on Test Case 3: Window Open. 
+\subsection{General}
+\begin{table}[!hbtp]
+    \centering
+    \begin{adjustbox}{width=1\textwidth} 
+            \begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+                \cline{2-16}
+                & 08.01 & 09.01 & 10.01 & 11.01 & 12.01 & 16.01 & 18.01 & 19.01 & 23.01 & 24.01 & 25.01 & 30.01 & 31.01 & 01.02 & 02.02 \\ \hline
+                \multicolumn{1}{|l|}{Started event}  & 23:00 & 23:00 & 23:00 & 22:50 & 23:00 & 23:10 & 23:15 & 23:02 & 22:59 & 22:59 & 22:59 & 23:00 & 22:59 & 22:59 & 22:59 \\ \hline
+                \multicolumn{1}{|l|}{Finished event} & 07:00 & 07:00 & 07:00 & 07:00 & 07:00 & 06:56 & 07:09 & 06:59 & 06:55 & 06:57 & 06:55 & 06:56 & 07:00 & 06:59 & 06:59 \\ \hline
+            \end{tabular}
+    \end{adjustbox}
+    \caption{Date and time for Test Case 3: Window Open events}
+    \label{tab:WindowDates}
+\end{table}
+\subsection{Netatmo Home Coach}
+\subsection{Mill Sense}
+\subsection{Nedis}
+
+\section{Test Case 4: Weekends}
+This chapter presents the results and analysis conducted on Test Case 4: Weekends. 
+\subsection{General}
+Test Case 4: Weekends are tested over the course of 14 different weekends. 7 weekends when the environment was occupied and 7 when the environment were not occupied. The different dates are described in table \ref{tab:WeekendDates}. 
+\begin{table}[!hbtp]
+    \centering
+    \begin{adjustbox}{width=0.5\textwidth} 
+        \begin{tabular}{l|l|}
+            \cline{2-2} & \textbf{Dates}\\ \hline
+            \multicolumn{1}{|l|}{\textbf{Occupied}} & \begin{tabular}[c]{@{}l@{}}13.01.2023-15.01.2023\\ 27.01.2023-29.01.2023\\ 03.02.2023-05.02.2023\\ 17.02.2023-19.02.2023\\ 10.03.2023-12.03.2023\\ 28.03.2023-30.03.2023\\ 31.03.2023-01.04.2023\end{tabular} \\ \hline
+            \multicolumn{1}{|l|}{\textbf{Not occupied}} & \begin{tabular}[c]{@{}l@{}}23.12.2022-25.12.2022\\ 30.12.2022-01.01.2023\\ 20.01.2023-22.01.2023\\ 10.02.2023-12.02.2023\\ 24.02.2023-26.02.2023\\ 03.03.2023-05.03.2023\\ 17.03.2023-19.03.2023\end{tabular} \\ \hline
+        \end{tabular}
+    \end{adjustbox}
+    \caption{Dates for Test Case 4: Weekends}
+    \label{tab:WeekendDates}
+\end{table}
+
+\subsection{Netatmo Home Coach}
+
+
+\subsection{Mill Sense}
+\subsection{Nedis}
+
 
 
 
