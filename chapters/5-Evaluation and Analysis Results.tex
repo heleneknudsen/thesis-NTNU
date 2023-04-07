@@ -1,19 +1,131 @@
 \chapter{Evaluation and Analysis Results}
+The evaluation and analysis result chapter will provide all gathered and analyzed data from the different test runned in this thesis. The chapter is divided into different subsections for each test case. 
 \section{General}
+To be able to run analisis on the data gathered from the different packet capturings (pcaps) and present it in an understandable way, two different programs were used; Wireshark and VsCode with pyshark. Wireshark were used to extract numbers from the pcaps and Visual Studio Code (VS Code) was used to generate graphs from the pcaps for the events. Even tough it is possible to use Wireshark to generate the same graphs as with VS Code, VS Code was selected because it is easier to generate graphs that have the same measures to compare and they are more ascetically pleasing to look at.  
+\\\\
+When opening a pcap in Wireshark several statistics are possible to extract. By choosing the option of "Capture File Properties", several measures were extracted from here, such as packets, average packet size in bytes, bytes and average bytes per second. The numbers from each pcap were noted down and used as a value to compare both the events to each other and to the baseline. 
+\\\\
+In VS Code, python was used as the programming language as it includes the package pyshark which can be used towards tshark. Two scripts with a number of different if statements were used to generate the graphs depending on the users arguments passed to the script. The scripts only differs with if the user wants to display the graphs with number of packets or number of graphs on the y-axis. The code is displayed in its whole in appendix XXXX, and in pseudo code beneath in algorithm \ref{alg:GraphScript}. For each of the if statements, the same code block is included and are only shown once in algorithm \ref{alg:GraphScript}
+
+\begin{table}[!hbtp]
+    \centering
+    \caption{Overview of system arguments for scripts}
+    \begin{adjustbox}{width=1\textwidth}
+    \begin{tabular}{l|l|l|}
+        \cline{2-3} & \textbf{Description} & \textbf{Values}\\ \hline
+        \multicolumn{1}{|l|}{\textbf{Argument 1}} & Name of device & \begin{tabular}[c]{@{}l@{}}Netatmo\\ Mill\\ Nedis\end{tabular} \\ \hline
+        \multicolumn{1}{|l|}{\textbf{Argument 2}} & Which packets to include & \begin{tabular}[c]{@{}l@{}}Inbound packets and bytes\\ Outbound packets and bytes\\ Inbound and outbound packets and bytes\end{tabular} \\ \hline
+        \multicolumn{1}{|l|}{\textbf{Argument 3}} & Type of event & \begin{tabular}[c]{@{}l@{}}Cooking\\ Shower\\ Window\\ Weekend\\ Baseline\end{tabular} \\ \hline
+        \multicolumn{1}{|l|}{\textbf{Argument 4}} & Maximum value for y-axis, in bytes or packets & "Numeric value" \\ \hline
+    \end{tabular}
+    \end{adjustbox}
+    \label{tab:SystemArgumentsScripts}
+\end{table}
+
+\begin{algorithm}
+\caption{Script for generating graphs}\label{alg:GraphScript}
+\begin{algorithmic}
+        \For{Each date of event} \Comment{Graph\_function start}
+            \State Extract the packets from the right pcap
+            \For{Each packet in pcap}
+                \State Extract packet length in byte and time
+                \State Display graph
+            \EndFor
+        \EndFor \Comment{Graph\_function end}\\
+         \If{Argument 3 is Shower} \Comment{Event if-cases start}
+            \State Set the dates from when the events occured 
+            \State Graph\_function
+        \ElsIf{Argument 3 is Cooking}
+            \State Set the dates from when the events occured 
+            \State Graph\_function
+        \ElsIf{Argument 3 is Window}
+            \State Set the dates from when the events occured 
+            \State Graph\_function
+        \ElsIf{Argument 3 is Weekend}
+            \State Set the dates from when the events occured 
+            \State Graph\_function
+        \ElsIf{Argument 3 is Baseline}
+            \State Set the dates from when the events occured 
+            \State Graph\_function \Comment{Event if-cases end}\\
+    \If{Argument 2 is Total}
+       \State Event if-cases
+        \EndIf\\
+    \ElsIf{Argument 2 is Outbound}
+        \If{Argument 1 is Netatmo}
+            \State Set display filter to "wlan.sa == Netatmo MAC address"
+        \ElsIf{Argument 1 is Mill}
+            \State Set display filter to "wlan.sa == Mill MAC address"
+        \ElsIf{Argument 1 is Nedis}
+            \State Set display filter to "wlan.sa == Nedis MAC address"    
+        \State Event if-cases
+        \EndIf\\
+    \ElsIf{Argument 2 is Inbound}
+        \If{Argument 1 is Netatmo}
+            \State Set display filter to "wlan.da == Netatmo MAC address"
+        \ElsIf{Argument 1 is Mill}
+            \State Set display filter to "wlan.da == Mill MAC address"
+        \ElsIf{Argument 1 is Nedis}
+            \State Set display filter to "wlan.da == Nedis MAC address"  
+        \State Event if-cases
+        \EndIf\\
+    \EndIf
+\end{algorithmic}
+\end{algorithm}
+
 
 \section{Baseline}
-\subsection{General}
 The capturing of baseline traffic were conducted over the course of 10 days in the same environment as the devices were when conducting the events. During the baseline, the devices have not been affected by the specific events, such as cooking, showering or window open in the same room as the devices resides. 
 \subsection{Netatmo Home Coach}
+\textit{Figure \ref{fig:NetatmoBaselineTotalPackets}} and \ref{fig:NetatmoBaselineTotalBytes} shows the graphs for Netatmo Home Coach from the baseline capturing from 6th of March 2023 to 15th of March 2023. 
+\begin{figure} [!ht]
+    \centering
+    \includegraphics[scale=0.3]{figures/Netatmo_Baseline_TotalBytes.png}
+    \caption{Netatmo Baseline Total Bytes}
+    \label{fig:NetatmoBaselineTotalBytes}
+\end{figure}
+
+\begin{figure} [!ht]         
+    \includegraphics[scale=0.3]{figures/Netatmo_Baseline_InboundBytes.png}
+    \caption{Netatmo Baseline Inbound Bytes}
+    \label{fig:NetatmoBaselineInboundBytes}
+ \end{figure}
+
+\begin{figure} [!ht]         
+    \includegraphics[scale=0.3]{figures/Netatmo_Baseline_OutboundBytes.png}
+    \caption{Netatmo Baseline Outbound Bytes}
+    \label{fig:NetatmoBaselineOutboundBytes}
+ \end{figure}
+
+
+\begin{figure} [!ht]         
+    \includegraphics[scale=0.3]{figures/Netatmo_Baseline_TotalPackets.png}
+    \caption{Netatmo Baseline Total Packets}
+    \label{fig:NetatmoBaselineTotalPackets}
+ \end{figure}
+
+ \begin{figure} [!ht]         
+    \includegraphics[scale=0.3]{figures/Netatmo_Baseline_InboundPackets.png}
+    \caption{Netatmo Baseline Inbound Packets}
+    \label{fig:NetatmoBaselineInboundPackets}
+ \end{figure}
+
+ \begin{figure} [!ht]         
+    \includegraphics[scale=0.3]{figures/Netatmo_Baseline_TotalPackets.png}
+    \caption{Netatmo Baseline Outbound Packets}
+    \label{fig:NetatmoBaselineOutboundPackets}
+ \end{figure}
+
+
 \subsection{Mill Sense}
 \subsection{Nedis}
 
 \section{Test Case 1: Cooking}
 This chapter presents the results and analysis conducted on Test Case 1: Cooking.
 \subsection{General}
-The cooking events are 15 in total and are presented in table XXX. Every device have the same dates for this event. 
+The cooking events are 15 in total and are presented in table \ref{tab:CookingDates}. Every device have the same dates for this event. 
 \begin{table}[!hbtp]
     \centering
+    \caption{Date and time for Test Case 1: Cooking Events}
     \begin{adjustbox}{width=1\textwidth}
             \begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
             \cline{2-16} 
@@ -25,7 +137,6 @@ The cooking events are 15 in total and are presented in table XXX. Every device 
             \hline
             \end{tabular}
     \end{adjustbox}
-    \caption{Date and time for cooking events}
     \label{tab:CookingDates}
 \end{table}
 \FloatBarrier
@@ -42,6 +153,7 @@ This chapter presents the results and analysis conducted on Test Case 2: Showeri
 \subsection{General}
 \begin{table}[!hbtp]
     \centering
+    \caption{Date and time for Test Case 2: Showering events}
     \begin{adjustbox}{width=1\textwidth} 
         \begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
             \cline{2-16}
@@ -50,7 +162,6 @@ This chapter presents the results and analysis conducted on Test Case 2: Showeri
             \multicolumn{1}{|l|}{Finished event} & 20:14 & 20:34 & 20:17 & 20:21 & 20:31 & 20:19 & 20:16 & 20:21 & 20:19 & 20:19 & 20:18 & 20:17 & 20:16 & 20:17 & 20:17 \\ \hline
         \end{tabular}
     \end{adjustbox}
-    \caption{Date and time for Test Case 2: Showering events}
     \label{tab:ShoweringDates}
 \end{table}
 
@@ -63,6 +174,7 @@ This chapter presents the results and analysis conducted on Test Case 3: Window 
 \subsection{General}
 \begin{table}[!hbtp]
     \centering
+    \caption{Date and time for Test Case 3: Window Open events}
     \begin{adjustbox}{width=1\textwidth} 
             \begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
                 \cline{2-16}
@@ -71,7 +183,6 @@ This chapter presents the results and analysis conducted on Test Case 3: Window 
                 \multicolumn{1}{|l|}{Finished event} & 07:00 & 07:00 & 07:00 & 07:00 & 07:00 & 06:56 & 07:09 & 06:59 & 06:55 & 06:57 & 06:55 & 06:56 & 07:00 & 06:59 & 06:59 \\ \hline
             \end{tabular}
     \end{adjustbox}
-    \caption{Date and time for Test Case 3: Window Open events}
     \label{tab:WindowDates}
 \end{table}
 \subsection{Netatmo Home Coach}
@@ -84,6 +195,7 @@ This chapter presents the results and analysis conducted on Test Case 4: Weekend
 Test Case 4: Weekends are tested over the course of 14 different weekends. 7 weekends when the environment was occupied and 7 when the environment were not occupied. The different dates are described in table \ref{tab:WeekendDates}. 
 \begin{table}[!hbtp]
     \centering
+    \caption{Dates for Test Case 4: Weekends}
     \begin{adjustbox}{width=0.5\textwidth} 
         \begin{tabular}{l|l|}
             \cline{2-2} & \textbf{Dates}\\ \hline
@@ -91,7 +203,6 @@ Test Case 4: Weekends are tested over the course of 14 different weekends. 7 wee
             \multicolumn{1}{|l|}{\textbf{Not occupied}} & \begin{tabular}[c]{@{}l@{}}23.12.2022-25.12.2022\\ 30.12.2022-01.01.2023\\ 20.01.2023-22.01.2023\\ 10.02.2023-12.02.2023\\ 24.02.2023-26.02.2023\\ 03.03.2023-05.03.2023\\ 17.03.2023-19.03.2023\end{tabular} \\ \hline
         \end{tabular}
     \end{adjustbox}
-    \caption{Dates for Test Case 4: Weekends}
     \label{tab:WeekendDates}
 \end{table}
 
