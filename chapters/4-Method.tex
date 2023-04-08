@@ -19,6 +19,7 @@ The research will consists of air quality monitors from the selected three diffe
 \begin{table}[!hbtp]
     \centering
     \begin{adjustbox}{width=1\textwidth}
+    \caption{Air Quality Monitor Devices}
     \begin{tabular}{| p{3cm} | p{5cm} | p{5cm} | p{3cm} |} 
         \hline
         \textbf{Vendor} & \textbf{Air Quality Monitor} & \textbf{Communication protocol} & \textbf{Sensors} \\
@@ -31,7 +32,6 @@ The research will consists of air quality monitors from the selected three diffe
         \hline
     \end{tabular}
     \end{adjustbox}
-    \caption{Air Quality Monitor Devices}
     \label{tab:AQMSurvey}
 \end{table}
 \FloatBarrier
@@ -109,21 +109,22 @@ The Netatmo Healthy Home Coach sends notifications to the users application when
 \section{Method Tree}
 The research is structured in six different main activities, shown in figure \ref{fig:MethodTree}:
 \\\\
-\begin{figure} [!ht]
+\begin{figure} [H]
     \centering
-    \includegraphics[width=0.3\textwidth]{figures/MethodTree.png}
+    \includegraphics[width=0.5\textwidth]{figures/MethodTree.png}
     \caption{Method Tree}
     \label{fig:MethodTree}
 \end{figure}
 \subsection{Environment Setup}
-The first main activity is to set up the environment with both hardware and software correctly configured. The air quality monitors, the sniffer, the hardware where the software and sniffer are connected and the software are the different steps explained beneath. 
+The first main activity is to set up the environment with both hardware and software correctly configured. The air quality monitors, the sniffer, the hardware and software are explained in the different sub chapters underneath. 
 \subsubsection{Air Quality Monitors}
 The AQMs needs to be installed, connected to the app and calibrated. All the devices was installed and connected to the app as explained in the user manual attached to the devices. They have all been installed in the smart home environment for a longer period than their required for calibration. It is desirable that the air quality monitors gives notifications when a certain threshold value is met. However, for Mill Sense it is not possible to set notifications. The MAC addresses for the air quality monitors can all be found in their corresponding apps. 
 \\\\
-The table \ref{tab:AQMSetup} shows each AQM and their MAC address and what triggers the devices to notifications to the app. 
+Table \ref{tab:AQMSetup} presents each AQM, their MAC address and what triggers the devices to notifications to the app. 
 
-\begin{table}[!hbtp]
+\begin{table}[H]
     \centering
+    \caption{Air Quality Monitor Devices Information}
     \begin{adjustbox}{width=1\textwidth}
     \begin{tabular}{| p{3cm} | p{5cm} | p{5cm} | p{3cm} |} 
         \hline
@@ -133,13 +134,13 @@ The table \ref{tab:AQMSetup} shows each AQM and their MAC address and what trigg
         \hline
         Nedis SmartLife Air Quality Monitor & 2C:F4:32:29:36:DC & \(CO_2\) > 1000 ppm \newline Humidity < 30\%  \newline Humidity < 50\% \newline Temperature < 15 \degree C \newline Temperature > 25 \degree C \newline VOC > 99.9 ppn\\
         \hline
-        Netatmo Smart Air Quality Monitor & 70:EE:50:91:06:DE & \(CO_2\) > 1150 ppm \newline Noise > 62db \newline Humidity < 30\% \newline Humidity > 60\% \newline Temperature < 17 \degree C \newline Temperature > 26 \degree C \\\\
+        Netatmo Smart Air Quality Monitor & 70:EE:50:91:06:DE & \(CO_2\) > 1150 ppm \newline Noise > 62db \newline Humidity < 30\% \newline Humidity > 60\% \newline Temperature < 17 \degree C \newline Temperature > 26 \degree C \\
         \hline
     \end{tabular}
     \end{adjustbox}
-    \caption{Air Quality Monitor Devices Information}
     \label{tab:AQMSetup}
 \end{table}
+
 \subsubsection{Sniffer}
 To be able to collect all Wi-Fi traffic within the environment, a network sniffer needs to be configured. It exists a wide variety of sniffers online for every communication protocol. However, the selected sniffer in this research is the TP-Link TL-WN722N. 
 \\\\
@@ -149,30 +150,48 @@ To be able to collect all Wi-Fi traffic within the environment, a network sniffe
     \caption{TP-Link TL-WN722N \cite{Sniffer}}
     \label{fig:Sniffer}
 \end{figure}
-\\\\
-To set the device in monitoring mode, its first plugged into a computer, raspberry pie or similar and then the following commands are run. Wlan0 is the assigned wlan for the device when I plugged it into my environment, so it needs to be changed accordingly. 
+\\
+To set the device in monitoring mode, its first plugged into a computer, raspberry pie or similar and then the following commands are run. Wlan0 were the assigned wlan for the device when it was plugged it into the environment, so it needs to be changed to monitoring mode accordingly. When the sniffer is configured in monitoring mode, the device are able to collect all Wi-Fi traffic that is within its own signal strength. In this way, the sniffer will be able to collect the traffic sent to and from the AQMs installed in the environment. 
+
+The four cli-commands listed beneath were used to set the sniffer into monitoring mode:
 \begin{verbatim}
     sudo ifconfig wlan0 down
     sudo iwconfig wlan0 mode monitor
     sudo ifconfig wlan0 up
     sudo iwconfig
 \end{verbatim}
-The sniffer is then ready to collect traffic from all devices communicating over Wi-Fi within its own signal range. 
+To verify that the sniffer is collecting traffic on the network, Wireshark were used with the corresponding wlan, Wlan0, as capturing interface. 
+
 \subsubsection{Tshark}
 In order to store and process the traffic that the TP-link collects, a monitoring software was needed. Tshark is an open and free network packet analyzer and will be used to store packets. Tshark can be runned from the commandline and contains the possibilty of using capture filters based on a numerous parameters, such as addresses, duration or size. To be able to store the packets captured, tshark was runned with the option of writing its results to an output file rather than in the command line. The packets collected in the output file by tshark are possible to open and analyze in Wireshark. 
 \\\\
-To be able to store packets from all the three air quality monitors, tshark was runned from three different terminals with the following three filters:
+To be able to store packets from all the three air quality monitors, tshark was runned from three different terminals with corresponding filter as the devices. The options of the command are explained in table \ref{tab:tshark}.
+
+\begin{table}[H]
+    \centering
+    \caption{Tshark command options}
+    \begin{tabular}{|l|l|}
+    \hline
+    \textbf{Filter option} & \textbf{Usage}                        \\ \hline
+    tshark                 & Initialize tshark                     \\ \hline
+    -i                     & Interface to be used                  \\ \hline
+    -f                     & Capturing filter                      \\ \hline
+    -w                     & Output file to store captured packets \\ \hline
+    \end{tabular}
+    \label{tab:tshark}
+\end{table}
+
 \begin{verbatim}
-    For Mill Sense:
-        tshark 
-    For Nedis SmartLife:
-        tshark
-    For Netatmo Healthy Home Coach:
-        tshark 
+Mill:
+    tshark -i wlan0 -f ether.host == B8:F0:09:B3:B3:78 -w \\Documents\Mill
+Nedis:
+    tshark -i wlan0 -f ether.host == 2C:F4:32:29:36:DC -w \\Documents\Nedis
+Netatmo:
+    tshark -i wlan0 -f ether.host == 70:EE:50:91:06:DE -w \\Documents\Netatmo
 \end{verbatim}
 
 \subsubsection{Environment}
-To be able to to collect data and store it from the devices, an operating system running on an hardware component with the possibility to connect the sniffer is needed. In this research, a Raspberry Pie installed with Kali Linux was chosen to be able to run the packet capturing continuously and have the needed software installed on the operating system. To be able to download the files from the Raspberry Pie, the open software WinSCP was used. 
+To collect data and store it from the devices, an operating system running on a hardware component with the possibility to connect the sniffer is needed. In this research, a Raspberry Pi Model 3 B+ were chosen as it can continuously be powered on to capture traffic over longer periods of times. The Raspberry Pi were installed with Kali Linux version XX, which was beneficial as it includes all the needed software to capture the traffic and is compatible with the TP-link sniffer. As the analysis will be conducted on another computer, WinSCP were used to download the files from the Raspberry Pi over the network. Figure \ref{fig:Environment} shows a logical overview of the setup of the environment.  
 \\\\
 \begin{figure} [!ht]
     \centering
@@ -183,17 +202,17 @@ To be able to to collect data and store it from the devices, an operating system
 
 \subsection{Event Design}
 \subsubsection{Justification of test cases}
-In order to infer user behaviour from the devices, test cases needs to be designed. As the AQMs are installed and monitors the home environment at all times, the test cases are not limited in time or place in the house as they can be moved. As the traffics characteristics is unknown, a hypothesis tree can be used to better understand how to proceed based on the results from the traffic analysis. 
+In order to infer user behaviour from the devices, test cases needs to be designed. As the AQMs are installed and monitors the home environment at all times, the test cases are not limited in time or place in the house as they can be moved. The traffic characteristics are unknown, and therefore a hypothesis tree can be used to better understand how to proceed based on the results from the traffic analysis. 
 \\\\
-\textit{Figure \ref{fig:HypothesisTree}} shows the process tree of this research:
+Figure \ref{fig:HypothesisTree} shows the process tree of this research:
 \\\\
-\begin{figure} [!ht]
-    \includegraphics[width=1.3\textwidth]{figures/HypothesisTree.png}
+\begin{figure} [H]
     \centering
+    \includegraphics[width=1.5\textwidth,left]{figures/HypothesisTree.png}
     \caption{Hypothesis Tree}
     \label{fig:HypothesisTree}
 \end{figure}
-\\\\
+
 Then looking at the different sensors and how they can be affected is important for understanding which user behaviour can possibly change traffic pattern. All the sensors together are; \(eCO_2\), \(CO_2\), humidity, temperature, TVOC, VOC, HCHO and noise. Some of the sensors will be affected by the same actions, so they will be categorized together going forward. The following significantly different sensors will be used: \(CO_2\), humidity, temperature, VOC and noise. 
 \\\\
 Examples of user behaviour in a home that affects the different sensors:
@@ -218,6 +237,7 @@ In this activity, traffic from the devices are captured while the events trigger
 The table \ref{tab:TestCases} gives information about when each test case was carried out and in which room. 
 \begin{table}[!hbtp]
     \centering
+    \caption{Test Cases}
     \begin{adjustbox}{width=1\textwidth}
     \begin{tabular}{| p{5cm} | p{5cm} | p{3cm} |} 
         \hline
@@ -233,7 +253,6 @@ The table \ref{tab:TestCases} gives information about when each test case was ca
         \hline
     \end{tabular}
     \end{adjustbox}
-    \caption{Test Cases}
     \label{tab:TestCases}
 \end{table}
 

@@ -39,7 +39,6 @@ In VS Code, python was used as the programming language as it includes the packa
             \State Set display filter to "wlan.sa == Mill MAC address"
         \ElsIf{Argument 1 is Nedis}
             \State Set display filter to "wlan.sa == Nedis MAC address"    
-        \State Event if-cases
         \EndIf\\
     \ElsIf{Argument 2 is Inbound}
         \If{Argument 1 is Netatmo}
@@ -48,7 +47,6 @@ In VS Code, python was used as the programming language as it includes the packa
             \State Set display filter to "wlan.da == Mill MAC address"
         \ElsIf{Argument 1 is Nedis}
             \State Set display filter to "wlan.da == Nedis MAC address"  
-        \State Event if-cases
         \EndIf\\
     \If{Argument 3 is Shower} \Comment{Event if-cases start}
         \State Set the dates from when the events occured 
@@ -379,14 +377,5 @@ Test Case 4: Weekends are tested over the course of 14 different weekends. 7 wee
 \end{table}
 
 \subsection{Netatmo Home Coach}
-
-
 \subsection{Mill Sense}
 \subsection{Nedis}
-
-
-
-
-
-
-
