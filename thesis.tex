@@ -7,6 +7,7 @@
 \usepackage{algorithm}
 \usepackage{float}
 \usepackage{algpseudocode}
+\usepackage{listings}
 \usepackage{multirow}
 \setcounter{secnumdepth}{3}
 \graphicspath{ {chapters/figures/} }
@@ -45,5 +46,20 @@
 \printbibliography[heading=none]
 
 \appendix
+\renewcommand\thesection{Appendix \Alph{section}}
+\newpage
+\section{Script to generate graphs with bytes as reference}
+    \lstinputlisting[language=python, breaklines=true]{appendices/GraphsByBytes.py}
+    
+\newpage
+\section{Script to generate graphs with packets as reference}
+    %\lstinputlisting[language=python, breaklines=true]{appendices/GraphsByPackets.py}
 
+\newpage
+\section{Script to generate graphs for baseline comparison with bytes as reference}
+    \lstinputlisting[language=python, breaklines=true]{appendices/GraphsByBytes_BaselineEvents.py}
+
+\newpage 
+\section{Script to generate graphs for baseline comparison with packets as reference}
+    \lstinputlisting[language=python, breaklines=true]{appendices/GraphsByPackets_BaselineEvents.py}
 \end{document}
