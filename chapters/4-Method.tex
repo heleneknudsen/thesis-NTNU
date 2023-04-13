@@ -207,8 +207,7 @@ In order to infer user behaviour from the devices, test cases needs to be design
 Figure \ref{fig:HypothesisTree} shows the process tree of this research:
 \\\\
 \begin{figure} [H]
-    \centering
-    \includegraphics[width=1.5\textwidth,left]{figures/HypothesisTree.png}
+    \includegraphics[width=1.1\textwidth]{figures/HypothesisTree.png}
     \caption{Hypothesis Tree}
     \label{fig:HypothesisTree}
 \end{figure}
@@ -229,13 +228,13 @@ Several of the proposed user behaviours will affect not only one, but several se
 However, it is also interesting to see if the traffic patterns of the data sent to and from the AQMs change whether the users are home or not. To be able to test this, a weekend test will be carried out. The sniffer will gather traffic from several weekends when the user are present in their home environment and compare it to when the user is away for several weekends and look at the differences. Even though this is not a routine behaviour, if it is possible to infer whether a user is home or not by looking at the traffic patterns, an adversary can misuse this private information. 
 
 \subsection{Baseline Capture}
-To be able to distinguish the events in network traffic, it is necessary to capture and analyze traffic from the devices when they are not affected by any events. This is necessary to understand what normal traffic from the devices are. During a baseline capture, the devices are installed and calibrated in the environment. All the notifications that will be enabled during the event triggering are enabled. The devices are reachable through their app and communicate in their own pattern. The baseline capture was on-going for 2 weeks to ensure enough data and traffic was collected. During this capture, the devices were placed in the inner hallway of the apartment. It would have been ideally to have a baseline from each room of where the test cases will be located, but due to time constraints, they were placed in a room binding all the other rooms together. 
+To be able to distinguish the events in network traffic, it is necessary to capture and analyze traffic from the devices when they are not affected by any events. This is necessary to understand what normal traffic from the devices are. During a baseline capture, the devices are installed and calibrated in the environment. All the notifications that will be enabled during the event triggering are enabled. The devices are reachable through their app and communicate in their own pattern. The baseline capture was on-going for several days to ensure enough data and traffic was collected. During this capture, the devices were placed in the inner hallway of the apartment. It would have been ideally to have a baseline from each room of where the test cases will be located, but due to time constraints, they were placed in a room binding all the other rooms together. 
 
 \subsection{Event Triggering}
 In this activity, traffic from the devices are captured while the events triggered. The routine events are each triggered 15 times and traffic from 30 minutes before and after the event are captured to see the changes in traffic both before and after the events. Weekend testing are conducted in the course of 12 weekends, resulting in collected traffic from 6 weekends at home and 6 weekends away. 
 \\\\
-The table \ref{tab:TestCases} gives information about when each test case was carried out and in which room. 
-\begin{table}[!hbtp]
+The table \ref{tab:TestCases} shows when each test case was carried out and in which room. 
+\begin{table}[H]
     \centering
     \caption{Test Cases}
     \begin{adjustbox}{width=1\textwidth}
@@ -259,8 +258,7 @@ The table \ref{tab:TestCases} gives information about when each test case was ca
 As there is only one of each device and the tests are in different rooms, the devices will be moved to the respected room before each test. The devices will be placed in the environment for at least 1 hour before each test starts to ensure that the association and value changes between the room will be as equalized as possible. The exact times for when cooking, open window and showering took place will be logged so it is possible to look for changes at that time. 
 
 \subsection{Event Mapping}
+When the events have been carried out, a mapping was made to see if information could be inferred. Each event were presented both graphically and numerically to be able to compare. Each event were extracted from the corresponding tshark capture saved in the pcap file. A separate pcap file for each event were made, with the timing of the event and added 30 minutes before and after the event to see differences. 
 
 \subsection{Result Analysis}
-The last activity is to analyze the results from the tests performed. As the output files from tshark can be opened in Wireshark, it is natural as a first instance to open the files here and look at any information one can get out of it. 
-Wireshark
-Pyhton? Pyshark?
+The last activity is to analyze the results from the tests performed. For each event; cooking, showering, window open and weekend, several graphs and calculations are presented side by side to be able to analyze. This is divided into categories with the three different devices. Then the actual events are compared to the baseline for each device to look further into mapping the events from standard traffic. 

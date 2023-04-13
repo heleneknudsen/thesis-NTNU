@@ -1,26 +1,11 @@
 \chapter{Evaluation and Analysis Results}
 The evaluation and analysis result chapter will provide all gathered and analyzed data from the different test runned in this thesis. The chapter is divided into different subsections for each test case. 
 \section{General}
-To be able to run analisis on the data gathered from the different packet capturings (pcaps) and present it in an understandable way, two different programs were used; Wireshark and VsCode with pyshark. Wireshark were used to extract numbers from the pcaps and Visual Studio Code (VS Code) was used to generate graphs from the pcaps for the events. Even tough it is possible to use Wireshark to generate the same graphs as with VS Code, VS Code was selected because it is easier to generate graphs that have the same measures to compare and they are more ascetically pleasing to look at.  
+To be able to run analysis on the data gathered from the different packet capturings (pcaps) and present it in an understandable way, two different programs were used; Wireshark and VsCode with pyshark. Wireshark were used to extract numbers from the pcaps and Visual Studio Code (VS Code) was used to generate graphs from the pcaps for the events. Even tough it is possible to use Wireshark to generate the same graphs as with VS Code, VS Code was selected because it is easier to generate graphs that have the same measures to compare and they are more ascetically pleasing to look at.  
 \\\\
 When opening a pcap in Wireshark several statistics are possible to extract. By choosing the option of "Capture File Properties", several measures were extracted from here, such as packets, average packet size in bytes, bytes and average bytes per second. The numbers from each pcap were noted down and used as a value to compare both the events to each other and to the baseline. 
 \\\\
-In VS Code, python was used as the programming language as it includes the package pyshark which can be used towards tshark. Two scripts with a number of different if statements were used to generate the graphs depending on the users arguments passed to the script. The scripts only differs with if the user wants to display the graphs with number of packets or number of graphs on the y-axis. The code is displayed in its whole in appendix XXXX, and in pseudo code beneath in algorithm \ref{alg:GraphScript}. For each of the if statements, the same code block is included and are only shown once in algorithm \ref{alg:GraphScript}. The graphs are all generated with bytes and packets per 2 seconds. 
-
-\begin{table}[!hbtp]
-    \centering
-    \caption{Overview of system arguments for scripts}
-    \begin{adjustbox}{width=1\textwidth}
-    \begin{tabular}{l|l|l|}
-        \cline{2-3} & \textbf{Description} & \textbf{Values}\\ \hline
-        \multicolumn{1}{|l|}{\textbf{Argument 1}} & Name of device & \begin{tabular}[c]{@{}l@{}}Netatmo\\ Mill\\ Nedis\end{tabular} \\ \hline
-        \multicolumn{1}{|l|}{\textbf{Argument 2}} & Which packets to include & \begin{tabular}[c]{@{}l@{}}Inbound packets and bytes\\ Outbound packets and bytes\\ Inbound and outbound packets and bytes\end{tabular} \\ \hline
-        \multicolumn{1}{|l|}{\textbf{Argument 3}} & Type of event & \begin{tabular}[c]{@{}l@{}}Cooking\\ Shower\\ Window\\ Weekend\\ Baseline\end{tabular} \\ \hline
-        \multicolumn{1}{|l|}{\textbf{Argument 4}} & Maximum value for y-axis, in bytes or packets & "Numeric value" \\ \hline
-    \end{tabular}
-    \end{adjustbox}
-    \label{tab:SystemArgumentsScripts}
-\end{table}
+In VS Code, python was used as the programming language as it includes the package pyshark which can be used towards tshark. Two scripts with a number of different if statements were used to generate the graphs depending on the users arguments passed to the script. The scripts only differs with if the user wants to display the graphs with number of packets or number of graphs on the y-axis. The code is displayed in its whole in appendix XXXX, and in pseudo code beneath in algorithm \ref{alg:GraphScript}. For each of the if statements, the same code block is included and are only shown once in algorithm \ref{alg:GraphScript}. The graphs are all generated with bytes and packets per 2 seconds, where the y-axis is defined in amount of packets or byts and the x-axis defined as time. 
 
 \begin{algorithm}
 \caption{Script for generating graphs}\label{alg:GraphScript}
@@ -28,11 +13,11 @@ In VS Code, python was used as the programming language as it includes the packa
         \For{Each date of event} \Comment{Graph\_function start}
             \State Extract the packets from the right pcap
             \For{Each packet in pcap}
-                \State Extract packet length in byte and time
+                \State Extract packet length in byte and time or add packet count to time
                 \State Display graph
             \EndFor
         \EndFor \Comment{Graph\_function end}\\
-    \If{Argument 2 is Outbound}
+    \If{Argument 2 is Outbound} \Comment{Set display filter to outbound traffic}
         \If{Argument 1 is Netatmo}
             \State Set display filter to "wlan.sa == Netatmo MAC address"
         \ElsIf{Argument 1 is Mill}
@@ -40,7 +25,7 @@ In VS Code, python was used as the programming language as it includes the packa
         \ElsIf{Argument 1 is Nedis}
             \State Set display filter to "wlan.sa == Nedis MAC address"    
         \EndIf\\
-    \ElsIf{Argument 2 is Inbound}
+    \ElsIf{Argument 2 is Inbound} \Comment{Set display filter to inbound traffic}
         \If{Argument 1 is Netatmo}
             \State Set display filter to "wlan.da == Netatmo MAC address"
         \ElsIf{Argument 1 is Mill}
@@ -67,10 +52,31 @@ In VS Code, python was used as the programming language as it includes the packa
 \end{algorithmic}
 \end{algorithm}
 
+\begin{table}[H]
+    \centering
+    \caption{Overview of system arguments for scripts}
+    \begin{adjustbox}{width=1\textwidth}
+    \begin{tabular}{l|l|l|}
+        \cline{2-3} & \textbf{Description} & \textbf{Values}\\ \hline
+        \multicolumn{1}{|l|}{\textbf{Argument 1}} & Name of device & \begin{tabular}[c]{@{}l@{}}Netatmo\\ Mill\\ Nedis\end{tabular} \\ \hline
+        \multicolumn{1}{|l|}{\textbf{Argument 2}} & Which packets to include & \begin{tabular}[c]{@{}l@{}}Inbound packets and bytes\\ Outbound packets and bytes\\ Inbound and outbound packets and bytes\end{tabular} \\ \hline
+        \multicolumn{1}{|l|}{\textbf{Argument 3}} & Type of event & \begin{tabular}[c]{@{}l@{}}Cooking\\ Shower\\ Window\\ Weekend\\ Baseline\end{tabular} \\ \hline
+        \multicolumn{1}{|l|}{\textbf{Argument 4}} & Maximum value for y-axis, in bytes or packets & "Numeric value" \\ \hline
+    \end{tabular}
+    \end{adjustbox}
+    \label{tab:SystemArgumentsScripts}
+\end{table}
+
+To create a file for each of the events, a time filter were applied to the pcaps and then the remaining packets exported to a separate pcap that can be opened in Wireshark or make a graph out of to analyze each specific event. The time filter has the following format:
+
+\begin{itemize}
+    \item \textbf{Format:} frame.time >= "Month Date, Year "Time"" && frame.time <= "Month Date, Year "Time""//
+    \item \textbf{Example:} frame.time >= "Jan 08, 2023 "19:30:00"" && frame.time <= "Jan 08, 2023 "20:40:00""
+\end{itemize}
 
 \section{Baseline}
-The capturing of baseline traffic were conducted over the course of 10 days in the same environment as the devices were when conducting the events. During the baseline, the devices have not been affected by the specific events, such as cooking, showering or window open in the same room as the devices resides. The baseline traffic will both be used to look at standard traffic from the devices and to compare this to the events in both graphs and calculations in sub chapter 5.3-5.5. The traffic from the capture file is encrypted on layer 2 (Wi-Fi) and therefore it is not possible to extract any values from the payload of the packets. 
-\subsection{Netatmo Home Coach}
+The capturing of baseline traffic were conducted over the course of 10 days in the same environment as the devices were when conducting the events. During the baseline, the devices have not been affected by the specific events, such as cooking, showering or window open in the same room as the devices resides. The baseline traffic will both be used to look at standard traffic from the devices and to compare this to the events in both graphs and calculations in sub chapter 5.3-5.5. The traffic from the capture file is encrypted on layer 2 (Wi-Fi) and therefore it is not possible to extract any values from the payload of the packets. This applies to all the devices.  
+\subsection{Netatmo Baseline}
 \textit{Figure \ref{fig:NetatmoBaselineTotalPackets}} and \textit{\ref{fig:NetatmoBaselineTotalBytes}} shows the graphs for Netatmo Home Coach from the baseline capturing from 6th of March 2023 to 15th of March 2023. 
 \begin{figure} [H]
     \centering
@@ -141,9 +147,9 @@ For the inbound and outbound bytes for Netatmo, \textit{figure \ref{Fig:NetatmoB
     \end{tabular}
     \label{tab:NetatmoBaselineCalculations}
 \end{table}
-When comparing the inbound(figure \ref{fig:NetatmoBaselineInboundBytes} and figures \ref{fig:NetatmoBaselineInboundPackets}) and outbound(figure \ref{fig:NetatmoBaselineOutboundBytes} and \ref{fig:NetatmoBaselineOutboundPackets}) graphs with the total graphs (figure \ref{fig:NetatmoBaselineTotalBytes} and figures \ref{fig:NetatmoBaselineTotalPackets}), the total graphs do not differ much from the outbound graphs, as they stand for the majority of packets and bytes. The same is numerically shown in table \ref{tab:NetatmoBaselineCalculations}, where over 99\% of the total packets are outbound traffic. Therefore, it will not be big differences in outbound and total graphs, so moving forward to the events only graphs for total traffic will be used to evaluate and analyze. The majority of packets sent from Netatmo are packets labeled "Data" with a size of 134 bytes, which makes up 98,3\% of the total packets from the capture file. 
+Comparing the inbound(figure \ref{fig:NetatmoBaselineInboundBytes} and \ref{fig:NetatmoBaselineInboundPackets}) and outbound(figure \ref{fig:NetatmoBaselineOutboundBytes} and \ref{fig:NetatmoBaselineOutboundPackets}) graphs with the total graphs (figure \ref{fig:NetatmoBaselineTotalBytes} and figures \ref{fig:NetatmoBaselineTotalPackets}), shows that the outbound graphs stands for a majority of the packets and they are very similar to the total graphs. The same is numerically shown in table \ref{tab:NetatmoBaselineCalculations}, where over 99\% of the total packets are outbound traffic. The majority of packets sent from Netatmo are packets labeled "Data" with a size of 134 bytes, which makes up 98,3\% of the packets from the capture file. Therefore, it will be better to only display the events with graphs for total traffic to evaluate and analyze further on. 
 
-\subsection{Mill Sense}
+\subsection{Mill Baseline}
 \textit{Figure \ref{fig:MillBaselineTotalPackets}} and \textit{\ref{fig:MillBaselineTotalBytes}} shows the graphs for Mill from the baseline capturing from 6th of March 2023 to 15th of March 2023. 
 \begin{figure} [H]
     \centering
@@ -152,13 +158,16 @@ When comparing the inbound(figure \ref{fig:NetatmoBaselineInboundBytes} and figu
     \label{fig:MillBaselineTotalBytes}
 \end{figure}
 
-\begin{figure} [H]         
+\begin{figure} [H]
+    \centering
     \includegraphics[scale=0.3]{figures/Mill_Baseline_TotalPackets.png}
     \caption{Mill Baseline Total Packets}
     \label{fig:MillBaselineTotalPackets}
  \end{figure}
 
-The baseline traffic for Mill shows that the traffic varies a lot. As this device does not send live updates, but every minute, more spikes are included as it does not always send packets. 
+The baseline traffic for Mill shows that the traffic varies a lot. As this device does not send live updates, but every minute, more spikes are included as it does not always send packets. It is also possible to see the spikes more clearly if the time range is smaller, this will be visible further when looking at the baseline comparison graphs for each event. 
+
+Graphs for inbound and outbound traffic have also been made for Mill, to see the differences for the packets sent. Figure \ref{Fig:MillBaselineOutandInboundBytes} and \ref{Fig:MillBaselineOutandInboundPackets} displays the different graphs for each of the traffic directions. Numerical calculations for the baseline traffic are presented in table \ref{tab:MillBaselineCalculations}. 
 
 \begin{figure}[H]
     \centering
@@ -196,27 +205,28 @@ The baseline traffic for Mill shows that the traffic varies a lot. As this devic
     \caption{Calculations for Mill Baseline Capture}
     \centering
     \begin{tabular}{ll|l|}
-        \cline{3-3}                                               &                               &             \textbf{Numbers} \\ \hline
-        \multicolumn{1}{|c|}{\multirow{4}{*}{\textbf{Total}}}    & Packets              & 1,236,753         \\ \cline{2-3} 
-        \multicolumn{1}{|c|}{}                                   & Bytes                & 129,253,290       \\ \cline{2-3} 
-        \multicolumn{1}{|c|}{}                                   & Average bytes/second & 149              \\ \cline{2-3} 
-        \multicolumn{1}{|c|}{}                                   & Average packet size  & 105 bytes        \\ \hline
-        \multicolumn{1}{|l|}{\multirow{5}{*}{\textbf{Inbound}}}  & Packets              & 942,112           \\ \cline{2-3} 
-        \multicolumn{1}{|l|}{}                                   & Bytes                & 95,458,773        \\ \cline{2-3} 
-        \multicolumn{1}{|l|}{}                                   & Average bytes/second & 110              \\ \cline{2-3} 
-        \multicolumn{1}{|l|}{}                                   & Average packet size  & 101 bytes         \\ \cline{2-3} 
-        \multicolumn{1}{|l|}{}                                   & Biggest packet       & 1593 bytes        \\ \hline
-        \multicolumn{1}{|l|}{\multirow{5}{*}{\textbf{Outbound}}} & Packets              & 294,640          \\ \cline{2-3} 
-        \multicolumn{1}{|l|}{}                                   & Bytes                & 33,794,517       \\ \cline{2-3} 
-        \multicolumn{1}{|l|}{}                                   & Average bytes/second & 39               \\ \cline{2-3} 
-        \multicolumn{1}{|l|}{}                                   & Average packet size  & 115 bytes         \\ \cline{2-3} 
+        \cline{3-3}                                              &                      & \textbf{Numbers} \\ \hline
+        \multicolumn{1}{|c|}{\multirow{4}{*}{\textbf{Total}}}    & Packets              & 1,236,753       \\ \cline{2-3} 
+        \multicolumn{1}{|c|}{}                                   & Bytes                & 129,253,290     \\ \cline{2-3} 
+        \multicolumn{1}{|c|}{}                                   & Average bytes/second & 149             \\ \cline{2-3} 
+        \multicolumn{1}{|c|}{}                                   & Average packet size  & 105 bytes       \\ \hline
+        \multicolumn{1}{|l|}{\multirow{5}{*}{\textbf{Inbound}}}  & Packets              & 942,112         \\ \cline{2-3} 
+        \multicolumn{1}{|l|}{}                                   & Bytes                & 95,458,773      \\ \cline{2-3} 
+        \multicolumn{1}{|l|}{}                                   & Average bytes/second & 110             \\ \cline{2-3} 
+        \multicolumn{1}{|l|}{}                                   & Average packet size  & 101 bytes       \\ \cline{2-3} 
+        \multicolumn{1}{|l|}{}                                   & Biggest packet       & 1593 bytes      \\ \hline
+        \multicolumn{1}{|l|}{\multirow{5}{*}{\textbf{Outbound}}} & Packets              & 294,640         \\ \cline{2-3} 
+        \multicolumn{1}{|l|}{}                                   & Bytes                & 33,794,517      \\ \cline{2-3} 
+        \multicolumn{1}{|l|}{}                                   & Average bytes/second & 39              \\ \cline{2-3} 
+        \multicolumn{1}{|l|}{}                                   & Average packet size  & 115 bytes       \\ \cline{2-3} 
         \multicolumn{1}{|l|}{}                                   & Biggest packet       & 456 bytes       \\ \hline
     \end{tabular}
     \label{tab:MillBaselineCalculations}
 \end{table}
 
+As figure \ref{Fig:MillBaselineOutandInboundBytes} and \ref{Fig:MillBaselineOutandInboundPackets} shows, the device receives a lot more packets and bytes than it sends off. And as the inbound graphs do not differ much from the total graphs, it will be best to proceed with the analysis in a total traffic aspect where both inbound and outbound traffic are included. This is also reflected in table \ref{tab:MillBaselineCalculations}, which shows that 76\% of packets and 74\% of bytes are received.
 
-\subsection{Nedis}
+\subsection{Nedis Baseline}
 \textit{Figure \ref{fig:NedisBaselineTotalPackets}} and \textit{\ref{fig:NedisBaselineTotalBytes}} shows the graphs for Nedis from the baseline capturing from 6th of March 2023 to 15th of March 2023. 
 \begin{figure} [H]
     \centering
@@ -231,7 +241,10 @@ The baseline traffic for Mill shows that the traffic varies a lot. As this devic
     \label{fig:NedisBaselineTotalPackets}
  \end{figure}
 
+The traffic sent and received by Nedis is characterized by several spikes even though the traffic varies some. The larger spikes, which are more visible in figure \ref{fig:NedisBaselineTotalPackets}, showing the packets, occurs almost everyday. Since traffic is encrypted, it is not possible to see what these spikes are, but for further analysis it is important to understand that normal traffic for the device, can be large spikes occurring around the same time each night the spike occurs. Even though this thesis will not go further into looking at what the spikes actually are, it can be interesting to see if they are inbound or outbound traffic. 
 
+To look at the differences in inbound and outbound traffic for Nedis, figure \ref{Fig:NedisBaselineOutandInboundBytes} and \ref{Fig:NedisBaselineOutandInboundPackets} are displayed. Figure \ref{fig:NedisBaselineOutboundPackets} shows that the spikes are packets which the device receives.
+Even though the graphs for inbound and outbound traffic from Nedis looks more similar, the calculations presented in table \ref{tab:NedisBaselineCalculations}, shows that 81\% of the packets and 70\% of the bytes in the baseline are traffic sent from the device. Looking at the graphs in total will therefore give the most to analyze. Another aspect of looking at the graphs in total, compared to inbound and outbound separately is that since the traffic is encrypted on the layer 2, it is not possible to know what makes the possible changes. 
 
 \begin{figure}[H]
     \centering
@@ -290,9 +303,9 @@ The baseline traffic for Mill shows that the traffic varies a lot. As this devic
 
 
 \section{Test Case 1: Cooking}
-This chapter presents the results and analysis conducted on Test Case 1: Cooking.
+This chapter presents the results and analysis conducted on Test Case 1: Cooking. The first subsection will present general information applicable to all the devices, and the following subsections will present the result and analysis for each of the devices separately. 
 \subsection{General}
-The cooking events are 15 in total and are presented in table \ref{tab:CookingDates}. Every device have the same dates for this event. 
+The cooking events are 15 in total and are presented in table \ref{tab:CookingDates}. Every device has the same dates for this event. 
 \begin{table}[!hbtp]
     \centering
     \caption{Date and time for Test Case 1: Cooking Events}
@@ -311,13 +324,385 @@ The cooking events are 15 in total and are presented in table \ref{tab:CookingDa
 \end{table}
 \FloatBarrier
 
-To be able to look even further into differences from when the devices are in an environment when an event is ongoing and when it is in the same environment, but without any event ongoing, graphs and calculations from the baseline traffic are used to compare. To choose a time for the baseline traffic, all start values from the actual events in table XXX are used to calculate an average value for starting time. The same applies to end time. 
+To be able to look even further into differences from when the devices are in an environment when an event is ongoing and when it is in the same environment, but without any event ongoing, graphs and calculations from the baseline traffic are used to compare. To choose a time for the baseline traffic, all start values from the actual events in table \ref{tab:CookingDates} are used to calculate an average value for starting time. The same applies to end time. Calculated average value for the cooking event is:
+
+\begin{itemize}
+    \item Event Start: 15:58
+    \item Event Finished: 16:22
+\end{itemize}
 
 
 \subsection{Netatmo Home Coach}
-\subsection{Mill Sense}
-\subsection{Nedis}
+The graphs in figure \ref{fig:NetatmoCookingBytes} and \ref{fig:NetatmoCookingPackets} shows both bytes and packets for the first 10 of the cooking events. The area marked red on the graphs are when the event was ongoing. Table \ref{tab:NetatmoCookingCalculations} presents the calculations from all the 15 cooking events. The table also includes average and standard deviation (std deviation) values for the events. 
 
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_08.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_09.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_10.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_11.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_12.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_16.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_18.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_19.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_24.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_25.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_26.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_30.01.png}
+    \end{subfigure}
+    \caption{Netatmo Cooking Events - Bytes}
+    \label{fig:NetatmoCookingBytes}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_08.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_09.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_10.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_11.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_12.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_16.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_18.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_19.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_24.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_26.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_26.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_30.01.png}
+    \end{subfigure}
+    \caption{Netatmo Cooking Events - Packets}
+    \label{fig:NetatmoCookingPackets}
+\end{figure}
+
+\begin{table}[!ht]
+    \centering
+    \caption{Netatmo Cooking Calculations}
+    \begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+        \textbf{Event dates} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} & \textbf{Average bytes/s} & \textbf{Average packet size}  \\ \hline
+        08.jan & 789 & 107,094 & 407 & 21 & 136 bytes \\ \hline
+        09.jan & 589 & 81,694 & 407 & 16 & 139 bytes \\ \hline
+        10.jan & 786 & 105,351 & 203 & 20 & 134 bytes \\ \hline
+        11.jan & 791 & 107,011 & 407 & 19 & 135 bytes \\ \hline
+        12.jan & 528 & 71,873 & 407 & 15 & 136  bytes\\ \hline
+        16.jan & 921 & 123,899 & 407 & 24 & 135 bytes \\ \hline
+        18.jan & 739 & 108,857 & 407 & 22 & 137 bytes  \\ \hline
+        19.jan & 607 & 82,423 & 407 & 17 & 136 bytes \\ \hline
+        24.jan & 836 & 114,340 & 407 & 22 & 137 bytes  \\ \hline
+        25.jan & 309 & 42,332 & 407 & 10 & 137 bytes \\ \hline
+        26.jan & 739 & 100,223 & 407 & 19 & 136 bytes  \\ \hline
+        30.jan & 654 & 89,264 & 407 & 19 & 136 bytes \\ \hline
+        31.jan & 704 & 93,998 & 136 & 19 & 134 bytes \\ \hline
+        01.feb & 644 & 87,474 & 407 & 18 & 136 bytes \\ \hline
+        02.feb & 666 & 91,485 & 407 & 19 & 137 bytes \\ \hline
+        \textbf{Average} &  \textbf{687}  &  \textbf{93,821}  &  \textbf{375}  &  \textbf{19}  &  \textbf{136 bytes} \\ \hline
+        \textbf{Std deviation} &  \textbf{147}  & \textbf{19,914}  &  \textbf{85}  &  \textbf{3}  &  \textbf{1 byte} \\ \hline
+    \end{tabular}
+    \label{tab:NetatmoCookingCalculations}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.49\textwidth}
+       \includegraphics[width=1\hsize]{figures/Netatmo_Cooking_Calculations_Packets.png} 
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=1\hsize]{figures/Netatmo_Cooking_Calculations_Bytes.png} 
+    \end{subfigure}
+    \caption{Netatmo Cooking Calculations with Packets and bytes}
+    \label{fig:NetatmoCookingCalculationsPackets}
+\end{figure}
+
+
+It is hard to see any specific changes in the traffic flow from when the event is ongoing based on the graphs given in figure \ref{fig:NetatmoCookingBytes} and \ref{fig:NetatmoCookingPackets}. Also looking at the table \ref{tab:NetatmoCookingCalculations} the calculations varies a lot. From table \ref{tab:NetatmoCookingCalculations}, the packets varies from 309 to 921 packets and from 42,332 to 123,899 bytes. 
+\\\\
+The next step is to compare the event graphs and calculations with the baseline traffic from the correlating timing for cooking events. 
+
+
+
+\subsection{Mill Sense}
+The graphs in figure \ref{fig:NetatmoCookingBytes} and \ref{fig:MillCookingPackets} shows both bytes and packets for the first 10 of the cooking events. The area marked red on the graphs are when the event was ongoing. Table \ref{tab:MillCookingCalculations} presents the calculations from all the 15 cooking events. 
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_08.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_09.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_10.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_11.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_12.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_16.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_18.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_19.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_24.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_25.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_26.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_30.01.png}
+    \end{subfigure}
+    \caption{Mill Cooking Events - Bytes}
+    \label{fig:MillCookingBytes}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_08.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_09.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_10.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_11.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_12.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_16.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_18.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_19.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_24.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_26.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_26.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_30.01.png}
+    \end{subfigure}
+    \caption{Mill Cooking Events - Packets}
+    \label{fig:MillCookingPackets}
+\end{figure}
+\subsection{Nedis}
+The graphs in figure \ref{fig:NedisCookingBytes} and \ref{fig:NedisCookingPackets} shows both bytes and packets for the first 10 of the cooking events. The area marked red on the graphs are when the event was ongoing. Table \ref{tab:NetatmoCookingCalculations} presents the calculations from all the 15 cooking events. 
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_08.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_09.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_10.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_11.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_12.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_16.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_18.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_19.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_24.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_25.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_26.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_30.01.png}
+    \end{subfigure}
+    \caption{Nedis Cooking Events - Bytes}
+    \label{fig:NedisCookingBytes}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_08.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_09.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_10.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_11.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_12.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_16.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_18.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_19.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_24.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_26.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_26.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_30.01.png}
+    \end{subfigure}
+    \caption{Nedis Cooking Events - Packets}
+    \label{fig:NedisCookingPackets}
+\end{figure}
 \section{Test Case 2: Showering}
 This chapter presents the results and analysis conducted on Test Case 2: Showering. 
 \subsection{General}
