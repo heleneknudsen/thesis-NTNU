@@ -44,14 +44,14 @@ Mill Sense Air Quality Monitor measures the indoor air quality with 4 different 
     \centering
     \begin{subfigure}{0.3\textwidth}
          \centering
-         \includegraphics[width=1.5\textwidth]{figures/MillSenseApp.png}
+         \includegraphics[width=1\textwidth]{figures/MillSenseApp.png}
          \caption{Mill Norway \cite{MillSense}}
          \label{fig:MillSenseApp}
      \end{subfigure}
-     \hfill
+     \hspace{2cm}
       \begin{subfigure}{0.3\textwidth}
          \centering
-         \includegraphics[width=1.5\textwidth]{figures/MillSense.jpg}
+         \includegraphics[width=1\textwidth]{figures/MillSense.jpg}
          \caption{Mill Sense device \cite{MillSense}}
          \label{fig:MillSenseDev}
      \end{subfigure}
@@ -63,31 +63,29 @@ Mill Sense Air Quality Monitor measures the indoor air quality with 4 different 
 Mill has a privacy policy regarding their collection of user data from all of their devices \cite{MillPrivacy}. The personal data described to be collected are User Profile, Usage, Device, Location and Crash data. User Profile data includes name, address, telephone number, e-mail address, users daily schedule and other information attached to functions of the device. Usage data contains performance and climate conditions in the users house. The Device data will gather information about when to update and mobile user identification information unique for each mobile phone. Location data sends the SSID for the device to the app, even though the app is not in use. Crash data are used to gather information when the device is not working properly \cite{MillPrivacy}. 
 \\\\
 The AQM does not need power to stay connected and can be placed in any preferred room. The app does not provide notifications to users of threshold levels, but displays the current levels in the app together with graphs that shows variations back in time. Instead of sending notifications to a users phone, the device shows different light responses on the physical unit. These threshold values can be customized. The sensor data collected from the environment is sent to the cloud and back to the users app. It is possible to choose interval for sensor data, from every minute to every hour. When the unit is turned on for the first time and installed in the environment, the device needs at least 5 days to calibrate its sensors. 
-\\
+
 \subsection{Nedis SmartLife Air Quality Monitor}
 Nedis SmartLife Air Quality monitor have 3 different indoor AQM sensors; humidity, temperature and VOC \cite{NedisDevice}. The monitor communicates over Wi-Fi to the app, \textit{Nedis SmartLife}. As Nedis have several other smart devices, the unit can be integrated in a smart environment together with other devices. 
-\\\\
 \textit{Figure \ref{fig:NedisBoth}} shows Nedis SmartLife Air Quality Monitor and its corresponding application, Nedis SmartLife. 
 \begin{figure} [!ht]
     \centering
-    \begin{subfigure}{0.3\textwidth}
+    \begin{subfigure}{0.35\textwidth}
          \centering
-         \includegraphics[width=1.5\textwidth]{figures/NedisApp.jpg}
+         \includegraphics[width=1.2\textwidth]{figures/NedisApp.jpg}
          \caption{Nedis SmartLife App \cite{Nedis}}
          \label{fig:NedisApp}
      \end{subfigure}
-     \hfill
-      \begin{subfigure}{0.3\textwidth}
+     \hspace{2cm}
+      \begin{subfigure}{0.35\textwidth}
          \centering
-         \includegraphics[width=1.5\textwidth]{figures/NedisDevice.jpg}
+         \includegraphics[width=1.2\textwidth]{figures/NedisDevice.jpg}
          \caption{Nedis SmartLife Air Quality Monitor \cite{Nedis}}
          \label{fig:NedisDev}
      \end{subfigure}
-     \hfill
-        \caption{Nedis SmartLife}
-        \label{fig:NedisBoth}
+     \caption{Nedis SmartLife}
+     \label{fig:NedisBoth}
 \end{figure}
-\\\\
+
 Nedis privacy policy states that they automatically collects device information, usage data, log information and smart device related information, such as device name, id, status, version and upgrade. There will be carried out statistical analysis to imporve the application and devices to the users needs. They also disclose some of the data to third party services to be able to provide some of their services. 
 \\\\
 The Nedis SmartLife does not have notification default setup, but it can easily be set by the user. Every sensor reading from the device can be set to notify both when levels are too high or too low, meaning that the user can set its own thresholds. The readings on this app shows live data as well as a graphical view of previous readings up to a year before. For setup in an environment, Nedis does not specify any calibration time.  
@@ -107,7 +105,7 @@ In the privacy policy of Netatmo, the following personal data is stated that Net
 \\\\
 The Netatmo Healthy Home Coach sends notifications to the users application when the device sense high temperature, \(CO_2\), humidity or noise and low temperature or humidity. These are default on, but can be turned off by the user. The values cannot be changed, but are stated by Netatmo in the app. The unit displays live readings to the user through the app, together with a graphical view of values over a longer period of time. When first installed, the devices needs at least 7 days to be able to calibrate and read the environment correctly. 
 \section{Method Tree}
-The research is structured in six different main activities, shown in figure \ref{fig:MethodTree}:
+The research is structured in six different main activities, shown in Figure \ref{fig:MethodTree}:
 \\\\
 \begin{figure} [H]
     \centering
@@ -116,8 +114,8 @@ The research is structured in six different main activities, shown in figure \re
     \label{fig:MethodTree}
 \end{figure}
 \subsection{Environment Setup}
-The first main activity is to set up the environment with both hardware and software correctly configured. The air quality monitors, the sniffer, the hardware and software are explained in the different sub chapters underneath. 
-\subsubsection{Air Quality Monitors}
+The first main activity is to set up the environment with both hardware and software correctly configured. The air quality monitors, the sniffer, the hardware and software are explained in the different Sub chapters underneath. 
+\textbf{Air Quality Monitors}
 The AQMs needs to be installed, connected to the app and calibrated. All the devices was installed and connected to the app as explained in the user manual attached to the devices. They have all been installed in the smart home environment for a longer period than their required for calibration. It is desirable that the air quality monitors gives notifications when a certain threshold value is met. However, for Mill Sense it is not possible to set notifications. The MAC addresses for the air quality monitors can all be found in their corresponding apps. 
 \\\\
 Table \ref{tab:AQMSetup} presents each AQM, their MAC address and what triggers the devices to notifications to the app. 
@@ -141,7 +139,7 @@ Table \ref{tab:AQMSetup} presents each AQM, their MAC address and what triggers 
     \label{tab:AQMSetup}
 \end{table}
 
-\subsubsection{Sniffer}
+\textbf{Sniffer}
 To be able to collect all Wi-Fi traffic within the environment, a network sniffer needs to be configured. It exists a wide variety of sniffers online for every communication protocol. However, the selected sniffer in this research is the TP-Link TL-WN722N. 
 \\\\
 \begin{figure} [!ht]
@@ -162,10 +160,10 @@ The four cli-commands listed beneath were used to set the sniffer into monitorin
 \end{verbatim}
 To verify that the sniffer is collecting traffic on the network, Wireshark were used with the corresponding wlan, Wlan0, as capturing interface. 
 
-\subsubsection{Tshark}
+\textbf{Tshark}
 In order to store and process the traffic that the TP-link collects, a monitoring software was needed. Tshark is an open and free network packet analyzer and will be used to store packets. Tshark can be runned from the commandline and contains the possibilty of using capture filters based on a numerous parameters, such as addresses, duration or size. To be able to store the packets captured, tshark was runned with the option of writing its results to an output file rather than in the command line. The packets collected in the output file by tshark are possible to open and analyze in Wireshark. 
 \\\\
-To be able to store packets from all the three air quality monitors, tshark was runned from three different terminals with corresponding filter as the devices. The options of the command are explained in table \ref{tab:tshark}.
+To be able to store packets from all the three air quality monitors, tshark was runned from three different terminals with corresponding filter as the devices. The options of the command are explained in Table \ref{tab:tshark}.
 
 \begin{table}[H]
     \centering
@@ -190,7 +188,7 @@ Netatmo:
     tshark -i wlan0 -f ether.host == 70:EE:50:91:06:DE -w \\Documents\Netatmo
 \end{verbatim}
 
-\subsubsection{Environment}
+\textbf{Platform}
 To collect data and store it from the devices, an operating system running on a hardware component with the possibility to connect the sniffer is needed. In this research, a Raspberry Pi Model 3 B+ were chosen as it can continuously be powered on to capture traffic over longer periods of times. The Raspberry Pi were installed with Kali Linux version XX, which was beneficial as it includes all the needed software to capture the traffic and is compatible with the TP-link sniffer. As the analysis will be conducted on another computer, WinSCP were used to download the files from the Raspberry Pi over the network. Figure \ref{fig:Environment} shows a logical overview of the setup of the environment.  
 \\\\
 \begin{figure} [!ht]
@@ -201,13 +199,13 @@ To collect data and store it from the devices, an operating system running on a 
 \end{figure}
 
 \subsection{Event Design}
-\subsubsection{Justification of test cases}
+\textbf{Justification of test cases}
 In order to infer user behaviour from the devices, test cases needs to be designed. As the AQMs are installed and monitors the home environment at all times, the test cases are not limited in time or place in the house as they can be moved. The traffic characteristics are unknown, and therefore a hypothesis tree can be used to better understand how to proceed based on the results from the traffic analysis. 
 \\\\
-Figure \ref{fig:HypothesisTree} shows the process tree of this research:
+Figure \ref{fig:Hypothesistree} shows the process tree of this research:
 \\\\
 \begin{figure} [H]
-    \includegraphics[width=1.1\textwidth]{figures/HypothesisTree.png}
+    \includegraphics[width=1\textwidth]{figures/Hypothesistree.png}
     \caption{Hypothesis Tree}
     \label{fig:HypothesisTree}
 \end{figure}
@@ -233,7 +231,7 @@ To be able to distinguish the events in network traffic, it is necessary to capt
 \subsection{Event Triggering}
 In this activity, traffic from the devices are captured while the events triggered. The routine events are each triggered 15 times and traffic from 30 minutes before and after the event are captured to see the changes in traffic both before and after the events. Weekend testing are conducted in the course of 12 weekends, resulting in collected traffic from 6 weekends at home and 6 weekends away. 
 \\\\
-The table \ref{tab:TestCases} shows when each test case was carried out and in which room. 
+The Table \ref{tab:TestCases} shows when each test case was carried out and in which room. 
 \begin{table}[H]
     \centering
     \caption{Test Cases}
