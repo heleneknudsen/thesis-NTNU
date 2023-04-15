@@ -70,9 +70,11 @@ In VS Code, python was used as the programming language as it includes the packa
 To create a file for each of the events, a time filter were applied to the pcaps and then the remaining packets exported to a separate pcap that can be opened in Wireshark or make a graph out of to analyze each specific event. The time filter has the following format:
 
 \begin{itemize}
-    \item \textbf{Format:} frame.time >= "Month Date, Year "Time"" && frame.time <= "Month Date, Year "Time""//
-    \item \textbf{Example:} frame.time >= "Jan 08, 2023 "19:30:00"" && frame.time <= "Jan 08, 2023 "20:40:00""
+\item \textbf{Format:} frame.time >= "Month Date, Year "Time"" && frame.time <= "Month Date, Year "Time""//
+\item \textbf{Example:} frame.time >= "Jan 08, 2023 "19:30:00"" && frame.time <= "Jan 08, 2023 "20:40:00""
 \end{itemize}
+
+In this research, each event have been carried out 15 times, but to make the pages presentable and understandable to look at, only the first 12 graphs from the events are shown. The rest of the graphs follows the same pattern as the 10 first, but will be only be added in the appendix. The same applies to when comparing baseline traffic against the events. To be able to present this in an understandable way, only 7 of each category are chosen to be added to the graphical comparison. All calculations are added directly in this chapter as it is possible to do this in a presentable way without overloading the pages. For the weekend testing, all graphs are shown. 
 
 \section{Baseline}
 The capturing of baseline traffic were conducted over the course of 10 days in the same environment as the devices were when conducting the events. During the baseline, the devices have not been affected by the specific events, such as cooking, showering or window open in the same room as the devices resides. The baseline traffic will both be used to look at standard traffic from the devices and to compare this to the events in both graphs and calculations in sub chapter 5.3-5.5. The traffic from the capture file is encrypted on layer 2 (Wi-Fi) and therefore it is not possible to extract any values from the payload of the packets. This applies to all the devices.  
@@ -974,7 +976,7 @@ From the graphs in figure \ref{fig:MillCookingComparingBytes} and \ref{fig:MillC
         \multicolumn{1}{l|}{}                                              & \textbf{Type} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
         \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Event         & 7,921              & 988,927        & 818 bytes               \\ \cline{2-5} 
         \multicolumn{1}{|c|}{}                                             & Baseline      & 7,198              & 735,629         & 733 bytes                \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 1,101              & 1234,838         & 533 bytes                 \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 1,101              & 124,838         & 533 bytes                 \\ \cline{2-5} 
         \multicolumn{1}{|c|}{}                                             & Baseline      & 1,242               & 107,852        &  478 bytes               \\ \hline          
     \end{tabular}
     \label{tab:MillComparingBaselineAndCookingCalculations}
@@ -997,9 +999,48 @@ From the graphs in figure \ref{fig:MillCookingComparingBytes} and \ref{fig:MillC
 
 \newpage
 \subsection{Nedis}
-The graphs in figure \ref{fig:NedisCookingBytes} and \ref{fig:NedisCookingPackets} shows both bytes and packets for the first 10 of the cooking events. The area marked red on the graphs are when the event was ongoing. Table \ref{tab:NetatmoCookingCalculations} presents the calculations from all the 15 cooking events. 
+Table \ref{tab:NedisCookingCalculations} shows the calculations made on the cooking events for Nedis, including total amount of packeta and bytes and biggest packet sent within each event. The graphs in Figure \ref{fig:NedisCookingCalculations} presents both packets and bytes for the cooking event compared to the average value. The graphs in Figure \ref{fig:NedisCookingBytes} and \ref{fig:NedisCookingPackets} shows both bytes and packets for the first 10 of the cooking events. The area marked red on the graphs are when the event was ongoing.
 
+\begin{table}[H]
+\centering
+\caption{Nedis Cooking Calculations}
+\label{tab:NedisCookingCalculations}
+\begin{tabular}{|l|l|l|l|}
+\hline
+                   & \textbf{Packets} & \textbf{Bytes}     & \textbf{Biggest packet} \\ \hline
+08.jan             & 20,926           & 2,834,097          & 485 bytes               \\ \hline
+09.jan             & 21,766           & 3,202,040          & 424 bytes               \\ \hline
+10.jan             & 22,696           & 2,870,057          & 424 bytes               \\ \hline
+11.jan             & 22,770           & 3,306,458          & 424 bytes               \\ \hline
+12.jan             & 19,981           & 2,805,340          & 485 bytes               \\ \hline
+16.jan             & 20,702           & 3,082,977          & 485 bytes               \\ \hline
+18.jan             & 21,292           & 2,689,055          & 424 bytes               \\ \hline
+19.jan             & 16,247           & 2,500,650          & 424 bytes               \\ \hline
+24.jan             & 27,549           & 3,758,598          & 485 bytes               \\ \hline
+25.jan             & 17,759           & 2,308,623          & 424 bytes               \\ \hline
+26.jan             & 22,457           & 3,016,625          & 424 bytes               \\ \hline
+30.jan             & 19,563           & 2,540,731          & 424 bytes               \\ \hline
+31.jan             & 18,587           & 2,487,586          & 424 bytes               \\ \hline
+01.feb             & 20,844           & 2,878,197          & 424 bytes               \\ \hline
+02.feb             & 23,426           & 3,283,178          & 424 bytes               \\ \hline
+\textbf{Average}   & \textbf{21,104}  & \textbf{2,904,281} & \textbf{440 bytes}      \\ \hline
+\textbf{Std dev} & \textbf{2,667}   & \textbf{383,108}   & \textbf{28 bytes}         \\ \hline
+\end{tabular}
+\end{table}
 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=1\hsize]{figures/Nedis_Cooking_Calculations_Bytes.png} 
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=1\hsize]{figures/Nedis_Cooking_Calculations_Packets.png} 
+    \end{subfigure}
+    \caption{Cooking Calculations for Nedis}
+    \label{fig:NedisCookingCalculations}
+\end{figure}
 
 \begin{figure}[H]
     \begin{subfigure}[b]{0.47\textwidth}
@@ -1108,6 +1149,186 @@ The graphs in figure \ref{fig:NedisCookingBytes} and \ref{fig:NedisCookingPacket
     \caption{Nedis Cooking Events - Packets}
     \label{fig:NedisCookingPackets}
 \end{figure}
+
+The graphs in Figure \ref{fig:NedisCookingBytes} and \ref{fig:NedisCookingPackets} does not show a significant change in traffic pattern during the event. The calculations in Table \ref{tab:NedisCookingCalculations} shows that the amount of packets does not vary that much with a standard deviation of 2,667 packets. The amount of bytes also has a small standard deviation, but the amount of bytes do vary from 2,308,623 to 3,306,458 bytes. The biggest packet for each event are either 424 or 485 bytes. The Figures in \ref{fig:NedisCookingCalculations} also shows that bytes and packets are close to the average value. 
+\\\\
+The next step is to compare the event calculations and graphs to the corresponding calculations and graphs from the baseline. Figure \ref{fig:NedisCookingComparingPackets} and \ref{fig:NedisCookingComparingBytes} compares these two, with the event graphs marked in red and the baseline graphs marked in blue, and compares for both packets and bytes. Table \ref{tab:NedisBaselineCookingCalculations} presents the same calculations for the baseline as Table \ref{tab:NedisCookingCalculations} does for the cooking events. Table \ref{tab:NedisComparingBaselineAndCookingCalculations} presents the average value and standard deviation of the baseline events and cooking events in a table to compare. Figure \ref{fig:NedisComparingCookingCalculations} gives a graphical comparison of baseline and cooking events with both packets and bytes.  
+\newpage
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Packets_08.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Cooking_Baseline_Packets_06.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Packets_10.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Cooking_Baseline_Packets_07.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Packets_12.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Cooking_Baseline_Packets_08.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Packets_18.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Cooking_Baseline_Packets_09.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Packets_24.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Cooking_Baseline_Packets_10.03.png}
+    \end{subfigure}
+        \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Packets_26.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Cooking_Baseline_Packets_11.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Packets_30.01.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Cooking_Baseline_Packets_12.03.png}
+        \end{subfigure}
+    \caption{Comparing Events and Baseline Packets for Cooking - Nedis}
+    \label{fig:NedisCookingComparingPackets}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Bytes_08.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Cooking_Baseline_Bytes_06.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Bytes_10.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Cooking_Baseline_Bytes_07.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Bytes_12.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Cooking_Baseline_Bytes_08.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Bytes_18.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Cooking_Baseline_Bytes_09.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Bytes_24.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Cooking_Baseline_Bytes_10.03.png}
+    \end{subfigure}
+        \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Bytes_26.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Cooking_Baseline_Bytes_11.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Bytes_30.01.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Cooking_Baseline_Bytes_12.03.png}
+        \end{subfigure}
+    \caption{Comparing Events and Baseline Bytes for Cooking - Nedis}
+    \label{fig:NedisCookingComparingBytes}
+\end{figure}
+
+\begin{table}[]
+\centering
+\caption{Nedis Baseline Cooking Calculations}
+\label{tab:NedisBaselineCookingCalculations}
+\begin{tabular}{l|l|l|l|}
+\cline{2-4}
+                                       & \textbf{Packets}    & \textbf{Bytes}      & \textbf{Biggest packet} \\ \hline
+\multicolumn{1}{|l|}{06.mar}           & 9,976                & 1,083,371             & 421 bytes        \\ \hline
+\multicolumn{1}{|l|}{07.mar}           & 14,689               & 1,575,718             & 421 bytes         \\ \hline
+\multicolumn{1}{|l|}{08.mar}           & 14,348               & 1,580,885             & 421 bytes         \\ \hline
+\multicolumn{1}{|l|}{09.mar}           & 17,560               & 2,093,976             & 424 bytes         \\ \hline
+\multicolumn{1}{|l|}{10.mar}           & 13,786               & 1,794,198             & 421 bytes         \\ \hline
+\multicolumn{1}{|l|}{11.mar}           & 15,449               & 1,803,003             & 485 bytes         \\ \hline
+\multicolumn{1}{|l|}{12.mar}           & 7,967                & 987,680              & 421 bytes          \\ \hline
+\multicolumn{1}{|l|}{13.mar}           & 13,449               & 1,668,571             & 421 bytes         \\ \hline
+\multicolumn{1}{|l|}{14.mar}           & 12,093               & 1,408,301             & 341 bytes         \\ \hline
+\multicolumn{1}{|l|}{15.mar}           & 15,639               & 2,020,215             & 458 bytes         \\ \hline
+\multicolumn{1}{|l|}{\textbf{Average}} & \textbf{13,496}      & \textbf{1,601,592}  & \textbf{423 bytes} \\ \hline
+\multicolumn{1}{|l|}{\textbf{Std dev}} & \textbf{2,830} & \textbf{3,626,66} & \textbf{36 bytes}     \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Comparing Cooking and Baseline Calculations for Nedis}
+    \begin{tabular}{c|l|l|l|l|}
+        \cline{2-5}
+        \multicolumn{1}{l|}{}                                              & \textbf{Type} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Event         & 21,104              & 2,904,281        & 440 bytes               \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{}                                             & Baseline      & 13,496              & 1,601,592         & 423 bytes                \\ \hline
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 2,667              & 383,108         & 28 bytes                 \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{}                                             & Baseline      & 2.830               & 362,666        &  36 bytes               \\ \hline          
+    \end{tabular}
+    \label{tab:NedisComparingBaselineAndCookingCalculations}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=1\hsize]{figures/Nedis_Comparing_Cooking_Calculations_Bytes.png} 
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=1\hsize]{figures/Nedis_Comparing_Cooking_Calculations_Packets.png} 
+    \end{subfigure}
+    \caption{Comparing Cooking Calculations for Nedis}
+    \label{fig:NedisComparingCookingCalculations}
+\end{figure}
+
+\newpage
 \section{Test Case 2: Showering}
 This chapter presents the results and analysis conducted on Test Case 2: Showering. 
 \subsection{General}
@@ -1126,6 +1347,320 @@ This chapter presents the results and analysis conducted on Test Case 2: Showeri
 \end{table}
 
 \subsection{Netatmo Home Coach}
+
+\begin{table}[!ht]
+    \centering
+    \caption{Netatmo Cooking Calculations}
+    \begin{tabular}{l|l|l|l|l|l|}
+        \cline{2-4}               & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        \multicolumn{1}{|l|}{08.jan}           & 678          & 91,839         & 407 bytes      \\ \hline
+        \multicolumn{1}{|l|}{09.jan}           & 678          & 93,005         & 407 bytes      \\ \hline
+        \multicolumn{1}{|l|}{11.jan}           & 856          & 116,628        & 407 bytes      \\ \hline
+        \multicolumn{1}{|l|}{12.jan}           & 1,187        & 161,145        & 418 bytes      \\ \hline
+        \multicolumn{1}{|l|}{16.jan}           & 514          & 70,004         & 407 bytes      \\ \hline
+        \multicolumn{1}{|l|}{18.jan}           & 608          & 83,713         & 407 bytes      \\ \hline
+        \multicolumn{1}{|l|}{19.jan}           & 503          & 68,174         & 407 bytes      \\ \hline
+        \multicolumn{1}{|l|}{23.jan}           & 658          & 89,733         & 407 bytes      \\ \hline
+        \multicolumn{1}{|l|}{25.jan}           & 748          & 100,660        & 407 bytes      \\ \hline
+        \multicolumn{1}{|l|}{26.jan}           & 660          & 90,422         & 407 bytes      \\ \hline
+        \multicolumn{1}{|l|}{30.jan}           & 716          & 96,957         & 407 bytes      \\ \hline
+        \multicolumn{1}{|l|}{31.jan}           & 599          & 80,202         & 136 bytes      \\ \hline
+        \multicolumn{1}{|l|}{01.feb}           & 545          & 73,695         & 407 bytes      \\ \hline
+        \multicolumn{1}{|l|}{02.feb}           & 554          & 74,626         & 407 bytes      \\ \hline
+        \multicolumn{1}{|l|}{06.feb}           & 613          & 84,143         & 407 bytes      \\ \hline
+        \multicolumn{1}{|l|}{\textbf{Average}} & \textbf{674} & \textbf{91,663} & \textbf{390 bytes}   \\ \hline
+        \multicolumn{1}{|l|}{\textbf{Std dev}} & \textbf{170} & \textbf{23,072} & \textbf{70 bytes}    \\ \hline
+    \end{tabular}
+    \label{tab:NetatmoCookingCalculations}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.49\textwidth}
+       \includegraphics[width=1\hsize]{figures/Netatmo_Shower_Calculations_Packets.png} 
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=1\hsize]{figures/Netatmo_Shower_Calculations_Bytes.png} 
+    \end{subfigure}
+    \caption{Netatmo Shower Calculations with Packets and Bytes}
+    \label{fig:NetatmoShowerCalculations}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Bytes_08.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Bytes_09.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Bytes_11.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Bytes_16.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Bytes_18.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Bytes_19.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Bytes_25.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Bytes_30.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Bytes_31.01.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Bytes_01.02.png}
+    \end{subfigure}
+    \caption{Netatmo Shower Events - Bytes}
+    \label{fig:NetatmoShowerBytes}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Packets_08.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Packets_09.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Packets_11.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Packets_12.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Packets_16.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Packets_18.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Packets_19.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Packets_23.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Packets_25.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Packets_26.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Packets_30.01.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Packets_31.01.png}
+    \end{subfigure}
+    \caption{Netatmo Shower Events - Packets}
+    \label{fig:NetatmoShowerPackets}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Packets_08.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize, colframe=blue]{figures/Netatmo_Shower_Baseline_Packets_06.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Packets_09.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Packets_07.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Packets_11.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Packets_08.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Packets_12.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Packets_16.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Packets_24.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Packets_18.03.png}
+    \end{subfigure}
+        \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Packets_26.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Packets_19.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Packets_30.01.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Packets_23.03.png}
+        \end{subfigure}
+    \caption{Comparing Events and Baseline Packets for Shower - Netatmo}
+    \label{fig:NetatmoShowerComparingPackets}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Bytes_08.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Bytes_06.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Bytes_09.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Bytes_07.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Bytes_11.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Bytes_08.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Bytes_12.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Bytes_09.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Bytes_26.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Bytes_10.03.png}
+    \end{subfigure}
+        \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Bytes_18.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Bytes_11.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Bytes_19.01.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Bytes_12.03.png}
+        \end{subfigure}
+    \caption{Comparing Events and Baseline Bytes for Shower - Netatmo}
+    \label{fig:NetatmoShowerComparingBytes}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \caption{Netatmo Baseline Shower Calculations}
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+        \textbf{Baseline} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest   packet} \\ \hline
+        06.mar            & 473              & 63,182          & 407 bytes                \\ \hline
+        07.mar            & 572              & 76,172          & 136 bytes                \\ \hline
+        08.mar            & 597              & 79,966          & 160 bytes                \\ \hline
+        09.mar            & 740              & 98,888          & 134 bytes                \\ \hline
+        10.mar            & 514              & 68,806          & 136 bytes                \\ \hline
+        11.mar            & 510              & 68,594          & 407 bytes                \\ \hline
+        12.mar            & 741              & 101,295         & 407 bytes                \\ \hline
+        13.mar            & 422              & 56,142          & 136 bytes                \\ \hline
+        14.mar            & 697              & 93,246          & 407 bytes                \\ \hline
+        15.mar            & 600              & 80,128          & 134 bytes                \\ \hline
+\textbf{Average}  & \textbf{587}     & \textbf{78,642} & \textbf{246 bytes}               \\ \hline
+\textbf{Std dev}  & \textbf{111}     & \textbf{15,237} & \textbf{138 bytes}               \\ \hline
+    \end{tabular}
+    \label{tab:NetatmoBaselineShowerCalculations}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Comparing Shower and Baseline Calculations for Netatmo}
+    \begin{tabular}{c|l|l|l|l|}
+        \cline{2-5}
+        \multicolumn{1}{l|}{} & \textbf{Type} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}  & Event & 674 & 91,663 & 390 bytes \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{}  & Baseline  & 587 & 78,642 & 246 bytes \\ \hline
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event & 170 & 23,072 & 70 bytes \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{} & Baseline & 111 & 15,237 & 138 bytes\\ \hline          
+    \end{tabular}
+    \label{tab:NetatmoComparingBaselineAndShowerCalculations}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=1\hsize]{figures/Netatmo_Comparing_Shower_Calculations_Bytes.png} 
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=1\hsize]{figures/Netatmo_Comparing_Shower_Calculations_Packets.png} 
+    \end{subfigure}
+    \caption{Comparing Shower Calculations for Netatmo}
+    \label{fig:NetatmoComparingShowerCalculations}
+\end{figure}
+
+
 \subsection{Mill Sense}
 \subsection{Nedis}
 
