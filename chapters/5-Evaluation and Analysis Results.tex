@@ -307,7 +307,7 @@ Even though the graphs for inbound and outbound traffic from Nedis looks more si
 \section{Test Case 1: Cooking}
 This chapter presents the results and analysis conducted on Test Case 1: Cooking. The first subsection will present general information applicable to all the devices, and the following subsections will present the result and analysis for each of the devices separately. 
 \subsection{General}
-The cooking events are 15 in total and are presented in Table \ref{tab:CookingDates}. Every device has the same dates for this event. 
+The cooking events are 10 in total and are presented in Table \ref{tab:CookingDates}. Every device has the same dates for this event. 
 \begin{table}[!hbtp]
     \centering
     \caption{Date and time for Test Case 1: Cooking Events}
@@ -335,7 +335,7 @@ To be able to look even further into differences from when the devices are in an
 \newpage
 
 \subsection{Netatmo Home Coach}
-The graphs in figure \ref{fig:NetatmoCookingBytes} and \ref{fig:NetatmoCookingPackets} shows both bytes and packets for the first 10 of the cooking events. The area marked red on the graphs are when the event was ongoing. Table \ref{tab:NetatmoCookingCalculations} presents the calculations from all the 15 cooking events. The table also includes average and standard deviation (std deviation) values for the events. 
+The graphs in figure \ref{fig:NetatmoCookingBytes} and \ref{fig:NetatmoCookingPackets} shows both bytes and packets for the first 10 cooking events. The area marked red on the graphs are when the event was ongoing. Table \ref{tab:NetatmoCookingCalculations} presents the calculations from all the cooking events. The table also includes average and standard deviation (std deviation) values for the events. 
 
 \begin{table}[!ht]
     \centering
@@ -1332,15 +1332,16 @@ The next step is to compare the event calculations and graphs to the correspondi
 \section{Test Case 2: Showering}
 This chapter presents the results and analysis conducted on Test Case 2: Showering. 
 \subsection{General}
+The showering event has been conducted 10 times and Table \ref{tab:ShoweringDates} presents the 10 different dates and exact times for when the event was ongoing.
 \begin{table}[!hbtp]
     \centering
     \caption{Date and time for Test Case 2: Showering events}
     \begin{adjustbox}{width=1\textwidth} 
-        \begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
-            \cline{2-16}
-                & 08.01 & 09.01 & 11.01 & 12.01 & 16.01 & 18.01 & 19.01 & 23.01 & 24.01 & 26.01 & 30.01 & 31.01 & 01.02 & 02.02 & 06.02 \\ \hline
-            \multicolumn{1}{|l|}{Started event}  & 19:59 & 20:14 & 20:01 & 19:59 & 20:12 & 20:02 & 20:00 & 20:00 & 20:03 & 20:03 & 20:00 & 20:01 & 20:00 & 20:00 & 20:00 \\ \hline
-            \multicolumn{1}{|l|}{Finished event} & 20:14 & 20:34 & 20:17 & 20:21 & 20:31 & 20:19 & 20:16 & 20:21 & 20:19 & 20:19 & 20:18 & 20:17 & 20:16 & 20:17 & 20:17 \\ \hline
+        \begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|}
+            \cline{2-11}
+                & 08.01 & 09.01 & 11.01 & 16.01 & 18.01 & 19.01 & 25.01 & 30.01 & 31.01 & 01.02 \\ \hline
+            \multicolumn{1}{|l|}{Started event}  & 19:59 & 20:14 & 20:01 & 20:12 & 20:02 & 20:00 & 20:03 & 20:00 & 20:01 & 20:00 \\ \hline
+            \multicolumn{1}{|l|}{Finished event} & 20:14 & 20:34 & 20:17 & 20:31 & 20:19 & 20:16 & 20:19 & 20:18 & 20:17 & 20:16 \\ \hline
         \end{tabular}
     \end{adjustbox}
     \label{tab:ShoweringDates}
@@ -1350,28 +1351,23 @@ This chapter presents the results and analysis conducted on Test Case 2: Showeri
 
 \begin{table}[!ht]
     \centering
-    \caption{Netatmo Cooking Calculations}
+    \caption{Netatmo Shower Calculations}
     \begin{tabular}{l|l|l|l|l|l|}
         \cline{2-4}               & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
         \multicolumn{1}{|l|}{08.jan}           & 678          & 91,839         & 407 bytes      \\ \hline
         \multicolumn{1}{|l|}{09.jan}           & 678          & 93,005         & 407 bytes      \\ \hline
         \multicolumn{1}{|l|}{11.jan}           & 856          & 116,628        & 407 bytes      \\ \hline
-        \multicolumn{1}{|l|}{12.jan}           & 1,187        & 161,145        & 418 bytes      \\ \hline
         \multicolumn{1}{|l|}{16.jan}           & 514          & 70,004         & 407 bytes      \\ \hline
         \multicolumn{1}{|l|}{18.jan}           & 608          & 83,713         & 407 bytes      \\ \hline
         \multicolumn{1}{|l|}{19.jan}           & 503          & 68,174         & 407 bytes      \\ \hline
-        \multicolumn{1}{|l|}{23.jan}           & 658          & 89,733         & 407 bytes      \\ \hline
         \multicolumn{1}{|l|}{25.jan}           & 748          & 100,660        & 407 bytes      \\ \hline
-        \multicolumn{1}{|l|}{26.jan}           & 660          & 90,422         & 407 bytes      \\ \hline
         \multicolumn{1}{|l|}{30.jan}           & 716          & 96,957         & 407 bytes      \\ \hline
         \multicolumn{1}{|l|}{31.jan}           & 599          & 80,202         & 136 bytes      \\ \hline
         \multicolumn{1}{|l|}{01.feb}           & 545          & 73,695         & 407 bytes      \\ \hline
-        \multicolumn{1}{|l|}{02.feb}           & 554          & 74,626         & 407 bytes      \\ \hline
-        \multicolumn{1}{|l|}{06.feb}           & 613          & 84,143         & 407 bytes      \\ \hline
-        \multicolumn{1}{|l|}{\textbf{Average}} & \textbf{674} & \textbf{91,663} & \textbf{390 bytes}   \\ \hline
-        \multicolumn{1}{|l|}{\textbf{Std dev}} & \textbf{170} & \textbf{23,072} & \textbf{70 bytes}    \\ \hline
+        \multicolumn{1}{|l|}{\textbf{Average}} & \textbf{645} & \textbf{87,488} & \textbf{380 bytes}   \\ \hline
+        \multicolumn{1}{|l|}{\textbf{Std dev}} & \textbf{112} & \textbf{15,268} & \textbf{86 bytes}    \\ \hline
     \end{tabular}
-    \label{tab:NetatmoCookingCalculations}
+    \label{tab:NetatmoShowerCalculations}
 \end{table}
 
 \begin{figure}[H]
@@ -1382,7 +1378,7 @@ This chapter presents the results and analysis conducted on Test Case 2: Showeri
     \begin{subfigure}{0.49\textwidth}
         \includegraphics[width=1\hsize]{figures/Netatmo_Shower_Calculations_Bytes.png} 
     \end{subfigure}
-    \caption{Netatmo Shower Calculations with Packets and Bytes}
+    \caption{Graphical representation of packets and bytes with average values from Table \ref{tab:NetatmoShowerCalculations}}
     \label{fig:NetatmoShowerCalculations}
 \end{figure}
 
@@ -1447,10 +1443,6 @@ This chapter presents the results and analysis conducted on Test Case 2: Showeri
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Packets_12.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
         \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Packets_16.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
@@ -1463,30 +1455,26 @@ This chapter presents the results and analysis conducted on Test Case 2: Showeri
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Packets_23.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
         \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Packets_25.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Packets_26.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Packets_30.01.png}
     \end{subfigure}
-    \hspace{0.6cm}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Packets_31.01.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=1.2\hsize]{figures/Netatmo_Shower_Packets_01.02.png}
     \end{subfigure}
     \caption{Netatmo Shower Events - Packets}
     \label{fig:NetatmoShowerPackets}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[H] 
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Packets_08.01.png}
@@ -1513,39 +1501,69 @@ This chapter presents the results and analysis conducted on Test Case 2: Showeri
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Packets_12.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Packets_16.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Packets_16.03.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Packets_09.03.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Packets_24.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Packets_18.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Packets_18.03.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Packets_10.03.png}
     \end{subfigure}
         \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Packets_26.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Packets_19.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Packets_19.03.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Packets_11.03.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Packets_25.01.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Packets_12.03.png}
+    \end{subfigure}
+    \caption{Comparing Events and Baseline Packets for Shower - Netatmo 1}
+    \label{fig:NetatmoShowerComparingPackets1}
+\end{figure}
+
+\begin{figure}
+   \begin{subfigure}[b]{0.47\textwidth}
         \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Packets_30.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Packets_13.03.png}
+    \end{subfigure}
+        \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Packets_31.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Packets_14.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Packets_01.02.png}
     \end{subfigure}
     \hspace{0.6cm}
     \begin{subfigure}[b]{0.47\textwidth}
     \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Packets_23.03.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Packets_15.03.png}
         \end{subfigure}
-    \caption{Comparing Events and Baseline Packets for Shower - Netatmo}
-    \label{fig:NetatmoShowerComparingPackets}
+    \caption{Comparing Events and Baseline Packets for Shower - Netatmo 2}
+    \label{fig:NetatmoShowerComparingPackets2}
 \end{figure}
 
 \begin{figure}[H]
@@ -1569,13 +1587,19 @@ This chapter presents the results and analysis conducted on Test Case 2: Showeri
         \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Bytes_11.01.png}
     \end{subfigure}
+    \hspace{0.6cm}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Bytes_08.03.png}
     \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
+    \caption{Comparing Events and Baseline Bytes for Shower - Netatmo 1}
+    \label{fig:NetatmoShowerComparingBytes 1}
+\end{figure}
+
+\begin{figure}[H]
+ \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Bytes_12.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Bytes_16.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
@@ -1583,7 +1607,7 @@ This chapter presents the results and analysis conducted on Test Case 2: Showeri
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Bytes_26.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Bytes_18.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
@@ -1591,7 +1615,7 @@ This chapter presents the results and analysis conducted on Test Case 2: Showeri
     \end{subfigure}
         \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Bytes_18.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Bytes_19.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
@@ -1599,16 +1623,41 @@ This chapter presents the results and analysis conducted on Test Case 2: Showeri
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Bytes_19.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Bytes_25.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Bytes_12.03.png}
+    \end{subfigure}
+        \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Bytes_30.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Bytes_13.03.png}
+    \end{subfigure}
+        \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Bytes_31.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Bytes_14.03.png}
+    \end{subfigure}
+        \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Shower_Bytes_01.02.png}
     \end{subfigure}
     \hspace{0.6cm}
     \begin{subfigure}[b]{0.47\textwidth}
-    \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Bytes_12.03.png}
-        \end{subfigure}
-    \caption{Comparing Events and Baseline Bytes for Shower - Netatmo}
-    \label{fig:NetatmoShowerComparingBytes}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Shower_Baseline_Bytes_15.03.png}
+    \end{subfigure}
+    \caption{Comparing Events and Baseline Bytes for Shower - Netatmo 2}
+    \label{fig:NetatmoShowerComparingBytes2}
 \end{figure}
+
 
 \begin{table}[H]
     \centering
@@ -1684,11 +1733,12 @@ This chapter presents the results and analysis conducted on Test Case 3: Window 
 \subsection{Mill Sense}
 \subsection{Nedis}
 
+\newpage
 \section{Test Case 4: Weekends}
 This chapter presents the results and analysis conducted on Test Case 4: Weekends. 
 \subsection{General}
 Test Case 4: Weekends are tested over the course of 14 different weekends. 7 weekends when the environment was occupied and 7 when the environment were not occupied. The different dates are described in table \ref{tab:WeekendDates}. 
-\begin{table}[!hbtp]
+\begin{table}[H]
     \centering
     \caption{Dates for Test Case 4: Weekends}
     \begin{adjustbox}{width=0.5\textwidth} 
@@ -1701,6 +1751,318 @@ Test Case 4: Weekends are tested over the course of 14 different weekends. 7 wee
     \label{tab:WeekendDates}
 \end{table}
 
+The times for home and gone were from 16:00 at Friday to 22:00 at Sunday, which means that when a weekend gone were tested, the home was empty in those times. However, in a weekend were the home was occupied, it was variably occupied. Some weekends a lot of time were spent in the home and other weekends it was just occupied during evenings or daytime, but every occupied weekend were spent sleeping at night in the home. One weekend, 28.03.2023-30.03.2023, are actually Tuesday to Thursday, but are treated as Tuesday=Friday and Thursday=Sunday. 
+
 \subsection{Netatmo Home Coach}
+Figure
+
+\begin{figure} [H]
+
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Packets_13.01-15.01.png}    
+    \end{subfigure}
+  \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Packets_23.12-25.12.png}
+    \end{subfigure}
+    
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Bytes_27.01-29.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Packets_27.01-29.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Bytes_03.02-05.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Packets_03.02-05.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Bytes_17.02-19.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Packets_17.02-19.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Bytes_10.03-12.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Packets_10.03-12.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Bytes_28.03-30.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Packets_28.03-30.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Bytes_31.03-02.04.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Packets_31.03-02.04.png}
+    \end{subfigure}
+    \caption{Netatmo: Weekends at Home(green) and Gone(orange) Presented in Packets}
+    \label{fig:NetatmoWeekendPackets}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Bytes_23.12-25.12.png}
+    \end{subfigure}
+      \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Bytes_13.01-15.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Bytes_30.12-01.01.png}
+    \end{subfigure}
+
+    
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Packets_30.12-01.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Bytes_20.01-22.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Packets_20.01-22.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Bytes_10.02-12.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Packets_10.02-12.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Bytes_24.02-26.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Packets_24.02-26.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Bytes_03.03-05.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Packets_03.03-05.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Bytes_17.03-19.03.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Packets_17.03-19.03.png}
+    \end{subfigure}
+    \caption{Netatmo: Weekends at Gone Presented in Bytes and Packets}
+    \label{fig:NetatmoWeekendGone}
+\end{figure}
+
+
 \subsection{Mill Sense}
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Bytes_13.01-15.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Packets_13.01-15.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Bytes_27.01-29.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Packets_27.01-29.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Bytes_03.02-05.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Packets_03.02-05.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Bytes_17.02-19.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Packets_17.02-19.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Bytes_10.03-12.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Packets_10.03-12.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Bytes_28.03-30.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Packets_28.03-30.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Bytes_31.03-02.04.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Packets_31.03-02.04.png}
+    \end{subfigure}
+    \caption{Mill: Weekends at Home Presented in Bytes and Packets}
+    \label{fig:MillWeekendHome}
+\end{figure}
+
+\begin{figure} [H]
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Bytes_23.12-25.12.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Packets_23.12-25.12.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Bytes_30.12-01.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Packets_30.12-01.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Bytes_20.01-22.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Packets_20.01-22.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Bytes_10.02-12.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Packets_10.02-12.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Bytes_24.02-26.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Packets_24.02-26.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Bytes_03.03-05.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Packets_03.03-05.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Bytes_17.03-19.03.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Packets_17.03-19.03.png}
+    \end{subfigure}
+    \caption{Mill: Weekends at Gone Presented in Bytes and Packets}
+    \label{fig:MillWeekendGone}
+\end{figure}
+
 \subsection{Nedis}
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Bytes_13.01-15.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Packets_13.01-15.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Bytes_27.01-29.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Packets_27.01-29.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Bytes_03.02-05.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Packets_03.02-05.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Bytes_17.02-19.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Packets_17.02-19.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Bytes_10.03-12.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Packets_10.03-12.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Bytes_28.03-30.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Packets_28.03-30.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Bytes_31.03-02.04.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Packets_31.03-02.04.png}
+    \end{subfigure}
+    \caption{Nedis: Weekends at Home Presented in Bytes and Packets}
+    \label{fig:NedisWeekendHome}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Bytes_23.12-25.12.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Packets_23.12-25.12.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Bytes_30.12-01.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Packets_30.12-01.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Bytes_20.01-22.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Packets_20.01-22.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Bytes_10.02-12.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Packets_10.02-12.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Bytes_24.02-26.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Packets_24.02-26.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Bytes_03.03-05.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Packets_03.03-05.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Bytes_17.03-19.03.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Packets_17.03-19.03.png}
+    \end{subfigure}
+    \caption{Nedis: Weekends at Gone Presented in Bytes and Packets}
+    \label{fig:NedisWeekendGone}
+\end{figure}
+
+
+
+\subsection{A weekend at home with different settings}
