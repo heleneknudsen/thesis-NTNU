@@ -1744,65 +1744,108 @@ Test Case 4: Weekends are tested over the course of 14 different weekends. 7 wee
     \begin{adjustbox}{width=0.5\textwidth} 
         \begin{tabular}{l|l|}
             \cline{2-2} & \textbf{Dates}\\ \hline
-            \multicolumn{1}{|l|}{\textbf{Occupied}} & \begin{tabular}[c]{@{}l@{}}13.01.2023-15.01.2023\\ 27.01.2023-29.01.2023\\ 03.02.2023-05.02.2023\\ 17.02.2023-19.02.2023\\ 10.03.2023-12.03.2023\\ 28.03.2023-30.03.2023\\ 31.03.2023-01.04.2023\end{tabular} \\ \hline
-            \multicolumn{1}{|l|}{\textbf{Not occupied}} & \begin{tabular}[c]{@{}l@{}}23.12.2022-25.12.2022\\ 30.12.2022-01.01.2023\\ 20.01.2023-22.01.2023\\ 10.02.2023-12.02.2023\\ 24.02.2023-26.02.2023\\ 03.03.2023-05.03.2023\\ 17.03.2023-19.03.2023\end{tabular} \\ \hline
+            \multicolumn{1}{|l|}{\textbf{Occupied (Home)}} & \begin{tabular}[c]{@{}l@{}}13.01.2023-15.01.2023\\ 27.01.2023-29.01.2023\\ 03.02.2023-05.02.2023\\ 17.02.2023-19.02.2023\\ 10.03.2023-12.03.2023\\ 28.03.2023-30.03.2023\\ 31.03.2023-01.04.2023\end{tabular} \\ \hline
+            \multicolumn{1}{|l|}{\textbf{Not occupied (Gone)}} & \begin{tabular}[c]{@{}l@{}}23.12.2022-25.12.2022\\ 30.12.2022-01.01.2023\\ 20.01.2023-22.01.2023\\ 10.02.2023-12.02.2023\\ 24.02.2023-26.02.2023\\ 03.03.2023-05.03.2023\\ 17.03.2023-19.03.2023\end{tabular} \\ \hline
         \end{tabular}
     \end{adjustbox}
     \label{tab:WeekendDates}
 \end{table}
 
 The times for home and gone were from 16:00 at Friday to 22:00 at Sunday, which means that when a weekend gone were tested, the home was empty in those times. However, in a weekend were the home was occupied, it was variably occupied. Some weekends a lot of time were spent in the home and other weekends it was just occupied during evenings or daytime, but every occupied weekend were spent sleeping at night in the home. One weekend, 28.03.2023-30.03.2023, are actually Tuesday to Thursday, but are treated as Tuesday=Friday and Thursday=Sunday. 
-
+\newpage
 \subsection{Netatmo Home Coach}
-Figure
+For the weekend test for Netatmo, both calculations and graphs of the traffic are presented. The calculations for the weekends are listed in Table \ref{tab:NetatmoHomeWeekends} and \ref{tab:NetatmoGoneWeekends}. Table \ref{tab:NetatmoWeekends} compares the average and standard deviation for the weekends at home and gone. Graphs for packets are presented in Figure \ref{fig:NetatmoWeekendPackets} and bytes in Figure \ref{fig:NetatmoWeekendBytes}. In these two figures, the weekends when at home are framed with green and placed on the left side of the figure and the weekends when the home was not occupied are framed with orange and placed on the right side of the figure. All graphs the graphs in each figure have the same maximum value on the y-axis and have the same amount of time on the x-axis to be easily comparable. 
+
+\begin{table}[H]
+    \caption{Netatmo: Weekend Calculations for Home}
+    \begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+        \textbf{Date}    & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest pkt} &     \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
+        13.01-15.01      & 31,640                 & 4,285,664              & 418 bytes              & 407 bytes                   & 418 bytes                            \\ \hline
+        27.01-29.01      & 25,465                 & 3,436,632              & 407 bytes              & 407 bytes                    & 154 bytes                           \\ \hline
+        03.02-05.02      & 24,887                 & 3,379,806              & 444 bytes              & 444 bytes                     & 396 bytes                           \\ \hline
+        17.02-19.02      & 23,654                 & 3,202,102              & 1,130 bytes            & 1,130 bytes             & 154 bytes                         \\ \hline
+        10.03-12.03      & 24,881                 & 3,372,230              & 407 bytes              & 407 bytes                    & 136 bytes                           \\ \hline
+        28.03-30.03      & 27,555                 & 3,743,121              & 407 bytes              & 407 bytes                    & 154 bytes                           \\ \hline
+        31.03-02.04      & 28,445                 & 3,852,003              & 418 bytes              & 407 bytes                    & 418 bytes                           \\ \hline
+    \end{tabular}
+    \label{tab:NetatmoHomeWeekends}
+\end{table}
+
+\begin{table}[H]
+    \caption{Netatmo: Weekend Calculations for Gone}
+    \begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+        \textbf{Date}        & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest pkt} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
+        23.12-25.12 & 22,367                 & 2,987,324              & 136 bytes          & 134 bytes               & 136 bytes                                \\ \hline
+        30.12-01.01 & 22,553                 & 3,012,868              & 136 bytes          & 134 bytes               & 136 bytes                                \\ \hline
+        20.01-22.01 & 24,631                 & 3,288,842              & 154 bytes          & 134 bytes               & 154 bytes                                \\ \hline
+        10.02-12.02 & 20,320                 & 2,715,486              & 136 bytes          & 134 bytes               & 136 bytes                                \\ \hline
+        24.02-26.02 & 21,332                 & 2,849,186              & 136 bytes          & 134 bytes               & 136 bytes                                \\ \hline
+        03.03-05.03 & 19,023                 & 2,538,937              & 136 bytes          & 134 bytes               & 136 bytes                                \\ \hline
+        17.03-19.03 & 23,905                 & 3,191,924              & 136 bytes          & 134 bytes               & 136 bytes                                \\ \hline
+    \end{tabular}
+    \label{tab:NetatmoGoneWeekends}
+\end{table}
+
+\begin{table}[H]
+    \caption{Netatmo: Comparing Weekend Values}
+    \begin{tabular}{ll|l|l|l|l|l|}
+        \cline{3-7}
+        &      & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest pkt} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
+    \multicolumn{1}{|l|}{\multirow{2}{*}{\textbf{Avg}}} & Home & 26,647           & 3,610,223      & 519 bytes                    & 516 bytes                 & 261 bytes                 \\ \cline{2-7} 
+    \multicolumn{1}{|l|}{}                                  & Gone & 22,019           & 2,940,652      & 139 bytes                    & 134 bytes                    & 139 bytes                 \\ \hline
+    \multicolumn{1}{|l|}{\multirow{2}{*}{\textbf{SD}}} & Home & 2,756            & 373,892        & 270 bytes                    & 271 bytes                 & 140 bytes                 \\ \cline{2-7} 
+    \multicolumn{1}{|l|}{}                                  & Gone & 1,963            & 262,109        & 7 bytes                      & 0 bytes                   & 7 bytes                   \\ \hline
+    \end{tabular}
+    \label{tab:NetatmoWeekends}
+\end{table}
 
 \begin{figure} [H]
-
     \begin{subfigure}[b]{0.47\textwidth}
     \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Packets_13.01-15.01.png}    
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Packets_13.01-15.01.png}
     \end{subfigure}
-  \begin{subfigure}[b]{0.47\textwidth}
+    \begin{subfigure}[b]{0.47\textwidth}
     \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Packets_23.12-25.12.png}
-    \end{subfigure}
-    
-    \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Bytes_27.01-29.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Packets_27.01-29.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Bytes_03.02-05.02.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Packets_30.12-01.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Packets_03.02-05.02.png}
-    \end{subfigure}
+    \end{subfigure}    
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Bytes_17.02-19.02.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Packets_20.01-22.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Packets_17.02-19.02.png}
-    \end{subfigure}
+    \end{subfigure}    
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Bytes_10.03-12.03.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Packets_10.02-12.02.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Packets_10.03-12.03.png}
-    \end{subfigure}
+    \end{subfigure}    
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Bytes_28.03-30.03.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Packets_24.02-26.02.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Packets_28.03-30.03.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Bytes_31.03-02.04.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Packets_03.03-05.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Packets_31.03-02.04.png}
     \end{subfigure}
     \hspace{0.6cm}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Packets_31.03-02.04.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Packets_17.03-19.03.png}
     \end{subfigure}
     \caption{Netatmo: Weekends at Home(green) and Gone(orange) Presented in Packets}
     \label{fig:NetatmoWeekendPackets}
@@ -1811,57 +1854,308 @@ Figure
 \begin{figure}[H]
     \begin{subfigure}[b]{0.47\textwidth}
     \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Bytes_13.01-15.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Bytes_23.12-25.12.png}
     \end{subfigure}
-      \begin{subfigure}[b]{0.47\textwidth}
-    \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Bytes_13.01-15.01.png}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Bytes_27.01-29.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Bytes_30.12-01.01.png}
     \end{subfigure}
-
-    
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Packets_30.12-01.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Bytes_03.02-05.02.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Bytes_20.01-22.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Packets_20.01-22.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Bytes_17.02-19.02.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Bytes_10.02-12.02.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Packets_10.02-12.02.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Bytes_10.03-12.03.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Bytes_24.02-26.02.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Packets_24.02-26.02.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Bytes_28.03-30.03.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Bytes_03.03-05.03.png}
     \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Packets_03.03-05.03.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Bytes_17.03-19.03.png}
+   \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Netatmo_Weekend_Bytes_31.03-02.04.png}
     \end{subfigure}
     \hspace{0.6cm}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Packets_17.03-19.03.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Netatmo_Weekend_Bytes_17.03-19.03.png}
     \end{subfigure}
-    \caption{Netatmo: Weekends at Gone Presented in Bytes and Packets}
-    \label{fig:NetatmoWeekendGone}
+    \caption{Netatmo: Weekends at Home(green) and Gone(orange) Presented in Bytes}
+    \label{fig:NetatmoWeekendBytes}
 \end{figure}
 
+Firstly, the calculations for weekends shows a significant difference from when the home is occupied to when its not. Comparing the total packets between Table \ref{tab:NetatmoHomeWeekends} and \ref{tab:NetatmoGoneWeekends} does not show a big difference in 26,647 packets at home to 22,019 packets when gone in average. However, in bytes the difference is more significant. The difference when the home is occupied and not in an average value is nearly 500,000 bytes, as shown in Table \ref{tab:NetatmoWeekends}. Another difference is in the biggest packets sent. For the Gone-Weekends, in Table \ref{tab:NetatmoGoneWeekends}, the biggest packets sent are mainly 136 bytes with one exception of 154 bytes, but biggest source packet is always 134 bytes for the whole weekend. However, looking at the biggest packets sent in table \ref{tab:NetatmoHomeWeekends}, the biggest packets sent are always much larger than 136 bytes with a variation from 407 bytes to 1,130 bytes. This same occurs biggest source packet.
+\\\\
+The graphs in Figure \ref{fig:NetatmoWeekendPackets} shows some small differences in home and gone activity. The home graphs have more spikes, but there are also some graphs in gone that have small spikes and look similar to the home graphs. However, the graphs in Figure \ref{fig:NetatmoWeekendBytes} shows a clear difference to when the home is occupied or not. All the graphs marked in green shows a very different traffic pattern as to the graphs marked in orange. This corresponds to the findings from the calculations made in Table \ref{tab:NetatmoGoneWeekends} and \ref{tab:NetatmoHomeWeekends}.
+\\\\
+Since it is possible to see a difference in biggest packet during Home-Weekends and Gone-Weekends, it is also interesting to see if these bigger packets only occur a few times during the weekend or if it is sending larger packets during the whole weekend. Therefore, a new filter on the pcaps have been used to see how many packets during a Home-Weekend is actually bigger than the traffic sent on a Gone-Weekend. A filter filtering on only packets larger then 154 bytes have been applied to the pcaps. In Table \ref{tab:NetatmoBigPackets}, the results from the filtering is presented. 
+
+\begin{table}[H]
+    \centering
+    \caption{Netatmo: Amount of Packets Bigger than 154 bytes sent on Home-Weekends}
+    \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{Dates}   & \textbf{Packets} & \textbf{Percentage} \\ \hline
+        13.01-15.01      & 251              & 0.8\%               \\ \hline
+        27.01-29.01      & 194              & 0.8\%               \\ \hline
+        03.02-05.02      & 271              & 1.1\%               \\ \hline
+        17.02-19.02      & 171              & 0.7\%               \\ \hline
+        10.03-12.03      & 224              & 0.9\%               \\ \hline
+        28.03-30.03      & 446              & 1.6\%               \\ \hline
+        31.03-02.04      & 275              & 1\%                 \\ \hline
+        \textbf{Average} & \textbf{262}     & \textbf{0.99\%}     \\ \hline
+        \textbf{Std dev} & \textbf{90}      & \textbf{0.30\%}     \\ \hline
+    \end{tabular}
+    \label{tab:NetatmoBigPackets}
+\end{table}
+
+The percentage of packets that are over 154 bytes in Table \ref{tab:NetatmoBigPackets} are very small. A graphical view is therefore presented in Figure \ref{fig:NetatmoBigPackets} to see if the amount is enough to see differences from the Gone-Weekends which does not have any packets over 154 bytes.
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \includegraphics[width=1.1\hsize]{figures/Netatmo_Weekend_BigBytes_13.01-15.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \includegraphics[width=1.1\hsize]{figures/Netatmo_Weekend_BigBytes_27.01-29.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \includegraphics[width=1.1\hsize]{figures/Netatmo_Weekend_BigBytes_03.02-05.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \includegraphics[width=1.1\hsize]{figures/Netatmo_Weekend_BigBytes_17.02-19.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \includegraphics[width=1.1\hsize]{figures/Netatmo_Weekend_BigBytes_10.03-12.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \includegraphics[width=1.1\hsize]{figures/Netatmo_Weekend_BigBytes_28.03-30.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \includegraphics[width=1.1\hsize]{figures/Netatmo_Weekend_BigBytes_31.03-02.04.png}
+    \end{subfigure}
+    \caption{Netatmo: Home-Weekends with Only Packets over 154 Bytes}
+    \label{fig:NetatmoBigPackets}
+\end{figure}
+
+The graphs in Figure \ref{fig:NetatmoBigPackets} shows that it is possible to see if a home is occupied by looking at the packet sizes that are sent. The last evaluation on Netatmo Weekend events are comparing the graphs for bytes in Figure \ref{fig:NetatmoWeekendBytes} against values from the application of the device. This is presented in Figure \ref{fig:NetatmoWeekendBytesAndApp1} and \ref{fig:NetatmoWeekendBytesandApp2}. The graphs extracted from the app, Netatmo Home Coach, and the sensor values are in \(CO_2\). The y-axis, which are in ppm are not equal for each of the graphs from the app, as this is not possible to change. The x-axis are in time. 
+\\\\
+The Figures in \ref{fig:NetatmoWeekendBytesandApp1} and \ref{fig:NetatmoWeekendBytesandApp2} shows the same pattern as for the bytes from the traffic captures on the left side of the figure. When the home is not occupied, the \(CO_2\) value are not affected which the corresponding traffic flow in the byte-graphs shows, and when the home is occupied, the \(CO_2\) levels varies a lot and the corresponding traffic flow also varies a lot. 
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=green]{figures/Netatmo_Weekend_Bytes_13.01-15.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=green]{figures/Netatmo_Weekend_App_13.01-15.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=orange]{figures/Netatmo_Weekend_Bytes_23.12-25.12.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=orange]{figures/Netatmo_Weekend_App_23.12-25.12.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=green]{figures/Netatmo_Weekend_Bytes_27.01-29.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=green]{figures/Netatmo_Weekend_App_27.01-29.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=orange]{figures/Netatmo_Weekend_Bytes_30.12-01.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=orange]{figures/Netatmo_Weekend_App_30.12-01.01.png}
+    \end{subfigure}    
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=green]{figures/Netatmo_Weekend_Bytes_03.02-05.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=green]{figures/Netatmo_Weekend_App_03.02-05.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=orange]{figures/Netatmo_Weekend_Bytes_20.01-22.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=orange]{figures/Netatmo_Weekend_App_20.01-22.01.png}
+    \end{subfigure}    
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=green]{figures/Netatmo_Weekend_Bytes_17.02-19.02.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=green]{figures/Netatmo_Weekend_App_17.02-19.02.png}
+    \end{subfigure}
+    \caption{Netatmo: Weekends at Home(green) and Gone(orange) Presented in Bytes and Compared to Corresponding Dates in App 1}
+    \label{fig:NetatmoWeekendBytesandApp1}
+\end{figure} 
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=orange]{figures/Netatmo_Weekend_Bytes_10.02-12.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=orange]{figures/Netatmo_Weekend_App_10.02-12.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=green]{figures/Netatmo_Weekend_Bytes_10.03-12.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=green]{figures/Netatmo_Weekend_App_10.03-12.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=orange]{figures/Netatmo_Weekend_Bytes_24.02-26.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=orange]{figures/Netatmo_Weekend_App_24.02-26.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=green]{figures/Netatmo_Weekend_Bytes_28.03-30.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=green]{figures/Netatmo_Weekend_App_28.03-30.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=orange]{figures/Netatmo_Weekend_Bytes_03.03-05.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=orange]{figures/Netatmo_Weekend_App_03.03-05.03.png}
+    \end{subfigure}
+   \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=green]{figures/Netatmo_Weekend_Bytes_31.03-02.04.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=green]{figures/Netatmo_Weekend_App_31.03-02.04.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=orange]{figures/Netatmo_Weekend_Bytes_17.03-19.03.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,height=0.15\vsize,colframe=orange]{figures/Netatmo_Weekend_App_17.03-19.03.png}
+    \end{subfigure}
+    \caption{Netatmo: Weekends at Home(green) and Gone(orange) Presented in Bytes and Compared to Corresponding Dates in App 2}
+    \label{fig:NetatmoWeekendBytesandApp2}
+\end{figure}
 
 \subsection{Mill Sense}
+For weekend testing with the device, Mill Sense, Table \ref{tab:MillWeekendHome} and \ref{tab:MillWeekendGone} presents the calculations on the pcaps for respectively Home and Gone Weekends. Average and standard deviation values from the tables are combined and compared in Table \ref{tab:MillWeekends}. Graphs of traffic flow are presented in Figure \ref{fig:MillWeekendBytes} for bytes and in Figure \ref{fig:MillWeekendPackets} for packets. The graphs marked in green on the figures are Home Weekends and are placed on the left side of the figures, while the graphs marked in orange on the figures are Gone Weekends and placed on the right side of the figures. The graphs in the same figure all have the same maximum values for the y-axis so they are easily comparable.
+
+\begin{table}[H]
+    \caption{Mill: Weekend Calculations for Home}
+    \begin{tabular}{|l|l|l|l|l|l|}
+        \hline
+        \textbf{Date}    & \textbf{Total pkt} & \textbf{Total bytes} & \textbf{Biggest pkt} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
+        13.01-15.01      & 285,543            & 33,269,620           & 1,593 bytes          & 456 bytes            & 1,593 bytes          \\ \hline
+        27.01-29.01      & 240,434            & 29,179,764           & 1,593 bytes          & 456 bytes            & 1,593 bytes          \\ \hline
+        03.02-05.02      & 223,095            & 28,543,539           & 1,593 bytes          & 456 bytes            & 1,593 bytes          \\ \hline
+        17.02-19.02      & 237,964            & 25,637,948           & 1,583 bytes          & 456 bytes            & 1,583 bytes          \\ \hline
+        10.03-12.03      & 295,395            & 31,161,679           & 1,593 bytes          & 456 bytes            & 1,593 bytes          \\ \hline
+        28.03-30.03      & 342,001            & 39,951,155           & 456 bytes            & 456 bytes            & 421 bytes            \\ \hline
+        31.03-02.04      & 275,456            & 30,155,191           & 456 bytes            & 456 bytes            & 421 bytes            \\ \hline
+    \end{tabular}
+    \label{tab:MillHomeWeekends}
+\end{table}
+
+\begin{table}[H]
+    \caption{Mill: Weekend Calculations for Gone}
+    \begin{tabular}{|l|l|l|l|l|l|}
+        \hline
+        \textbf{Date}    & \textbf{Total pkt} & \textbf{Total bytes} & \textbf{Biggest pkt} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
+        23.12-25.12      & 259,516            & 34,066,162           & 456 bytes            & 456 bytes            & 421 bytes            \\ \hline
+        30.12-01.01      & 255,487            & 32,809,172           & 456 bytes            & 456 bytes            & 421 bytes            \\ \hline
+        20.01-22.01      & 256,455            & 29,417,721           & 456 bytes            & 456 bytes            & 421 bytes            \\ \hline
+        10.02-12.02      & 270,718            & 30,482,741           & 456 bytes            & 456 bytes            & 421 bytes            \\ \hline
+        24.02-26.02      & 218,536            & 25,525,312           & 456 bytes            & 456 bytes            & 421 bytes            \\ \hline
+        03.03-05.03      & 236,655            & 23,064,715           & 456 bytes            & 456 bytes            & 421 bytes            \\ \hline
+        17.03-19.03      & 278,146            & 28,612,487           & 456 bytes            & 456 bytes            & 421 bytes            \\ \hline
+    \end{tabular}
+    \label{tab:MillGoneWeekends}
+\end{table}
+
+\begin{table}[H]
+    \caption{Mill: Comparing Weekend Values}
+    \begin{tabular}{ll|l|l|l|l|l|}
+        \cline{3-7}
+        \textbf{}                                           & \textbf{} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest pkt} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
+        \multicolumn{1}{|l|}{\multirow{2}{*}{\textbf{AVG}}} & Home      & 271,413          & 31,128,414     & 1,267 bytes          & 456 bytes            & 1,257 bytes          \\ \cline{2-7} 
+        \multicolumn{1}{|l|}{}                              & Gone      & 253,645          & 29,139,759     & 456 bytes            & 456 bytes            & 421 bytes            \\ \hline
+        \multicolumn{1}{|l|}{\multirow{2}{*}{\textbf{SD}}}  & Home      & 41,205           & 4,546,021      & 554 bytes            & 0 bytes              & 571 bytes            \\ \cline{2-7} 
+        \multicolumn{1}{|l|}{}                              & Gone      & 20,224           & 3,870,041      & 0 bytes              & 0 bytes              & 0 bytes              \\ \hline
+    \end{tabular}
+    \label{tab:MillWeekends}
+\end{table}
+
+\begin{figure} [H]
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Packets_13.01-15.01.png}    
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Packets_23.12-25.12.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Packets_27.01-29.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Packets_30.12-01.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Packets_03.02-05.02.png}
+    \end{subfigure}    
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Packets_20.01-22.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Packets_17.02-19.02.png}
+    \end{subfigure}    
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Packets_10.02-12.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Packets_10.03-12.03.png}
+    \end{subfigure}    
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Packets_24.02-26.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Packets_28.03-30.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Packets_03.03-05.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Packets_31.03-02.04.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Packets_17.03-19.03.png}
+    \end{subfigure}
+    \caption{Mill: Weekends at Home(green) and Gone(orange) Presented in Packets}
+    \label{fig:MillWeekendPackets}
+\end{figure}
+
 \begin{figure}[H]
     \begin{subfigure}[b]{0.47\textwidth}
     \centering
@@ -1869,100 +2163,146 @@ Figure
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
     \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Packets_13.01-15.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Bytes_23.12-25.12.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Bytes_27.01-29.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Packets_27.01-29.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Bytes_30.12-01.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Bytes_03.02-05.02.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Packets_03.02-05.02.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Bytes_20.01-22.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Bytes_17.02-19.02.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Packets_17.02-19.02.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Bytes_10.02-12.02.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Bytes_10.03-12.03.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Packets_10.03-12.03.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Bytes_24.02-26.02.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Bytes_28.03-30.03.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Packets_28.03-30.03.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Bytes_03.03-05.03.png}
     \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
+   \begin{subfigure}[b]{0.47\textwidth}
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Bytes_31.03-02.04.png}
     \end{subfigure}
     \hspace{0.6cm}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Mill_Weekend_Packets_31.03-02.04.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Bytes_17.03-19.03.png}
     \end{subfigure}
-    \caption{Mill: Weekends at Home Presented in Bytes and Packets}
-    \label{fig:MillWeekendHome}
+    \caption{Mill: Weekends at Home(green) and Gone(orange) Presented in Bytes}
+    \label{fig:MillWeekendBytes}
 \end{figure}
+
+\subsection{Nedis}
+
+\begin{table}[H]
+    \caption{Nedis: Weekend Calculations for Home}
+    \begin{tabular}{|l|l|l|l|l|l|}
+        \hline
+        \textbf{Date}    & \textbf{Total pkt} & \textbf{Total bytes} & \textbf{Biggest pkt} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
+        13.01-15.01      & 565,380            & 66,062,682           & 522 bytes            & 485 bytes            & 522 bytes            \\ \hline
+        27.01-29.01      & 546,269            & 58,677,501           & 522 bytes            & 424 bytes            & 522 bytes            \\ \hline
+        03.02-05.02      & 501,936            & 62,219,835           & 522 bytes            & 485 bytes            &    522 bytes            \\ \hline
+        17.02-19.02      & 501,747            & 64,037,197           & 522 bytes            & 485 bytes            & 522 bytes            \\ \hline
+        10.03-12.03      & 482,205            & 60,333,999           & 522 bytes            & 485 bytes            & 522 bytes            \\ \hline
+        28.03-30.03      & 578,033            & 65,159,251           & 426 bytes            & 424 bytes            & 426 bytes            \\ \hline
+        31.03-02.04      & 621,200            & 81,810,849           & 485 bytes            & 485 bytes            & 458 bytes            \\ \hline
+    \end{tabular}
+    \label{tab:NedisHomeWeekends}
+\end{table}
+
+\begin{table}[H]
+    \caption{Nedis: Weekend Calculations for Gone}
+    \begin{tabular}{|l|l|l|l|l|l|}
+        \hline
+        \textbf{Date}    & \textbf{Total pkt} & \textbf{Total bytes} & \textbf{Biggest pkt} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
+        13.01-15.01      & 678,979            & 98,642,277           & 522 bytes            & 485 bytes            & 522                  \\ \hline
+        27.01-29.01      & 655,417            & 91,850,956           & 650 bytes            & 485 bytes            & 650                  \\ \hline
+        03.02-05.02      & 518,316            & 66,069,105           & 522 bytes            & 485 bytes            & 522                  \\ \hline
+        17.02-19.02      & 426,157            & 53,137,691           & 522 bytes            & 424 bytes            & 522                  \\ \hline
+        10.03-12.03      & 357,715            & 42,390,770           & 522 bytes            & 424 bytes            & 522                  \\ \hline
+        28.03-30.03      & 507,506            & 65,163,914           & 522 bytes            & 485 bytes            & 522                  \\ \hline
+        31.03-02.04      & 634,018            & 87,175,396           & 554 bytes            & 554 bytes            & 522                  \\ \hline
+    \end{tabular}
+    \label{tab:NedisHomeWeekends}
+\end{table}
+
+\begin{table}[H]
+    \caption{Nedis: Comparing Weekend Values}
+    \begin{tabular}{ll|l|l|l|l|l|}
+        \cline{3-7}
+        \textbf{}                                           & \textbf{} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest pkt} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
+        \multicolumn{1}{|l|}{\multirow{2}{*}{\textbf{AVG}}} & Home      & 542,396          & 65,471,616     & 522 bytes            & 470 bytes            & 522 bytes            \\ \cline{2-7} 
+        \multicolumn{1}{|l|}{}                              & Gone      & 539,730          & 72,061,444     & 545 bytes            & 477 bytes            & 540 bytes            \\ \hline
+        \multicolumn{1}{|l|}{\multirow{2}{*}{\textbf{SD}}}  & Home      & 49,893           & 7,665,988      & 37 bytes             & 30 bytes             & 40 bytes             \\ \cline{2-7} 
+        \multicolumn{1}{|l|}{}                              & Gone      & 121,922          & 21,010,071     & 37 bytes             & 44 bytes             & 48 bytes             \\ \hline
+    \end{tabular}
+    \label{tab:MillWeekends}
+\end{table}
 
 \begin{figure} [H]
     \begin{subfigure}[b]{0.47\textwidth}
     \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Bytes_23.12-25.12.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Packets_13.01-15.01.png}    
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
     \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Packets_23.12-25.12.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Packets_23.12-25.12.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Bytes_30.12-01.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Packets_27.01-29.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Packets_30.12-01.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Packets_30.12-01.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Bytes_20.01-22.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Packets_03.02-05.02.png}
+    \end{subfigure}    
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Packets_20.01-22.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Packets_20.01-22.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Packets_17.02-19.02.png}
+    \end{subfigure}    
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Packets_10.02-12.02.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Bytes_10.02-12.02.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Packets_10.03-12.03.png}
+    \end{subfigure}    
+    \begin{subfigure}[b]{0.47\textwidth}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Packets_24.02-26.02.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Packets_10.02-12.02.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Packets_28.03-30.03.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Bytes_24.02-26.02.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Packets_03.03-05.03.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Packets_24.02-26.02.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Bytes_03.03-05.03.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Packets_03.03-05.03.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Bytes_17.03-19.03.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Packets_31.03-02.04.png}
     \end{subfigure}
     \hspace{0.6cm}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Mill_Weekend_Packets_17.03-19.03.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Packets_17.03-19.03.png}
     \end{subfigure}
-    \caption{Mill: Weekends at Gone Presented in Bytes and Packets}
-    \label{fig:MillWeekendGone}
+    \caption{Nedis: Weekends at Home(green) and Gone(orange) Presented in Packets}
+    \label{fig:NedisWeekendPackets}
 \end{figure}
 
-\subsection{Nedis}
 \begin{figure}[H]
     \begin{subfigure}[b]{0.47\textwidth}
     \centering
@@ -1970,99 +2310,47 @@ Figure
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
     \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Packets_13.01-15.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Bytes_23.12-25.12.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Bytes_27.01-29.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Packets_27.01-29.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Bytes_30.12-01.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Bytes_03.02-05.02.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Packets_03.02-05.02.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Bytes_20.01-22.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Bytes_17.02-19.02.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Packets_17.02-19.02.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Bytes_10.02-12.02.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Bytes_10.03-12.03.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Packets_10.03-12.03.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Bytes_24.02-26.02.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Bytes_28.03-30.03.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Packets_28.03-30.03.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Bytes_03.03-05.03.png}
     \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
+   \begin{subfigure}[b]{0.47\textwidth}
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Bytes_31.03-02.04.png}
     \end{subfigure}
     \hspace{0.6cm}
     \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=green]{figures/Nedis_Weekend_Packets_31.03-02.04.png}
-    \end{subfigure}
-    \caption{Nedis: Weekends at Home Presented in Bytes and Packets}
-    \label{fig:NedisWeekendHome}
-\end{figure}
-
-\begin{figure}[H]
-    \begin{subfigure}[b]{0.47\textwidth}
-    \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Bytes_23.12-25.12.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-    \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Packets_23.12-25.12.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Bytes_30.12-01.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Packets_30.12-01.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Bytes_20.01-22.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Packets_20.01-22.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Bytes_10.02-12.02.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Packets_10.02-12.02.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Bytes_24.02-26.02.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Packets_24.02-26.02.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Bytes_03.03-05.03.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Packets_03.03-05.03.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Bytes_17.03-19.03.png}
     \end{subfigure}
-    \hspace{0.6cm}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=orange]{figures/Nedis_Weekend_Packets_17.03-19.03.png}
-    \end{subfigure}
-    \caption{Nedis: Weekends at Gone Presented in Bytes and Packets}
-    \label{fig:NedisWeekendGone}
+    \caption{Nedis: Weekends at Home(green) and Gone(orange) Presented in Bytes}
+    \label{fig:NedisWeekendBytes}
 \end{figure}
-
-
 
 \subsection{A weekend at home with different settings}
