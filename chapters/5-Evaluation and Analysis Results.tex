@@ -1,11 +1,20 @@
 \chapter{Evaluation and Analysis Results}
 The evaluation and analysis result chapter will provide all gathered and analyzed data from the different test runned in this thesis. The chapter is divided into different subsections for each test case. 
-\section{General}
-To be able to run analysis on the data gathered from the different packet capturings (pcaps) and present it in an understandable way, two different programs were used; Wireshark and VsCode with pyshark. Wireshark were used to extract numbers from the pcaps and Visual Studio Code (VS Code) was used to generate graphs from the pcaps for the events. Even tough it is possible to use Wireshark to generate the same graphs as with VS Code, VS Code was selected because it is easier to generate graphs that have the same measures to compare and they are more ascetically pleasing to look at.  
+\section{General Procedure}
+Each event have gone through the same general procedure when starting evaluation and analysis. Figure \ref{fig:GeneralProcedure} shows an overview of the steps each event has been through to analyze. The results from each event are presented and explained in each sub-section and in some cases the general procedure have given insights to further analysis which is also covered in the sub-section. The steps of the general procedure are explained throughout this sub-chapter.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/GeneralProcedure.png}
+    \caption{General Procedure}
+    \label{fig:GeneralProcedure}
+\end{figure}
+
+To be able to run analysis on the data gathered from the different packet capturings (pcaps) and present it in an understandable way, two different programs were used; Wireshark and VsCode with pyshark. Wireshark were used to extract numbers from the pcaps and Visual Studio Code (VS Code) was used to generate graphs from the pcaps for the events. Even tough it is possible to use Wireshark to generate the same graphs as with VS Code, VS Code was selected because it is easier to generate graphs that have the same measures to compare and they are more ascetically pleasing to look at.
 \\\\
-When opening a pcap in Wireshark several statistics are possible to extract. By choosing the option of "Capture File Properties", several measures were extracted from here, such as packets, average packet size in bytes, bytes and average bytes per second. The numbers from each pcap were noted down and used as a value to compare both the events to each other and to the baseline. 
+When opening a pcap in Wireshark several statistics are possible to extract. By choosing the option of "Capture File Properties", total number of packets and bytes in the capture file are shown and were extracted. The numbers from each pcap were noted down and used as a value to compare both the events to each other and to the baseline. 
 \\\\
-In VS Code, python was used as the programming language as it includes the package pyshark which can be used towards tshark. Two scripts with a number of different if statements were used to generate the graphs depending on the users arguments passed to the script. The scripts only differs with if the user wants to display the graphs with number of packets or number of graphs on the y-axis. The code is displayed in its whole in appendix XXXX, and in pseudo code beneath in algorithm \ref{alg:GraphScript}. For each of the if statements, the same code block is included and are only shown once in algorithm \ref{alg:GraphScript}. The graphs are all generated with bytes and packets per 2 seconds, where the y-axis is defined in amount of packets or byts and the x-axis defined as time. 
+In VS Code, python was used as the programming language as it includes the package pyshark which can be used towards tshark. Two scripts with a number of different if statements were used to generate the graphs depending on the users arguments passed to the script. The scripts only differs with if the user wants to display the graphs with number of packets or number of graphs on the y-axis. The code is displayed in its whole in appendix XXXX, and in pseudo code beneath in algorithm \ref{alg:GraphScript}. For each of the if statements, the same code block is included and are only shown once in algorithm \ref{alg:GraphScript}. The graphs are all generated with bytes and packets per 2 seconds, where the y-axis is defined in amount of packets or bytes and the x-axis defined as time. 
 
 \begin{algorithm}
 \caption{Script for generating graphs}\label{alg:GraphScript}
@@ -312,30 +321,36 @@ The cooking events are 10 in total and are presented in Table \ref{tab:CookingDa
     \centering
     \caption{Date and time for Test Case 1: Cooking Events}
     \begin{adjustbox}{width=1\textwidth}
-            \begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
-            \cline{2-16} 
-            & 08.01 & 09.01 & 10.01 & 11.01 & 12.01 & 16.01 & 18.01 & 19.01 & 24.01 & 25.01 & 26.01 & 30.01 & 31.01 & 01.02 & 02.02 \\
+            \begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|}
+            \cline{2-11} & 08.01 & 09.01 & 11.01 & 16.01 & 18.01 & 19.01 & 25.01 & 30.01 & 31.01 & 01.02 \\
             \hline
-            \multicolumn{1}{|l|}{Started event}  & 15:58 & 15:59 & 16:01 & 16:05 & 16:10 & 16:02 & 16:04 & 16:01 & 15:57 & 16:02 & 16:01 & 16:01 & 16:01 & 16:02 & 16:02 \\ 
+            \multicolumn{1}{|l|}{Started event}  & 15:58 & 15:59 & 16:05 & 16:02 & 16:04 & 16:01 & 16:02 & 16:01 & 16:01 & 16:02 \\ 
             \hline
-            \multicolumn{1}{|l|}{Finished event} & 16:22 & 16:21 & 16:27 & 16:37 & 16:28 & 16:25 & 16:25 & 16:18 & 16:20 & 16:13 & 16:25 & 16:19 & 16:21 & 16:22 & 16:22 \\ 
-            \hline
+            \multicolumn{1}{|l|}{Finished event} & 16:22 & 16:21 & 16:37 & 16:25 & 16:25 & 16:18 & 16:13 & 16:19 & 16:21 & 16:22 \\ \hline
             \end{tabular}
     \end{adjustbox}
     \label{tab:CookingDates}
 \end{table}
 \FloatBarrier
 
-To be able to look even further into differences from when the devices are in an environment when an event is ongoing and when it is in the same environment, but without any event ongoing, graphs and calculations from the baseline traffic are used to compare. To choose a time for the baseline traffic, all start values from the actual events in Table \ref{tab:CookingDates} are used to calculate an average value for starting time. The same applies to end time. Calculated average value for the cooking event is:
+To be able to look even further into differences from when the devices are in an environment when an event is ongoing and when it is in the same environment, but without any event ongoing, graphs and calculations from the baseline traffic are used to compare. To choose a time for the baseline traffic, the values in Table \ref{tab:CookingDates} are used. To have the same amount of time on each event the earliest start time and the latest finish time are used as filtering values for each of the pcaps from capturing the cooking event. The values were then added 30 minutes before and after and used as a the start and finish time for the events, while the actual event time given by Table \ref{tab:CookingDates} are marked red on the graphs. This gives the following values to use for further analysis:
 
 \begin{itemize}
-    \item Event Start: 15:58
-    \item Event Finished: 16:22
+    \item Earliest Event Start: 15:58
+    \item Latest Event Finished: 16:37
+    \item Packet Capture Files Start: 15:28
+    \item Packet Capture Files End: 17:07
 \end{itemize}
-\newpage
 
+This gives the following filters added to create the pcaps for each event:
+
+\begin{itemize}
+    \item frame.time >= "Month Date, Year 15:28:00" && frame.time <= "Month Date, Year 17:07:00"
+\end{itemize}
+
+\newpage
 \subsection{Netatmo Home Coach}
-The graphs in figure \ref{fig:NetatmoCookingBytes} and \ref{fig:NetatmoCookingPackets} shows both bytes and packets for the first 10 cooking events. The area marked red on the graphs are when the event was ongoing. Table \ref{tab:NetatmoCookingCalculations} presents the calculations from all the cooking events. The table also includes average and standard deviation (std deviation) values for the events. 
+Table \ref{tab:NetatmoCookingCalculations} presents calculations from all these events and Table \ref{tab:NetatmoBaselineCookingCalculations} presents the calculations from all the corresponding baseline pcaps. Table \ref{tab:NetatmoComparingBaselineAndCookingCalculations} compares the average and standard deviation (std deviation) values from the events to the baseline. Figure \ref{fig:NetatmoCookingCalculations} presents a graphical overview of the packets and bytes from Table \ref{tab:NetatmoCookingCalculations} including average values. The graphs in Figure \ref{fig:NetatmoCookingBytes1}, \ref{fig:NetatmoCookingBytes2}, \ref{fig:NetatmoCookingPackets1} and \ref{fig:NetatmoCookingPackets2} shows both bytes and packets for the cooking events in comparison with the baseline captures. The actual events are placed on the left side of the figure and are framed in red, the baseline graphs are placed on the right side of the figure and are marked in blue. The area marked red on the event graphs are when the event was ongoing, and not included in the baseline graphs as no event was ongoing and is only used for comparison. 
 
 \begin{table}[!ht]
     \centering
@@ -343,276 +358,19 @@ The graphs in figure \ref{fig:NetatmoCookingBytes} and \ref{fig:NetatmoCookingPa
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
         \textbf{Event dates} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
-        08.jan & 789 & 107,094 & 407 bytes \\ \hline
-        09.jan & 589 & 81,694 & 407 bytes \\ \hline
-        10.jan & 786 & 105,351 & 203 bytes \\ \hline
-        11.jan & 791 & 107,011 & 407 bytes \\ \hline
-        12.jan & 528 & 71,873 & 407 bytes \\ \hline
-        16.jan & 921 & 123,899 & 407 bytes \\ \hline
-        18.jan & 739 & 108,857 & 407 bytes  \\ \hline
-        19.jan & 607 & 82,423 & 407 bytes \\ \hline
-        24.jan & 836 & 114,340 & 407 bytes \\ \hline
-        25.jan & 309 & 42,332 & 407 bytes \\ \hline
-        26.jan & 739 & 100,223 & 407 bytes \\ \hline
-        30.jan & 654 & 89,264 & 407 bytes \\ \hline
-        31.jan & 704 & 93,998 & 136 bytes \\ \hline
-        01.feb & 644 & 87,474 & 407 bytes \\ \hline
-        02.feb & 666 & 91,485 & 407 bytes \\ \hline
-        \textbf{Average} &  \textbf{687}  &  \textbf{93,821}  &  \textbf{375 bytes} \\ \hline
-        \textbf{Std deviation} &  \textbf{147}  & \textbf{19,914}  &  \textbf{85 bytes} \\ \hline
+        08.jan & 901 & 123,630 & 407 bytes\\ \hline
+        09.jan & 703 & 97,019 & 407 bytes \\ \hline
+        11.jan & 847 & 114,473 & 407 bytes\\ \hline
+        16.jan & 1,082 & 146,001 & 407 bytes\\ \hline
+        18.jan & 948 & 129,907 & 407 bytes\\ \hline
+        19.jan & 828 & 111,629 & 407 bytes \\ \hline
+        25.jan & 430 & 58,926 & 407 bytes \\ \hline
+        30.jan & 815 & 110,838 & 407 bytes \\ \hline
+        31.jan & 864 & 115,302 & 136 bytes \\ \hline
+        01.feb & 805 & 109,050 & 407 bytes \\ \hline
     \end{tabular}
     \label{tab:NetatmoCookingCalculations}
 \end{table}
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}{0.49\textwidth}
-       \includegraphics[width=1\hsize]{figures/Netatmo_Cooking_Calculations_Packets.png} 
-    \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
-        \includegraphics[width=1\hsize]{figures/Netatmo_Cooking_Calculations_Bytes.png} 
-    \end{subfigure}
-    \caption{Netatmo Cooking Calculations with Packets and Bytes}
-    \label{fig:NetatmoCookingCalculations}
-\end{figure}
-
-\begin{figure}[H]
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_08.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_09.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_10.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_11.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_12.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_16.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_18.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_19.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_24.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_25.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_26.01.png}
-    \end{subfigure}
-    \hspace{0.6cm}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Bytes_30.01.png}
-    \end{subfigure}
-    \caption{Netatmo Cooking Events - Bytes}
-    \label{fig:NetatmoCookingBytes}
-\end{figure}
-
-\begin{figure}[H]
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_08.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_09.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_10.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_11.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_12.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_16.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_18.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_19.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_24.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_26.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_26.01.png}
-    \end{subfigure}
-    \hspace{0.6cm}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Netatmo_Cooking_Packets_30.01.png}
-    \end{subfigure}
-    \caption{Netatmo Cooking Events - Packets}
-    \label{fig:NetatmoCookingPackets}
-\end{figure}
-
-It is hard to see any specific changes in the traffic flow from when the event is ongoing based on the graphs given in figure \ref{fig:NetatmoCookingBytes} and \ref{fig:NetatmoCookingPackets}. Also looking at the table \ref{tab:NetatmoCookingCalculations} the calculations varies a lot. From table \ref{tab:NetatmoCookingCalculations}, the packets varies from 309 to 921 packets and from 42,332 to 123,899 bytes. The biggest packet from the capture is mainly 407 bytes, but for two of the events a 407 byte packet is not sent. When looking at the graphs in figure \ref{fig:NetatmoCookingCalculations}, packets and bytes for each event are compared to each other and the average value. They easier show the differences in the amount of packets captured during the events. 
-\\\\
-The next step is to compare the event graphs and calculations with the baseline traffic from the correlating timing for cooking events. Figure \ref{fig:NetatmoCookingComparingBytes} and \ref{fig:NetatmoCookingComparingPackets} compares the graphs for cooking from the actual events, marked in red, to the baseline capture, marked in blue. 
-
-\begin{figure}[H]
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Packets_08.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize, colframe=blue]{figures/Netatmo_Cooking_Baseline_Packets_06.03.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Packets_10.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Packets_07.03.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Packets_12.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Packets_08.03.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Packets_18.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Packets_09.03.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Packets_24.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Packets_10.03.png}
-    \end{subfigure}
-        \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Packets_26.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Packets_11.03.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Packets_30.01.png}
-    \end{subfigure}
-    \hspace{0.6cm}
-    \begin{subfigure}[b]{0.47\textwidth}
-    \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Packets_12.03.png}
-        \end{subfigure}
-    \caption{Comparing Events and Baseline Packets for Cooking - Netatmo}
-    \label{fig:NetatmoCookingComparingPackets}
-\end{figure}
-
-\begin{figure}[H]
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Bytes_08.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Bytes_06.03.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Bytes_10.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Bytes_07.03.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Bytes_12.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Bytes_08.03.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Bytes_18.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Bytes_09.03.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Bytes_24.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Bytes_10.03.png}
-    \end{subfigure}
-        \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Bytes_26.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Bytes_11.03.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Bytes_30.01.png}
-    \end{subfigure}
-    \hspace{0.6cm}
-    \begin{subfigure}[b]{0.47\textwidth}
-    \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Bytes_12.03.png}
-        \end{subfigure}
-    \caption{Comparing Events and Baseline Bytes for Cooking - Netatmo}
-    \label{fig:NetatmoCookingComparingBytes}
-\end{figure}
-
-First comparing the graphs in figure \ref{fig:NetatmoCookingComparingBytes} and \ref{fig:NetatmoCookingComparingPackets} it is not possible to see distinct differences in the red graphs from the actual events to the blue graphs from the baseline. Calculations on the baseline cooking pcaps has been made to compare even further with the event. In table \ref{tab:NetatmoBaselineCookingCalculations} the same calculations as the event had, are presented. In table \ref{tab:NetatmoComparingBaselineAndCookingCalculations} a comparison between the average values from both the baseline and the events are summarized. At last, a graphical comparison of bytes and packets from the event and baseline are given in figure \ref{fig:NetatmoComparingCookingCalculations}. 
 
 \begin{table}[!ht]
     \centering
@@ -630,8 +388,6 @@ First comparing the graphs in figure \ref{fig:NetatmoCookingComparingBytes} and 
         13.mar & 636 & 84,750 & 136 bytes \\ \hline
         14.mar & 570 & 78,412 & 407 bytes \\ \hline
         15.mar & 674 & 90,275 & 407 bytes \\ \hline
-        \textbf{Average} &  \textbf{611}  &  \textbf{82,543}  &  \textbf{326 bytes} \\ \hline
-        \textbf{Std dev}  &  \textbf{98}   &  \textbf{13,476}   &  \textbf{131 bytes} \\ \hline
     \end{tabular}
     \label{tab:NetatmoBaselineCookingCalculations}
 \end{table}
@@ -642,13 +398,223 @@ First comparing the graphs in figure \ref{fig:NetatmoCookingComparingBytes} and 
     \begin{tabular}{c|l|l|l|l|}
         \cline{2-5}
         \multicolumn{1}{l|}{}                                              & \textbf{Type} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Event         & 687              & 93,821         & 375 bytes               \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Event         & 675              & 92,405         & 380 bytes               \\ \cline{2-5} 
         \multicolumn{1}{|c|}{}                                             & Baseline      & 611              & 82,543         & 326 bytes                \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 147              & 19,914         & 85 bytes                 \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 163              & 22,236         & 86 bytes                 \\ \cline{2-5} 
         \multicolumn{1}{|c|}{}                                             & Baseline      & 98               & 13,476         & 131 bytes               \\ \hline          
     \end{tabular}
     \label{tab:NetatmoComparingBaselineAndCookingCalculations}
 \end{table}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.6\textwidth}
+       \centering
+       \includegraphics[width=1\hsize]{figures/Netatmo_Cooking_Calculations_Packets.png} 
+    \end{subfigure}
+    \begin{subfigure}{0.6\textwidth}
+        \centering
+        \includegraphics[width=1\hsize]{figures/Netatmo_Cooking_Calculations_Bytes.png} 
+    \end{subfigure}
+    \caption{Netatmo: Graphical presentation of cooking calculations with packets and bytes, including average value extracted from Table \ref{tab:NetatmoCookingCalculations}}
+    \label{fig:NetatmoCookingCalculations}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Packets_08.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize, colframe=blue]{figures/Netatmo_Cooking_Baseline_Packets_06.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Packets_09.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Packets_07.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Packets_11.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Packets_08.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Packets_16.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Packets_09.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Packets_18.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Packets_10.03.png}
+    \end{subfigure}
+        \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Packets_19.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Packets_11.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Packets_25.01.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Packets_12.03.png}
+        \end{subfigure}
+    \caption{Netatmo: Graphs from cooking events shown in packets with events in red and baseline in blue - 1}
+    \label{fig:NetatmoCookingPackets1}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Packets_30.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize, colframe=blue]{figures/Netatmo_Cooking_Baseline_Packets_13.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Packets_31.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Packets_14.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Packets_01.02.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Packets_15.03.png}
+    \end{subfigure}
+    \caption{Netatmo: Graphs from cooking events shown in packets with events in red and baseline in blue - 2}
+    \label{fig:NetatmoCookingPackets2}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Bytes_30.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize, colframe=blue]{figures/Netatmo_Cooking_Baseline_Bytes_13.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Bytes_31.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Bytes_14.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Bytes_01.02.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Bytes_15.03.png}
+    \end{subfigure}
+    \caption{Netatmo: Graphs from cooking events shown in bytes with events in red and baseline in blue - 2}
+    \label{fig:NetatmoCookingBytes2}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Bytes_08.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Bytes_06.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Bytes_09.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Bytes_07.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Bytes_11.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Bytes_08.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Bytes_16.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Bytes_09.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Bytes_18.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Bytes_10.03.png}
+    \end{subfigure}
+        \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Bytes_19.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Bytes_11.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Bytes_25.01.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Bytes_12.03.png}
+        \end{subfigure}
+    \caption{Netatmo: Graphs from cooking events shown in bytes with events in red and baseline in blue - 1}
+    \label{fig:NetatmoCookingBytes1}
+\end{figure}
+
+
+
+It is hard to see any specific changes in the traffic flow from when the event is ongoing based on the graphs given in figure \ref{fig:NetatmoCookingBytes} and \ref{fig:NetatmoCookingPackets}. Also looking at the table \ref{tab:NetatmoCookingCalculations} the calculations varies a lot. From table \ref{tab:NetatmoCookingCalculations}, the packets varies from 309 to 921 packets and from 42,332 to 123,899 bytes. The biggest packet from the capture is mainly 407 bytes, but for two of the events a 407 byte packet is not sent. When looking at the graphs in figure \ref{fig:NetatmoCookingCalculations}, packets and bytes for each event are compared to each other and the average value. They easier show the differences in the amount of packets captured during the events. 
+\\\\
+The next step is to compare the event graphs and calculations with the baseline traffic from the correlating timing for cooking events. Figure \ref{fig:NetatmoCookingComparingBytes} and \ref{fig:NetatmoCookingComparingPackets} compares the graphs for cooking from the actual events, marked in red, to the baseline capture, marked in blue. 
+
+
+
+First comparing the graphs in figure \ref{fig:NetatmoCookingComparingBytes} and \ref{fig:NetatmoCookingComparingPackets} it is not possible to see distinct differences in the red graphs from the actual events to the blue graphs from the baseline. Calculations on the baseline cooking pcaps has been made to compare even further with the event. In table \ref{tab:NetatmoBaselineCookingCalculations} the same calculations as the event had, are presented. In table \ref{tab:NetatmoComparingBaselineAndCookingCalculations} a comparison between the average values from both the baseline and the events are summarized. At last, a graphical comparison of bytes and packets from the event and baseline are given in figure \ref{fig:NetatmoComparingCookingCalculations}. 
+
+
 
 \begin{figure}[H]
     \centering
@@ -1658,7 +1624,6 @@ The showering event has been conducted 10 times and Table \ref{tab:ShoweringDate
     \label{fig:NetatmoShowerComparingBytes2}
 \end{figure}
 
-
 \begin{table}[H]
     \centering
     \caption{Netatmo Baseline Shower Calculations}
@@ -2206,20 +2171,24 @@ For weekend testing with the device, Mill Sense, Table \ref{tab:MillWeekendHome}
     \label{fig:MillWeekendBytes}
 \end{figure}
 
+Looking at the values in Table \ref{tab:MillHomeWeekends} and \ref{tab:MillGoneWeekends}, the total packets and bytes in the pcaps stay the same whether or not it's a Home or Gone Weekend. In regards of the largest packets, all the Gone-Weekends have the same size; 456 bytes for packets sent from the device and 421 bytes for packets sent to the device. For the first 5 Home-Weekends it looks like there's a pattern change that the device receives much bigger packets than in a Gone-Weekend with a size 1,583 an 1,593 bytes, but as the last two Home-Weekend shows their biggest packet is actually the same as for a Gone-Weekend. The graphs in Figure \ref{fig:MillWeekendPackets} and \ref{fig:MillWeekendBytes} the traffic pattern for Home and Gone Weekends look the same. There are variations in the same category, but not a constant same variation for Home or Gone. 
+
+\newpage
 \subsection{Nedis}
+For Weekend testing on the device Nedis, both tables for calculations and figures for graphs are presented to analyze the traffic patterns during the tests. In Table \ref{tab:NedisHomeWeekends} and \ref{tab:NedisGoneWeekends} the calculations for the Home and Gone Weekends are presented. The values included are total amount of packets, total bytes sent and received from the device, the biggest packet sent in bytes and the biggest packet received in bytes. Table \ref{tab:NedisWeekends} compares the average and standard deviation values for respectively all the weekends home and all the weekends gone. Figure \ref{fig:NedisWeekendPackets} presents the graphs for weekend traffic in regards of packets and Figure \ref{fig:NedisWeekendBytes} presents the graphs for weekend traffic in regards of bytes. Both figures have the Home-Weekends placed on the left side of the figure framed in green and the Gone-Weekends placed on the right side of the figure framed in orange.  
 
 \begin{table}[H]
     \caption{Nedis: Weekend Calculations for Home}
     \begin{tabular}{|l|l|l|l|l|l|}
         \hline
-        \textbf{Date}    & \textbf{Total pkt} & \textbf{Total bytes} & \textbf{Biggest pkt} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
-        13.01-15.01      & 565,380            & 66,062,682           & 522 bytes            & 485 bytes            & 522 bytes            \\ \hline
-        27.01-29.01      & 546,269            & 58,677,501           & 522 bytes            & 424 bytes            & 522 bytes            \\ \hline
-        03.02-05.02      & 501,936            & 62,219,835           & 522 bytes            & 485 bytes            &    522 bytes            \\ \hline
-        17.02-19.02      & 501,747            & 64,037,197           & 522 bytes            & 485 bytes            & 522 bytes            \\ \hline
-        10.03-12.03      & 482,205            & 60,333,999           & 522 bytes            & 485 bytes            & 522 bytes            \\ \hline
-        28.03-30.03      & 578,033            & 65,159,251           & 426 bytes            & 424 bytes            & 426 bytes            \\ \hline
-        31.03-02.04      & 621,200            & 81,810,849           & 485 bytes            & 485 bytes            & 458 bytes            \\ \hline
+        \textbf{Date}    & \textbf{Total pkt} & \textbf{Total bytes} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
+        13.01-15.01      & 565,380            & 66,062,682           & 485 bytes            & 522 bytes            \\ \hline
+        27.01-29.01      & 546,269            & 58,677,501           & 424 bytes            & 522 bytes            \\ \hline
+        03.02-05.02      & 501,936            & 62,219,835           & 485 bytes            &    522 bytes            \\ \hline
+        17.02-19.02      & 501,747            & 64,037,197           & 485 bytes            & 522 bytes            \\ \hline
+        10.03-12.03      & 482,205            & 60,333,999           & 485 bytes            & 522 bytes            \\ \hline
+        28.03-30.03      & 578,033            & 65,159,251           & 424 bytes            & 426 bytes            \\ \hline
+        31.03-02.04      & 621,200            & 81,810,849           & 485 bytes            & 458 bytes            \\ \hline
     \end{tabular}
     \label{tab:NedisHomeWeekends}
 \end{table}
@@ -2228,29 +2197,30 @@ For weekend testing with the device, Mill Sense, Table \ref{tab:MillWeekendHome}
     \caption{Nedis: Weekend Calculations for Gone}
     \begin{tabular}{|l|l|l|l|l|l|}
         \hline
-        \textbf{Date}    & \textbf{Total pkt} & \textbf{Total bytes} & \textbf{Biggest pkt} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
-        13.01-15.01      & 678,979            & 98,642,277           & 522 bytes            & 485 bytes            & 522                  \\ \hline
-        27.01-29.01      & 655,417            & 91,850,956           & 650 bytes            & 485 bytes            & 650                  \\ \hline
-        03.02-05.02      & 518,316            & 66,069,105           & 522 bytes            & 485 bytes            & 522                  \\ \hline
-        17.02-19.02      & 426,157            & 53,137,691           & 522 bytes            & 424 bytes            & 522                  \\ \hline
-        10.03-12.03      & 357,715            & 42,390,770           & 522 bytes            & 424 bytes            & 522                  \\ \hline
-        28.03-30.03      & 507,506            & 65,163,914           & 522 bytes            & 485 bytes            & 522                  \\ \hline
-        31.03-02.04      & 634,018            & 87,175,396           & 554 bytes            & 554 bytes            & 522                  \\ \hline
+        \textbf{Date} & \textbf{Total pkt} & \textbf{Total bytes} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
+        13.01-15.01   & 678,979            & 98,642,277           & 485 bytes            & 522 bytes            \\ \hline
+        27.01-29.01   & 655,417            & 91,850,956           & 485 bytes            & 650 bytes            \\ \hline
+        03.02-05.02   & 518,316            & 66,069,105           & 485 bytes            & 522 bytes            \\ \hline
+        17.02-19.02   & 426,157            & 53,137,691           & 424 bytes            & 522 bytes            \\ \hline
+        10.03-12.03   & 357,715            & 42,390,770           & 424 bytes            & 522 bytes            \\ \hline
+        28.03-30.03   & 507,506            & 65,163,914           & 485 bytes            & 522 bytes            \\ \hline
+        31.03-02.04   & 634,018            & 87,175,396           & 554 bytes            & 522 bytes            \\ \hline
     \end{tabular}
-    \label{tab:NedisHomeWeekends}
+    \label{tab:NedisGoneWeekends}
 \end{table}
 
 \begin{table}[H]
+    \centering
     \caption{Nedis: Comparing Weekend Values}
-    \begin{tabular}{ll|l|l|l|l|l|}
-        \cline{3-7}
-        \textbf{}                                           & \textbf{} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest pkt} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
-        \multicolumn{1}{|l|}{\multirow{2}{*}{\textbf{AVG}}} & Home      & 542,396          & 65,471,616     & 522 bytes            & 470 bytes            & 522 bytes            \\ \cline{2-7} 
-        \multicolumn{1}{|l|}{}                              & Gone      & 539,730          & 72,061,444     & 545 bytes            & 477 bytes            & 540 bytes            \\ \hline
-        \multicolumn{1}{|l|}{\multirow{2}{*}{\textbf{SD}}}  & Home      & 49,893           & 7,665,988      & 37 bytes             & 30 bytes             & 40 bytes             \\ \cline{2-7} 
-        \multicolumn{1}{|l|}{}                              & Gone      & 121,922          & 21,010,071     & 37 bytes             & 44 bytes             & 48 bytes             \\ \hline
+    \begin{tabular}{ll|l|l|l|l|}
+        \cline{3-6}
+        \textbf{}                                           & \textbf{} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
+        \multicolumn{1}{|l|}{\multirow{2}{*}{\textbf{AVG}}} & Home      & 542,396          & 65,471,616     & 470 bytes            & 522 bytes            \\ \cline{2-6} 
+        \multicolumn{1}{|l|}{}                              & Gone      & 539,730          & 72,061,444     & 477 bytes            & 540 bytes            \\ \hline
+        \multicolumn{1}{|l|}{\multirow{2}{*}{\textbf{SD}}}  & Home      & 49,893           & 7,665,988      & 30 bytes             & 40 bytes             \\ \cline{2-6} 
+        \multicolumn{1}{|l|}{}                              & Gone      & 121,922          & 21,010,071     & 44 bytes             & 48 bytes             \\ \hline
     \end{tabular}
-    \label{tab:MillWeekends}
+    \label{tab:NedisWeekends}
 \end{table}
 
 \begin{figure} [H]
@@ -2353,4 +2323,4 @@ For weekend testing with the device, Mill Sense, Table \ref{tab:MillWeekendHome}
     \label{fig:NedisWeekendBytes}
 \end{figure}
 
-\subsection{A weekend at home with different settings}
+The results in Table \ref{tab:NedisHomeWeekends} and \ref{tab:NedisGoneWeekends} shows that the amount of packets does not change whether the home is occupied or not. Both tables shows that there are sent and received around 500,000 to 600,000 packets regardless if the user is home or not. The amount of bytes received and sent varies a lot in both the tables from 58,677,501 bytes to 81,810,849 bytes for the Home-Weekends and from 42,390,770 bytes to 98,642,277 bytes for the Gone-Weekends. Also looking at the biggest packets received and sent are very similar in both Home and Gone Weekends. Table \ref{tab:NedisWeekends} also shows the same results as discussed earlier. Neither average values for packets, bytes or biggest packets received or sent differs significantly from one another. The standard deviation for Gone-Weekends are some higher than Home-Weekends which means that the values differ more from each other, but since the average is similar and the values differ both higher and lower than the average, it is still not possible to see any differences here.  
