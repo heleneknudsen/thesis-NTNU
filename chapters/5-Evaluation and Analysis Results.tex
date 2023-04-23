@@ -349,10 +349,10 @@ This gives the following filters added to create the pcaps for each event:
 \end{itemize}
 
 \newpage
-\subsection{Netatmo Home Coach}
+\subsection{Netatmo}
 Table \ref{tab:NetatmoCookingCalculations} presents calculations from all these events and Table \ref{tab:NetatmoBaselineCookingCalculations} presents the calculations from all the corresponding baseline pcaps. Table \ref{tab:NetatmoComparingBaselineAndCookingCalculations} compares the average and standard deviation (std deviation) values from the events to the baseline. Figure \ref{fig:NetatmoCookingCalculations} presents a graphical overview of the packets and bytes from Table \ref{tab:NetatmoCookingCalculations} including average values. The graphs in Figure \ref{fig:NetatmoCookingBytes1}, \ref{fig:NetatmoCookingBytes2}, \ref{fig:NetatmoCookingPackets1} and \ref{fig:NetatmoCookingPackets2} shows both bytes and packets for the cooking events in comparison with the baseline captures. The actual events are placed on the left side of the figure and are framed in red, the baseline graphs are placed on the right side of the figure and are marked in blue. The area marked red on the event graphs are when the event was ongoing, and not included in the baseline graphs as no event was ongoing and is only used for comparison. 
 
-\begin{table}[!ht]
+\begin{table}[H]
     \centering
     \caption{Netatmo Cooking Calculations}
     \begin{tabular}{|l|l|l|l|l|l|}
@@ -378,16 +378,16 @@ Table \ref{tab:NetatmoCookingCalculations} presents calculations from all these 
     \begin{tabular}{|l|l|l|l|}
     \hline
         \textbf{Baseline} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
-        06.mar & 475 & 63,242 & 134 bytes\\ \hline
-        07.mar & 793 & 108,478 & 407 bytes\\ \hline
-        08.mar & 573 & 77,841 & 407 bytes \\ \hline
-        09.mar & 685 & 92,265 & 407 bytes \\ \hline
-        10.mar & 666 & 89,962 & 407 bytes \\ \hline
-        11.mar & 539 & 73,745 & 407 bytes \\ \hline
-        12.mar & 497 & 66,464 & 136 bytes \\ \hline
-        13.mar & 636 & 84,750 & 136 bytes \\ \hline
-        14.mar & 570 & 78,412 & 407 bytes \\ \hline
-        15.mar & 674 & 90,275 & 407 bytes \\ \hline
+        06.mar & 584 & 77,780 & 134 bytes\\ \hline
+        07.mar & 972 & 132,406 & 407 bytes\\ \hline
+        08.mar & 697 & 94,730 & 407 bytes \\ \hline
+        09.mar & 868 & 117,020 & 407 bytes \\ \hline
+        10.mar & 825 & 111,863 & 407 bytes \\ \hline
+        11.mar & 745 & 101,534 & 407 bytes \\ \hline
+        12.mar & 626 & 84,987 & 407 bytes \\ \hline
+        13.mar & 764 & 101,772 & 136 bytes \\ \hline
+        14.mar & 750 & 102,396 & 407 bytes \\ \hline
+        15.mar & 812 & 108,703 & 407 bytes \\ \hline
     \end{tabular}
     \label{tab:NetatmoBaselineCookingCalculations}
 \end{table}
@@ -398,21 +398,21 @@ Table \ref{tab:NetatmoCookingCalculations} presents calculations from all these 
     \begin{tabular}{c|l|l|l|l|}
         \cline{2-5}
         \multicolumn{1}{l|}{}                                              & \textbf{Type} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Event         & 675              & 92,405         & 380 bytes               \\ \cline{2-5} 
-        \multicolumn{1}{|c|}{}                                             & Baseline      & 611              & 82,543         & 326 bytes                \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 163              & 22,236         & 86 bytes                 \\ \cline{2-5} 
-        \multicolumn{1}{|c|}{}                                             & Baseline      & 98               & 13,476         & 131 bytes               \\ \hline          
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Event         & 822              & 111,678        & 380 bytes               \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{}                                             & Baseline      & 764              & 103,319        & 353 bytes                \\ \hline
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 170              & 22,802         & 86 bytes                 \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{}                                             & Baseline      & 114              & 15,650         & 115 bytes               \\ \hline          
     \end{tabular}
     \label{tab:NetatmoComparingBaselineAndCookingCalculations}
 \end{table}
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{0.6\textwidth}
+    \begin{subfigure}{1\textwidth}
        \centering
        \includegraphics[width=1\hsize]{figures/Netatmo_Cooking_Calculations_Packets.png} 
     \end{subfigure}
-    \begin{subfigure}{0.6\textwidth}
+    \begin{subfigure}{1\textwidth}
         \centering
         \includegraphics[width=1\hsize]{figures/Netatmo_Cooking_Calculations_Bytes.png} 
     \end{subfigure}
@@ -478,68 +478,68 @@ Table \ref{tab:NetatmoCookingCalculations} presents calculations from all these 
     \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Packets_12.03.png}
         \end{subfigure}
-    \caption{Netatmo: Graphs from cooking events shown in packets with events in red and baseline in blue - 1}
+    \caption{Netatmo: Graphs from cooking events shown in packets with events in red and baseline in blue}
     \label{fig:NetatmoCookingPackets1}
 \end{figure}
 
 \begin{figure}[H]
-    \begin{subfigure}[b]{0.47\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Packets_30.01.png}
     \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize, colframe=blue]{figures/Netatmo_Cooking_Baseline_Packets_13.03.png}
     \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Packets_31.01.png}
     \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Packets_14.03.png}
     \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Packets_01.02.png}
     \end{subfigure}
-    \hspace{0.6cm}
-    \begin{subfigure}[b]{0.47\textwidth}
+    \hspace{1.1cm}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Packets_15.03.png}
     \end{subfigure}
-    \caption{Netatmo: Graphs from cooking events shown in packets with events in red and baseline in blue - 2}
+    \caption{Netatmo: Continuing from Figure \ref{fig:NetatmoCookingPackets1}}
     \label{fig:NetatmoCookingPackets2}
 \end{figure}
 
 \begin{figure}[H]
-    \begin{subfigure}[b]{0.47\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Bytes_30.01.png}
     \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize, colframe=blue]{figures/Netatmo_Cooking_Baseline_Bytes_13.03.png}
     \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Bytes_31.01.png}
     \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Bytes_14.03.png}
     \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Cooking_Bytes_01.02.png}
     \end{subfigure}
-    \hspace{0.6cm}
-    \begin{subfigure}[b]{0.47\textwidth}
+    \hspace{1.1cm}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Bytes_15.03.png}
     \end{subfigure}
-    \caption{Netatmo: Graphs from cooking events shown in bytes with events in red and baseline in blue - 2}
-    \label{fig:NetatmoCookingBytes2}
+    \caption{Netatmo: First graphs from Figure \ref{fig:NetatmoCookingBytes2}}
+    \label{fig:NetatmoCookingBytes1}
 \end{figure}
 
 \begin{figure}[H]
@@ -600,73 +600,79 @@ Table \ref{tab:NetatmoCookingCalculations} presents calculations from all these 
     \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Cooking_Baseline_Bytes_12.03.png}
         \end{subfigure}
-    \caption{Netatmo: Graphs from cooking events shown in bytes with events in red and baseline in blue - 1}
-    \label{fig:NetatmoCookingBytes1}
+    \caption{Netatmo: Graphs from cooking events shown in bytes with events in red and baseline in blue}
+    \label{fig:NetatmoCookingBytes2}
 \end{figure}
 
-
-
-It is hard to see any specific changes in the traffic flow from when the event is ongoing based on the graphs given in figure \ref{fig:NetatmoCookingBytes} and \ref{fig:NetatmoCookingPackets}. Also looking at the table \ref{tab:NetatmoCookingCalculations} the calculations varies a lot. From table \ref{tab:NetatmoCookingCalculations}, the packets varies from 309 to 921 packets and from 42,332 to 123,899 bytes. The biggest packet from the capture is mainly 407 bytes, but for two of the events a 407 byte packet is not sent. When looking at the graphs in figure \ref{fig:NetatmoCookingCalculations}, packets and bytes for each event are compared to each other and the average value. They easier show the differences in the amount of packets captured during the events. 
+Table \ref{tab:NetatmoCookingCalculations} shows that the calculations varies a lot for each event. Packets varies from 403 to 1,082 and bytes from 58,926 to 146,001. Compared to the baseline calculations, which also varies with 584 packets as the smallest number to 972 to the highest amount of packets during the time. For bytes it varies from 77,780 to 132,406 bytes. The biggest packets from both the events and the baseline is mainly 407 bytes, with a few exceptions for both. The average values for both packets and bytes are similar to each other for the events and baseline. The average value for biggest packet are almost the same as the values for each day are almost the same as shown in Table in \ref{tab:NetatmoCookingCalculations} and \ref{tab:NetatmoBaselineCookingCalculations}. The standard deviation for all categories are a bit higher for the events than the baseline. Overall, the graphs in Figure \ref{fig:NetatmoCookingCalculations} shows that the calculation of the traffic from the events, do not differ significantly from the baseline standard traffic.
 \\\\
-The next step is to compare the event graphs and calculations with the baseline traffic from the correlating timing for cooking events. Figure \ref{fig:NetatmoCookingComparingBytes} and \ref{fig:NetatmoCookingComparingPackets} compares the graphs for cooking from the actual events, marked in red, to the baseline capture, marked in blue. 
+The same result is further confirmed in the graphs in Figure \ref{fig:NetatmoCookingPackets1} and \ref{fig:NetatmoCookingPackets2} for packets and \ref{fig:NetatmoCookingBytes1} and \ref{fig:NetatmoCookingBytes2} for bytes. The graphs for events in red do not follow a specific pattern compared to the baseline traffic in blue. 
 
-
-
-First comparing the graphs in figure \ref{fig:NetatmoCookingComparingBytes} and \ref{fig:NetatmoCookingComparingPackets} it is not possible to see distinct differences in the red graphs from the actual events to the blue graphs from the baseline. Calculations on the baseline cooking pcaps has been made to compare even further with the event. In table \ref{tab:NetatmoBaselineCookingCalculations} the same calculations as the event had, are presented. In table \ref{tab:NetatmoComparingBaselineAndCookingCalculations} a comparison between the average values from both the baseline and the events are summarized. At last, a graphical comparison of bytes and packets from the event and baseline are given in figure \ref{fig:NetatmoComparingCookingCalculations}. 
-
-
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \includegraphics[width=1\hsize]{figures/Netatmo_Comparing_Cooking_Calculations_Bytes.png} 
-    \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \includegraphics[width=1\hsize]{figures/Netatmo_Comparing_Cooking_Calculations_Packets.png} 
-    \end{subfigure}
-    \caption{Comparing Cooking Calculations for Netatmo}
-    \label{fig:NetatmoComparingCookingCalculations}
-\end{figure}
-
+\newpage
 \subsection{Mill Sense}
-The graphs in figure \ref{fig:MillCookingBytes} and \ref{fig:MillCookingPackets} shows both bytes and packets for the first 10 of the cooking events. The area marked red on the graphs are when the event was ongoing. Table \ref{tab:MillCookingCalculations} presents the calculations from all the 15 cooking events. 
+The results from the cooking events for Mill are presented with both numerical values in tables and graphs and in figures where traffic pattern can be analyzed. Table \ref{tab:MillCookingCalculations} presents the calculations from the event traffic with packets, bytes and biggest packet. The same calculations have been made on the baseline traffic. in Table \ref{tab:MillBaselineCookingCalculations}. Table \ref{tab:MillComparingBaselineAndCookingCalculations} compares the average and standard deviation values for the event and baseline traffic. The calculations from these three tables are graphically presented in Figure \ref{fig:MillCookingCalculations} where packets and bytes from the event and baseline traffic are included with the average value for each of them. The traffic pattern of the events and baseline are presented in Figure \ref{fig:MillCookingPackets1} and \ref{fig:MillCookingPackets2} for packets and in Figure \ref{fig:MillCookingBytes1} and \ref{fig:MillCookingBytes2} for bytes. In these figures, all graphs have the same minimum and maximum values on the y- and x-axis to be comparable. The graphs created from the different events are placed on the left side of the figure and marked in red, while the baseline is placed on the right side of the figure and marked in blue. 
 
-\begin{table}[!ht]
+\begin{table}[H]
     \centering
     \caption{Mill Cooking Calculations}
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
         \textbf{Events} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
-        08.jan & 7,729 & 945,461 & 456 bytes \\ \hline
-        09.jan & 6,328 & 863,911 & 456 bytes \\ \hline
-        10.jan & 6,821 & 916,827 & 456 bytes \\ \hline
-        11.jan & 9,457 & 1,218,558 & 456 bytes \\ \hline
-        12.jan & 7,600 & 965,797 & 456 bytes \\ \hline
-        16.jan & 8,416 & 1,155,609 & 1,353 bytes \\ \hline
-        18.jan & 7,589 & 938,903 & 456 bytes \\ \hline
-        19.jan & 7,075 & 872,150 & 1,593 bytes \\ \hline
-        24.jan & 9,395 & 1,129,302 & 1,593 bytes \\ \hline
-        25.jan & 5,818 & 734,000 & 1,583 bytes \\ \hline
-        26.jan & 8,240 & 1,056,828 & 1,593 bytes \\ \hline
-        30.jan & 9,285 & 1,067,084 & 456 bytes  \\ \hline
-        31.jan & 8,623 & 991,377 & 456 bytes \\ \hline
-        01.feb & 8,678 & 1,026 864 & 456 bytes \\ \hline
-        02.feb & 7,764 & 951,239 & 456 bytes \\ \hline
-        \textbf{Average} & \textbf{7,921} & \textbf{988,927} & \textbf{818 bytes} \\ \hline
-        \textbf{Std dev} & \textbf{1,101} & \textbf{124,838} & \textbf{533 bytes} \\ \hline
+        08.jan & 8,875  & 1,097,786 & 456 bytes   \\ \hline
+        09.jan & 7,948  & 1,057,936 & 456 bytes   \\ \hline
+        11.jan & 10,222 & 1,310,644 & 456 bytes   \\ \hline
+        16.jan & 10,014 & 1,358,615 & 1,353 bytes \\ \hline
+        18.jan & 9,185  & 1,137,586 & 456 bytes   \\ \hline
+        19.jan & 8,306  & 1,062,743 & 1,593 bytes \\ \hline
+        25.jan & 8,246  & 1,033,976 & 1,583 bytes \\ \hline
+        30.jan & 11,826 & 1,357,595 & 1,343 bytes  \\ \hline
+        31.jan & 10,464 & 1,205,006 & 456 bytes \\ \hline
+        01.feb & 10,124 & 1,219,206 & 456 bytes \\ \hline
     \end{tabular}
     \label{tab:MillCookingCalculations}
 \end{table}
 
+\begin{table}[H]
+    \centering
+    \caption{Mill Baseline Cooking Calculations}
+    \begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+        \textbf{Baseline} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        06.mar & 8,808  & 835,070   & 426 bytes \\ \hline
+        07.mar & 9,310  & 940,428   & 1,353 bytes \\ \hline
+        08.mar & 8,930  & 904,598   & 1,343 bytes \\ \hline
+        09.mar & 10,675 & 1,046,076 & 456 bytes \\ \hline
+        10.mar & 6,989  & 774,986   & 1,573 bytes \\ \hline
+        11.mar & 9,983  & 1,107,006 & 1,273 bytes \\ \hline
+        12.mar & 10,740 & 1,033,467 & 456 bytes \\ \hline
+        13.mar & 8,134  & 826,038   & 426 bytes \\ \hline
+        14.mar & 9,090  & 969,576   & 1,573 bytes \\ \hline
+        15.mar & 6,539  & 740,761   & 429 bytes \\ \hline
+    \end{tabular}
+    \label{tab:MillBaselineCookingCalculations}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Comparing Cooking and Baseline Calculations for Mill}
+    \begin{tabular}{c|l|l|l|l|}
+        \cline{2-5}
+        \multicolumn{1}{l|}{}                                              & \textbf{Type} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Event         & 9,521              & 1,184,109       & 861 bytes               \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{}                                             & Baseline      & 8,920              & 917,801         & 931 bytes                \\ \hline
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 1,221              & 125,182         & 529 bytes                 \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{}                                             & Baseline      & 1,404               & 122,928       &  527 bytes               \\ \hline          
+    \end{tabular}
+    \label{tab:MillComparingBaselineAndCookingCalculations}
+\end{table}
+
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{0.49\textwidth}
+    \begin{subfigure}{1\textwidth}
         \centering
         \includegraphics[width=1\hsize]{figures/Mill_Cooking_Calculations_Bytes.png} 
     \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
+    \begin{subfigure}{1\textwidth}
         \centering
         \includegraphics[width=1\hsize]{figures/Mill_Cooking_Calculations_Packets.png} 
     \end{subfigure}
@@ -677,127 +683,15 @@ The graphs in figure \ref{fig:MillCookingBytes} and \ref{fig:MillCookingPackets}
 \begin{figure}[H]
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_08.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_09.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_10.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_11.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_12.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_16.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_18.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_19.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_24.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_25.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_26.01.png}
-    \end{subfigure}
-    \hspace{0.6cm}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Bytes_30.01.png}
-    \end{subfigure}
-    \caption{Mill Cooking Events - Bytes}
-    \label{fig:MillCookingBytes}
-\end{figure}
-
-\begin{figure}[H]
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_08.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_09.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_10.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_11.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_12.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_16.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_18.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_19.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_24.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_26.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_26.01.png}
-    \end{subfigure}
-    \hspace{0.6cm}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Mill_Cooking_Packets_30.01.png}
-    \end{subfigure}
-    \caption{Mill Cooking Events - Packets}
-    \label{fig:MillCookingPackets}
-\end{figure}
-
-From the figures in \ref{fig:MillCookingBytes} and \ref{fig:MillCookingPackets} it is not possible to see a significant difference in the traffic when the event occurs to before and after the event. When looking at table \ref{tab:MillCookingCalculations}, the standard deviation shows that the values varies a lot. Packets varies from 5,818 to 9,457 packets and bytes varies from 1,218,558 to 734,000 bytes during the pcap for the event. The biggest packet sent switches between 456 bytes to around 1.500 bytes, therefore the average value here is a number close to the middle of those two numbers. Looking at the graphs in figure \ref{fig:MillCookingCalculations} shows how each event differs from each other and the average value. 
-\\\\
-The next step is to compare the figures and calculations from the events to the traffic captured from the baseline. Figure \ref{fig:MillCookingComparingBytes} and \ref{fig:MillCookingComparingPackets} compares the graphs for cooking from the actual events of Mill, marked in red, to the baseline capture of Mill, marked in blue. 
-
-\begin{figure}[H]
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Packets_08.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Mill_Cooking_Baseline_Packets_06.03.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize, colframe=blue]{figures/Mill_Cooking_Baseline_Packets_06.03.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Packets_10.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Packets_09.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
@@ -805,7 +699,7 @@ The next step is to compare the figures and calculations from the events to the 
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Packets_12.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Packets_11.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
@@ -813,7 +707,7 @@ The next step is to compare the figures and calculations from the events to the 
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Packets_18.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Packets_16.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
@@ -821,7 +715,7 @@ The next step is to compare the figures and calculations from the events to the 
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Packets_24.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Packets_18.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
@@ -829,7 +723,7 @@ The next step is to compare the figures and calculations from the events to the 
     \end{subfigure}
         \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Packets_26.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Packets_19.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
@@ -837,15 +731,75 @@ The next step is to compare the figures and calculations from the events to the 
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Packets_30.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Packets_25.01.png}
     \end{subfigure}
     \hspace{0.6cm}
     \begin{subfigure}[b]{0.47\textwidth}
     \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Mill_Cooking_Baseline_Packets_12.03.png}
         \end{subfigure}
-    \caption{Comparing Events and Baseline Packets for Cooking - Mill}
-    \label{fig:MillCookingComparingPackets}
+    \caption{Mill: Graphs from cooking events shown in packets with events in red and baseline in blue}
+    \label{fig:MillCookingPackets1}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Packets_30.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize, colframe=blue]{figures/Mill_Cooking_Baseline_Packets_13.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Packets_31.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Mill_Cooking_Baseline_Packets_14.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Packets_01.02.png}
+    \end{subfigure}
+    \hspace{1.1cm}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Mill_Cooking_Baseline_Packets_15.03.png}
+    \end{subfigure}
+    \caption{Mill: Continuing from Figure \ref{fig:MillCookingPackets1}}
+    \label{fig:MillCookingPackets2}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Bytes_30.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize, colframe=blue]{figures/Mill_Cooking_Baseline_Bytes_13.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Bytes_31.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Mill_Cooking_Baseline_Bytes_14.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Bytes_01.02.png}
+    \end{subfigure}
+    \hspace{1.1cm}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Mill_Cooking_Baseline_Bytes_15.03.png}
+    \end{subfigure}
+    \caption{Mill: First graphs from Figure \ref{fig:MillCookingBytes2}}
+    \label{fig:MillCookingBytes1}
 \end{figure}
 
 \begin{figure}[H]
@@ -859,7 +813,7 @@ The next step is to compare the figures and calculations from the events to the 
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Bytes_10.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Bytes_09.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
@@ -867,7 +821,7 @@ The next step is to compare the figures and calculations from the events to the 
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Bytes_12.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Bytes_11.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
@@ -875,7 +829,7 @@ The next step is to compare the figures and calculations from the events to the 
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Bytes_18.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Bytes_16.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
@@ -883,7 +837,7 @@ The next step is to compare the figures and calculations from the events to the 
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Bytes_24.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Bytes_18.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
@@ -891,7 +845,7 @@ The next step is to compare the figures and calculations from the events to the 
     \end{subfigure}
         \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Bytes_26.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Bytes_19.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
@@ -899,108 +853,86 @@ The next step is to compare the figures and calculations from the events to the 
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Bytes_30.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Cooking_Bytes_25.01.png}
     \end{subfigure}
     \hspace{0.6cm}
     \begin{subfigure}[b]{0.47\textwidth}
     \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Mill_Cooking_Baseline_Bytes_12.03.png}
         \end{subfigure}
-    \caption{Comparing Events and Baseline Bytes for Cooking - Mill}
-    \label{fig:MillCookingComparingBytes}
+    \caption{Mill: Graphs from cooking events shown in bytes with events in red and baseline in blue}
+    \label{fig:MillCookingBytes2}
 \end{figure}
 
-From the graphs in figure \ref{fig:MillCookingComparingBytes} and \ref{fig:MillCookingComparingPackets} it is hard to see differences from the baseline and event traffic. It can therefore be beneficial to look at the calculations and see if there are any differences here. Table \ref{tab:MillBaselineCookingCalculations} presents the same calculations as for the events, but on the corresponding baseline capture files. 
-
-\begin{table}[H]
-    \centering
-    \caption{Mill Baseline Cooking Calculations}
-    \begin{tabular}{|l|l|l|l|l|l|}
-    \hline
-        \textbf{Baseline} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
-        06.mar & 6,997 & 667,501 & 426 bytes \\ \hline
-        07.mar & 7,223 & 742,991 & 1,343 bytes \\ \hline
-        08.mar & 7,037 & 724,183 & 1,343 bytes \\ \hline
-        09.mar & 8,696 & 841,752 & 456 bytes \\ \hline
-        10.mar & 5,583 & 593,772 & 424 bytes \\ \hline
-        11.mar & 8,211 & 905,262 & 456 bytes \\ \hline
-        12.mar & 9,051 & 850,503 & 456 bytes \\ \hline
-        13.mar & 6,795 & 686,949 & 426 bytes \\ \hline
-        14.mar & 7,268 & 761,018 & 1,573 bytes \\ \hline
-        15.mar & 5,118 & 582,360 & 426 bytes \\ \hline
-        \textbf{Average} &  \textbf{7,198}  &  \textbf{735,629}  &  \textbf{733 bytes} \\ \hline
-        \textbf{Std dev}  &  \textbf{1,242}   &  \textbf{107,852}   &  \textbf{478 bytes} \\ \hline
-    \end{tabular}
-    \label{tab:MillBaselineCookingCalculations}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \caption{Comparing Cooking and Baseline Calculations for Mill}
-    \begin{tabular}{c|l|l|l|l|}
-        \cline{2-5}
-        \multicolumn{1}{l|}{}                                              & \textbf{Type} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Event         & 7,921              & 988,927        & 818 bytes               \\ \cline{2-5} 
-        \multicolumn{1}{|c|}{}                                             & Baseline      & 7,198              & 735,629         & 733 bytes                \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 1,101              & 124,838         & 533 bytes                 \\ \cline{2-5} 
-        \multicolumn{1}{|c|}{}                                             & Baseline      & 1,242               & 107,852        &  478 bytes               \\ \hline          
-    \end{tabular}
-    \label{tab:MillComparingBaselineAndCookingCalculations}
-\end{table}
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \includegraphics[width=1\hsize]{figures/Mill_Comparing_Cooking_Calculations_Bytes.png} 
-    \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \includegraphics[width=1\hsize]{figures/Mill_Comparing_Cooking_Calculations_Packets.png} 
-    \end{subfigure}
-    \caption{Comparing Cooking Calculations for Mill}
-    \label{fig:MillComparingCookingCalc
-    ulations}
-\end{figure}
+Comparing Table \ref{tab:MillCookingCalculations} and \ref{tab:MillBaselineCookingCalculations} shows that the amount of packets sent to and from the device is around the same amount and not a significant difference between the two. The average values for packets in Table \ref{tab:MillComparingBaselineAndCookingCalculations} also shows that the values are similar to each other. For bytes, the calculations shows that when an event is ongoing, the overall values are higher than for standard baseline traffic. The comparison in Table \ref{tab:MillComparingBaselineAndCookingCalculations} shows that the average value for events are 266,308 bytes higher. The same is presented in Figure \ref{fig:MillCookingCalculations} where there are a bigger difference in bytes than packets in events and baseline traffic. For biggest packet sent, the same pattern is visible in both Table \ref{tab:MillCookingCalculations} and \ref{tab:MillBaselineCookingCalculations} where the packet sizes varies from around 450 bytes to 1,550 bytes for events and baseline traffic over the same time. 
+\\\\
+The graphs in Figure \ref{fig:MillCookingPackets1} and \ref{fig:MillCookingPackets2} for packets and Figure \ref{fig:MillCookingBytes1} and \ref{fig:MillCookingBytes2} for bytes does not show a significant change in traffic pattern from when an event is ongoing in the graphs marked in red and the standard traffic pattern from the baseline in the graphs marked in blue. The variations the calculations gave in bytes from the events and baseline is not very visible in the graphs as they both vary a lot. However, knowing that more bytes are sent during the events, it is possible to see that more of the event graphs have higher spikes than the baseline, but this is not applicable for all events. 
 
 \newpage
 \subsection{Nedis}
-Table \ref{tab:NedisCookingCalculations} shows the calculations made on the cooking events for Nedis, including total amount of packeta and bytes and biggest packet sent within each event. The graphs in Figure \ref{fig:NedisCookingCalculations} presents both packets and bytes for the cooking event compared to the average value. The graphs in Figure \ref{fig:NedisCookingBytes} and \ref{fig:NedisCookingPackets} shows both bytes and packets for the first 10 of the cooking events. The area marked red on the graphs are when the event was ongoing.
+In Test Case 1: Cooking for the device Nedis, tables with numerical calculations are presented together with graphs of the traffic flow. In Table \ref{tab:NedisCookingCalculations} the total amount of packets and bytes including the biggest packet during the event are presented for each of the 10 cooking events. Table \ref{tab:NedisBaselineCookingCalculations} the same values are presented, but in regards of the baseline days. Table \ref{tab:NedisComparingBaselineAndCookingCalculations} compares the average values and standard deviation from the events and baseline for packets, bytes and biggest packet. Figure \ref{fig:NedisCookingCalculations} presents the calculations from Table \ref{tab:NedisCookingCalculations}, \ref{tab:NedisBaselineCookingCalculations} and \ref{tab:NedisComparingBaselineAndCookingCalculations} with packets and bytes together with the average value for both the event and baseline traffic to easier compare it. The graphical presentation of the traffic patterns during event are presented in Figure \ref{fig:NedisCookingPackets1} and \ref{fig:NedisCookingPackets2} for packets and in Figure \ref{fig:NedisCookingBytes1} and \ref{fig:NedisCookingBytes2} for bytes. In these figures, the corresponding graphs from the baseline traffic is also included to look for traffic changes during the events. In these figures, the graphs for events are placed on the left side of the figure and marked in red, while the baseline graphs are placed on the right side and marked in blue.    
 
 \begin{table}[H]
 \centering
 \caption{Nedis Cooking Calculations}
 \label{tab:NedisCookingCalculations}
-\begin{tabular}{|l|l|l|l|}
-\hline
-                   & \textbf{Packets} & \textbf{Bytes}     & \textbf{Biggest packet} \\ \hline
-08.jan             & 20,926           & 2,834,097          & 485 bytes               \\ \hline
-09.jan             & 21,766           & 3,202,040          & 424 bytes               \\ \hline
-10.jan             & 22,696           & 2,870,057          & 424 bytes               \\ \hline
-11.jan             & 22,770           & 3,306,458          & 424 bytes               \\ \hline
-12.jan             & 19,981           & 2,805,340          & 485 bytes               \\ \hline
-16.jan             & 20,702           & 3,082,977          & 485 bytes               \\ \hline
-18.jan             & 21,292           & 2,689,055          & 424 bytes               \\ \hline
-19.jan             & 16,247           & 2,500,650          & 424 bytes               \\ \hline
-24.jan             & 27,549           & 3,758,598          & 485 bytes               \\ \hline
-25.jan             & 17,759           & 2,308,623          & 424 bytes               \\ \hline
-26.jan             & 22,457           & 3,016,625          & 424 bytes               \\ \hline
-30.jan             & 19,563           & 2,540,731          & 424 bytes               \\ \hline
-31.jan             & 18,587           & 2,487,586          & 424 bytes               \\ \hline
-01.feb             & 20,844           & 2,878,197          & 424 bytes               \\ \hline
-02.feb             & 23,426           & 3,283,178          & 424 bytes               \\ \hline
-\textbf{Average}   & \textbf{21,104}  & \textbf{2,904,281} & \textbf{440 bytes}      \\ \hline
-\textbf{Std dev} & \textbf{2,667}   & \textbf{383,108}   & \textbf{28 bytes}         \\ \hline
-\end{tabular}
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+        \textbf{Events}    & \textbf{Packets} & \textbf{Bytes}     & \textbf{Biggest packet} \\ \hline
+        08.jan             & 24,494           & 3,318,519          & 485 bytes               \\ \hline
+        09.jan             & 26,787           & 3,870,361          & 424 bytes               \\ \hline
+        11.jan             & 24,381           & 3,550,947          & 424 bytes               \\ \hline
+        16.jan             & 26,035           & 3,895,071          & 485 bytes               \\ \hline
+        18.jan             & 25,398           & 3,233,845          & 424 bytes               \\ \hline
+        19.jan             & 20,857           & 3,242,594          & 424 bytes               \\ \hline
+        25.jan             & 24,233           & 3,095,693          & 424 bytes               \\ \hline
+        30.jan             & 24,867           & 3,257,812          & 424 bytes               \\ \hline
+        31.jan             & 23,882           & 3,179,117          & 424 bytes               \\ \hline
+        01.feb             & 25,397           & 3,477,014          & 424 bytes               \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Nedis Baseline Cooking Calculations}
+    \begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+        \textbf{Baseline} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        06.mar & 13,014 & 1,413,457 & 421 bytes \\ \hline
+        07.mar & 18,634 & 2,001,978 & 421 bytes \\ \hline
+        08.mar & 18,643 & 2,019,872 & 421 bytes \\ \hline
+        09.mar & 21,885 & 2,606,363 & 424 bytes \\ \hline
+        10.mar & 17,956 & 2,326,898 & 424 bytes \\ \hline
+        11.mar & 18,380 & 2,126,816 & 485 bytes \\ \hline
+        12.mar & 10,728 & 1,312,915 & 421 bytes \\ \hline
+        13.mar & 15,815 & 1,968,872 & 424 bytes \\ \hline
+        14.mar & 15,926 & 1,878,449 & 341 bytes \\ \hline
+        15.mar & 19,260 & 2,524,793 & 458 bytes \\ \hline
+    \end{tabular}
+    \label{tab:NedisBaselineCookingCalculations}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Comparing Cooking and Baseline Calculations for Nedis}
+    \begin{tabular}{c|l|l|l|l|}
+        \cline{2-5}
+        \multicolumn{1}{l|}{}                                              & \textbf{Type} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Event         & 24,633             & 3,412,097       & 436 bytes               \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{}                                             & Baseline      & 17,024             & 2,018,041       & 424 bytes                \\ \hline
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 1,595              & 281,705         & 26 bytes                 \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{}                                             & Baseline      & 3,248              & 420,982         & 36 bytes               \\ \hline          
+    \end{tabular}
+    \label{tab:NedisComparingBaselineAndCookingCalculations}
 \end{table}
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{0.49\textwidth}
+    \begin{subfigure}{1\textwidth}
         \centering
         \includegraphics[width=1\hsize]{figures/Nedis_Cooking_Calculations_Bytes.png} 
     \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
+    \begin{subfigure}{1\textwidth}
         \centering
         \includegraphics[width=1\hsize]{figures/Nedis_Cooking_Calculations_Packets.png} 
     \end{subfigure}
@@ -1011,127 +943,15 @@ Table \ref{tab:NedisCookingCalculations} shows the calculations made on the cook
 \begin{figure}[H]
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_08.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_09.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_10.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_11.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_12.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_16.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_18.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_19.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_24.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_25.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_26.01.png}
-    \end{subfigure}
-    \hspace{0.6cm}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Bytes_30.01.png}
-    \end{subfigure}
-    \caption{Nedis Cooking Events - Bytes}
-    \label{fig:NedisCookingBytes}
-\end{figure}
-
-\begin{figure}[H]
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_08.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_09.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_10.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_11.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_12.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_16.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_18.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_19.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_24.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_26.01.png}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_26.01.png}
-    \end{subfigure}
-    \hspace{0.6cm}
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=1.2\hsize]{figures/Nedis_Cooking_Packets_30.01.png}
-    \end{subfigure}
-    \caption{Nedis Cooking Events - Packets}
-    \label{fig:NedisCookingPackets}
-\end{figure}
-
-The graphs in Figure \ref{fig:NedisCookingBytes} and \ref{fig:NedisCookingPackets} does not show a significant change in traffic pattern during the event. The calculations in Table \ref{tab:NedisCookingCalculations} shows that the amount of packets does not vary that much with a standard deviation of 2,667 packets. The amount of bytes also has a small standard deviation, but the amount of bytes do vary from 2,308,623 to 3,306,458 bytes. The biggest packet for each event are either 424 or 485 bytes. The Figures in \ref{fig:NedisCookingCalculations} also shows that bytes and packets are close to the average value. 
-\\\\
-The next step is to compare the event calculations and graphs to the corresponding calculations and graphs from the baseline. Figure \ref{fig:NedisCookingComparingPackets} and \ref{fig:NedisCookingComparingBytes} compares these two, with the event graphs marked in red and the baseline graphs marked in blue, and compares for both packets and bytes. Table \ref{tab:NedisBaselineCookingCalculations} presents the same calculations for the baseline as Table \ref{tab:NedisCookingCalculations} does for the cooking events. Table \ref{tab:NedisComparingBaselineAndCookingCalculations} presents the average value and standard deviation of the baseline events and cooking events in a table to compare. Figure \ref{fig:NedisComparingCookingCalculations} gives a graphical comparison of baseline and cooking events with both packets and bytes.  
-\newpage
-\begin{figure}[H]
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Packets_08.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Cooking_Baseline_Packets_06.03.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize, colframe=blue]{figures/Nedis_Cooking_Baseline_Packets_06.03.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Packets_10.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Packets_09.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
@@ -1139,7 +959,7 @@ The next step is to compare the event calculations and graphs to the correspondi
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Packets_12.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Packets_11.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
@@ -1147,7 +967,7 @@ The next step is to compare the event calculations and graphs to the correspondi
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Packets_18.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Packets_16.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
@@ -1155,7 +975,7 @@ The next step is to compare the event calculations and graphs to the correspondi
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Packets_24.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Packets_18.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
@@ -1163,7 +983,7 @@ The next step is to compare the event calculations and graphs to the correspondi
     \end{subfigure}
         \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Packets_26.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Packets_19.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
@@ -1171,15 +991,75 @@ The next step is to compare the event calculations and graphs to the correspondi
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Packets_30.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Packets_25.01.png}
     \end{subfigure}
     \hspace{0.6cm}
     \begin{subfigure}[b]{0.47\textwidth}
     \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Cooking_Baseline_Packets_12.03.png}
         \end{subfigure}
-    \caption{Comparing Events and Baseline Packets for Cooking - Nedis}
-    \label{fig:NedisCookingComparingPackets}
+    \caption{Nedis: Graphs from cooking events shown in packets with events in red and baseline in blue}
+    \label{fig:NedisCookingPackets1}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Packets_30.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize, colframe=blue]{figures/Nedis_Cooking_Baseline_Packets_13.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Packets_31.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Cooking_Baseline_Packets_14.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Packets_01.02.png}
+    \end{subfigure}
+    \hspace{1.1cm}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Cooking_Baseline_Packets_15.03.png}
+    \end{subfigure}
+    \caption{Nedis: Continuing from Figure \ref{fig:NedisCookingPackets1}}
+    \label{fig:NedisCookingPackets2}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Bytes_30.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize, colframe=blue]{figures/Nedis_Cooking_Baseline_Bytes_13.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Bytes_31.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Cooking_Baseline_Bytes_14.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Bytes_01.02.png}
+    \end{subfigure}
+    \hspace{1.1cm}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Cooking_Baseline_Bytes_15.03.png}
+    \end{subfigure}
+    \caption{Nedis: First graphs from Figure \ref{fig:NedisCookingBytes2}}
+    \label{fig:NedisCookingBytes1}
 \end{figure}
 
 \begin{figure}[H]
@@ -1193,7 +1073,7 @@ The next step is to compare the event calculations and graphs to the correspondi
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Bytes_10.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Bytes_09.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
@@ -1201,7 +1081,7 @@ The next step is to compare the event calculations and graphs to the correspondi
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Bytes_12.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Bytes_11.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
@@ -1209,7 +1089,7 @@ The next step is to compare the event calculations and graphs to the correspondi
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Bytes_18.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Bytes_16.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
@@ -1217,7 +1097,7 @@ The next step is to compare the event calculations and graphs to the correspondi
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Bytes_24.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Bytes_18.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
@@ -1225,7 +1105,7 @@ The next step is to compare the event calculations and graphs to the correspondi
     \end{subfigure}
         \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Bytes_26.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Bytes_19.01.png}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
@@ -1233,66 +1113,20 @@ The next step is to compare the event calculations and graphs to the correspondi
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Bytes_30.01.png}
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Cooking_Bytes_25.01.png}
     \end{subfigure}
     \hspace{0.6cm}
     \begin{subfigure}[b]{0.47\textwidth}
     \centering
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Cooking_Baseline_Bytes_12.03.png}
         \end{subfigure}
-    \caption{Comparing Events and Baseline Bytes for Cooking - Nedis}
-    \label{fig:NedisCookingComparingBytes}
+    \caption{Nedis: Graphs from cooking events shown in bytes with events in red and baseline in blue}
+    \label{fig:NedisCookingBytes2}
 \end{figure}
 
-\begin{table}[]
-\centering
-\caption{Nedis Baseline Cooking Calculations}
-\label{tab:NedisBaselineCookingCalculations}
-\begin{tabular}{l|l|l|l|}
-\cline{2-4}
-                                       & \textbf{Packets}    & \textbf{Bytes}      & \textbf{Biggest packet} \\ \hline
-\multicolumn{1}{|l|}{06.mar}           & 9,976                & 1,083,371             & 421 bytes        \\ \hline
-\multicolumn{1}{|l|}{07.mar}           & 14,689               & 1,575,718             & 421 bytes         \\ \hline
-\multicolumn{1}{|l|}{08.mar}           & 14,348               & 1,580,885             & 421 bytes         \\ \hline
-\multicolumn{1}{|l|}{09.mar}           & 17,560               & 2,093,976             & 424 bytes         \\ \hline
-\multicolumn{1}{|l|}{10.mar}           & 13,786               & 1,794,198             & 421 bytes         \\ \hline
-\multicolumn{1}{|l|}{11.mar}           & 15,449               & 1,803,003             & 485 bytes         \\ \hline
-\multicolumn{1}{|l|}{12.mar}           & 7,967                & 987,680              & 421 bytes          \\ \hline
-\multicolumn{1}{|l|}{13.mar}           & 13,449               & 1,668,571             & 421 bytes         \\ \hline
-\multicolumn{1}{|l|}{14.mar}           & 12,093               & 1,408,301             & 341 bytes         \\ \hline
-\multicolumn{1}{|l|}{15.mar}           & 15,639               & 2,020,215             & 458 bytes         \\ \hline
-\multicolumn{1}{|l|}{\textbf{Average}} & \textbf{13,496}      & \textbf{1,601,592}  & \textbf{423 bytes} \\ \hline
-\multicolumn{1}{|l|}{\textbf{Std dev}} & \textbf{2,830} & \textbf{3,626,66} & \textbf{36 bytes}     \\ \hline
-\end{tabular}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \caption{Comparing Cooking and Baseline Calculations for Nedis}
-    \begin{tabular}{c|l|l|l|l|}
-        \cline{2-5}
-        \multicolumn{1}{l|}{}                                              & \textbf{Type} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Event         & 21,104              & 2,904,281        & 440 bytes               \\ \cline{2-5} 
-        \multicolumn{1}{|c|}{}                                             & Baseline      & 13,496              & 1,601,592         & 423 bytes                \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 2,667              & 383,108         & 28 bytes                 \\ \cline{2-5} 
-        \multicolumn{1}{|c|}{}                                             & Baseline      & 2.830               & 362,666        &  36 bytes               \\ \hline          
-    \end{tabular}
-    \label{tab:NedisComparingBaselineAndCookingCalculations}
-\end{table}
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \includegraphics[width=1\hsize]{figures/Nedis_Comparing_Cooking_Calculations_Bytes.png} 
-    \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \includegraphics[width=1\hsize]{figures/Nedis_Comparing_Cooking_Calculations_Packets.png} 
-    \end{subfigure}
-    \caption{Comparing Cooking Calculations for Nedis}
-    \label{fig:NedisComparingCookingCalculations}
-\end{figure}
+Comparing Table \ref{tab:NedisCookingCalculations} and \ref{tab:NedisBaselineCookingCalculations} shows overall that during the events, more packets and events are sent than during standard baseline traffic. While for the biggest packet during the cooking-time, there's not significant differences to when an event is ongoing. The same is shown in Table \ref{tab:NedisComparingBaselineAndCookingCalculations} where the average for both packets and bytes are higher during events. This is also visible in Figure \ref{fig:NedisCookingCalculations} where the blue marked bars are lower than the red marked graphs for events. 
+\\\\
+The graphs in Figure \ref{fig:NedisCookingPackets1} and \ref{fig:NedisCookingPackets2} gives the same results, that overall during an event the traffic pattern is different then for the baseline. For Figure \ref{fig:NedisCookingBytes1} and \ref{fig:NedisCookingBytes2} the difference is much clearer than for packets. The graphs for baseline are significantly lower in bytes sent and received to the device than when the event is ongoing. 
 
 \newpage
 \section{Test Case 2: Showering}
@@ -1678,6 +1512,7 @@ The showering event has been conducted 10 times and Table \ref{tab:ShoweringDate
 \subsection{Mill Sense}
 \subsection{Nedis}
 
+\newpage
 \section{Test Case 3: Window Open}
 This chapter presents the results and analysis conducted on Test Case 3: Window Open. 
 \subsection{General}
@@ -1698,6 +1533,7 @@ This chapter presents the results and analysis conducted on Test Case 3: Window 
 \subsection{Mill Sense}
 \subsection{Nedis}
 
+\newpage
 \newpage
 \section{Test Case 4: Weekends}
 This chapter presents the results and analysis conducted on Test Case 4: Weekends. 
@@ -1725,14 +1561,14 @@ For the weekend test for Netatmo, both calculations and graphs of the traffic ar
     \caption{Netatmo: Weekend Calculations for Home}
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
-        \textbf{Date}    & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest pkt} &     \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
-        13.01-15.01      & 31,640                 & 4,285,664              & 418 bytes              & 407 bytes                   & 418 bytes                            \\ \hline
-        27.01-29.01      & 25,465                 & 3,436,632              & 407 bytes              & 407 bytes                    & 154 bytes                           \\ \hline
-        03.02-05.02      & 24,887                 & 3,379,806              & 444 bytes              & 444 bytes                     & 396 bytes                           \\ \hline
-        17.02-19.02      & 23,654                 & 3,202,102              & 1,130 bytes            & 1,130 bytes             & 154 bytes                         \\ \hline
-        10.03-12.03      & 24,881                 & 3,372,230              & 407 bytes              & 407 bytes                    & 136 bytes                           \\ \hline
-        28.03-30.03      & 27,555                 & 3,743,121              & 407 bytes              & 407 bytes                    & 154 bytes                           \\ \hline
-        31.03-02.04      & 28,445                 & 3,852,003              & 418 bytes              & 407 bytes                    & 418 bytes                           \\ \hline
+        \textbf{Date} & \textbf{Packets} & \textbf{Bytes}  & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
+        13.01-15.01   & 31,640           & 4,285,664       & 407 bytes            & 418 bytes            \\ \hline
+        27.01-29.01   & 25,465           & 3,436,632       & 407 bytes            & 154 bytes            \\ \hline
+        03.02-05.02   & 24,887           & 3,379,806       & 444 bytes            & 396 bytes            \\ \hline
+        17.02-19.02   & 23,654           & 3,202,102       & 1,130 bytes          & 154 bytes            \\ \hline
+        10.03-12.03   & 24,881           & 3,372,230       & 407 bytes            & 136 bytes            \\ \hline
+        28.03-30.03   & 27,555           & 3,743,121       & 407 bytes            & 154 bytes            \\ \hline
+        31.03-02.04   & 28,445           & 3,852,003       & 407 bytes            & 418 bytes            \\ \hline
     \end{tabular}
     \label{tab:NetatmoHomeWeekends}
 \end{table}
@@ -1741,14 +1577,14 @@ For the weekend test for Netatmo, both calculations and graphs of the traffic ar
     \caption{Netatmo: Weekend Calculations for Gone}
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
-        \textbf{Date}        & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest pkt} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
-        23.12-25.12 & 22,367                 & 2,987,324              & 136 bytes          & 134 bytes               & 136 bytes                                \\ \hline
-        30.12-01.01 & 22,553                 & 3,012,868              & 136 bytes          & 134 bytes               & 136 bytes                                \\ \hline
-        20.01-22.01 & 24,631                 & 3,288,842              & 154 bytes          & 134 bytes               & 154 bytes                                \\ \hline
-        10.02-12.02 & 20,320                 & 2,715,486              & 136 bytes          & 134 bytes               & 136 bytes                                \\ \hline
-        24.02-26.02 & 21,332                 & 2,849,186              & 136 bytes          & 134 bytes               & 136 bytes                                \\ \hline
-        03.03-05.03 & 19,023                 & 2,538,937              & 136 bytes          & 134 bytes               & 136 bytes                                \\ \hline
-        17.03-19.03 & 23,905                 & 3,191,924              & 136 bytes          & 134 bytes               & 136 bytes                                \\ \hline
+        \textbf{Date} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
+        23.12-25.12   & 22,367           & 2,987,324      & 134 bytes            & 136 bytes            \\ \hline
+        30.12-01.01   & 22,553           & 3,012,868      & 134 bytes            & 136 bytes            \\ \hline
+        20.01-22.01   & 24,631           & 3,288,842      & 134 bytes            & 154 bytes            \\ \hline
+        10.02-12.02   & 20,320           & 2,715,486      & 134 bytes            & 136 bytes            \\ \hline
+        24.02-26.02   & 21,332           & 2,849,186      & 134 bytes            & 136 bytes            \\ \hline
+        03.03-05.03   & 19,023           & 2,538,937      & 134 bytes            & 136 bytes            \\ \hline
+        17.03-19.03   & 23,905           & 3,191,924      & 134 bytes            & 136 bytes            \\ \hline
     \end{tabular}
     \label{tab:NetatmoGoneWeekends}
 \end{table}
@@ -1757,11 +1593,11 @@ For the weekend test for Netatmo, both calculations and graphs of the traffic ar
     \caption{Netatmo: Comparing Weekend Values}
     \begin{tabular}{ll|l|l|l|l|l|}
         \cline{3-7}
-        &      & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest pkt} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
-    \multicolumn{1}{|l|}{\multirow{2}{*}{\textbf{Avg}}} & Home & 26,647           & 3,610,223      & 519 bytes                    & 516 bytes                 & 261 bytes                 \\ \cline{2-7} 
-    \multicolumn{1}{|l|}{}                                  & Gone & 22,019           & 2,940,652      & 139 bytes                    & 134 bytes                    & 139 bytes                 \\ \hline
-    \multicolumn{1}{|l|}{\multirow{2}{*}{\textbf{SD}}} & Home & 2,756            & 373,892        & 270 bytes                    & 271 bytes                 & 140 bytes                 \\ \cline{2-7} 
-    \multicolumn{1}{|l|}{}                                  & Gone & 1,963            & 262,109        & 7 bytes                      & 0 bytes                   & 7 bytes                   \\ \hline
+        &      & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
+    \multicolumn{1}{|l|}{\multirow{2}{*}{\textbf{Avg}}} & Home & 26,647          & 3,610,223    & 516 bytes                 & 261 bytes                 \\ \cline{2-7} 
+    \multicolumn{1}{|l|}{}                              & Gone & 22,019          & 2,940,652    & 134 bytes                    & 139 bytes                 \\ \hline
+    \multicolumn{1}{|l|}{\multirow{2}{*}{\textbf{SD}}} & Home & 2,756            & 373,892      & 271 bytes                 & 140 bytes                 \\ \cline{2-7} 
+    \multicolumn{1}{|l|}{}                             & Gone & 1,963            & 262,109      & 0 bytes                   & 7 bytes                   \\ \hline
     \end{tabular}
     \label{tab:NetatmoWeekends}
 \end{table}
@@ -2027,46 +1863,49 @@ The Figures in \ref{fig:NetatmoWeekendBytesandApp1} and \ref{fig:NetatmoWeekendB
 For weekend testing with the device, Mill Sense, Table \ref{tab:MillWeekendHome} and \ref{tab:MillWeekendGone} presents the calculations on the pcaps for respectively Home and Gone Weekends. Average and standard deviation values from the tables are combined and compared in Table \ref{tab:MillWeekends}. Graphs of traffic flow are presented in Figure \ref{fig:MillWeekendBytes} for bytes and in Figure \ref{fig:MillWeekendPackets} for packets. The graphs marked in green on the figures are Home Weekends and are placed on the left side of the figures, while the graphs marked in orange on the figures are Gone Weekends and placed on the right side of the figures. The graphs in the same figure all have the same maximum values for the y-axis so they are easily comparable.
 
 \begin{table}[H]
+    \centering
     \caption{Mill: Weekend Calculations for Home}
-    \begin{tabular}{|l|l|l|l|l|l|}
+    \begin{tabular}{|l|l|l|l|l|}
         \hline
-        \textbf{Date}    & \textbf{Total pkt} & \textbf{Total bytes} & \textbf{Biggest pkt} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
-        13.01-15.01      & 285,543            & 33,269,620           & 1,593 bytes          & 456 bytes            & 1,593 bytes          \\ \hline
-        27.01-29.01      & 240,434            & 29,179,764           & 1,593 bytes          & 456 bytes            & 1,593 bytes          \\ \hline
-        03.02-05.02      & 223,095            & 28,543,539           & 1,593 bytes          & 456 bytes            & 1,593 bytes          \\ \hline
-        17.02-19.02      & 237,964            & 25,637,948           & 1,583 bytes          & 456 bytes            & 1,583 bytes          \\ \hline
-        10.03-12.03      & 295,395            & 31,161,679           & 1,593 bytes          & 456 bytes            & 1,593 bytes          \\ \hline
-        28.03-30.03      & 342,001            & 39,951,155           & 456 bytes            & 456 bytes            & 421 bytes            \\ \hline
-        31.03-02.04      & 275,456            & 30,155,191           & 456 bytes            & 456 bytes            & 421 bytes            \\ \hline
+        \textbf{Date}    & \textbf{Total pkt} & \textbf{Total bytes} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
+        13.01-15.01      & 285,543            & 33,269,620           & 456 bytes            & 1,593 bytes          \\ \hline
+        27.01-29.01      & 240,434            & 29,179,764           & 456 bytes            & 1,593 bytes          \\ \hline
+        03.02-05.02      & 223,095            & 28,543,539           & 456 bytes            & 1,593 bytes          \\ \hline
+        17.02-19.02      & 237,964            & 25,637,948           & 456 bytes            & 1,583 bytes          \\ \hline
+        10.03-12.03      & 295,395            & 31,161,679           & 456 bytes            & 1,593 bytes          \\ \hline
+        28.03-30.03      & 342,001            & 39,951,155           & 456 bytes            & 421 bytes            \\ \hline
+        31.03-02.04      & 275,456            & 30,155,191           & 456 bytes            & 421 bytes            \\ \hline
     \end{tabular}
     \label{tab:MillHomeWeekends}
 \end{table}
 
 \begin{table}[H]
+    \centering
     \caption{Mill: Weekend Calculations for Gone}
-    \begin{tabular}{|l|l|l|l|l|l|}
+    \begin{tabular}{|l|l|l|l|l|}
         \hline
-        \textbf{Date}    & \textbf{Total pkt} & \textbf{Total bytes} & \textbf{Biggest pkt} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
-        23.12-25.12      & 259,516            & 34,066,162           & 456 bytes            & 456 bytes            & 421 bytes            \\ \hline
-        30.12-01.01      & 255,487            & 32,809,172           & 456 bytes            & 456 bytes            & 421 bytes            \\ \hline
-        20.01-22.01      & 256,455            & 29,417,721           & 456 bytes            & 456 bytes            & 421 bytes            \\ \hline
-        10.02-12.02      & 270,718            & 30,482,741           & 456 bytes            & 456 bytes            & 421 bytes            \\ \hline
-        24.02-26.02      & 218,536            & 25,525,312           & 456 bytes            & 456 bytes            & 421 bytes            \\ \hline
-        03.03-05.03      & 236,655            & 23,064,715           & 456 bytes            & 456 bytes            & 421 bytes            \\ \hline
-        17.03-19.03      & 278,146            & 28,612,487           & 456 bytes            & 456 bytes            & 421 bytes            \\ \hline
+        \textbf{Date}    & \textbf{Total pkt} & \textbf{Total bytes} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
+        23.12-25.12      & 259,516            & 34,066,162           & 456 bytes            & 421 bytes            \\ \hline
+        30.12-01.01      & 255,487            & 32,809,172           & 456 bytes            & 421 bytes            \\ \hline
+        20.01-22.01      & 256,455            & 29,417,721           & 456 bytes            & 421 bytes            \\ \hline
+        10.02-12.02      & 270,718            & 30,482,741           & 456 bytes            & 421 bytes            \\ \hline
+        24.02-26.02      & 218,536            & 25,525,312           & 456 bytes            & 421 bytes            \\ \hline
+        03.03-05.03      & 236,655            & 23,064,715           & 456 bytes            & 421 bytes            \\ \hline
+        17.03-19.03      & 278,146            & 28,612,487           & 456 bytes            & 421 bytes            \\ \hline
     \end{tabular}
     \label{tab:MillGoneWeekends}
 \end{table}
 
 \begin{table}[H]
+    \centering
     \caption{Mill: Comparing Weekend Values}
-    \begin{tabular}{ll|l|l|l|l|l|}
-        \cline{3-7}
-        \textbf{}                                           & \textbf{} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest pkt} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
-        \multicolumn{1}{|l|}{\multirow{2}{*}{\textbf{AVG}}} & Home      & 271,413          & 31,128,414     & 1,267 bytes          & 456 bytes            & 1,257 bytes          \\ \cline{2-7} 
-        \multicolumn{1}{|l|}{}                              & Gone      & 253,645          & 29,139,759     & 456 bytes            & 456 bytes            & 421 bytes            \\ \hline
-        \multicolumn{1}{|l|}{\multirow{2}{*}{\textbf{SD}}}  & Home      & 41,205           & 4,546,021      & 554 bytes            & 0 bytes              & 571 bytes            \\ \cline{2-7} 
-        \multicolumn{1}{|l|}{}                              & Gone      & 20,224           & 3,870,041      & 0 bytes              & 0 bytes              & 0 bytes              \\ \hline
+    \begin{tabular}{ll|l|l|l|l|}
+        \cline{3-6}
+        \textbf{}                                           & \textbf{} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
+        \multicolumn{1}{|l|}{\multirow{2}{*}{\textbf{Average}}} & Home      & 271,413          & 31,128,414      & 456 bytes            & 1,257 bytes          \\ \cline{2-7} 
+        \multicolumn{1}{|l|}{}                              & Gone      & 253,645          & 29,139,759      & 456 bytes            & 421 bytes            \\ \hline
+        \multicolumn{1}{|l|}{\multirow{2}{*}{\textbf{SD}}}  & Home      & 41,205           & 4,546,021      & 0 bytes              & 571 bytes            \\ \cline{2-7} 
+        \multicolumn{1}{|l|}{}                              & Gone      & 20,224           & 3,870,041       & 0 bytes              & 0 bytes              \\ \hline
     \end{tabular}
     \label{tab:MillWeekends}
 \end{table}
