@@ -1,5 +1,6 @@
 \chapter{Evaluation and Analysis Results}
 The evaluation and analysis result chapter will provide all gathered and analyzed data from the different test runned in this thesis. The chapter is divided into different subsections for each test case. 
+
 \section{General Procedure}
 Each event have gone through the same general procedure when starting evaluation and analysis. Figure \ref{fig:GeneralProcedure} shows an overview of the steps each event has been through to analyze. The results from each event are presented and explained in each sub-section and in some cases the general procedure have given insights to further analysis which is also covered in the sub-section. The steps of the general procedure are explained throughout this sub-chapter.
 
@@ -120,7 +121,7 @@ For the baseline graphs, it is possible to see that packets are sent continually
     \label{Fig:NetatmoBaselineOutandInboundBytes}
  \end{figure}
 
- \begin{figure}[H]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.7\textwidth}
         \includegraphics[width=\textwidth]{figures/Netatmo_Baseline_InboundPackets.png}
@@ -311,6 +312,13 @@ Even though the graphs for inbound and outbound traffic from Nedis looks more si
     \end{tabular}
     \label{tab:NedisBaselineCalculations}
 \end{table} 
+
+
+\subsection{Summarization and comparison}
+This subsection summarizes and compares the baseline traffic for all the three devices.
+
+
+
 
 
 \section{Test Case 1: Cooking}
@@ -1133,7 +1141,7 @@ The graphs in Figure \ref{fig:NedisCookingPackets1} and \ref{fig:NedisCookingPac
 This chapter presents the results and analysis conducted on Test Case 2: Showering. The first sub-section describes the general evaluation which is applicable for all the devices and the next three sub-sections presents the results and analysis for each of the devices separately. 
 \subsection{General}
 The showering event has been conducted 10 times and Table \ref{tab:ShoweringDates} presents the 10 different dates and exact times for when the event was ongoing.
-\begin{table}[!hbtp]
+\begin{table}[H]
     \centering
     \caption{Date and time for Test Case 2: Showering events}
     \begin{adjustbox}{width=1\textwidth} 
@@ -1163,6 +1171,7 @@ This gives the following filters added to create the pcaps for each event:
 
 \newpage
 \subsection{Netatmo Home Coach}
+For Netatmo, the 10 event packet captures for the showering event are presented both graphically in figures and numerically in tables in this subsection. First, three tables are presented with calculations from the packet captures. Table \ref{tab:NetatmoShowerCalculations} shows packets, bytes and the biggest packet in each packet capture for each of the shower events. Table \ref{tab:NetatmoBaselineShowerCalculations} presents the same calculations, but for the corresponding baseline files. In Table \ref{tab:NetatmoComparingBaselineAndShowerCalculations} the average and standard deviation values from Table \ref{tab:NetatmoShowerCalculations} and \ref{tab:NetatmoBaselineShowerCalculations} are compared to each other. In context of these three tables, two graphical presentations of total bytes and packets including the average values for events and baseline are presented to compare events from baseline traffic. Figure \ref{fig:NetatmoShowerPackets1} and \ref{fig:NetatmoShowerPackets2} gives the graphical presentation of the traffic flow during the showering times with packets sent and received on the y-axis. Figure \ref{fig:NetatmoShowerBytes1} and \ref{fig:NetatmoShowerBytes2} shows the same, but with bytes in the y-axis. The figures over the traffic flow all have the same minimum and maximum values on the y- and x-axis and event graphs are placed on the left side of the figure with a red frame, while baseline graphs are placed on the right side of the figure with a blue frame. 
 
 \begin{table}[H]
     \centering
@@ -1184,7 +1193,7 @@ This gives the following filters added to create the pcaps for each event:
     \label{tab:NetatmoShowerCalculations}
 \end{table}
 
-\begin{table}[!ht]
+\begin{table}[H]
     \centering
     \caption{Netatmo Baseline Shower Calculations}
     \begin{tabular}{|l|l|l|l|}
@@ -1416,9 +1425,15 @@ This gives the following filters added to create the pcaps for each event:
     \label{fig:NetatmoShowerBytes2}
 \end{figure}
 
+The number of packets and bytes are relatively similar for both events and baseline traffic which is shown in Figure \ref{fig:NetatmoShowerCalculations}. The average value is a bit lower for the baseline traffic, but not enough to see a significant change in amount of packets or bytes during the event. Even tough the average baseline traffic is less, several of the baseline days exceeds both packets and bytes for some of the event traffic captures. For biggest packet sent and received, both event and baseline traffic varies between around 150 bytes to 407 bytes. 
+\\\\
+For the graphs for the traffic flow, no distinct difference are seen in the figures for packets shown in Figure \ref{fig:NetatmoShowerPackets1} and \ref{fig:NetatmoShowerPackets2}. For bytes in Figure \ref{fig:NetatmoShowerBytes1} and \ref{fig:NetatmoShowerBytes2} several of the event graphs, marked in red, have higher spikes than the baseline graphs marked in blue. However, to things challenges the difference: the first is that a few of the baseline graphs also have spikes and a few of the event graphs are missing the spikes. The other one is that the spikes also occurs before the event has started and may not be connected to an event triggering. 
 
+\newpage
+\newpage
+\newpage
 \subsection{Mill Sense}
-
+The results from the showering events for Mill Sense are presented in this subsection. Table \ref{tab:MillShowerCalculations} presents the total amount of packets and bytes sent and received for the device and the biggest packet from each packet capture for each of the events. The same numbers are presented in Table \ref{tab:MillBaselineShowerCalculations} for the corresponding baseline captures. Table \ref{tab:MillComparingBaselineAndShowerCalculations} compares the average and standard deviation values for events in Table \ref{tab:MillShowerCalculations} and baseline in Table \ref{tab:MillBaselineShowerCalculations}. The total number of packets and bytes are also presented graphically in Figure \ref{fig:MillShowerCalculations}, including the average values. Events and baseline are included in the same figure to easier compare the values. Figure \ref{fig:MillShowerPackets1} and \ref{fig:MillShowerPackets2} shows the traffic flow during the events (placed on the left side of the figure and marked in red) and the baseline (placed on the right side of the figure and marked in blue) measured in number of packets. Figure \ref{fig:MillShowerBytes1} and \ref{fig:MillShowerBytes2} shows the same just measured in number of bytes. 
 \begin{table}[H]
     \centering
     \caption{Mill Showering Calculations}
@@ -1672,7 +1687,13 @@ This gives the following filters added to create the pcaps for each event:
     \label{fig:MillShowerBytes2}
 \end{figure}
 
+From Table \ref{tab:MillShowerCalculations} the number of packets are ranging from 7,775 to 9,819 packets sent and received during the events compared to the baseline which ranges from 5,968 to 10,151 packets shown in Table \ref{tab:MillBaselineShowerCalculations}. The baseline traffic have more variation than the event traffic but days where the total number of packets are higher, lower and similar to the event days. This also results in a higher standard deviation for the baseline shown in Table \ref{tab:MillComparingBaselineAndShowerCalculations}. For bytes, the same are shown, but the average value for the baseline is a lot smaller than for the events. As Table \ref{tab:MillBaselineShowerCalculations} shows, the bytes varies from 623,993 to 1,006,385 bytes, and in Table \ref{tab:MillShowerCalculations} the bytes varies from 909,992 to 1,166,768, which means that the average value for events are a lot higher than for the baseline. Although the average value is higher, some of the baseline event days also measure similar amounts of bytes sent and received even tough an event is not ongoing. This is also confirmed in Figures \ref{fig:MillShowerCalculations} where bytes for baseline are much lower than for events, but we also see events that are lower than baseline days. 
+\\\\
+In the figures with packets, in Figure \ref{fig:MillShowerPackets1} and \ref{fig:MillShowerPackets2}, and bytes, in Figure \ref{fig:MillShowerBytes1} and \ref{fig:MillShowerBytes2} no distinct differences are visible in the graphical representation of the traffic flows. 
+
+\newpage
 \subsection{Nedis}
+This subsection presents the results and analysis for Nedis during the showering event. The total amount of packets, bytes and the biggest packet during the packet captures are presented in Table \ref{tab:NedisShoweringCalculations} for the events and in Table \ref{tab:NedisBaselineShowerCalculations} for the corresponding baseline files. Table \ref{tab:NedisComparingBaselineAndShowerCalculations} compares the average and standard deviation values calculated for the events and baseline. Figure \ref{fig:NedisShowerCalculations} shows a graphical presentation of the total number of bytes and packets during the events and baseline in the same figure with average values included. In Figure \ref{fig:NedisShowerPackets1} and \ref{fig:NedisShowerPackets2} a graphical presentation of the traffic flow with number of packets are presented. The same view is presented in Figure \ref{fig:NedisShowerBytes1} and \ref{fig:NedisShowerBytes2} with number of bytes as the y-axis. Both of theses figures have the event graphs placed on the left side of the figure framed in red, while the baseline graphs are placed on the right side of the figure framed in blue to compare to each other. 
 
 \begin{table}[H]
 \centering
@@ -1680,17 +1701,17 @@ This gives the following filters added to create the pcaps for each event:
 \label{tab:NedisShoweringCalculations}
     \begin{tabular}{|l|l|l|l|}
         \hline
-        \textbf{Events}    & \textbf{Packets} & \textbf{Bytes}     & \textbf{Biggest packet} \\ \hline
-        08.jan             & 28,069           & 3,720,194          & 485 bytes               \\ \hline
-        09.jan             & 23,156           & 3,395,004          & 424 bytes               \\ \hline
-        11.jan             & 23,368           & 3,025,569          & 424 bytes               \\ \hline
-        16.jan             & 21,026           & 2,598,912          & 485 bytes               \\ \hline
-        18.jan             & 18,385           & 2,091,914          & 458 bytes               \\ \hline
-        19.jan             & 25,416           & 3,258,851          & 421 bytes               \\ \hline
-        25.jan             & 25,092           & 2,459,011          & 458 bytes               \\ \hline
-        30.jan             & 22,415           & 3,302,325          & 485 bytes               \\ \hline
-        31.jan             & 18,393           & 2,364,979          & 424 bytes               \\ \hline
-        01.feb             & 20,306           & 2,461,409          & 485 bytes               \\ \hline
+        \textbf{Events} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        08.jan          & 28,069           & 3,720,194      & 485 bytes               \\ \hline
+        09.jan          & 23,156           & 3,395,004      & 424 bytes               \\ \hline
+        11.jan          & 23,368           & 3,025,569      & 424 bytes               \\ \hline
+        16.jan          & 21,026           & 2,598,912      & 485 bytes               \\ \hline
+        18.jan          & 18,385           & 2,091,914      & 458 bytes               \\ \hline
+        19.jan          & 25,416           & 3,258,851      & 421 bytes               \\ \hline
+        25.jan          & 25,092           & 2,459,011      & 458 bytes               \\ \hline
+        30.jan          & 22,415           & 3,302,325      & 485 bytes               \\ \hline
+        31.jan          & 18,393           & 2,364,979      & 424 bytes               \\ \hline
+        01.feb          & 20,306           & 2,461,409      & 485 bytes               \\ \hline
     \end{tabular}
 \end{table}
 
@@ -1700,16 +1721,16 @@ This gives the following filters added to create the pcaps for each event:
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
         \textbf{Baseline} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
-        06.mar &  &  & 421 bytes \\ \hline
-        07.mar &  &  & 421 bytes \\ \hline
-        08.mar &  &  & 421 bytes \\ \hline
-        09.mar &  &  & 424 bytes \\ \hline
-        10.mar &  &  & 424 bytes \\ \hline
-        11.mar &  &  & 485 bytes \\ \hline
-        12.mar &  &  & 421 bytes \\ \hline
-        13.mar &  &  & 424 bytes \\ \hline
-        14.mar &  &  & 341 bytes \\ \hline
-        15.mar &  &  & 458 bytes \\ \hline
+        06.mar & 12,495 & 1,534,872 & 522 bytes \\ \hline
+        07.mar & 18,342 & 2,483,719 & 522 bytes \\ \hline
+        08.mar & 18,318 & 2,116,146 & 424 bytes \\ \hline
+        09.mar & 14,639 & 1,865,223 & 522 bytes \\ \hline
+        10.mar & 9,893  & 1,434,033 & 522 bytes \\ \hline
+        11.mar & 6,092  & 779,215   & 426 bytes \\ \hline
+        12.mar & 10,736 & 1,273,551 & 426 bytes \\ \hline
+        13.mar & 13,478 & 1,649,747 & 424 bytes \\ \hline
+        14.mar & 14,239 & 1,668,084 & 522 bytes \\ \hline
+        15.mar & 22,383 & 2,710,729 & 522 bytes \\ \hline
     \end{tabular}
     \label{tab:NedisBaselineShowerCalculations}
 \end{table}
@@ -1720,10 +1741,10 @@ This gives the following filters added to create the pcaps for each event:
     \begin{tabular}{c|l|l|l|l|}
         \cline{2-5}
         \multicolumn{1}{l|}{}                                              & \textbf{Type} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Event         & 24,633             & 3,412,097       & 436 bytes               \\ \cline{2-5} 
-        \multicolumn{1}{|c|}{}                                             & Baseline      & 17,024             & 2,018,041       & 424 bytes                \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 1,595              & 281,705         & 26 bytes                 \\ \cline{2-5} 
-        \multicolumn{1}{|c|}{}                                             & Baseline      & 3,248              & 420,982         & 36 bytes               \\ \hline          
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Event         & 22,563             & 2,867,817       & 455 bytes               \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{}                                             & Baseline      & 14,062             & 1,752,432       & 483 bytes                \\ \hline
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 3,130              & 540,631         & 29 bytes                 \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{}                                             & Baseline      & 4,723              & 571,269         & 50 bytes               \\ \hline          
     \end{tabular}
     \label{tab:NedisComparingBaselineAndShowerCalculations}
 \end{table}
@@ -1861,7 +1882,7 @@ This gives the following filters added to create the pcaps for each event:
         \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Shower_Baseline_Bytes_15.03.png}
     \end{subfigure}
     \caption{Nedis: First graphs from Figure \ref{fig:NedisShowerBytes2}}
-    \label{fig:NediShowerBytes1}
+    \label{fig:NedisShowerBytes1}
 \end{figure}
 
 \begin{figure}[H]
@@ -1926,28 +1947,791 @@ This gives the following filters added to create the pcaps for each event:
     \label{fig:NedisShowerBytes2}
 \end{figure}
 
+Comparing the values for both packets and bytes in Figure \ref{tab:NedisShoweringCalculations} and \ref{tab:NedisBaselineShowerCalculations} shows that during the events, most of the values are a lot higher than for the baseline calculations. For event, the packets varies from 18,385 to 28,069 and bytes from 2,091,914 to 3,720,194 bytes. However, there are values from the baseline that matches the range of the event values, such as for 7th, 8th and 15th of March where the values for packets are over 18,000 and 2,000,000 for bytes. For the biggest packet sent, the baseline have higher overall values compared to the event values, where baseline are mostly around 500 bytes and events are lower than 500 bytes for every day. The average values also shows that the event values are higher than the baseline values for both packets and bytes. The difference in both average values and overall for events and baseline are significantly shown in Figure \ref{fig:NedisShowerCalculations} where both packets and bytes are much lower for baseline than events. 
+\\\\
+Looking at the graphs in Figure \ref{fig:NedisShowerPackets1} and \ref{fig:NedisShowerPackets2} the difference in number of packets are visible. However, it does not look like the number of packets changes when the shower event starts, but are just higher during several of those days. In these figures, one can also see that some of the baseline days looks like events as the calculations in the tables also showed. For bytes in Figure \ref{fig:NedisShowerBytes1} and \ref{fig:NedisShowerBytes2}, the results shows the same as for packets. 
+
 \newpage
 \section{Test Case 3: Window Open}
 This chapter presents the results and analysis conducted on Test Case 3: Window Open. 
 \subsection{General}
-\begin{table}[!hbtp]
+Test case 3: Window Open has been conducted 10 times over the course of 10 different days. The days and timings for the events are presented in Table \ref{tab:WindowDates}.
+
+\begin{table}[H]
     \centering
     \caption{Date and time for Test Case 3: Window Open events}
     \begin{adjustbox}{width=1\textwidth} 
-            \begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
-                \cline{2-16}
-                & 08.01 & 09.01 & 10.01 & 11.01 & 12.01 & 16.01 & 18.01 & 19.01 & 23.01 & 24.01 & 25.01 & 30.01 & 31.01 & 01.02 & 02.02 \\ \hline
-                \multicolumn{1}{|l|}{Started event}  & 23:00 & 23:00 & 23:00 & 22:50 & 23:00 & 23:10 & 23:15 & 23:02 & 22:59 & 22:59 & 22:59 & 23:00 & 22:59 & 22:59 & 22:59 \\ \hline
-                \multicolumn{1}{|l|}{Finished event} & 07:00 & 07:00 & 07:00 & 07:00 & 07:00 & 06:56 & 07:09 & 06:59 & 06:55 & 06:57 & 06:55 & 06:56 & 07:00 & 06:59 & 06:59 \\ \hline
+            \begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|}
+                \cline{2-11}
+                & 08.01 & 09.01 & 11.01 & 16.01 & 18.01 & 19.01 & 25.01 & 30.01 & 31.01 & 01.02 \\ \hline
+                \multicolumn{1}{|l|}{Started event}  & 23:00 & 23:00 & 22:50 & 23:10 & 23:15 & 23:02 & 22:59 & 23:00 & 22:59 & 22:59 \\ \hline
+                \multicolumn{1}{|l|}{Finished event} & 07:00 & 07:00 & 07:00 & 06:56 & 07:09 & 06:59 & 06:55 & 06:56 & 07:00 & 06:59 \\ \hline
             \end{tabular}
     \end{adjustbox}
     \label{tab:WindowDates}
 \end{table}
-\subsection{Netatmo Home Coach}
-\subsection{Mill Sense}
-\subsection{Nedis}
+
+To be able to compare the events to normal standby traffic, the baseline capture has been used within the same timings as for the actual events. To easier compare the events with each other and against the baseline, all packet captures have been filtered with the same start and finish time. Due to time limitations, the baseline only includes 9 full nights and therefore only 9 corresponding baseline packet captures have been made and used for comparison in this section. To ensure that all events have at least 30 minutes before and after the event was ongoing, the earliest time for starting and the latest time for finishing the event has been used to calculate the start and finish times for the files. The timings are extracted from Table \ref{tab:WindowDates} and presented in the list beneath: 
+
+\begin{itemize}
+    \item Earliest Event Start: 22:50
+    \item Latest Event Finished: 07:09
+    \item Packet Capture Files Start: 22:20
+    \item Packet Capture Files End: 07:39
+\end{itemize}
+
+This gives the following filters added to create the pcaps for each event:
+\begin{itemize}
+    \item frame.time >= "Month Date, Year 22:20:00" && frame.time <= "Month Date, Year 07:39:00"
+\end{itemize}
+
+The next subsections presents the results and analysis for the three different devices included in this thesis research. As they are all equal in their setup of presenting the results, an explanation are included here instead of at the beginning of each subsection for each device. The results are presented in both graphically and with calculations. The calculations are presented in three different tables and in one figure, while the graphically presentations are included in the rest of the figures in the subsections. The first two tables in each subsection are a table including total amount of packet and bytes sent and received to that particular device during the event with the last column including an extract of the biggest packet during the packet captures, regardless of if its sent or received by the device. These tables presents these values for each of the event and baseline dates for the device. The next table, presents the average and standard deviation values from the first two tables with all the columns included to easier compare the two to each other. Then a figure is used to present the total number of bytes and packets sent and received from the device for each of the event and baseline files in the same figure. The average values are also included here. 
+\\\\
+Each device then has a graphical presentation of the traffic flow presented in four different figures. The first two figures are with the amount of packets as the scale on the y-axis, while the two last are with the amount of bytes as the scale on the y-axis. All figures within the same category, meaning packet or bytes for a specific device has the same minimum and maximum values for bytes or packets on the y-axis and the same start and finish time on the x-axis. To be able to compare events against baseline, both traffic flows are included in the same figure, where events are placed on the left side while baseline are placed on the right side of every figure. The events are framed in a red color and the baseline in a blue color to be able to separate them even further. At the end of each subsection, a few paragraphs are given to comment on the results and show the analysis. 
 
 \newpage
+\subsection{Netatmo Home Coach}
+
+\begin{table}[H]
+    \centering
+    \caption{Netatmo Window Calculations}
+    \begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+        \textbf{Event dates} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        08.jan & 4,716 & 641,245 & 407 bytes\\ \hline
+        09.jan & 4,026 & 544,344 & 407 bytes \\ \hline
+        11.jan & 5,149 & 697,920 & 407 bytes\\ \hline
+        16.jan & 4,493 & 608,029 & 407 bytes\\ \hline
+        18.jan & 4,165 & 565,885 & 407 bytes\\ \hline
+        19.jan & 3,877 & 527,113 & 407 bytes \\ \hline
+        25.jan & 4,460 & 605,296 & 407 bytes \\ \hline
+        30.jan & 3,745 & 509,093 & 407 bytes \\ \hline
+        31.jan & 3,494 & 468,922 & 407 bytes \\ \hline
+        01.feb & 3,858 & 522,632 & 407 bytes \\ \hline
+    \end{tabular}
+    \label{tab:NetatmoWindowCalculations}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Netatmo Baseline Window Open Calculations}
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+        \textbf{Baseline} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        06.mar & 3,447 & 460,531 & 387 bytes\\ \hline
+        07.mar & 4,356 & 591,234 & 407 bytes\\ \hline
+        08.mar & 4,373 & 587,975 & 407 bytes \\ \hline
+        09.mar & 4,513 & 609,590 & 407 bytes \\ \hline
+        10.mar & 4,637 & 631,232 & 407 bytes \\ \hline
+        11.mar & 4,010 & 545,391 & 407 bytes \\ \hline
+        12.mar & 3,815 & 520,289 & 407 bytes \\ \hline
+        13.mar & 3,571 & 478,194 & 407 bytes \\ \hline
+        14.mar & 3,716 & 503,515 & 407 bytes \\ \hline
+    \end{tabular}
+    \label{tab:NetatmoBaselineWindowCalculations}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Comparing Window Open and Baseline Calculations for Netatmo}
+    \begin{tabular}{c|l|l|l|l|}
+        \cline{2-5}
+        \multicolumn{1}{l|}{}                                              & \textbf{Type} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Event         & 4,198            & 569,048        & 407 bytes               \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{}                                             & Baseline      & 4,049            & 547,550        & 405 bytes                \\ \hline
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 503              & 68,966         & 0 bytes                 \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{}                                             & Baseline      & 436              & 60,687         & 7 bytes               \\ \hline          
+    \end{tabular}
+    \label{tab:NetatmoComparingBaselineAndWindowCalculations}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{1\textwidth}
+       \centering
+       \includegraphics[width=1\hsize]{figures/Netatmo_Window_Calculations_Packets.png} 
+    \end{subfigure}
+    \begin{subfigure}{1\textwidth}
+        \centering
+        \includegraphics[width=1\hsize]{figures/Netatmo_Window_Calculations_Bytes.png} 
+    \end{subfigure}
+    \caption{Netatmo: Graphical presentation of window open calculations with packets and bytes, including average value extracted from Table \ref{tab:NetatmoWindowCalculations}}
+    \label{fig:NetatmoWindowCalculations}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Window_Packets_08.01-09.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize, colframe=blue]{figures/Netatmo_Window_Baseline_Packets_06.03-07.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Window_Packets_09.01-10.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Window_Baseline_Packets_07.03-08.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Window_Packets_11.01-12.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Window_Baseline_Packets_08.03-09.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Window_Packets_16.01-17.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Window_Baseline_Packets_09.03-10.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Window_Packets_18.01-19.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Window_Baseline_Packets_10.03-11.03.png}
+    \end{subfigure}
+        \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Window_Packets_19.01-20.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Window_Baseline_Packets_11.03-12.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Window_Packets_25.01-26.01.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Window_Baseline_Packets_12.03-13.03.png}
+        \end{subfigure}
+    \caption{Netatmo: Graphs from window open events shown in packets with events in red and baseline in blue}
+    \label{fig:NetatmoWindowPackets1}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Window_Packets_30.01-31.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize, colframe=blue]{figures/Netatmo_Window_Baseline_Packets_13.03-14.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Window_Packets_31.01-01.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Window_Baseline_Packets_14.03-15.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Window_Packets_01.02-02.02.png}
+    \end{subfigure}
+    \caption{Netatmo: Continuing from Figure \ref{fig:NetatmoWindowPackets1}}
+    \label{fig:NetatmoWindowPackets2}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Window_Bytes_30.01-31.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize, colframe=blue]{figures/Netatmo_Window_Baseline_Bytes_13.03-14.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Window_Bytes_31.01-01.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Window_Baseline_Bytes_14.03-15.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Window_Bytes_01.02-02.02.png}
+    \end{subfigure}
+    \caption{Netatmo: First graphs from Figure \ref{fig:NetatmoWindowBytes2}}
+    \label{fig:NetatmoWindowBytes1}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Window_Bytes_08.01-09.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Window_Baseline_Bytes_06.03-07.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Window_Bytes_09.01-10.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Window_Baseline_Bytes_07.03-08.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Window_Bytes_11.01-12.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Window_Baseline_Bytes_08.03-09.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Window_Bytes_16.01-17.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Window_Baseline_Bytes_09.03-10.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Window_Bytes_18.01-19.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Window_Baseline_Bytes_10.03-11.03.png}
+    \end{subfigure}
+        \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Window_Bytes_19.01-20.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Window_Baseline_Bytes_11.03-12.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Netatmo_Window_Bytes_25.01-26.01.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Netatmo_Window_Baseline_Bytes_12.03-13.03.png}
+        \end{subfigure}
+    \caption{Netatmo: Graphs from window open events shown in bytes with events in red and baseline in blue}
+    \label{fig:NetatmoWindowBytes2}
+\end{figure}
+
+Comparing Table \ref{tab:NetatmoWindowCalculations} for events and Table \ref{tab:NetatmoBaselineWindowCalculations} for baseline files, shows that all the columns are similar. This is also easily visible in Figure \ref{fig:NetatmoWindowCalculations} where total number of packets and bytes are very similar. For both events and baseline, the number of packets are around 3,000-5,000 packets and for bytes they are around 400,000 to 600,000 bytes. The same is shown in Table \ref{tab:NetatmoComparingBaselineAndWindowCalculations} where the average values for packets, bytes and biggest packets are close to each other. Looking at the graphs in Figure \ref{fig:NetatmoWindowPackets1} and \ref{fig:NetatmoWindowPackets2}, there are no significant differences in the graphs for the events compared to the baseline on the right side. The same result is found for bytes in Figure \ref{fig:NetatmoWindowBytes1} and \ref{fig:NetatmoWindowBytes2}. 
+
+\newpage
+\subsection{Mill Sense}
+
+\begin{table}[H]
+    \centering
+    \caption{Mill Window Open Calculations}
+    \begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+        \textbf{Events} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        08.jan & 49,204 & 6,159,905 & 1,353 bytes   \\ \hline
+        09.jan & 49,515 & 6,055,179 & 1,545 bytes   \\ \hline
+        11.jan & 45,680 & 4,998,933 & 1,515 bytes   \\ \hline
+        16.jan & 45,559 & 4,881,294 & 1,353 bytes \\ \hline
+        18.jan & 56,021 & 7,122,722 & 1,593 bytes   \\ \hline
+        19.jan & 40,090 & 4,736,715 & 1,573 bytes \\ \hline
+        25.jan & 52,728 & 6,166,428 & 1,421 bytes \\ \hline
+        30.jan & 44,015 & 5,089,165 & 1,589 bytes  \\ \hline
+        31.jan & 40,616 & 4,501,888 & 1,353 bytes \\ \hline
+        01.feb & 37,963 & 4,030,897 & 456 bytes \\ \hline
+    \end{tabular}
+    \label{tab:MillWindowCalculations}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Mill Baseline Window Open Calculations}
+    \begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+        \textbf{Baseline} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        06.mar & 42,541 & 4,463,880 & 456 bytes \\ \hline
+        07.mar & 44,018 & 4,634,112 & 800 bytes \\ \hline
+        08.mar & 51,730 & 5,307,249 & 1,583 bytes \\ \hline
+        09.mar & 56,022 & 5,568,551 & 1,343 bytes \\ \hline
+        10.mar & 57,262 & 6,237,897 & 1,593 bytes \\ \hline
+        11.mar & 49,145 & 4,959,292 & 1,593 bytes \\ \hline
+        12.mar & 44,181 & 4,523,140 & 1,583 bytes \\ \hline
+        13.mar & 49,628 & 5,238,854 & 456 bytes \\ \hline
+        14.mar & 42,318 & 4,449,260 & 1,589 bytes \\ \hline
+    \end{tabular}
+    \label{tab:MillBaselineWindowCalculations}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Comparing Window Open and Baseline Calculations for Mill}
+    \begin{tabular}{c|l|l|l|l|}
+        \cline{2-5}
+        \multicolumn{1}{l|}{}                                              & \textbf{Type} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Event         & 46,139           & 5,374,313      & 1,353 bytes             \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{}                                             & Baseline      & 48,538           & 5,042,471      & 1,222 bytes              \\ \hline
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 5,782            & 954,686        & 338 bytes              \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{}                                             & Baseline      & 5,678            & 606,684        & 505 bytes             \\ \hline          
+    \end{tabular}
+    \label{tab:MillComparingBaselineAndWindowCalculations}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{1\textwidth}
+        \centering
+        \includegraphics[width=1\hsize]{figures/Mill_Window_Calculations_Bytes.png} 
+    \end{subfigure}
+    \begin{subfigure}{1\textwidth}
+        \centering
+        \includegraphics[width=1\hsize]{figures/Mill_Window_Calculations_Packets.png} 
+    \end{subfigure}
+    \caption{Window open Calculations for Mill}
+    \label{fig:MillWindowCalculations}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Window_Packets_08.01-09.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize, colframe=blue]{figures/Mill_Window_Baseline_Packets_06.03-07.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Window_Packets_09.01-10.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Mill_Window_Baseline_Packets_07.03-08.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Window_Packets_11.01-12.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Mill_Window_Baseline_Packets_08.03-09.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Window_Packets_16.01-17.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Mill_Window_Baseline_Packets_09.03-10.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Window_Packets_18.01-19.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Mill_Window_Baseline_Packets_10.03-11.03.png}
+    \end{subfigure}
+        \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Window_Packets_19.01-20.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Mill_Window_Baseline_Packets_11.03-12.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Window_Packets_25.01-26.01.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Mill_Window_Baseline_Packets_12.03-13.03.png}
+        \end{subfigure}
+    \caption{Mill: Graphs from window open events shown in packets with events in red and baseline in blue}
+    \label{fig:MillWindowPackets1}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Window_Packets_30.01-31.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize, colframe=blue]{figures/Mill_Window_Baseline_Packets_13.03-14.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Window_Packets_31.01-01.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Mill_Window_Baseline_Packets_14.03-15.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Window_Packets_01.02-02.02.png}
+    \end{subfigure}
+    \caption{Mill: Continuing from Figure \ref{fig:MillWindowPackets1}}
+    \label{fig:MillWindowPackets2}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Window_Bytes_30.01-31.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize, colframe=blue]{figures/Mill_Window_Baseline_Bytes_13.03-14.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Window_Bytes_31.01-01.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Mill_Window_Baseline_Bytes_14.03-15.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Window_Bytes_01.02-02.02.png}
+    \end{subfigure}
+    \caption{Mill: First graphs from Figure \ref{fig:MillWindowBytes2}}
+    \label{fig:MillWindowBytes1}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Window_Bytes_08.01-09.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Mill_Window_Baseline_Bytes_06.03-07.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Window_Bytes_09.01-10.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Mill_Window_Baseline_Bytes_07.03-08.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Window_Bytes_11.01-12.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Mill_Window_Baseline_Bytes_08.03-09.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Window_Bytes_16.01-17.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Mill_Window_Baseline_Bytes_09.03-10.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Window_Bytes_18.01-19.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Mill_Window_Baseline_Bytes_10.03-11.03.png}
+    \end{subfigure}
+        \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Window_Bytes_19.01-20.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Mill_Window_Baseline_Bytes_11.03-12.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Mill_Window_Bytes_25.01-26.01.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Mill_Window_Baseline_Bytes_12.03-13.03.png}
+        \end{subfigure}
+    \caption{Mill: Graphs from window open events shown in bytes with events in red and baseline in blue}
+    \label{fig:MillWindowBytes2}
+\end{figure}
+
+Comparing Table \ref{tab:MillWindowCalculations} and \ref{tab:MillBaselineWindowCalculations} shows that the number of packets sent during the events and baseline do not have a significant difference. The packets both varies from around 40,000 to 60,000 when an event is ongoing or not. The same are shown in bytes in the next columns. The biggest packet sent are also similar in the event and baseline files where most of the biggest packets are over 1,000 bytes, but both cases have packets that are also under that. This is also shown in overall for average values in Table \ref{tab:MillComparingBaselineAndWindowCalculations} where packets, bytes and biggest packet are similar values. The graphs in Figure \ref{fig:MillWindowCalculations} gives the same result where packets and bytes varies similarly for both bytes and packets sent and received, and how equal the average values for the two cases are. 
+\\\\
+The traffic flows with packets in Figure \ref{fig:MillWindowPackets1} and \ref{fig:MillWindowPackets2} do not show a significant difference between the events on the left side, compared to the baseline packets on the right side of the figure. The same result are found for bytes in Figure \ref{fig:MillWindowBytes1} and \ref{fig:MillWindowBytes2}. 
+
+\newpage
+\subsection{Nedis}
+
+\begin{table}[H]
+\centering
+\caption{Nedis Window Open Calculations}
+\label{tab:NedisWindowCalculations}
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+        \textbf{Events} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        08.jan          & 131,961          & 18,088,388     & 424 bytes               \\ \hline
+        09.jan          & 121,273          & 15,204,877     & 424 bytes               \\ \hline
+        11.jan          & 94,682           & 9,432,611      & 421 bytes               \\ \hline
+        16.jan          & 83,344           & 8,875,795      & 424 bytes               \\ \hline
+        18.jan          & 94,106           & 10,706,230     & 458 bytes               \\ \hline
+        19.jan          & 97,324           & 12,565,538     & 485 bytes               \\ \hline
+        25.jan          & 88,413           & 9,470,205      & 421 bytes               \\ \hline
+        30.jan          & 59,874           & 6,939,737      & 424 bytes               \\ \hline
+        31.jan          & 96,309           & 13,204,218     & 424 bytes               \\ \hline
+        01.feb          & 101,872          & 12,988,077     & 485 bytes               \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Nedis Baseline Window Open Calculations}
+    \begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+        \textbf{Baseline} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        06.mar & 77,759  & 8,062,010  & 426 bytes \\ \hline
+        07.mar & 105,395 & 12,437,964 & 426 bytes \\ \hline
+        08.mar & 109,084 & 13,759,303 & 424 bytes \\ \hline
+        09.mar & 111,832 & 15,941,453 & 458 bytes \\ \hline
+        10.mar & 115,626 & 15,852,737 & 485 bytes \\ \hline
+        11.mar & 58,325  & 7,096,260  & 426 bytes \\ \hline
+        12.mar & 89,493  & 11,740,679 & 485 bytes \\ \hline
+        13.mar & 89,958  & 11,137,820 & 424 bytes \\ \hline
+        14.mar & 91,427  & 11,865,346 & 485 bytes \\ \hline
+    \end{tabular}
+    \label{tab:NedisBaselineWindowCalculations}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Comparing Window Open and Baseline Calculations for Nedis}
+    \begin{tabular}{c|l|l|l|l|}
+        \cline{2-5}
+        \multicolumn{1}{l|}{}                                              & \textbf{Type} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Event         & 96,916             & 11,767,368      & 439 bytes               \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{}                                             & Baseline      & 94,322             & 11,988,175      & 449 bytes                \\ \hline
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 19,686             & 3,334,883       & 27 bytes                 \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{}                                             & Baseline      & 18,445             & 3,042,357       & 29 bytes               \\ \hline          
+    \end{tabular}
+    \label{tab:NedisComparingBaselineAndWindowCalculations}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{1\textwidth}
+        \centering
+        \includegraphics[width=1\hsize]{figures/Nedis_Window_Calculations_Bytes.png} 
+    \end{subfigure}
+    \begin{subfigure}{1\textwidth}
+        \centering
+        \includegraphics[width=1\hsize]{figures/Nedis_Window_Calculations_Packets.png} 
+    \end{subfigure}
+    \caption{Window Open Calculations for Nedis}
+    \label{fig:NedisWindowCalculations}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Window_Packets_08.01-09.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize, colframe=blue]{figures/Nedis_Window_Baseline_Packets_06.03-07.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Window_Packets_09.01-10.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Window_Baseline_Packets_07.03-08.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Window_Packets_11.01-12.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Window_Baseline_Packets_08.03-09.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Window_Packets_16.01-17.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Window_Baseline_Packets_09.03-10.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Window_Packets_18.01-19.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Window_Baseline_Packets_10.03-11.03.png}
+    \end{subfigure}
+        \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Window_Packets_19.01-20.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Window_Baseline_Packets_11.03-12.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Window_Packets_25.01-26.01.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Window_Baseline_Packets_12.03-13.03.png}
+        \end{subfigure}
+    \caption{Nedis: Graphs from window open events shown in packets with events in red and baseline in blue}
+    \label{fig:NedisWindowPackets1}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Window_Packets_30.01-31.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize, colframe=blue]{figures/Nedis_Window_Baseline_Packets_13.03-14.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Window_Packets_31.01-01.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Window_Baseline_Packets_14.03-15.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Window_Packets_01.02-02.02.png}
+    \end{subfigure}
+    \caption{Nedis: Continuing from Figure \ref{fig:NedisWindowPackets1}}
+    \label{fig:NedisWindowPackets2}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Window_Bytes_30.01-31.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize, colframe=blue]{figures/Nedis_Window_Baseline_Bytes_13.03-14.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Window_Bytes_31.01-01.02.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Window_Baseline_Bytes_14.03-15.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Window_Bytes_01.02-02.02.png}
+    \end{subfigure}
+    \caption{Nedis: First graphs from Figure \ref{fig:NedisWindowBytes2}}
+    \label{fig:NediWindowBytes1}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Window_Bytes_08.01-09.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Window_Baseline_Bytes_06.03-07.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Window_Bytes_09.01-10.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Window_Baseline_Bytes_07.03-08.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Window_Bytes_11.01-12.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Window_Baseline_Bytes_08.03-09.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Window_Bytes_16.01-17.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Window_Baseline_Bytes_09.03-10.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Window_Bytes_18.01-19.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Window_Baseline_Bytes_10.03-11.03.png}
+    \end{subfigure}
+        \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Window_Bytes_19.01-20.01.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Window_Baseline_Bytes_11.03-12.03.png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=red]{figures/Nedis_Window_Bytes_25.01-26.01.png}
+    \end{subfigure}
+    \hspace{0.6cm}
+    \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+        \tcbincludegraphics[size=fbox,width=1.1\hsize,colframe=blue]{figures/Nedis_Window_Baseline_Bytes_12.03-13.03.png}
+        \end{subfigure}
+    \caption{Nedis: Graphs from window open events shown in bytes with events in red and baseline in blue}
+    \label{fig:NedisWindowBytes2}
+\end{figure}
+
+Comparing Table \ref{tab:NedisWindowCalculations} for events and \ref{tab:NedisBaselineWindowCalculations} for baseline calculations shows that both cases varies a lot in number of packets and bytes during the traffic capture. For both events and baseline, the number of packets varies from around 50,000 to over 100,000 packets, which is a big difference. The same applies to bytes where both varies from around 7,000,000 to over 15,000,000 bytes. There are no significant differences in the biggest packet sent during the capture, where all days within both the cases are between 400 and 500 bytes. Even tough the number of packets and bytes varies much for each event and baseline day, they vary almost equally as the average value shown in Table \ref{tab:NedisComparingBaselineAndWindowCalculations} are almost the same. The graphs in Figure \ref{fig:NedisWindowCalculations} also demonstrates how much the packets vary, but still the average values are very close to each other. 
+\\\\
+For the packet traffic flows presented in Figure \ref{fig:NedisWindowPackets1} and \ref{fig:NedisWindowPackets2} the event graphs do have some more spikes overall compared to the baseline graphs. However, 4 out of 9 of the baseline days do also have spikes that are similar to the event days where there are only one spike included. The bytes traffic flows presented in Figure \ref{fig:NedisWindowBytes1} and \ref{fig:NedisWindowBytes2} shows well the variations that were visible in the calculations in the tables above. Both on the left side with events and on the right side of the figure with the baseline traffic there are variations with a lot of bytes and fewer bytes sent and received easily visible. Therefore, there are no significant differences in events and baseline traffic as the variations are shown in both cases. 
+
+
 \newpage
 \section{Test Case 4: Weekends}
 This chapter presents the results and analysis conducted on Test Case 4: Weekends. 

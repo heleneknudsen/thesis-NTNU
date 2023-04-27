@@ -1,4 +1,4 @@
-#GraphsByBytes.py
+#GraphsByPackets.py
 from scapy.all import *
 import plotly
 from datetime import datetime
@@ -19,38 +19,35 @@ display=""
 
 def graph_function():
     times=[]
-    bytes=[]
     z=0
     for date in dates:
         if sys.argv[2] == "Total":
-            file = r"C:\Users\Helene\Documents\IMT4905 - Erfaringsbasert master\Fra wireshark\\"+sys.argv[3]+"\\"+sys.argv[1]+"\\"+sys.argv[1]+"_"+sys.argv[3]+"_"+date+".pcapng"
+            file = r"C:\Users\Helene\Documents\IMT4905 - Erfaringsbasert master\Fra wireshark"+"\\"+sys.argv[3]+"\\"+sys.argv[1]+"\\"+sys.argv[1]+"_"+sys.argv[3]+"_"+date+".pcapng"
             packets = pyshark.FileCapture(file)
         else:
-            file = r"C:\Users\Helene\Documents\IMT4905 - Erfaringsbasert master\Fra wireshark\\"+sys.argv[3]+"\\"+sys.argv[1]+"\\"+sys.argv[1]+"_"+sys.argv[3]+"_"+date+".pcapng"
+            file = r"C:\Users\Helene\Documents\IMT4905 - Erfaringsbasert master\Fra wireshark"+"\\"+sys.argv[3]+"\\"+sys.argv[1]+"\\"+sys.argv[1]+"_"+sys.argv[3]+"_"+date+".pcapng"
             packets = pyshark.FileCapture(file, display_filter=display)
         
-
-        # #Lists to hold packet info
+        #Lists to hold packet info
         pktTimes=[]
-        pktBytes=[]
+        pkts=[]
         #Read each packet and append to the lists.
-        for pkt in packets:   
+        for pkt in packets:
+            n=1     
             pktTime=(pkt.sniff_time)
-            pktByte=(pkt.length)
-    
-            pktBytes.append(pktByte)
             pktTimes.append(pktTime)
-  
-        #This converts list to series
-        bytes = pd.Series(pktBytes).astype(int)
+            pkts.append(n)
             
+        #This converts list to series
+        packets = pd.Series(pkts).astype(int)
+        
         #Convert the timestamp list to a pd date_time
         times = pd.to_datetime(pd.Series(pktTimes).astype(str),  errors='coerce')
 
         #Create the dataframe
-        df  = pd.DataFrame({"Bytes": bytes, "Times":times})
+        df  = pd.DataFrame({"Packets": packets, "Times": times})
 
-        #set the date from a range to an timestamp
+        #Set the date from a range to an timestamp
         df = df.set_index('Times')
 
         #Create a new dataframe of 2 second sums to pass to plotly
@@ -58,21 +55,21 @@ def graph_function():
 
         #Create the graph
         GraphTitle=sys.argv[1]+"\n"+sys.argv[3]+"\n"+date
-        fig = go.Figure({"data":[plotly.graph_objs.Scatter(x=df2.index, y=df2['Bytes'])],"layout":plotly.graph_objs.Layout(title=GraphTitle,
+        fig = go.Figure({"data":[plotly.graph_objs.Scatter(x=df2.index, y=df2['Packets'])],"layout":plotly.graph_objs.Layout(title=GraphTitle,
                 xaxis=dict(title="Time"),
-                yaxis=dict(title=sys.argv[2]+" Bytes"))})
+                yaxis=dict(title=sys.argv[2]+" Packets"))})
             
         #Set the y-axis range
         fig.update_yaxes(range=[0,sys.argv[4]])
-        
-        #Set the font
-        fig.update_layout(title=GraphTitle, xaxis_title="Time", yaxis_title= sys.argv[2]+" Bytes",font=dict(family="Times New Roman", size=26))
             
         #Set the x-axis range
         fig.update_layout(xaxis_range=[packetstart[z],packetend[z]])
+        
+        #Set the font
+        fig.update_layout(title=GraphTitle, xaxis_title="Time", yaxis_title="Total Packets",font=dict(family="Times New Roman", size=26))
             
         if sys.argv[3] == "Weekend" or sys.argv[3] == "Baseline":
-                pass              
+            pass            
         else:
             #Mark the event time
             fig.add_vrect(x0=eventstart[z], x1=eventstop[z], fillcolor="salmon", opacity=0.5, layer="below", line_width=0),
@@ -83,7 +80,6 @@ def graph_function():
         z=z+1
 
 if sys.argv[2] == "Outbound":
-    #Set display-filter to MAC-address
     if sys.argv[1] == "Netatmo":
         display = "wlan.sa == 70:EE:50:91:06:DE"
     elif sys.argv[1] == "Mill":
@@ -92,7 +88,6 @@ if sys.argv[2] == "Outbound":
         display = "wlan.sa == 2C:F4:32:29:36:DC"
         
 elif sys.argv[2] == "Inbound":
-    #Set display-filter to MAC-address
     if sys.argv[1] == "Netatmo":
         display = "wlan.da == 70:EE:50:91:06:DE"
     elif sys.argv[1] == "Mill":
@@ -145,11 +140,11 @@ elif sys.argv[3] == "Window":
 elif sys.argv[3] == "Weekend":
         #Set the weekend dates 
         dates = ["23.12-25.12","30.12-01.01","13.01-15.01","20.01-22.01","27.01-29.01","03.02-05.02","10.02-12.02","17.02-19.02","24.02-26.02","03.03-05.03","10.03-12.03","17.03-19.03","24.03-26.03","28.03-30.03","31.03-02.04"]
-        
+
         #Set the x-axis range even tough packets are not sent
         packetstart=["2022-12-23 16:00","2022-12-30 16:00","2023-01-13 16:00","2023-01-20 16:00","2023-01-27 16:00","2023-02-03 16:00","2023-02-10 16:00","2023-02-17 16:00","2023-02-24 16:00","2023-03-03 16:00","2023-03-10 16:00","2023-03-17 16:00","2023-03-24 16:00","2023-03-28 16:00","2023-03-31 16:00"]
         packetend=["2022-12-25 22:00","2023-01-01 22:00","2023-01-15 22:00","2023-01-22 22:00","2023-01-29 22:00","2023-02-05 22:00","2023-02-12 22:00","2023-02-19 22:00","2023-02-26 22:00","2023-03-05 22:00","2023-03-12 22:00","2023-03-19 22:00","2023-03-26 22:00","2023-03-30 22:00","2023-04-02 22:00"]
-        
+
         graph_function()
 
 elif sys.argv[3] == "Baseline":
