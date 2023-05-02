@@ -22,10 +22,10 @@ def graph_function():
     z=0
     for date in dates:
         if sys.argv[2] == "Total":
-            file = r"C:\Users\Helene\Documents\IMT4905 - Erfaringsbasert master\Fra wireshark\Baseline\\"+sys.argv[3]+"\\"+sys.argv[1]+"\\"+sys.argv[1]+"_Baseline_"+sys.argv[3]+"_"+date+".pcapng"
+            file = r"C:\Users\Helene\Documents\IMT4905 - Erfaringsbasert master\Wireshark\Baseline\\"+sys.argv[1]+"\\"+sys.argv[3]+"\\"+sys.argv[1]+"_Baseline_"+sys.argv[3]+"_"+date+".pcapng"
             packets = pyshark.FileCapture(file)
         else:
-            file = r"C:\Users\Helene\Documents\IMT4905 - Erfaringsbasert master\Fra wireshark\Baseline\\"+sys.argv[3]+"\\"+sys.argv[1]+"\\"+sys.argv[1]+"_Baseline_"+sys.argv[3]+"_"+date+".pcapng"
+            file = r"C:\Users\Helene\Documents\IMT4905 - Erfaringsbasert master\Wireshark\Baseline\\"+sys.argv[1]+"\\"+sys.argv[3]+"\\"+sys.argv[1]+"_Baseline_"+sys.argv[3]+"_"+date+".pcapng"
             packets = pyshark.FileCapture(file, display_filter=display)
         
 
@@ -65,10 +65,7 @@ def graph_function():
             
         #Set the x-axis range
         fig.update_layout(xaxis_range=[packetstart[z],packetend[z]])
-    
-        #Mark the event time
-        fig.add_vrect(x0=eventstart[z], x1=eventstop[z], fillcolor="salmon", opacity=0.5, layer="below", line_width=0),
-            
+                
         #Set the font
         fig.update_layout(title=GraphTitle, xaxis_title="Time", yaxis_title="Total Packets",font=dict(family="Times New Roman", size=26))
     
@@ -101,10 +98,6 @@ if sys.argv[3] == "Shower":
         packetstart=["2023-01-08 19:29","2023-01-09 19:29","2023-01-11 19:29","2023-01-16 19:29","2023-01-18 19:29","2023-01-19 19:29","2023-01-25 19:29","2023-01-30 19:29","2023-01-31 19:29","2023-02-01 19:29"]
         packetend=["2023-01-08 21:04","2023-01-09 21:04","2023-01-11 21:04","2023-01-16 21:04","2023-01-18 21:04","2023-01-19 21:04","2023-01-25 21:04","2023-01-30 21:04","2023-01-31 21:04","2023-02-01 21:04"]
             
-        #Add color to when the event occured
-        eventstart=["2023-01-08 19:59","2023-01-09 20:14","2023-01-11 20:01","2023-01-16 20:12","2023-01-18 20:02","2023-01-19 20:00","2023-01-25 20:03","2023-01-30 20:00","2023-01-31 20:01","2023-02-01 20:00"]
-        eventstop=["2023-01-08 20:14","2023-01-09 20:34","2023-01-11 20:17","2023-01-16 20:31","2023-01-18 20:19","2023-01-19 20:16","2023-01-25 20:19","2023-01-30 20:18","2023-01-31 20:17","2023-02-01 20:16"]
-        
         graph_function()
 
 elif sys.argv[3] == "Cooking":
@@ -114,11 +107,7 @@ elif sys.argv[3] == "Cooking":
         #Set the x-axis range even tough packets are not sent
         packetstart=["2023-01-08 15:28","2023-01-09 15:28","2023-01-11 15:28","2023-01-16 15:28","2023-01-18 15:28","2023-01-19 15:28","2023-01-26 15:28","2023-01-30 15:28","2023-01-31 15:28","2023-02-01 15:28"]
         packetend=["2023-01-08 17:07","2023-01-09 17:07","2023-01-11 17:07","2023-01-16 17:07","2023-01-18 17:07","2023-01-19 17:07","2023-01-26 17:07","2023-01-30 17:07","2023-01-31 17:07","2023-02-01 17:07"]
-            
-        #Add color to when the event occured
-        eventstart=["2023-01-08 15:58","2023-01-09 15:59","2023-01-11 16:05","2023-01-16 16:02","2023-01-18 16:04","2023-01-19 16:01","2023-01-26 16:01","2023-01-30 16:01","2023-01-31 16:01","2023-02-01 16:02"]
-        eventstop=["2023-01-08 16:22","2023-01-09 16:21","2023-01-11 16:37","2023-01-16 16:25","2023-01-18 16:25","2023-01-19 16:18","2023-01-26 16:25","2023-01-30 16:19","2023-01-31 16:21","2023-02-01 16:22"]
-        
+
         graph_function()
     
 elif sys.argv[3] == "Window":
@@ -129,8 +118,4 @@ elif sys.argv[3] == "Window":
         packetstart=["2023-01-08 22:20","2023-01-09 22:20","2023-01-11 22:20","2023-01-16 22:20","2023-01-18 22:20","2023-01-19 22:20","2023-01-25 22:20","2023-01-30 22:20","2023-01-31 22:20","2023-02-01 22:20"]
         packetend=["2023-01-09 07:39","2023-01-10 07:39","2023-01-12 07:39","2023-01-17 07:39","2023-01-19 07:39","2023-01-20 07:39","2023-01-26 07:39","2023-01-31 07:39","2023-02-01 07:39","2023-02-02 07:39"]
             
-        #Add color to when the event occured
-        eventstart=["2023-01-08 23:00","2023-01-09 23:00","2023-01-11 22:50","2023-01-16 23:10","2023-01-18 23:15","2023-01-19 23:02","2023-01-25 22:59","2023-01-30 23:00","2023-01-31 22:59","2023-02-01 22:59"]
-        eventstop=["2023-01-09 07:00","2023-01-10 07:00","2023-01-12 07:00","2023-01-17 06:56","2023-01-19 07:09","2023-01-20 06:59","2023-01-26 06:55","2023-01-31 06:56","2023-02-01 07:00","2023-02-02 06:59"]
-
         graph_function()
