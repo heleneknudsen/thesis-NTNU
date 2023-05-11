@@ -104,7 +104,6 @@ Figure \ref{fig:NedisBoth} shows Nedis SmartLife Air Quality Monitor and its cor
 
 Nedis SmartLife does not have notifications enabled default, but it can easily be set and customized by the user. Every sensor reading from the device can be set to notify whether levels are too high or too low. The readings on the app shows live data as well as a graphical view of previous readings up to a year before. For setup and calibration in an environment, Nedis does not specify any calibration time.  
 
-
 \section{Method Tree}
 This research is structured in six different main activities, shown in Figure \ref{fig:MethodTree}:
 \\\\
@@ -237,7 +236,7 @@ To be able to distinguish the events in the Wi-Fi traffic, it is necessary to ca
 \subsection{Event Triggering}
 In this activity, traffic from the devices were captured while the events triggered. The routine events are each triggered 10 times and traffic from at least 1 hour before and after the event are captured to see the changes in traffic both before and after the events. Weekend testing were conducted in the course of 14 weekends, resulting in collected traffic from 7 weekends at home and 7 weekends away. 
 \\\\
-Table \ref{tab:TestCases} gives an overview of when each test case was carried out and in which room. 
+Table \ref{tab:TestCases} gives an overview of the time of day when each test case was carried out and in which room the devices were placed for the tests. 
 \begin{table}[H]
     \centering
     \caption{Overview of test cases with timings and location}
@@ -260,6 +259,16 @@ Table \ref{tab:TestCases} gives an overview of when each test case was carried o
 \end{table}
 
 As there is only one of each device and the tests are in different rooms, the devices will be moved to the respected room before each test. The devices will be placed in the environment for at least 1 hour before each test starts to ensure that the value changes between the room will be as equalized as possible. The exact times for when cooking, open window and showering took place were be logged so it is possible to look for changes at that time. 
+\\\\
+Figure \ref{fig:Apartment} shows an overview of the apartment layout, hereby called the environment, where the test cases and baseline will be captured from. The different rooms are marked and shows where the devices will be placed during the different tests. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/Apartment.png}
+    \caption{Overview of the environment where the test cases and baseline capturing will take place}
+    \label{fig:Apartment}
+\end{figure}
+    
 
 \subsection{Event Mapping}
 When the events have been carried out, a mapping was made to see if information could be inferred. Each event are presented both graphically and numerically with different calculations to be able to compare. Each event were extracted from the corresponding tshark capture saved in the pcap file. A separate pcap file for each event were made, with the timing of the specific event to see differences. 

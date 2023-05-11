@@ -15,7 +15,7 @@ To be able to run analysis on the data gathered from the different packet captur
 \\\\
 When opening a pcap in Wireshark several statistics are possible to extract. By choosing the option of "Capture File Properties", total number of packets and bytes in the capture file are shown and were extracted. The numbers from each pcap were noted down and used as a value to compare both the events to each other and to the baseline. 
 \\\\
-In VS Code, python was used as the programming language as it includes the library pyshark which can be used towards the tshark capture files. Two scripts with a number of different if statements were used to generate the graphs depending on the users arguments passed to the script. The scripts only differs with if the user wants to display the graphs with number of packets or number of graphs as the measure on the y-axis. The code is displayed in its whole in appendix XXXX, and in pseudo code beneath in algorithm \ref{alg:GraphScript}. For each of the if statements, the same code block is included and are only shown once in algorithm \ref{alg:GraphScript}. The graphs are all generated with bytes and packets per 2 seconds, where the y-axis is defined in the amount of packets or bytes and the x-axis defined as time. The scripts used have have used parts from the scripts explained in \cite{GraphsInspiration}.
+In VS Code, python was used as the programming language as it includes the library pyshark which can be used towards the tshark capture files. Two scripts with a number of different if statements were used to generate the graphs depending on the users arguments passed to the script. The scripts only differs with if the user wants to display the graphs with number of packets or number of graphs as the measure on the y-axis. The code is displayed in its whole in \ref{app:GraphsByBytes}, \ref{app:GraphsByPackets}, \ref{app:GraphsByBytes_BaselineEvents} and \ref{app:GraphsByPackets_BaselineEvents}, and in pseudo code beneath in algorithm \ref{alg:GraphScript}. For each of the if statements, the same code block is included and are only shown once in algorithm \ref{alg:GraphScript}. The graphs are all generated with bytes and packets per 2 seconds, where the y-axis is defined in the amount of packets or bytes and the x-axis defined as time. The scripts used have have used parts from the scripts explained in \cite{GraphsInspiration}.
 
 Table \ref{tab:SystemArgumentsScripts} displays the different system arguments to be passed to the scripts to create the graphs and which values the arguments expect. 
 
@@ -36,7 +36,7 @@ Table \ref{tab:SystemArgumentsScripts} displays the different system arguments t
 
 \begin{algorithm}[H]
 \caption{Script for generating graphs}\label{alg:GraphScript}
-\begin{algorithmic}[1]
+    \begin{algorithmic}[1]
         \For{Each date of event} \Comment{Graph\_function start}
             \State Extract the packets from the right pcap
             \For{Each packet in pcap}
@@ -44,39 +44,40 @@ Table \ref{tab:SystemArgumentsScripts} displays the different system arguments t
                 \State Display graph
             \EndFor
         \EndFor \Comment{Graph\_function end}\\
-    \If{Argument 2 is Outbound} \Comment{Set display filter to outbound traffic}
-        \If{Argument 1 is Netatmo}
-            \State Set display filter to "wlan.sa == Netatmo MAC address"
-        \ElsIf{Argument 1 is Mill}
-            \State Set display filter to "wlan.sa == Mill MAC address"
-        \ElsIf{Argument 1 is Nedis}
-            \State Set display filter to "wlan.sa == Nedis MAC address"    
-        \EndIf\\
-    \ElsIf{Argument 2 is Inbound} \Comment{Set display filter to inbound traffic}
-        \If{Argument 1 is Netatmo}
-            \State Set display filter to "wlan.da == Netatmo MAC address"
-        \ElsIf{Argument 1 is Mill}
-            \State Set display filter to "wlan.da == Mill MAC address"
-        \ElsIf{Argument 1 is Nedis}
-            \State Set display filter to "wlan.da == Nedis MAC address"  
-        \EndIf\\
-    \If{Argument 3 is Shower} \Comment{Event if-cases start}
-        \State Set the dates from when the events occurred 
-        \State Graph\_function
-    \ElsIf{Argument 3 is Cooking}
-        \State Set the dates from when the events occurred 
-        \State Graph\_function
-    \ElsIf{Argument 3 is Window}
-        \State Set the dates from when the events occurred 
-        \State Graph\_function
-    \ElsIf{Argument 3 is Weekend}
-        \State Set the dates from when the events occurred 
-        \State Graph\_function
-    \ElsIf{Argument 3 is Baseline}
-        \State Set the dates from when the events occurred 
-        \State Graph\_function
-    \EndIf \Comment{Event if-cases end}
-\end{algorithmic}
+        \If{Argument 2 is Outbound} \Comment{Set display filter to outbound traffic}
+            \If{Argument 1 is Netatmo}
+                \State Set display filter to "wlan.sa == Netatmo MAC address"
+            \ElsIf{Argument 1 is Mill}
+                \State Set display filter to "wlan.sa == Mill MAC address"
+            \ElsIf{Argument 1 is Nedis}
+                \State Set display filter to "wlan.sa == Nedis MAC address"    
+            \EndIf \\
+        \ElsIf{Argument 2 is Inbound} \Comment{Set display filter to inbound traffic}
+            \If{Argument 1 is Netatmo}
+                \State Set display filter to "wlan.da == Netatmo MAC address"
+            \ElsIf{Argument 1 is Mill}
+                \State Set display filter to "wlan.da == Mill MAC address"
+            \ElsIf{Argument 1 is Nedis}
+                \State Set display filter to "wlan.da == Nedis MAC address"  
+            \EndIf
+        \EndIf \\
+        \If{Argument 3 is Shower} \Comment{Event if-cases start}
+            \State Set the dates from when the events occurred 
+            \State Graph\_function
+        \ElsIf{Argument 3 is Cooking}
+            \State Set the dates from when the events occurred 
+            \State Graph\_function
+        \ElsIf{Argument 3 is Window}
+            \State Set the dates from when the events occurred 
+            \State Graph\_function
+        \ElsIf{Argument 3 is Weekend}
+            \State Set the dates from when the events occurred 
+            \State Graph\_function
+        \ElsIf{Argument 3 is Baseline}
+            \State Set the dates from when the events occurred 
+            \State Graph\_function
+        \EndIf \Comment{Event if-cases end}
+    \end{algorithmic}
 \end{algorithm}
 
 To create a file for each of the events, a time filter was applied to the pcaps and then the remaining packets exported to a separate pcap which can be opened in Wireshark or make a graph out of to analyze each specific event. The time filter used followed the following format:
@@ -427,7 +428,7 @@ The cooking events are 10 in total and are presented in Table \ref{tab:CookingDa
 \end{table}
 \FloatBarrier
 
-To be able to look even further into differences from when an event is ongoing and when it is in the same environment, but without any event ongoing, graphs and calculations from the baseline traffic are used to compare. To choose a time for the baseline traffic, the values in Table \ref{tab:CookingDates} are used. To have the same amount of time on each event the earliest start time and the latest finish time are used as filtering values for each of the pcaps to be used in analyzing the cooking event. These values were then added 30 minutes before and after and used as a the start and finish time for the events, while the actual event time given by Table \ref{tab:CookingDates} are marked red on the event graphs. This gives the following values to use for further analysis:
+To be able to look even further into if it is a similar traffic pattern to each event that can be used to identify it, the same start and finish time will be used for every graph. To have the same amount of time on each event the earliest start time and the latest finish time are used as filtering values for each of the pcaps to be used in analyzing the cooking event. These values were then added 30 minutes before and after and used as a the start and finish time for the events, while the actual event time given by Table \ref{tab:CookingDates} are marked red on the graphs. This gives the following values to use for further analysis:
 
 \begin{itemize}
     \item Earliest Event Start: 15:58
@@ -444,7 +445,7 @@ These timings gives the following filters added to create the pcaps for each eve
 
 \newpage
 \subsection{Netatmo}
-Table \ref{tab:NetatmoCookingCalculations} presents calculations from all the cooking events and Table \ref{tab:NetatmoBaselineCookingCalculations} presents the calculations from all the corresponding baseline pcaps. Table \ref{tab:NetatmoComparingBaselineAndCookingCalculations} compares the average and standard deviation values from the events to the baseline. Figure \ref{fig:NetatmoCookingCalculations} presents a graphical overview of the packets and bytes from Table \ref{tab:NetatmoCookingCalculations} including average values.
+Table \ref{tab:NetatmoCookingCalculations} presents calculations from all the cooking events together with a standard deviation and Table \ref{tab:NetatmoBaselineCookingCalculations} presents the calculations from all the corresponding baseline pcaps. Table \ref{tab:NetatmoComparingBaselineAndCookingCalculations} compares the average and standard deviation values from the events to the baseline. Figure \ref{fig:NetatmoCookingCalculations} presents a graphical overview of the packets and bytes from Table \ref{tab:NetatmoCookingCalculations} including average values.
 
 \begin{table}[H]
     \centering
@@ -2857,7 +2858,7 @@ This results in the following filter used on the pcaps to created the files:
 \end{itemize}
 
 \newpage
-\subsection{Netatmo Home Coach}
+\subsection{Netatmo}
 For the weekend test for Netatmo, both calculations and graphs of the traffic are presented. The calculations for the weekends are listed in Table \ref{tab:NetatmoHomeWeekends}, for weekends at home, and \ref{tab:NetatmoGoneWeekends}, for weekends gone. The different values included are total number of packets (pkt) and bytes sent and received to the device during the packet capturing and the biggest packet sent in bytes, biggest src, and the biggest packet size in bytes received, biggest dst. Table \ref{tab:NetatmoWeekends} compares the average and standard deviation (SD) for the weekends at home and gone. 
 
 \begin{table}[H]
@@ -3479,4 +3480,28 @@ For Weekend testing on the device Nedis, both tables for calculations and figure
   \caption{Nedis: Weekends at home, marked in green, and gone, marked in orange, measured in total amount of bytes sent and received during the weekends}    \label{fig:NedisWeekendBytes}
 \end{figure}
 
-The results in Table \ref{tab:NedisHomeWeekends} and \ref{tab:NedisGoneWeekends} shows that the amount of packets does not change whether its a weekend at home or gone. Both tables shows that there are sent and received around 500,000 to 600,000 packets regardless if the user is home or not. The amount of bytes varies a lot in both tables from 58,677,501 bytes to 81,810,849 bytes for the weekends at home and from 42,390,770 bytes to 98,642,277 bytes for the weekends gone. Looking at the biggest packet received and sent shows very similar values for both weekends at home and gone. Table \ref{tab:NedisWeekends} also gives the same results. Neither average values for packets, bytes or biggest packets received or sent differs significantly between a weekend at home or gone. The standard deviation for weekends gone are some higher than for weekends at home which means that the values differ more from each other, but since the average is similar and the values differ both higher and lower than the average, it is still not possible to see any significant differences here.  
+The results in Table \ref{tab:NedisHomeWeekends} and \ref{tab:NedisGoneWeekends} shows that the amount of packets does not change whether its a weekend at home or gone. Both tables shows that there are sent and received around 500,000 to 600,000 packets regardless if the user is home or not. The amount of bytes varies a lot in both tables from 58,677,501 bytes to 81,810,849 bytes for the weekends at home and from 42,390,770 bytes to 98,642,277 bytes for the weekends gone. Looking at the biggest packet received and sent shows very similar values for both weekends at home and gone. Table \ref{tab:NedisWeekends} also gives the same results. Neither average values for packets, bytes or biggest packets received or sent differs significantly between a weekend at home or gone. The standard deviation for weekends gone are some higher than for weekends at home which means that the values differ more from each other, but since the average is similar and the values differ both higher and lower than the average, it is still not possible to see any significant differences here. 
+
+\section{Evaluating the results against the research questions}
+This section will discuss the research questions by using the results found in the four test cases stated in the section above. The questions will be answered sequentially. The research questions to be answered in this thesis are:
+
+\begin{enumerate}
+    \item What kind of information can be gathered from air quality monitors when carrying out a network eavesdropping attack?
+    \item What are the differences in level of inference from different air quality monitors from different vendors?
+    \item How can the private information gathered be misused by an adversary?
+\end{enumerate}
+
+In this research, four different test cases have been used to test if it is possible see traffic changes from when an event is triggered in the environment the device is. The baseline capturings showed that all the devices communicates with a layer of security as the packets sent on Wi-Fi is encrypted and not readable while carrying out a passive network eavesdropping attack. Therefore it is not possible to gather private information sent in the payloads to and from the devices. 
+\\\\
+For the routine behavioural events such as cooking, showering and window open, none of the devices showed a significant difference from when an event was triggered at a specific time compared to the traffic sent before and after the event or compared to the baseline capturings. By comparing the baseline traffic to the event traffic, the devices Nedis SmartLife and Mill Sense showed that there are visible differences in standby traffic and that the traffic can be affected by smaller indoor changes such as a season can change the indoor air quality. For example, during summer windows can be more open than during winter were ovens can be more used. 
+\\\\
+However, for the weekend test, one of the devices shows a clear difference from when a user is home or gone during the time period of a weekend. The AQM Netatmo Smart Indoor Air Quality Monitor shows that is is possible to distinguish whether a user is home or gone looking graphically at the total number of bytes sent and received to that device during the weekend and looking at size of the packets sent by the device which is never higher than 134 bytes when the user is gone for the weekend. For Mill Sense and Nedis SmartLife, no similar findings were discovered during the tests. This kind of information will expose private information about a user were it is possible to see whether the user is home or not for a longer period of time. 
+\\\\
+The baseline capturings shows that the devices communicates differently. For Netatmo and Nedis, 
+most of the packets are outbound bytes meaning that these devices sends a lot more traffic than it receives. For Mill, inbound traffic was higher than outbound traffic. Also comparing the traffic from the three devices, as shown in Figure \ref{fig:ComparingBaselines}, shows that the traffic is different from the three devices. Netatmo has a more continuous line of the packets, while Mill sends traffic periodically and have more spikes and Nedis shows many spikes that are a lot higher than for the rest of the baseline period. These differences can be used to distinguish the traffic between the three air quality monitor from different vendors. 
+\\\\
+The differences in level of inference from the three different air quality monitors are only distinguishable when it comes to Test Case 4: Weekends. For the routine behavioural test cases, neither of the devices expose private information regarding when the event is ongoing or what kind of event is triggered. However, the results from the weekend test shows that Nedis and Mill is a more secure choice than Netatmo when it comes to selecting air quality monitor to install in your home. Also when it comes to identifying changes in traffic, Nedis and Mill shows that the baseline traffic can change on other factors than a triggered event and will therefore be harder for an attacker to understand normal traffic. It is good for users to know that one should consider more factors than just the appearance or functionality of the air quality monitor when selecting what device to install in their home. Knowing that the network traffic of an air quality monitor is not the same regardless of the manufacture, is important when selecting the right one. 
+\\\\
+In the weekend testing, it looked like there were differences for both Mill and Netatmo for the first 5 weekends at home, but only Netatmo had the same significantly different pattern for weekends at home and gone. For Mill, the pattern changed for the two last weekends at home where the packet size were the same as for the weekends gone. This also shows the importance of including enough executions for each of the test cases. For Nedis, no significant differences were possible to see during the weekend testing and therefore private information about whether a user is at home or gone during the weekend was not possible to discover during these tests. 
+\\\\
+As only the weekend test for Netatmo exposed private information, only this specific test case can be used to evaluate how this information can be misused by an adversary. If an adversary have conducted a passive network eavesdropping attack against a user whom has installed the Netatmo Smart Indoor Air Quality Monitor, it is possible to know if a user is gone for a longer period of time. Even tough weekends were used in this test, the results will also be applicable for longer periods of time such as a week or several weeks. An adversary could use this private information to carry out actions against the users home such as a burglary. Another aspect is that an attacker could learn about your habits for being home or not, such as every Easter or Christmas, the user is gone or every weekend during winter the user is not home. 
