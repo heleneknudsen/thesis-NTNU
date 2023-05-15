@@ -1,18 +1,18 @@
 \chapter{Method}
-This chapter describes the material and method for testing, the environment setup and the test cases that has been conducted. First, a survey for selecting the air quality monitors that will be used in this research are introduced. Then, the method for creating the environment, carrying out the tests, and analyzing the results are presented in a method three and explained in details.  
+This chapter describes the material and method used for testing, the environment setup and the test cases that has been conducted. First, a survey for selecting the air quality monitors that will be used in this research are introduced. Then, the method for creating the environment, carrying out the tests, and analyzing the results are presented in a method three and explained in details.  
 
 \section{Air Quality Monitor Survey}
-To select the air quality monitor to use in this thesis, the problem description and research questions have been used as a reference. In order to answer the RQs, the air quality monitors needs to be manufactured from different vendors. To find the specific \gls{AQM}s to use in this research, several online sources were used and compared. As this research is conducted on NTNU Gjøvik in Norway, it is also preferable that the devices are bought and available in Norwegian stores or online pages. The devices chosen should also be popular and easy accessible for any user. 
+To select the air quality monitor to use in this thesis, the problem description and research questions have been used as a reference. In order to answer the RQs, the air quality monitors need to be manufactured from different vendors. To find the specific \gls{AQM}s to use in this research, several online sources were used and compared. As this research is conducted by NTNU Gjøvik in Norway, it is also preferable that the devices are bought and available in Norwegian stores or webpages. The devices chosen should also be popular and easy accessible for any user. 
 
-It exists many solutions that integrate air quality monitors within other devices, but as this thesis aims to investigate what private information are possible to infer from an air quality monitor, the devices should only have air quality monitoring functionality.  Considering these factors, the following criteria are made out to select the devices:
+It exists many solutions that integrate air quality monitors within other devices, but as this thesis aims to investigate what private information is possible to infer from an air quality monitor, the devices should only have air quality monitoring functionality.  Considering these factors, the following criteria are made out to select the devices:
 \begin{itemize}
     \item The devices are manufactured from different vendors.
     \item The devices communicates over \gls{Wi-Fi}.
     \item The devices are available for any user.
     \item The devices only monitors indoor air quality.
-    \item The devices should preferably be available in Norwegian stores.
+    \item The devices are available in Norwegian stores.
 \end{itemize}
-Tibber \cite{Tibber} is a Norwegian power company that specializes in combining smart technology, as with \gls{IoT} devices, and live app representation of the power consumption and smart devices \cite{Tibber}.  Tibber has over 400.000 users in Northern Europe, which makes them a natural choice for many when integrating a smart home device to their environment \cite{TibberUsers}. On their website it is possible to buy several \gls{IoT} smart devices for our home. They recommend one \gls{AQM} which communicates over \gls{Wi-Fi}, Netatmo Smart Indoor Air Quality Monitor. Netatmo \cite{Netatmo} is a company that specializes in consumer technology. They have one indoor air quality monitor which uses four sensors to monitor the indoor air quality of an environment. The sensors are; humidity, \(CO_2\), noise and temperature. 
+Tibber \cite{Tibber} is a Norwegian power company that specializes in combining smart technology, as with \gls{IoT} devices, and live app representation of the power consumption and smart devices \cite{Tibber}.  Tibber has over 400,000 users in Northern Europe, which makes them a natural choice for many when integrating a smart home device to their environment \cite{TibberUsers}. On their website it is possible to buy several \gls{IoT} smart devices for our home. They recommend one \gls{AQM} which communicates over \gls{Wi-Fi}, Netatmo Smart Indoor Air Quality Monitor. Netatmo \cite{Netatmo} is a company that specializes in consumer technology. They have one indoor air quality monitor which uses four sensors to monitor the indoor air quality of an environment. The sensors are; humidity, \(CO_2\), noise and temperature. 
 
 Elkjøp \cite{Elkjøp} and Komplett \cite{Komplett} are two of Norway's biggest electrical stores with a wide range of different smart home devices both in store and online. Its therefore a natural choice when users are looking for any electronic devices including smart devices. When searching for "Air Quality Monitors" on their web pages, Elkjøp shows 4 different vendors and Komplett 8 different vendors. Both vendors lists Netatmo Healthy Home coach, which is already chosen. A part from this both Elkjøp and Komplett also recommends Mill Sense air quality monitor. Mill \cite{Mill} is a Norwegian company that manufactures and sells products for indoor climate and heating, with the goal of developing devices that fits the indoor interior environment. They offer one air quality monitor called Mill Sense which communicates over \gls{Wi-Fi}. The sensors integrated are \(eCO_2\), humidity, temperature and \gls{TVOC}.
 
@@ -22,7 +22,7 @@ This research will consists of air quality monitors from the selected three diff
 
 \begin{table}[H]
     \centering
-    \caption{Air Quality Monitor Devices}
+    \caption{Air quality monitor devices}
     \begin{tabular}{| p{1.5cm} | p{5.5cm} | p{3cm} | p{2cm} |} 
         \hline
         \textbf{Vendor} & \textbf{Air Quality Monitor} & \textbf{Communication protocol} & \textbf{Sensors} \\
@@ -108,7 +108,7 @@ This research is structured in six different main activities, shown in Figure \r
 \begin{figure} [H]
     \centering
     \includegraphics[width=0.5\textwidth]{figures/MethodTree.png}
-    \caption{Method Tree}
+    \caption{Method tree}
     \label{fig:MethodTree}
 \end{figure}
 \subsection{Environment Setup}
@@ -121,7 +121,7 @@ Table \ref{tab:AQMSetup} describes each \gls{AQM}, their \gls{MAC} address and w
  
 \begin{table}[H]
     \centering
-    \caption{\gls{MAC}-address and notification threshold values for each \gls{AQM}}
+    \caption{MAC-address and notification threshold values for each \gls{AQM}}
     \begin{tabular}{| p{3.5cm} | p{3.5cm} | p{5cm} |} 
         \hline
         \textbf{Air Quality Monitor} & \textbf{\gls{MAC} Address} & \textbf{Notification threshold values} \\
@@ -209,7 +209,7 @@ Figure \ref{fig:HypothesisTree} shows the hypothesis tree of this research:
 
 \begin{figure} [H]
     \includegraphics[width=1\textwidth]{figures/Hypothesistree.png}
-    \caption{Hypothesis Tree}
+    \caption{Hypothesis tree}
     \label{fig:HypothesisTree}
 \end{figure}
 
