@@ -1,21 +1,21 @@
 \chapter{Evaluation and Analysis Results}
-The evaluation and analysis result chapter will provide all gathered and analyzed data from the four different test carried out in this thesis. The chapter is divided into different subsections for each test case. 
+The evaluation and analysis result chapter presents all gathered and analyzed data from the four different test carried out in this thesis. The chapter first shows a general procedure applicable for all test cases, then the results from each test case are presented in separate subsections. 
 
 \section{General Procedure}
-Each event have been evaluated and analyzed with the same general procedure. Figure \ref{fig:GeneralProcedure} shows an overview of the steps each event has been through. The results from each event are presented and explained in each sub-section and in some cases, the general procedure has given insights to further analysis which is also covered in the sub-section. The steps of the general procedure are explained throughout this sub-section.
+Each event has initially been evaluated and analyzed with the same general procedure. Figure \ref{fig:GeneralProcedure} shows an overview of the steps each event has been through. The results from each event are presented and explained in each subsection and in some cases, the general procedure has given insights to further analysis which is also covered in the subsection.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{figures/GeneralProcedure.png}
-    \caption{General procedure for evaluation and analysis of test cases}
+    \caption{General procedure for evaluating and analyzing the test cases}
     \label{fig:GeneralProcedure}
 \end{figure}
 
-To be able to run analysis on the data gathered from the different \gls{pcaps} and present it in an understandable way, two different programs were used; Wireshark and \gls{VS Code} with pyshark, a tshark library. Wireshark were used to extract numbers and calculations from the pcaps and \gls{VS Code} was used to generate graphs from the pcaps for the events. Even though it is possible to use Wireshark to generate the same graphs as with \gls{VS Code}, \gls{VS Code} was selected because it was easier to generate graphs that have the same measures to compare and they were more ascetically pleasing to look at.
+To be able to run analysis on the data gathered from the different \gls{pcaps} and present it in an understandable way, two different programs were used; Wireshark and python scripts in \gls{VS Code} with pyshark, a tshark library. Wireshark was used to extract numbers and calculations from the pcaps and \gls{VS Code} was used to generate graphs from the pcaps for the events. Even though it is possible to use Wireshark to generate the same graphs as with \gls{VS Code}, \gls{VS Code} was selected because it was easier to generate graphs that have the same measures to compare and they were more presentable.
 
-When opening a pcap in Wireshark several statistics are possible to extract. By choosing the option of "Capture File Properties", total number of packets and bytes in the capture file are shown and were extracted. The numbers from each pcap were noted down and used as a value to compare both the events to each other and to the baseline. 
+When opening a pcap in Wireshark, several statistics are possible to extract. By choosing the option of "Capture File Properties", total number of packets and bytes in the capture file are shown and were extracted. The numbers from each pcap were noted down and used as a value to compare both the events to each other and to the baseline. 
 
-In \gls{VS Code}, python was used as the programming language as it includes the library pyshark which can be used towards the tshark capture files. Two scripts with a number of different if statements were used to generate the graphs depending on the users arguments passed to the script. The scripts only differs with if the user wants to display the graphs with number of packets or number of graphs as the measure on the y-axis. The code is displayed in its whole in \ref{app:GraphsByBytes}, \ref{app:GraphsByPackets}, \ref{app:GraphsByBytes_BaselineEvents} and \ref{app:GraphsByPackets_BaselineEvents}, and in pseudo code beneath in algorithm \ref{alg:GraphScript}. For each of the if statements, the same code block is included and are only shown once in algorithm \ref{alg:GraphScript}. The graphs are all generated with bytes and packets per 2 seconds, where the y-axis is defined in the amount of packets or bytes and the x-axis defined as time. The scripts used have used parts from the scripts explained in \cite{GraphsInspiration}.
+In \gls{VS Code}, python was used as the programming language as it includes the library pyshark which can be used towards the tshark capture files. Four scripts with a number of different if statements were used to generate the graphs depending on the users arguments passed to the script. The scripts only differs with if the user wants to display the graphs with number of packets or number of graphs as the measure on the y-axis and if its baseline captures or actual event files. The code is displayed in its whole in Appendices \ref{app:GraphsByBytes}, \ref{app:GraphsByPackets}, \ref{app:GraphsByBytes_BaselineEvents} and \ref{app:GraphsByPackets_BaselineEvents}, and in pseudo code beneath in algorithm \ref{alg:GraphScript}. For each of the if statements, the same code block is included and are only shown once in algorithm \ref{alg:GraphScript}. The graphs are all generated with bytes and packets per 2 seconds, where the y-axis is defined in the number of packets or bytes and the x-axis defined as time. The scripts used have used parts from the scripts explained in \cite{GraphsInspiration}.
 
 To create a file for each of the events, a time filter was applied to the pcaps and then the remaining packets exported to a separate pcap which can be opened in Wireshark or make a graph out of to analyze each specific event. The time filter used followed the following format:
 
@@ -24,7 +24,7 @@ To create a file for each of the events, a time filter was applied to the pcaps 
 \item \textbf{Example:} frame.time >= "Jan 08, 2023 "19:30:00"" \&\& frame.time <= "Jan 08, 2023 "20:40:00""
 \end{itemize}
 
-Table \ref{tab:SystemArgumentsScripts} displays the different system arguments to be passed to the scripts to create the graphs and which values the arguments expect. 
+Table \ref{tab:SystemArgumentsScripts} displays the different system arguments passed to the scripts to create the graphs and which values the arguments expect. 
 
 \begin{table}[H]
     \centering
@@ -88,9 +88,7 @@ Table \ref{tab:SystemArgumentsScripts} displays the different system arguments t
 \end{algorithm}
 
 \section{Baseline}
-The capturing of baseline traffic were conducted over the course of 10 days in the same environment as the devices were when conducting the events. During the baseline, the devices have not been affected by the specific events, such as cooking, showering or window open in the same room as the devices resides. The baseline traffic will be used to look at standard traffic from the devices and to compare this to the events in both graphs and calculations in sections 5.3-5.5. The traffic from the capture files were encrypted on layer 2 (\gls{Wi-Fi}) and therefore it is not possible to extract any values from the payload of the packets. This applies to all the devices. Since looking into decryption of the traffic is out of scope for this thesis, the results will only analyze patterns and no payload information. 
-
-The filter used for all the baseline files are:
+The capturing of baseline traffic was conducted over the course of 10 days in the hallway of the environment. During the baseline, the devices were not directly affected by the specific events, such as cooking, showering or window open in the same room as the devices resides. The baseline traffic will be used to look at standard traffic from the devices and to compare this to the events in both graphs and calculations in sections 5.3-5.5. The traffic from the capture files were encrypted on layer 2 (\gls{Wi-Fi}) and therefore it is not possible to extract any values from the payload of the packets. This applies to all the devices. Since decryption of traffic is out of scope for this thesis, the results will only analyze patterns and no payload information. The filter used for all the baseline files is:
 
 \begin{itemize}
 \item frame.time >= "Mar 06, 2023 "00:00:00"" \&\& frame.time <= "Mar 15, 2023 "24:00:00""
@@ -100,13 +98,14 @@ The filter used for all the baseline files are:
 Figures \ref{fig:NetatmoBaselineTotalPackets} and \ref{fig:NetatmoBaselineTotalBytes} show the graphs for Netatmo from the baseline capturing from 6th of March 2023 to 15th of March 2023. For the baseline graphs, it is possible to see that packets are sent continually at a rate of around 250 bytes per 2 seconds and 2 packets per 2 seconds. In addition to the continuously stream of packets, the traffic flow also has spikes that looks random in both time and size. As these graphs shows the total packets and bytes sent and received, it can also be beneficial to look at what the graphs would look like if filtered on packets and bytes sent and packets and bytes received separately. 
 \begin{figure} [H]
     \centering
-    \includegraphics[scale=0.3]{figures/Netatmo_Baseline_TotalBytes.png}
+    \includegraphics[scale=0.25]{figures/Netatmo_Baseline_TotalBytes.png}
     \caption{Netatmo baseline capture with total number of bytes as the y-axis}
     \label{fig:NetatmoBaselineTotalBytes}
 \end{figure}
 
-\begin{figure} [H]         
-    \includegraphics[scale=0.3]{figures/Netatmo_Baseline_TotalPackets.png}
+\begin{figure} [H]    
+    \centering
+    \includegraphics[scale=0.25]{figures/Netatmo_Baseline_TotalPackets.png}
     \caption{Netatmo baseline capture with total number of packets as the y-axis}
     \label{fig:NetatmoBaselineTotalPackets}
  \end{figure}
@@ -157,7 +156,7 @@ For the inbound and outbound bytes and packets for Netatmo it is clear to see fr
     \end{tabular}
     \label{tab:NetatmoBaselineCalculations}
 \end{table}
-Comparing the inbound and outbound graphs in Figure \ref{Fig:NetatmoBaselineOutandInboundTraffic} with the total graphs, in Figure \ref{fig:NetatmoBaselineTotalBytes} and Figure \ref{fig:NetatmoBaselineTotalPackets}, shows that the outbound graphs stands for a majority of the packets and they are very similar to the total graphs. The same is numerically shown in Table \ref{tab:NetatmoBaselineCalculations}, where over 99\% of the total packets are outbound traffic. Therefore, it will be better to only display the events with graphs for total traffic to evaluate and analyze for the rest of the thesis. 
+Comparing the inbound and outbound graphs in Figure \ref{Fig:NetatmoBaselineOutandInboundTraffic} with the total graphs, in Figure \ref{fig:NetatmoBaselineTotalBytes} and Figure \ref{fig:NetatmoBaselineTotalPackets}, shows that the outbound graphs stands for the majority of the packets and are very similar to the total graphs. The same is numerically shown in Table \ref{tab:NetatmoBaselineCalculations}, where over 99\% of the total packets are outbound traffic. Therefore, it will be better to only display the events with graphs for total traffic to evaluate and analyze for the rest of the thesis. 
 
 \subsection{Mill Baseline}
 Figures \ref{fig:MillBaselineTotalPackets} and \ref{fig:MillBaselineTotalBytes} show the graphs for Mill from the baseline capturing from 6th of March 2023 to 15th of March 2023. The baseline traffic for Mill shows that the traffic varies a lot. As this device does not send live updates, but every minute, more spikes are included as it does not always send packets. It is also possible to see the spikes more clearly if the time range is smaller, this will be visible further when looking at the event and baseline comparison graphs for each event. 
@@ -165,14 +164,14 @@ Figures \ref{fig:MillBaselineTotalPackets} and \ref{fig:MillBaselineTotalBytes} 
 Graphs for inbound and outbound traffic have also been made for Mill to see the differences for the packets sent. Figure \ref{Fig:MillBaselineOutandInboundTraffic} displays the different graphs for each of the traffic directions. Numerical calculations for the baseline traffic are presented in Table \ref{tab:MillBaselineCalculations}. 
 \begin{figure} [H]
     \centering
-    \includegraphics[scale=0.3]{figures/Mill_Baseline_TotalBytes.png}
+    \includegraphics[scale=0.25]{figures/Mill_Baseline_TotalBytes.png}
     \caption{Mill baseline capture with total number of bytes as the y-axis}
     \label{fig:MillBaselineTotalBytes}
 \end{figure}
 
 \begin{figure} [H]
     \centering
-    \includegraphics[scale=0.3]{figures/Mill_Baseline_TotalPackets.png}
+    \includegraphics[scale=0.25]{figures/Mill_Baseline_TotalPackets.png}
     \caption{Mill baseline capture with total number of packets as the y-axis}
     \label{fig:MillBaselineTotalPackets}
  \end{figure}
@@ -222,19 +221,20 @@ Graphs for inbound and outbound traffic have also been made for Mill to see the 
     \label{tab:MillBaselineCalculations}
 \end{table}
 
-As Figure \ref{Fig:MillBaselineOutandInboundTraffic} shows, the device receives a lot more packets and bytes than it sends off. As the inbound graphs do not differ much from the total graphs, it will be best to proceed with the analysis in a total traffic aspect where both inbound and outbound traffic are included. This is also reflected in Table \ref{tab:MillBaselineCalculations}, which shows that 76\% of packets and 74\% of bytes are inbound traffic.
+As Figure \ref{Fig:MillBaselineOutandInboundTraffic} shows, the device receives a lot more packets and bytes than it sends. As the inbound graphs do not differ much from the total graphs, it will be best to proceed with the analysis in a total traffic aspect where both inbound and outbound traffic are included. This is also reflected in Table \ref{tab:MillBaselineCalculations}, which shows that 76\% of packets and 74\% of bytes are inbound traffic.
 
 \subsection{Nedis Baseline}
 Figures \ref{fig:NedisBaselineTotalPackets} and \ref{fig:NedisBaselineTotalBytes} show the graphs for Nedis from the baseline capturing from 6th of March 2023 to 15th of March 2023. The traffic sent and received by Nedis is characterized by varying a lot with high spikes especially for packets. The larger spikes, which are more visible in Figure \ref{fig:NedisBaselineTotalPackets}, showing the packets, occurs almost everyday. Since traffic is encrypted, it is not possible to see what these spikes are, but for further analysis it is important to understand that normal traffic for the device, can be large spikes occurring around the same time each night around 3am. 
 \begin{figure} [H]
     \centering
-    \includegraphics[scale=0.3]{figures/Nedis_Baseline_TotalBytes.png}
+    \includegraphics[scale=0.25]{figures/Nedis_Baseline_TotalBytes.png}
     \caption{Nedis baseline capture with total number of bytes as the y-axis}
     \label{fig:NedisBaselineTotalBytes}
 \end{figure}
 
-\begin{figure} [H]         
-    \includegraphics[scale=0.3]{figures/Nedis_Baseline_TotalPackets.png}
+\begin{figure} [H]
+    \centering
+    \includegraphics[scale=0.25]{figures/Nedis_Baseline_TotalPackets.png}
     \caption{Nedis baseline capture with total number of packets as the y-axis}
     \label{fig:NedisBaselineTotalPackets}
  \end{figure}
@@ -405,33 +405,33 @@ This subsection summarizes and compares the baseline traffic for all the three d
 \section{Test Case 1: Cooking}
 This chapter presents the results and analysis conducted on Test Case 1: Cooking. The first subsection will present general information applicable to all the devices, and the following subsections will present the result and analysis for each of the devices separately. 
 \subsection{General}
-The cooking events are 10 in total and are presented in Table \ref{tab:CookingDates}. Every device has the same time and dates for this event. 
+The cooking events are 10 in total and presented in Table \ref{tab:CookingDates}. Every device have the same time and dates for this event. 
 \begin{table}[H]
     \centering
-    \caption{Date and time for Test Case 1: Cooking events}
+    \caption{Date and time for Test Case 1: Cooking}
     \begin{adjustbox}{width=1\textwidth}
             \begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|}
             \cline{2-11} & 08.01 & 09.01 & 11.01 & 16.01 & 18.01 & 19.01 & 25.01 & 30.01 & 31.01 & 01.02 \\
             \hline
-            \multicolumn{1}{|l|}{Started event}  & 15:58 & 15:59 & 16:05 & 16:02 & 16:04 & 16:01 & 16:02 & 16:01 & 16:01 & 16:02 \\ 
+            \multicolumn{1}{|l|}{Started cooking}  & 15:58 & 15:59 & 16:05 & 16:02 & 16:04 & 16:01 & 16:02 & 16:01 & 16:01 & 16:02 \\ 
             \hline
-            \multicolumn{1}{|l|}{Finished event} & 16:22 & 16:21 & 16:37 & 16:25 & 16:25 & 16:18 & 16:13 & 16:19 & 16:21 & 16:22 \\ \hline
+            \multicolumn{1}{|l|}{Finished cooking} & 16:22 & 16:21 & 16:37 & 16:25 & 16:25 & 16:18 & 16:13 & 16:19 & 16:21 & 16:22 \\ \hline
             \end{tabular}
     \end{adjustbox}
     \label{tab:CookingDates}
 \end{table}
 \FloatBarrier
 
-To be able to look even further into if it is a similar traffic pattern to each event that can be used to identify it, the same start and finish time have been used for every graph. To have the same amount of time on each event, the earliest start time and the latest finish time are used as filtering values for each of the pcaps to be used in analyzing the cooking event. These values were then added 30 minutes before and after and used as a the start and finish time for the events, while the actual event time given by Table \ref{tab:CookingDates} are marked red on the graphs. This gives the following values to use for further analysis:
+To be able to look even further into if it is a similar traffic pattern to each event that can be used to identify it, the same start and finish time have been used for every graph. To have the same amount of time on each event, the earliest start time and the latest finish time are used as filtering values for each of the \gls{pcaps} for the cooking event. These values were then added 30 minutes before and after and used as a the start and finish time for the files, while the actual event time given by Table \ref{tab:CookingDates} is marked red on the graphs. This gives the following values to use for further analysis:
 
 \begin{itemize}
-    \item Earliest Event Start: 15:58
-    \item Latest Event Finished: 16:37
-    \item Packet Capture Files Start: 15:28
-    \item Packet Capture Files End: 17:07
+    \item Earliest cooking start: 15:58
+    \item Latest cooking finished: 16:37
+    \item Packet capture files start: 15:28
+    \item Packet capture files end: 17:07
 \end{itemize}
 
-These timings gives the following filters added to create the pcaps for each event:
+These timings give the following filter added to create the pcaps for each event:
 
 \begin{itemize}
     \item frame.time >= "Month Date, Year 15:28:00" \&\& frame.time <= "Month Date, Year 17:07:00"
@@ -439,14 +439,14 @@ These timings gives the following filters added to create the pcaps for each eve
 
 \newpage
 \subsection{Netatmo}
-Table \ref{tab:NetatmoCookingCalculations} presents calculations from all the cooking events together with a standard deviation and Table \ref{tab:NetatmoBaselineCookingCalculations} presents the calculations from all the corresponding baseline pcaps. Table \ref{tab:NetatmoComparingBaselineAndCookingCalculations} compares the average and standard deviation values from the events to the baseline. Figure \ref{fig:NetatmoCookingCalculations} presents a graphical overview of the packets and bytes from Table \ref{tab:NetatmoCookingCalculations} including average values.
+Table \ref{tab:NetatmoCookingCalculations} presents calculations from all the cooking events and Table \ref{tab:NetatmoBaselineCookingCalculations} presents the calculations from all the corresponding baseline pcaps. Table \ref{tab:NetatmoComparingBaselineAndCookingCalculations} compares the average and standard deviation values from the events to the baseline. Figure \ref{fig:NetatmoCookingCalculations} presents a graphical overview of the packets and bytes from Table \ref{tab:NetatmoCookingCalculations} including average values.
 
 \begin{table}[H]
     \centering
     \caption{Calculations on cooking events for Netatmo}
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
-        \textbf{Event dates} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        \textbf{Dates} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
         08.jan & 901 & 123,630 & 407 bytes\\ \hline
         09.jan & 703 & 97,019 & 407 bytes \\ \hline
         11.jan & 847 & 114,473 & 407 bytes\\ \hline
@@ -509,7 +509,7 @@ Table \ref{tab:NetatmoCookingCalculations} presents calculations from all the co
     \label{fig:NetatmoCookingCalculations}
 \end{figure}
 
-The graphs in Figure \ref{fig:NetatmoCookingBytes1}, \ref{fig:NetatmoCookingBytes2}, \ref{fig:NetatmoCookingPackets1} and \ref{fig:NetatmoCookingPackets2} displays both bytes and packets for the cooking events in comparison with the baseline captures. The event graphs are placed on the left side of the figure and are framed in red, the baseline graphs are placed on the right side of the figure and are framed in blue. The area marked red on the event graphs are when the event was ongoing, and not included in the baseline graphs as no event was ongoing and is only used for comparison. The x- and y-axis for all the graphs in the same figure have the same minimum and maximum values. 
+The graphs in Figures \ref{fig:NetatmoCookingBytes1}, \ref{fig:NetatmoCookingBytes2}, \ref{fig:NetatmoCookingPackets1} and \ref{fig:NetatmoCookingPackets2} display both bytes and packets for the cooking events in comparison with the baseline captures. The event graphs are placed on the left side of the figure and are framed in red, while the baseline graphs are placed on the right side of the figure and are framed in blue. The area marked red on the event graphs is when the event was ongoing, and not included in the baseline graphs as no event was ongoing and is only used for comparison. The x- and y-axis for all the graphs in the same figure have the same minimum and maximum values. 
 
 \begin{figure}[H]
     \begin{subfigure}[b]{0.47\textwidth}
@@ -694,20 +694,20 @@ The graphs in Figure \ref{fig:NetatmoCookingBytes1}, \ref{fig:NetatmoCookingByte
     \caption{Graphs of traffic flows from the cooking events measured in bytes with event graphs framed in red and baseline graphs framed in blue for Netatmo. Event times are marked in red on the event graphs.}    \label{fig:NetatmoCookingBytes2}
 \end{figure}
 
-Table \ref{tab:NetatmoCookingCalculations} shows that the calculations varies a lot for each event. Packets varies from 403 to 1,082 and bytes from 58,926 to 146,001. The same is found for the baseline calculations, which also varies with 584 packets as the smallest number to 972 to the highest amount of packets and for bytes from 77,780 to 132,406 bytes. The biggest packet from both the events and the baseline is mainly 407 bytes, with a few exceptions for both. The average values for both packets, bytes and biggest packet are similar to each other for the events and baseline. The standard deviation for all categories are a bit higher for the events than the baseline. Overall, the graphs in Figure \ref{fig:NetatmoCookingCalculations} shows that the calculation of the traffic from the events, do not differ significantly from the baseline standard traffic.
+Table \ref{tab:NetatmoCookingCalculations} shows that the calculations varies a lot for each event. Packets varies from 403 to 1,082 and bytes from 58,926 to 146,001. The same is found for the baseline calculations, which also varies with 584 packets as the smallest to 972 as the highest amount of packets and for bytes from 77,780 to 132,406 bytes. The biggest packet from both the events and the baseline is mainly 407 bytes, with a few exceptions for both. The average values for both packets, bytes and biggest packet are similar to each other for the events and baseline. The standard deviation for all categories are a bit higher for the events than the baseline. Overall, the graphs in Figure \ref{fig:NetatmoCookingCalculations} shows that the calculation of the traffic from the events, do not differ significantly from the baseline standard traffic.
 
-The same result is further confirmed in the graphs in Figure \ref{fig:NetatmoCookingPackets1} and \ref{fig:NetatmoCookingPackets2} for packets and \ref{fig:NetatmoCookingBytes1} and \ref{fig:NetatmoCookingBytes2} for bytes. For some of the event graphs, changes in traffic pattern are visible during the event time, but that is not applicable for all. The same changes are visible for some of the baseline graphs, so it is not a change that happens everytime and only when an event is triggered.The graphs for events in red do not follow a specific pattern compared to the baseline traffic in blue. 
+The same result is further confirmed in the graphs in Figures \ref{fig:NetatmoCookingPackets1} and \ref{fig:NetatmoCookingPackets2} for packets and \ref{fig:NetatmoCookingBytes1} and \ref{fig:NetatmoCookingBytes2} for bytes. For some of the event graphs, changes in traffic pattern are visible during the event time, but that is not applicable for all. The same changes are visible for some of the baseline graphs, so it is not a change that happens everytime and only when an event is triggered. The graphs for events in red do not follow a specific pattern compared to the baseline traffic in blue. Therefore, it is not possible to distinguish an event triggered from normal traffic for Netatmo. A cooking event does not show differences graphically or for calculations. 
 
 \newpage
 \subsection{Mill}
-The results from the cooking events for Mill are presented with both numerical values in tables and graphs and in figures where traffic pattern can be analyzed. Table \ref{tab:MillCookingCalculations} presents the calculations from the event traffic with packets, bytes and biggest packet sent and received during the packet capturing. The same calculations have been made on the baseline traffic. in Table \ref{tab:MillBaselineCookingCalculations}. Table \ref{tab:MillComparingBaselineAndCookingCalculations} compares the average and standard deviation values for the event and baseline traffic. The calculations from these three tables are graphically presented in Figure \ref{fig:MillCookingCalculations} where packets and bytes from the event and baseline traffic are included with the average value for each of them. 
+The results from the cooking events for Mill are presented with both numerical values in tables and graphs and in figures where traffic patterns are analyzed. Table \ref{tab:MillCookingCalculations} presents the calculations from the event traffic with packets, bytes and biggest packet sent and received during the packet capturing. The same calculations have been made on the baseline traffic, in Table \ref{tab:MillBaselineCookingCalculations}. Table \ref{tab:MillComparingBaselineAndCookingCalculations} compares the average and standard deviation values for the event and baseline traffic. The calculations from these three tables are graphically presented in Figure \ref{fig:MillCookingCalculations} where packets and bytes from the event and baseline traffic are included with the average value for each of them. 
 
 \begin{table}[H]
     \centering
     \caption{Calculations on cooking events for Mill}
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
-        \textbf{Events} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        \textbf{Dates} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
         08.jan & 8,875  & 1,097,786 & 456 bytes   \\ \hline
         09.jan & 7,948  & 1,057,936 & 456 bytes   \\ \hline
         11.jan & 10,222 & 1,310,644 & 456 bytes   \\ \hline
@@ -749,9 +749,9 @@ device Mill}
     \begin{tabular}{c|l|l|l|l|}
         \cline{2-5}
         \multicolumn{1}{l|}{}                                              & \textbf{Type} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Event         & 9,521              & 1,184,109       & 861 bytes               \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Cooking         & 9,521              & 1,184,109       & 861 bytes               \\ \cline{2-5} 
         \multicolumn{1}{|c|}{}                                             & Baseline      & 8,920              & 917,801         & 931 bytes                \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 1,221              & 125,182         & 529 bytes                 \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Cooking         & 1,221              & 125,182         & 529 bytes                 \\ \cline{2-5} 
         \multicolumn{1}{|c|}{}                                             & Baseline      & 1,404               & 122,928       &  527 bytes               \\ \hline          
     \end{tabular}
     \label{tab:MillComparingBaselineAndCookingCalculations}
@@ -772,7 +772,7 @@ with packets and bytes, including average value extracted from Table \ref{tab:Mi
     \label{fig:MillCookingCalculations}
 \end{figure}
 
-The traffic pattern of the events and baseline are presented in Figure \ref{fig:MillCookingPackets1} and \ref{fig:MillCookingPackets2} for packets and in Figure \ref{fig:MillCookingBytes1} and \ref{fig:MillCookingBytes2} for bytes. In these figures, all graphs have the same minimum and maximum values on the y- and x-axis to be comparable. The graphs created from the different events are placed on the left side of the figure and framed in red, while the baseline is placed on the right side of the figure and framed in blue. The event times for when the event was ongoing are marked in red on the event graphs. Every graph within the same figure have the same minimum and maximum value on the x- and y-axis. 
+The traffic pattern for the events and baseline are presented in Figure \ref{fig:MillCookingPackets1} and \ref{fig:MillCookingPackets2} for packets and in Figure \ref{fig:MillCookingBytes1} and \ref{fig:MillCookingBytes2} for bytes. In these figures, all graphs have the same minimum and maximum values on the y- and x-axis to be comparable. The graphs created from the different events are placed on the left side of the figure and framed in red, while the baseline is placed on the right side of the figure and framed in blue. The event times for when the event was ongoing are marked in red on the event graphs.
 
 \begin{figure}[H]
     \begin{subfigure}[b]{0.47\textwidth}
@@ -958,13 +958,13 @@ The traffic pattern of the events and baseline are presented in Figure \ref{fig:
     \label{fig:MillCookingBytes2}
 \end{figure}
 
-Comparing Table \ref{tab:MillCookingCalculations} and \ref{tab:MillBaselineCookingCalculations} shows that the amount of packets sent to and from the device is around the same amount and not a significant difference between the two. The average values for packets in Table \ref{tab:MillComparingBaselineAndCookingCalculations} also shows that the values are similar to each other. For bytes, the calculations shows that when an event is ongoing, the overall values are higher than for standard baseline traffic. The comparison in Table \ref{tab:MillComparingBaselineAndCookingCalculations} shows that the average value for events are 266,308 bytes higher. The same is presented in Figure \ref{fig:MillCookingCalculations} where there are a bigger difference in bytes than packets for events and baseline traffic. For the biggest packet sent, the packet sizes varies from around 450 bytes to 1,550 bytes for events and baseline traffic over the same time, shown in Table \ref{tab:MillCookingCalculations} and \ref{tab:MillBaselineCookingCalculations}. 
+Comparing Table \ref{tab:MillCookingCalculations} and \ref{tab:MillBaselineCookingCalculations} shows that the number of packets sent to and from the device is around the same value and not a significant difference between the two. The average values for packets in Table \ref{tab:MillComparingBaselineAndCookingCalculations} also shows that the values are similar to each other. For bytes, the calculations shows that when an event is ongoing, the overall values are higher than for standard baseline traffic. The comparison in Table \ref{tab:MillComparingBaselineAndCookingCalculations} shows that the average value for events are 266,308 bytes higher. The same is presented in Figure \ref{fig:MillCookingCalculations} where there are a bigger difference in bytes than packets for events and baseline traffic. For the biggest packet sent, the packet sizes varies from around 450 bytes to 1,550 bytes for events and baseline traffic over the same time, shown in Table \ref{tab:MillCookingCalculations} and \ref{tab:MillBaselineCookingCalculations}. On the other side, the differences visible are not constant for every time a cooking event is triggered and therefore it is not possible to distinguish this event. Since some of the changes are visible in the baseline traffic, it can also look like something is happening, while in fact there are no events affecting the sensors at the time. Therefore, we cannot conclude that the changes are a result of the event triggered. 
 
-The graphs in Figure \ref{fig:MillCookingPackets1} and \ref{fig:MillCookingPackets2} for packets and Figure \ref{fig:MillCookingBytes1} and \ref{fig:MillCookingBytes2} for bytes does not show a significant change in traffic pattern from when an event is ongoing in the graphs framed in red and the standard traffic pattern from the baseline in the graphs framed in blue. The variations the calculations gave in bytes from the events and baseline is not very visible in the graphs as they both vary a lot. However, knowing that more bytes are sent during the events, it is possible to see that more of the event graphs have higher spikes than the baseline, but this is not applicable for all events. 
+The graphs in Figures \ref{fig:MillCookingPackets1} and \ref{fig:MillCookingPackets2} for packets and Figures \ref{fig:MillCookingBytes1} and \ref{fig:MillCookingBytes2} for bytes does not show a significant change in traffic pattern from when an event is ongoing, in the graphs framed in red, and the standard traffic pattern from the baseline, in the graphs framed in blue. The variations the calculations gave in bytes from the events and baseline is not very visible in the graphs as they both vary a lot. However, knowing that more bytes are sent during the events, it is possible to see that more of the event graphs have higher spikes than the baseline, but this is not applicable for all events. Even though there are some differences visible, these are not applicable for all executions of cooking for Mill. Therefore, it is not possible to show that there is a specific change in traffic patterns for cooking and not possible to identify when cooking is ongoing in the environment. 
 
 \newpage
 \subsection{Nedis}
-In Test Case 1: Cooking for Nedis, tables with numerical calculations are presented together with graphs of the traffic flow. In Table \ref{tab:NedisCookingCalculations} the total amount of packets and bytes including the biggest packet during the event are presented for each of the 10 cooking events. Table \ref{tab:NedisBaselineCookingCalculations} presents the same values, but in regards of the baseline pcaps. Table \ref{tab:NedisComparingBaselineAndCookingCalculations} compares the average values and standard deviation from the events and baseline for packets, bytes and biggest packet. Figure \ref{fig:NedisCookingCalculations} presents the calculations from Table \ref{tab:NedisCookingCalculations}, \ref{tab:NedisBaselineCookingCalculations} and \ref{tab:NedisComparingBaselineAndCookingCalculations} with packets and bytes together with the average value for both the event and baseline traffic to easier compare it.  
+In Test Case 1: Cooking for Nedis, tables with numerical calculations are presented together with graphs of the traffic flow. In Table \ref{tab:NedisCookingCalculations} the total amount of packets and bytes, including the biggest packet during the event are presented for each of the 10 cooking events. Table \ref{tab:NedisBaselineCookingCalculations} presents the same values, but in regards of the baseline pcaps. Table \ref{tab:NedisComparingBaselineAndCookingCalculations} compares the average values and standard deviation from the events and baseline for packets, bytes and biggest packet. Figure \ref{fig:NedisCookingCalculations} presents the calculations from Tables \ref{tab:NedisCookingCalculations}, \ref{tab:NedisBaselineCookingCalculations} and \ref{tab:NedisComparingBaselineAndCookingCalculations} with packets and bytes together with the average value for both the event and baseline traffic to easier compare it.  
 
 \begin{table}[H]
 \centering
@@ -972,7 +972,7 @@ In Test Case 1: Cooking for Nedis, tables with numerical calculations are presen
 \label{tab:NedisCookingCalculations}
     \begin{tabular}{|l|l|l|l|}
         \hline
-        \textbf{Events}    & \textbf{Packets} & \textbf{Bytes}     & \textbf{Biggest packet} \\ \hline
+        \textbf{Dates}    & \textbf{Packets} & \textbf{Bytes}     & \textbf{Biggest packet} \\ \hline
         08.jan             & 24,494           & 3,318,519          & 485 bytes               \\ \hline
         09.jan             & 26,787           & 3,870,361          & 424 bytes               \\ \hline
         11.jan             & 24,381           & 3,550,947          & 424 bytes               \\ \hline
@@ -1012,9 +1012,9 @@ In Test Case 1: Cooking for Nedis, tables with numerical calculations are presen
     \begin{tabular}{c|l|l|l|l|}
         \cline{2-5}
         \multicolumn{1}{l|}{}                                              & \textbf{Type} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Event         & 24,633             & 3,412,097       & 436 bytes               \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Cooking         & 24,633             & 3,412,097       & 436 bytes               \\ \cline{2-5} 
         \multicolumn{1}{|c|}{}                                             & Baseline      & 17,024             & 2,018,041       & 424 bytes                \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 1,595              & 281,705         & 26 bytes                 \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Cooking         & 1,595              & 281,705         & 26 bytes                 \\ \cline{2-5} 
         \multicolumn{1}{|c|}{}                                             & Baseline      & 3,248              & 420,982         & 36 bytes               \\ \hline          
     \end{tabular}
     \label{tab:NedisComparingBaselineAndCookingCalculations}
@@ -1034,7 +1034,7 @@ In Test Case 1: Cooking for Nedis, tables with numerical calculations are presen
     \label{fig:NedisCookingCalculations}
 \end{figure}
 
-The graphical presentation of the traffic patterns during event are presented in Figure \ref{fig:NedisCookingPackets1} and \ref{fig:NedisCookingPackets2} for packets and in Figure \ref{fig:NedisCookingBytes1} and \ref{fig:NedisCookingBytes2} for bytes. In these figures, the corresponding graphs from the baseline traffic is also included to look for traffic changes during the events. In these figures, the graphs for events are placed on the left side of the figure and framed in red, while the baseline graphs are placed on the right side and framed in blue. The event graphs are marked with red when the event was ongoing. The minimum and maximum values on the x- and y-axis are equal for all graphs within the same figure. 
+The graphical presentation of the traffic patterns during events are presented in Figures \ref{fig:NedisCookingPackets1} and \ref{fig:NedisCookingPackets2} for packets and in Figures \ref{fig:NedisCookingBytes1} and \ref{fig:NedisCookingBytes2} for bytes. In these figures, the corresponding graphs from the baseline traffic is also included to look for traffic changes during the events. In these figures, the graphs for events are placed on the left side of the figure and framed in red, while the baseline graphs are placed on the right side and framed in blue. The event graphs are marked with red when the event was ongoing. The minimum and maximum values on the x- and y-axis are equal for all graphs within the same figure. 
 
 \begin{figure}[H]
     \begin{subfigure}[b]{0.47\textwidth}
@@ -1220,24 +1220,26 @@ The graphical presentation of the traffic patterns during event are presented in
     \label{fig:NedisCookingBytes2}
 \end{figure}
 
-Comparing Table \ref{tab:NedisCookingCalculations} and \ref{tab:NedisBaselineCookingCalculations} shows overall that during the events, more packets and events are sent than during standard baseline traffic. While for the biggest packet during the cooking-time, there are not a significant difference to when an event is ongoing. The same is shown in Table \ref{tab:NedisComparingBaselineAndCookingCalculations} where the average for both packets and bytes are higher during events. This is also visible in Figure \ref{fig:NedisCookingCalculations} where all the blue marked bars are lower than the red marked graphs for events. 
+Comparing Table \ref{tab:NedisCookingCalculations} and \ref{tab:NedisBaselineCookingCalculations} shows that overall during the events, more packets and bytes are sent than during standard baseline traffic. While for the biggest packet during the cooking-time, there are not a significant difference to when an event is ongoing. The same is shown in Table \ref{tab:NedisComparingBaselineAndCookingCalculations} where the average for both packets and bytes are higher during events. This is also visible in Figure \ref{fig:NedisCookingCalculations} where all the blue marked bars are lower than the red marked graphs for events. 
 
 The graphs in Figure \ref{fig:NedisCookingPackets1} and \ref{fig:NedisCookingPackets2} gives the same results, that overall during an event the traffic pattern is different then for the baseline. For Figure \ref{fig:NedisCookingBytes1} and \ref{fig:NedisCookingBytes2} the difference is much clearer than for packets. The graphs for baseline are significantly lower in bytes sent and received to the device than when the event is ongoing. 
 
+For the analyzing of the calculations made on the baseline compared to the actual event, it looks like there is a significant difference in amount of packets and bytes sent when cooking is ongoing and that it is possible to distinguish the event from standard traffic. However, the graphs over the traffic patterns shows that its not during the actual event that the number of bytes and packets are higher, but it also higher than the baseline before and after the event. This means that it is not the event that is increasing the number of packets and bytes. Therefore, it must be other factors than the event which is causing the visible differences for both calculations and traffic patterns. 
+
 \newpage
 \section{Test Case 2: Showering}
-This chapter presents the results and analysis conducted on Test Case 2: Showering. The first sub-section describes the general evaluation which is applicable for all the devices and the next three sub-sections presents the results and analysis for each of the devices separately. 
+This chapter presents the results and analysis for Test Case 2: Showering. The first subsection describes the general evaluation which is applicable for all the devices and the next three subsections presents the results and analysis for each of the devices separately. 
 \subsection{General}
 The showering event has been conducted 10 times and Table \ref{tab:ShoweringDates} presents the 10 different dates and exact times for when the event was ongoing.
 \begin{table}[H]
     \centering
-    \caption{Date and time for Test Case 2: Showering events}
+    \caption{Date and time for Test Case 2: Showering}
     \begin{adjustbox}{width=1\textwidth} 
         \begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|}
             \cline{2-11}
                 & 08.01 & 09.01 & 11.01 & 16.01 & 18.01 & 19.01 & 25.01 & 30.01 & 31.01 & 01.02 \\ \hline
-            \multicolumn{1}{|l|}{Started event}  & 19:59 & 20:14 & 20:01 & 20:12 & 20:02 & 20:00 & 20:03 & 20:00 & 20:01 & 20:00 \\ \hline
-            \multicolumn{1}{|l|}{Finished event} & 20:14 & 20:34 & 20:17 & 20:31 & 20:19 & 20:16 & 20:19 & 20:18 & 20:17 & 20:16 \\ \hline
+            \multicolumn{1}{|l|}{Started showering}  & 19:59 & 20:14 & 20:01 & 20:12 & 20:02 & 20:00 & 20:03 & 20:00 & 20:01 & 20:00 \\ \hline
+            \multicolumn{1}{|l|}{Finished showering} & 20:14 & 20:34 & 20:17 & 20:31 & 20:19 & 20:16 & 20:19 & 20:18 & 20:17 & 20:16 \\ \hline
         \end{tabular}
     \end{adjustbox}
     \label{tab:ShoweringDates}
@@ -1246,10 +1248,10 @@ The showering event has been conducted 10 times and Table \ref{tab:ShoweringDate
 To be able to compare the events to each other and the standard baseline traffic, all the pcaps created for this event will have the same start and finish time. Graphically, each event will have marked at what time the actual event was ongoing to separate from before and after the event. When deciding which start and end time for these events, the earliest start and latest finish are used. These times are then added 30 minutes before and after to cover at least 30 minutes before and after each event. This gives the following values to use for further analysis:
 
 \begin{itemize}
-    \item Earliest Event Start: 19:59
-    \item Latest Event Finished: 20:34
-    \item Packet Capture Files Start: 19:29
-    \item Packet Capture Files End: 21:04
+    \item Earliest showering start: 19:59
+    \item Latest showering finished: 20:34
+    \item Packet capture files start: 19:29
+    \item Packet capture files end: 21:04
 \end{itemize}
 
 These times results in the following filters added to create the pcaps for each event:
@@ -1259,14 +1261,14 @@ These times results in the following filters added to create the pcaps for each 
 
 \newpage
 \subsection{Netatmo}
-For Netatmo, the 10 event packet captures for the showering event are presented both graphically in figures and numerically in tables. Table \ref{tab:NetatmoShowerCalculations} shows packets, bytes and the biggest packet in each of the packet captures. Table \ref{tab:NetatmoBaselineShowerCalculations} presents the same calculations, but for the corresponding baseline pcaps. In Table \ref{tab:NetatmoComparingBaselineAndShowerCalculations}, the average and standard deviation values from Table \ref{tab:NetatmoShowerCalculations} and \ref{tab:NetatmoBaselineShowerCalculations} are compared to each other. In context of these three tables, two graphical presentations of total bytes and packets including the average values for events and baseline are presented to compare events to the baseline traffic in Figure \ref{fig:NetatmoShowerCalculations}. 
+For Netatmo, the 10 events for showering are presented both graphically in figures and numerically in tables. Table \ref{tab:NetatmoShowerCalculations} shows packets, bytes and the biggest packet in each of the packet captures for the events. Table \ref{tab:NetatmoBaselineShowerCalculations} presents the same calculations, but for the corresponding baseline pcaps. In Table \ref{tab:NetatmoComparingBaselineAndShowerCalculations}, the average and standard deviation values from Table \ref{tab:NetatmoShowerCalculations} and \ref{tab:NetatmoBaselineShowerCalculations} are compared to each other. In context of these three tables, two graphical presentations of total bytes and packets including the average values for events and baseline are presented to compare events to the baseline traffic in Figure \ref{fig:NetatmoShowerCalculations}. 
 
 \begin{table}[H]
     \centering
     \caption{Calculations on showering events for Netatmo}
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
-        \textbf{Event dates} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        \textbf{Dates} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
         08.jan & 870   & 118,119 & 407 bytes\\ \hline
         09.jan & 816   & 112,821 & 407 bytes \\ \hline
         11.jan & 1,075 & 145,838 & 407 bytes\\ \hline
@@ -1307,9 +1309,9 @@ For Netatmo, the 10 event packet captures for the showering event are presented 
     \begin{tabular}{c|l|l|l|l|}
         \cline{2-5}
         \multicolumn{1}{l|}{}                                              & \textbf{Type} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Event         & 802              & 108,779        & 325 bytes               \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Showering         & 802              & 108,779        & 325 bytes               \\ \cline{2-5} 
         \multicolumn{1}{|c|}{}                                             & Baseline      & 711              & 94,237         & 246 bytes                \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 133              & 18,181         & 132 bytes                 \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Showering         & 133              & 18,181         & 132 bytes                 \\ \cline{2-5} 
         \multicolumn{1}{|c|}{}                                             & Baseline      & 123              & 16,541         & 138 bytes               \\ \hline          
     \end{tabular}
     \label{tab:NetatmoComparingBaselineAndShowerCalculations}
@@ -1329,7 +1331,7 @@ For Netatmo, the 10 event packet captures for the showering event are presented 
     \label{fig:NetatmoShowerCalculations}
 \end{figure}
 
-Figures \ref{fig:NetatmoShowerPackets1} and \ref{fig:NetatmoShowerPackets2} gives the graphical presentation of the traffic flow during the showering times with the total number of packets sent and received on the y-axis. Figure \ref{fig:NetatmoShowerBytes1} and \ref{fig:NetatmoShowerBytes2} shows the same, but with bytes on the y-axis. The figures over the traffic flow all have the same minimum and maximum values on the y- and x-axis and event graphs are placed on the left side of the figure with a red frame, while baseline graphs are placed on the right side of the figure with a blue frame. The events are marked with a red area on the event graphs to look for changes in traffic pattern at that specific time. The minimum and maximum values on the x- and y-axis are equal for all the graphs within the same figure. 
+Figures \ref{fig:NetatmoShowerPackets1} and \ref{fig:NetatmoShowerPackets2} gives the graphical presentation of the traffic flow during the showering times with the total number of packets sent and received on the y-axis. Figure \ref{fig:NetatmoShowerBytes1} and \ref{fig:NetatmoShowerBytes2} shows the same, but measured in bytes on the y-axis. The figures over the traffic flow all have the same minimum and maximum values on the y- and x-axis and event graphs are placed on the left side of the figure with a red frame, while baseline graphs are placed on the right side of the figure with a blue frame. The timings for when the event was ongoing are marked with a red area on the event graphs to look for changes in traffic pattern at that specific time. 
 
 \begin{figure}[H]
     \begin{subfigure}[b]{0.47\textwidth}
@@ -1517,18 +1519,18 @@ Figures \ref{fig:NetatmoShowerPackets1} and \ref{fig:NetatmoShowerPackets2} give
 
 The number of packets and bytes are relatively similar for both events and baseline traffic which is shown in Figure \ref{fig:NetatmoShowerCalculations}. For events packets varies from 636 to 1,075 and for the baseline it varies from 514 to 884. For bytes the events varies from 85,860 to 145,838 and for the baseline it varies from 68,470 to 118,116. This results in an average value a bit lower for the baseline traffic, but not enough to see a significant change in amount of packets or bytes during the event. Even though the average baseline traffic is less, several of the baseline days exceeds both packets and bytes for some of the event traffic captures. For biggest packet sent and received, both event and baseline traffic varies between around 150 bytes to 407 bytes. 
 
-The graphs of the traffic flow shows no distinct difference for packets shown in Figure \ref{fig:NetatmoShowerPackets1} and \ref{fig:NetatmoShowerPackets2}. For bytes in Figure \ref{fig:NetatmoShowerBytes1} and \ref{fig:NetatmoShowerBytes2} several of the event graphs, marked in red, have higher spikes than the baseline graphs marked in blue. However, two things challenges the difference: the first is that a few of the baseline graphs also have spikes and a few of the event graphs are missing the spikes. The other one is that the spikes also occurs before the event has started and may not be connected to an event triggering. 
+The graphs of the traffic flow show no distinct difference for packets in Figure \ref{fig:NetatmoShowerPackets1} and \ref{fig:NetatmoShowerPackets2}. For bytes in Figure \ref{fig:NetatmoShowerBytes1} and \ref{fig:NetatmoShowerBytes2} several of the event graphs, marked in red, have higher spikes than the baseline graphs marked in blue. However, two things challenges the difference: the first is that a few of the baseline graphs also have spikes and a few of the event graphs are missing the spikes. The other one is that the spikes also occurs before the event has started and may not be connected to an event triggering. Therefore, it is not possible to see specific traffic changes when showering is ongoing for Netatmo. 
 
 \newpage
 \subsection{Mill}
-The results from the showering events for Mill are presented in this subsection. Table \ref{tab:MillShowerCalculations} presents the total amount of packets and bytes sent and received for the device and the biggest packet from each packet capture for each of the events. The same numbers are presented in Table \ref{tab:MillBaselineShowerCalculations} for the corresponding baseline captures. Table \ref{tab:MillComparingBaselineAndShowerCalculations} compares the average and standard deviation values for events and baseline in captures. The total number of packets and bytes are also presented graphically in Figure \ref{fig:MillShowerCalculations}, including the average values. Events and baseline are included in the same figure to easier compare the values. 
+The results from the showering events for Mill are presented in this subsection. Table \ref{tab:MillShowerCalculations} presents the total amount of packets and bytes sent and received and the biggest packet from each packet captures for the events. The same numbers are presented in Table \ref{tab:MillBaselineShowerCalculations} for the corresponding baseline captures. Table \ref{tab:MillComparingBaselineAndShowerCalculations} compares the average and standard deviation values for events and baseline. The total number of packets and bytes are also presented graphically in Figure \ref{fig:MillShowerCalculations}, including the average values. Events and baseline are included in the same figure to easier compare the values. 
 
 \begin{table}[H]
     \centering
     \caption{Calculations on showering events for Mill}
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
-        \textbf{Events} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        \textbf{Dates} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
         08.jan & 8,400 & 1,112,718 & 1353 bytes   \\ \hline
         09.jan & 7,775 & 970,700   & 456 bytes   \\ \hline
         11.jan & 9,819 & 1,166,768 & 456 bytes   \\ \hline
@@ -1569,9 +1571,9 @@ The results from the showering events for Mill are presented in this subsection.
     \begin{tabular}{c|l|l|l|l|}
         \cline{2-5}
         \multicolumn{1}{l|}{}                                              & \textbf{Type} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Event         & 8,632            & 1,057,862       & 883 bytes               \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Showering         & 8,632            & 1,057,862       & 883 bytes               \\ \cline{2-5} 
         \multicolumn{1}{|c|}{}                                             & Baseline      & 7,638            & 792,953         & 535 bytes                \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 801              & 102,055         & 489 bytes                 \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Showering         & 801              & 102,055         & 489 bytes                 \\ \cline{2-5} 
         \multicolumn{1}{|c|}{}                                             & Baseline      & 1,381            & 126,913       
           &  282 bytes               \\ \hline          
     \end{tabular}
@@ -1592,7 +1594,7 @@ The results from the showering events for Mill are presented in this subsection.
     \label{fig:MillShowerCalculations}
 \end{figure}
 
-Figure \ref{fig:MillShowerPackets1} and \ref{fig:MillShowerPackets2} shows the traffic flow during the events, placed on the left side of the figure and framed in red, and the baseline, placed on the right side of the figure and framed in blue, measured in number of packets. Figure \ref{fig:MillShowerBytes1} and \ref{fig:MillShowerBytes2} displays the same, but measured in number of bytes. The timings for when the event was ongoing are marked red on the event graphs. All graphs within the same figure have the same minimum and maximum values for the x- and y-axis. 
+Figures \ref{fig:MillShowerPackets1} and \ref{fig:MillShowerPackets2} show the traffic flow during the events, placed on the left side of the figure and framed in red, and the baseline placed on the right side of the figure and framed in blue, measured in number of packets. Figures \ref{fig:MillShowerBytes1} and \ref{fig:MillShowerBytes2} display the same, but measured in number of bytes. The timings for when the event was ongoing are marked red on the event graphs. All graphs within the same figure have the same minimum and maximum values for the x- and y-axis. 
 
 \begin{figure}[H]
     \begin{subfigure}[b]{0.47\textwidth}
@@ -1780,7 +1782,7 @@ Figure \ref{fig:MillShowerPackets1} and \ref{fig:MillShowerPackets2} shows the t
 
 Table \ref{tab:MillShowerCalculations} shows that the number of packets varies from 7,775 to 9,819 packets during the events compared to the baseline which varies from 5,968 to 10,151 packets shown in Table \ref{tab:MillBaselineShowerCalculations}. The baseline traffic has more variation than the event traffic. This also results in a higher standard deviation for the baseline shown in Table \ref{tab:MillComparingBaselineAndShowerCalculations}. For bytes, the same is shown, but the average value for the baseline is a lot smaller than for the events. As Table \ref{tab:MillBaselineShowerCalculations} shows, the bytes varies from 623,993 to 1,006,385 bytes, and in Table \ref{tab:MillShowerCalculations} the bytes varies from 909,992 to 1,166,768, which means that the average value for events are higher than for the baseline. Although the average value is higher, some of the baseline event days also measure similar amounts of bytes sent and received even though an event is not ongoing. This is also confirmed in Figure \ref{fig:MillShowerCalculations} where bytes for baseline are much lower than for events, but there are also events that are lower than baseline days. 
 
-In the figures with packets, in Figure \ref{fig:MillShowerPackets1} and \ref{fig:MillShowerPackets2}, and bytes, in Figure \ref{fig:MillShowerBytes1} and \ref{fig:MillShowerBytes2} no distinct differences are visible in the graphical representation of the traffic flows. 
+In the figures with packets, in Figure \ref{fig:MillShowerPackets1} and \ref{fig:MillShowerPackets2}, and bytes, in Figure \ref{fig:MillShowerBytes1} and \ref{fig:MillShowerBytes2} no distinct differences are visible in the graphical representation of the traffic flows. Neither from the calculations, nor the graphs for showering event for Mill it is possible to see a clear difference in traffic patterns from when the user is showering or not. 
 
 \newpage
 \subsection{Nedis}
@@ -1792,7 +1794,7 @@ This subsection presents the results and analysis for Nedis during the showering
 \label{tab:NedisShoweringCalculations}
     \begin{tabular}{|l|l|l|l|}
         \hline
-        \textbf{Events} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        \textbf{Dates} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
         08.jan          & 28,069           & 3,720,194      & 485 bytes               \\ \hline
         09.jan          & 23,156           & 3,395,004      & 424 bytes               \\ \hline
         11.jan          & 23,368           & 3,025,569      & 424 bytes               \\ \hline
@@ -1832,9 +1834,9 @@ This subsection presents the results and analysis for Nedis during the showering
     \begin{tabular}{c|l|l|l|l|}
         \cline{2-5}
         \multicolumn{1}{l|}{}                                              & \textbf{Type} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Event         & 22,563             & 2,867,817       & 455 bytes               \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Showering         & 22,563             & 2,867,817       & 455 bytes               \\ \cline{2-5} 
         \multicolumn{1}{|c|}{}                                             & Baseline      & 14,062             & 1,752,432       & 483 bytes                \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 3,130              & 540,631         & 29 bytes                 \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Showering         & 3,130              & 540,631         & 29 bytes                 \\ \cline{2-5} 
         \multicolumn{1}{|c|}{}                                             & Baseline      & 4,723              & 571,269         & 50 bytes               \\ \hline          
     \end{tabular}
     \label{tab:NedisComparingBaselineAndShowerCalculations}
@@ -1854,7 +1856,7 @@ This subsection presents the results and analysis for Nedis during the showering
     \label{fig:NedisShowerCalculations}
 \end{figure}
 
-In Figure \ref{fig:NedisShowerPackets1} and \ref{fig:NedisShowerPackets2} a graphical presentation of the traffic flow measured in number of packets are displayed. The same view is presented in Figure \ref{fig:NedisShowerBytes1} and \ref{fig:NedisShowerBytes2} with number of bytes as the y-axis. Both of theses figures have the event graphs placed on the left side of the figure framed in red, while the baseline graphs are placed on the right side of the figure framed in blue to compare to each other. The time of the events are marked red on all of the event graphs. The x- and y-axis have the same minimum and maximum values for all graphs within the same figure. 
+In Figures \ref{fig:NedisShowerPackets1} and \ref{fig:NedisShowerPackets2} a graphical presentation of the traffic flow measured in number of packets are displayed. The same view is presented in Figures \ref{fig:NedisShowerBytes1} and \ref{fig:NedisShowerBytes2} with number of bytes as the y-axis. These figures have the event graphs placed on the left side of the figure framed in red, while the baseline graphs are placed on the right side of the figure framed in blue to compare to each other. The time of the events is marked red on all of the event graphs. The x- and y-axis have the same minimum and maximum values for all graphs within the same figure. 
 
 \begin{figure}[H]
     \begin{subfigure}[b]{0.47\textwidth}
@@ -2040,37 +2042,37 @@ In Figure \ref{fig:NedisShowerPackets1} and \ref{fig:NedisShowerPackets2} a grap
     \label{fig:NedisShowerBytes2}
 \end{figure}
 
-Comparing the values for both packets and bytes in Figure \ref{tab:NedisShoweringCalculations} and \ref{tab:NedisBaselineShowerCalculations} shows that during the events, most of the values are a lot higher than for the baseline calculations. For event, the packets varies from 18,385 to 28,069 and bytes from 2,091,914 to 3,720,194 bytes. However, there are values from the baseline that matches the range of the event values, such as for 7th, 8th and 15th of March where the values for packets are over 18,000 and 2,000,000 for bytes. For the biggest packet sent, the baseline have a higher overall value compared to the event values, where baseline are mostly around 500 bytes and events are lower than 500 bytes for every day. The average values also shows that the event values are higher than the baseline values for both packets and bytes. The difference in both average values and overall for events and baseline are significantly shown in Figure \ref{fig:NedisShowerCalculations} where both packets and bytes are much lower for baseline than events. 
+Comparing the values for both packets and bytes in Figures \ref{tab:NedisShoweringCalculations} and \ref{tab:NedisBaselineShowerCalculations} show that during the events, most of the values are a lot higher than for the baseline calculations. For event, the packets varies from 18,385 to 28,069 and bytes from 2,091,914 to 3,720,194 bytes. However, there are values from the baseline that matches the range of the event values, such as for 7th, 8th and 15th of March where the values for packets are over 18,000 and 2,000,000 for bytes. For the biggest packet sent, the baseline have a higher overall value compared to the event values, where baseline are mostly around 500 bytes and events are lower than 500 bytes for every day. The average values also shows that the event values are higher than the baseline values for both packets and bytes. The difference in both average values and overall for events and baseline are significantly shown in Figure \ref{fig:NedisShowerCalculations} where both packets and bytes are much lower for baseline than events. 
 
-Looking at the graphs in Figure \ref{fig:NedisShowerPackets1} and \ref{fig:NedisShowerPackets2} the difference in number of packets are visible. However, it does not look like the number of packets changes when the shower event starts, but are just higher during several of those days. In these figures, one can also see that some of the baseline days looks similar as the event calculations in the tables. For bytes in Figure \ref{fig:NedisShowerBytes1} and \ref{fig:NedisShowerBytes2}, the results gives the same result as for packets. 
+Looking at the graphs in Figures \ref{fig:NedisShowerPackets1} and \ref{fig:NedisShowerPackets2} the difference in number of packets are visible. However, it does not look like the number of packets changes when the shower event starts, but are just higher during several of those days. In these figures, one can also see that some of the baseline days looks similar as the event calculations in the tables. For bytes in Figure \ref{fig:NedisShowerBytes1} and \ref{fig:NedisShowerBytes2}, the results gives the same result as for packets. The same result is found here for Nedis as for the event tests on cooking. The calculations under the event looks different than for standard traffic in the baseline, but the graphs over the traffic flows shows that the differences are not related to when the event is triggered, but rather higher before and after as well. Therefore, it is not possible to see traffic pattern changes when showering is ongoing for Nedis. 
 
 \newpage
 \section{Test Case 3: Window Open}
-This chapter presents the results and analysis conducted on Test Case 3: Window Open. 
+This chapter presents the results and analysis on Test Case 3: Window Open. 
 \subsection{General}
 Test case 3: Window Open has been conducted 10 times over the course of 10 different days. The days and timings for the events are presented in Table \ref{tab:WindowDates}.
 
 \begin{table}[H]
     \centering
-    \caption{Date and time for Test Case 3: Window Open events}
+    \caption{Date and time for Test Case 3: Window Open}
     \begin{adjustbox}{width=1\textwidth} 
             \begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|}
                 \cline{2-11}
                 & 08.01 & 09.01 & 11.01 & 16.01 & 18.01 & 19.01 & 25.01 & 30.01 & 31.01 & 01.02 \\ \hline
-                \multicolumn{1}{|l|}{Started event}  & 23:00 & 23:00 & 22:50 & 23:10 & 23:15 & 23:02 & 22:59 & 23:00 & 22:59 & 22:59 \\ \hline
-                \multicolumn{1}{|l|}{Finished event} & 07:00 & 07:00 & 07:00 & 06:56 & 07:09 & 06:59 & 06:55 & 06:56 & 07:00 & 06:59 \\ \hline
+                \multicolumn{1}{|l|}{Started window open}  & 23:00 & 23:00 & 22:50 & 23:10 & 23:15 & 23:02 & 22:59 & 23:00 & 22:59 & 22:59 \\ \hline
+                \multicolumn{1}{|l|}{Finished window open} & 07:00 & 07:00 & 07:00 & 06:56 & 07:09 & 06:59 & 06:55 & 06:56 & 07:00 & 06:59 \\ \hline
             \end{tabular}
     \end{adjustbox}
     \label{tab:WindowDates}
 \end{table}
 
-To be able to compare the events to standby traffic, the baseline capture has been used within the same timings as for the actual events. To easier compare the events with each other and against the baseline, all packet captures have been filtered with the same start and finish time. Due to time limitations, the baseline only includes 9 full nights and therefore only 9 corresponding baseline packet captures have been made and used for comparison in this section. To ensure that all events have at least 30 minutes before and after the event was ongoing, the earliest time for starting and the latest time for finishing the event has been used to calculate the start and finish times for the files. Then 30 minutes are added to these times to ensure that each event has at least 30 minutes before and after to see traffic changes. The timings are extracted from Table \ref{tab:WindowDates} and presented in the list beneath: 
+To be able to compare the events to standby traffic, the baseline capture has been used with the same timings as for the actual events. To easier compare the events with each other and against the baseline, all packet captures have been filtered with the same start and finish time. Due to time limitations, the baseline only includes 9 full nights and therefore only 9 corresponding baseline packet captures have been made and used for comparison in this section. To ensure that all events have at least 30 minutes before and after the event was ongoing, the earliest time for starting and the latest time for finishing the event has been used to calculate the start and finish times for the files. Then 30 minutes are added to these times to ensure that each event has at least 30 minutes before and after to see traffic changes. The timings are calculated from Table \ref{tab:WindowDates} and presented in the list beneath: 
 
 \begin{itemize}
-    \item Earliest Event Start: 22:50
-    \item Latest Event Finished: 07:09
-    \item Packet Capture Files Start: 22:20
-    \item Packet Capture Files End: 07:39
+    \item Earliest window open start: 22:50
+    \item Latest window open finished: 07:09
+    \item Packet capture files start: 22:20
+    \item Packet capture files end: 07:39
 \end{itemize}
 
 These times results in the following filters added to create the pcaps for each event:
@@ -2078,19 +2080,16 @@ These times results in the following filters added to create the pcaps for each 
     \item frame.time >= "Month Date, Year 22:20:00" \&\& frame.time <= "Month Date, Year 07:39:00"
 \end{itemize}
 
-The next subsections presents the results and analysis for the three different devices, Netatmo, Mill and Nedis. As they are all equal in their setup of presenting the results, an explanation are included here instead of at the beginning of each sub-section for each device. The results are presented both graphically and with calculations. The calculations are presented in three different tables and in one figure, while the graphical presentations are included in the rest of the figures in the sub-sections. The first two tables in each subsection includes the total amount of packet and bytes sent and received to that particular device during the event with the last column including an extract of the biggest packet during the packet captures, regardless of if its sent or received by the device. These tables presents the values for each of the event and baseline dates for the device. The next table, presents the average and standard deviation values from the first two tables with all the columns included to easier compare the two to each other. Then a figure is used to present the total number of bytes and packets sent and received from the device for each of the event and baseline files in the same figure. The average values are also included here. 
-
-Each device then has a graphical presentation of the traffic flow presented in four different figures. The first two figures are with the amount of packets as the scale on the y-axis, while the two last are with the amount of bytes as the scale on the y-axis. All figures within the same category, meaning packet or bytes for a specific device has the same minimum and maximum values for bytes or packets on the y-axis and the same start and finish time on the x-axis. To be able to compare events against baseline, both traffic flows are included in the same figure, where events are placed on the left side while baseline are placed on the right side of every figure. The events are framed in a red color and the baseline in a blue color to be able to separate them even further. At the end of each sub-section, a few paragraphs are given to comment on the results and show the analysis. 
-
 \newpage
 \subsection{Netatmo}
+For the window open event for Netatmo, calculations are presented in Table \ref{tab:NetatmoWindowCalculations} with number of packets and bytes and the biggest packet during the capture. The same calculations on the comparing baseline files to be used in this test are presented in Table \ref{tab:NetatmoBaselineWindowCalculations}. The average values and standard deviation are compared for the event and baseline in Table \ref{tab:NetatmoComparingBaselineAndWindowCalculations}. The calculations are also shown graphically in Figure \ref{fig:NetatmoWindowCalculations} with number of packets and bytes from Tables \ref{tab:NetatmoWindowCalculations} and \ref{tab:NetatmoBaselineWindowCalculations} combined with their average value. 
 
 \begin{table}[H]
     \centering
     \caption{Calculations on window open events for Netatmo}
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
-        \textbf{Event dates} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        \textbf{Dates} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
         08.jan & 4,716 & 641,245 & 407 bytes\\ \hline
         09.jan & 4,026 & 544,344 & 407 bytes \\ \hline
         11.jan & 5,149 & 697,920 & 407 bytes\\ \hline
@@ -2130,9 +2129,9 @@ Each device then has a graphical presentation of the traffic flow presented in f
     \begin{tabular}{c|l|l|l|l|}
         \cline{2-5}
         \multicolumn{1}{l|}{}                                              & \textbf{Type} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Event         & 4,198            & 569,048        & 407 bytes               \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Window open         & 4,198            & 569,048        & 407 bytes               \\ \cline{2-5} 
         \multicolumn{1}{|c|}{}                                             & Baseline      & 4,049            & 547,550        & 405 bytes                \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 503              & 68,966         & 0 bytes                 \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Window opene         & 503              & 68,966         & 0 bytes                 \\ \cline{2-5} 
         \multicolumn{1}{|c|}{}                                             & Baseline      & 436              & 60,687         & 7 bytes               \\ \hline          
     \end{tabular}
     \label{tab:NetatmoComparingBaselineAndWindowCalculations}
@@ -2151,6 +2150,8 @@ Each device then has a graphical presentation of the traffic flow presented in f
     \caption{Graphical presentation of event and baseline window open calculations with packets and bytes, including average value extracted from Table \ref{tab:NetatmoComparingBaselineAndWindowCalculations} for Netatmo}
     \label{fig:NetatmoWindowCalculations}
 \end{figure}
+
+Graphs over traffic patterns are presented in four different figures, for packets in Figures \ref{fig:NetatmoWindowPackets1} and \ref{fig:NetatmoWindowPackets2} and for bytes in Figures \ref{fig:NetatmoWindowBytes1} and \ref{fig:NetatmoWindowBytes2}. The graphs within the same figure have the same minimum and maximum values on the x- and y-axis. For all the figures, the event graphs are placed on the left side framed in red and have a red area marked on the graph which shows when the event was ongoing. The corresponding baseline graphs are placed on the right side of the figure and framed in blue to compare. 
 
 \begin{figure}[H]
     \begin{subfigure}[b]{0.47\textwidth}
@@ -2326,19 +2327,20 @@ Each device then has a graphical presentation of the traffic flow presented in f
     \label{fig:NetatmoWindowBytes2}
 \end{figure}
 
-Comparing Table \ref{tab:NetatmoWindowCalculations} for events and Table \ref{tab:NetatmoBaselineWindowCalculations} for baseline files, shows that the different columns are similar. The total number of packets stays around 4,000 packets for both events and baseline. For bytes, the values ranges from around 500,000 to around 700,000. This is also easily visible in Figure \ref{fig:NetatmoWindowCalculations} where total number of packets and bytes are very similar. For both events and baseline, the number of packets are around 3,000-5,000 packets and for bytes they are around 400,000 to 600,000 bytes. The same is shown in Table \ref{tab:NetatmoComparingBaselineAndWindowCalculations} where the average values for packets, bytes and biggest packets are close to each other. 
+Comparing Table \ref{tab:NetatmoWindowCalculations} for events and Table \ref{tab:NetatmoBaselineWindowCalculations} for baseline files, shows that the different columns are similar. The total number of packets stays around 4,000 packets for both events and baseline. For bytes, the values ranges from around 500,000 to around 700,000. This is also easily visible in Figure \ref{fig:NetatmoWindowCalculations} where total number of packets and bytes are very similar. For both events and baseline, the number of packets are around 3,000-5,000 and for bytes around 400,000 to 600,000. The same is shown in Table \ref{tab:NetatmoComparingBaselineAndWindowCalculations} where the average values for packets, bytes and biggest packets are close to each other. 
 
-Looking at the graphs in Figure \ref{fig:NetatmoWindowPackets1} and \ref{fig:NetatmoWindowPackets2}, there are no significant differences in the graphs for the events compared to the baseline on the right side. For both events and baseline graphs, the same traffic pattern is found. For bytes in Figure \ref{fig:NetatmoWindowBytes1} and \ref{fig:NetatmoWindowBytes2}, the events varies with some nights having many and high spikes, and other nights with smaller and fewer spikes. The same pattern is found for the baseline graphs marked in blue.  
+Looking at the graphs in Figure \ref{fig:NetatmoWindowPackets1} and \ref{fig:NetatmoWindowPackets2}, there are no significant differences in the graphs for the events compared to the baseline on the right side. For both events and baseline graphs, the same traffic pattern is found. For bytes in Figure \ref{fig:NetatmoWindowBytes1} and \ref{fig:NetatmoWindowBytes2}, the events varies with some nights having many and high spikes, and other nights with smaller and fewer spikes. The same pattern is found for the baseline graphs marked in blue. This shows that it is not possible to distinguish whether the window is open or not by looking at the traffic patterns in a numerical or graphical way from the device Netatmo. 
 
 \newpage
 \subsection{Mill}
+Table \ref{tab:MillWindowCalculations} presents the number of packets and bytes and the biggest packet during the capturing of the window open event for Mill. The same calculations are included for the comparing baseline files in Table \ref{tab:MillBaselineWindowCalculations}. To compare average and standard deviation values from the event, Table \ref{tab:MillComparingBaselineAndWindowCalculations} are shown. The calculations are also presented graphically in Figure \ref{fig:MillWindowCalculations} where number of packets and bytes for both the event dates and comparing baseline dates are included together with their average value extracted from Table \ref{tab:MillComparingBaselineAndWindowCalculations}.
 
 \begin{table}[H]
     \centering
     \caption{Calculations on window open events for Mill}
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
-        \textbf{Events} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        \textbf{Dates} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
         08.jan & 49,204 & 6,159,905 & 1,353 bytes   \\ \hline
         09.jan & 49,515 & 6,055,179 & 1,545 bytes   \\ \hline
         11.jan & 45,680 & 4,998,933 & 1,515 bytes   \\ \hline
@@ -2378,9 +2380,9 @@ Looking at the graphs in Figure \ref{fig:NetatmoWindowPackets1} and \ref{fig:Net
     \begin{tabular}{c|l|l|l|l|}
         \cline{2-5}
         \multicolumn{1}{l|}{}                                              & \textbf{Type} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Event         & 46,139           & 5,374,313      & 1,353 bytes             \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Window open         & 46,139           & 5,374,313      & 1,353 bytes             \\ \cline{2-5} 
         \multicolumn{1}{|c|}{}                                             & Baseline      & 48,538           & 5,042,471      & 1,222 bytes              \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 5,782            & 954,686        & 338 bytes              \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Window open         & 5,782            & 954,686        & 338 bytes              \\ \cline{2-5} 
         \multicolumn{1}{|c|}{}                                             & Baseline      & 5,678            & 606,684        & 505 bytes             \\ \hline          
     \end{tabular}
     \label{tab:MillComparingBaselineAndWindowCalculations}
@@ -2399,6 +2401,8 @@ Looking at the graphs in Figure \ref{fig:NetatmoWindowPackets1} and \ref{fig:Net
     \caption{Graphical presentation of event and baseline window open calculations with packets and bytes, including average value extracted from Table \ref{tab:MillComparingBaselineAndWindowCalculations} for Mill}
     \label{fig:MillWindowCalculations}
 \end{figure}
+
+The packet capturings from the window open event for Mill is presented with traffic flows in four different figures. Figures \ref{fig:MillWindowBytes1} and \ref{fig:MillWindowBytes2} shows the traffic patterns for bytes and Figures \ref{fig:MillWindowPackets1} and \ref{fig:MillWindowPackets2} for packets. The event graphs are marked in red and placed on the left side of the figures, with a red marked area on the graphs to show when the event was ongoing. The comparing baseline graphs are placed on the right side of the figures and framed in blue. All graphs in the same figure have the same minimum and maximum value for the x- and y-axis. 
 
 \begin{figure}[H]
     \begin{subfigure}[b]{0.47\textwidth}
@@ -2574,12 +2578,13 @@ Looking at the graphs in Figure \ref{fig:NetatmoWindowPackets1} and \ref{fig:Net
     \label{fig:MillWindowBytes2}
 \end{figure}
 
-Comparing Table \ref{tab:MillWindowCalculations} and \ref{tab:MillBaselineWindowCalculations} shows that the number of packets sent during the events and baseline do not show a significant difference. The packets both varies from around 40,000 to 60,000 when an event is ongoing, in Table \ref{tab:MillWindowCalculations}, or not, in Table \ref{tab:MillBaselineWindowCalculations}. The same is shown in bytes as it varies from 4,000,000 to 7,000,000. The biggest packet sent are also similar in the event and baseline files where most of the biggest packets are over 1,000 bytes, but both cases have packets that are also under that, such as 456 bytes for events and 456 and 800 bytes for the baseline. This is also shown in overall for average values in Table \ref{tab:MillComparingBaselineAndWindowCalculations} where packets, bytes and biggest packet are similar for events and baseline. The graphs in Figure \ref{fig:MillWindowCalculations} gives the same result where packets and bytes varies, and how equal the average values for the two cases are. 
+Comparing Table \ref{tab:MillWindowCalculations} and \ref{tab:MillBaselineWindowCalculations} shows that the number of packets sent during the events and baseline do not show a significant difference. The packets both varies from around 40,000 to 60,000 when an event is ongoing, in Table \ref{tab:MillWindowCalculations}, to when an event is not triggered in Table \ref{tab:MillBaselineWindowCalculations}. The same is shown in bytes as it varies from 4,000,000 to 7,000,000 for both baseline and events. The biggest packet sent is also similar in the event and baseline capturings where most of the biggest packets are over 1,000 bytes, but both cases have packets that are also under that, such as 456 bytes for events and 456 and 800 bytes for the baseline. This is also shown in overall for average values in Table \ref{tab:MillComparingBaselineAndWindowCalculations} where packets, bytes and biggest packet are all similar for events and baseline. The graphs in Figure \ref{fig:MillWindowCalculations} give the same result where packets and bytes varies, and how equal the average values for the two cases are. These results show that it is not possible to distinguish in calculations if the window is open or not for the device Mill. 
 
-The traffic flows with packets in Figure \ref{fig:MillWindowPackets1} and \ref{fig:MillWindowPackets2} do not show a significant difference between the events on the left side, compared to the baseline packets on the right side of the figure. Both cases displays graphs with variations that reaches the approximately the same level of packets. It is not possible to see changes in the traffic from the red marked area under the events compared to the timings when events are not ongoing. The same result are found for bytes in Figure \ref{fig:MillWindowBytes1} and \ref{fig:MillWindowBytes2}. 
+The traffic flows with packets in Figures \ref{fig:MillWindowPackets1} and \ref{fig:MillWindowPackets2} do not show a significant difference between the events on the left side, compared to the baseline packets on the right side of the figure. Both cases displays graphs with variations that reaches the approximately the same level of packets. It is not possible to see changes in the traffic from the red marked area under the events compared to the timings when events are not ongoing. The same result is found for bytes in Figure \ref{fig:MillWindowBytes1} and \ref{fig:MillWindowBytes2}. As the results of the graphs from both the baseline and the event looks familiar, there are no traffic patterns which can identify that a showering is ongoing in the environment. 
 
 \newpage
 \subsection{Nedis}
+For the window open event for Nedis, Table \ref{tab:NedisWindowCalculations} presents calculations for the events, while Table \ref{tab:NedisBaselineWindowCalculations} presents the calculations for the comparing baseline files. Both tables includes the number of packets and bytes sent and the biggest packet captured during the event. In Table \ref{tab:NedisComparingBaselineAndWindowCalculations} the average and standard deviation value for the event and comparing baseline are presented. The values are also presented graphically in Figure \ref{fig:NedisWindowCalculations} for number of packets and bytes including average values. 
 
 \begin{table}[H]
 \centering
@@ -2587,7 +2592,7 @@ The traffic flows with packets in Figure \ref{fig:MillWindowPackets1} and \ref{f
 \label{tab:NedisWindowCalculations}
     \begin{tabular}{|l|l|l|l|}
         \hline
-        \textbf{Events} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
+        \textbf{Dates} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
         08.jan          & 131,961          & 18,088,388     & 424 bytes               \\ \hline
         09.jan          & 121,273          & 15,204,877     & 424 bytes               \\ \hline
         11.jan          & 94,682           & 9,432,611      & 421 bytes               \\ \hline
@@ -2626,9 +2631,9 @@ The traffic flows with packets in Figure \ref{fig:MillWindowPackets1} and \ref{f
     \begin{tabular}{c|l|l|l|l|}
         \cline{2-5}
         \multicolumn{1}{l|}{}                                              & \textbf{Type} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest packet} \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Event         & 96,916             & 11,767,368      & 439 bytes               \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Average}}}            & Window open         & 96,916             & 11,767,368      & 439 bytes               \\ \cline{2-5} 
         \multicolumn{1}{|c|}{}                                             & Baseline      & 94,322             & 11,988,175      & 449 bytes                \\ \hline
-        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Event         & 19,686             & 3,334,883       & 27 bytes                 \\ \cline{2-5} 
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Standard deviation}}} & Window open         & 19,686             & 3,334,883       & 27 bytes                 \\ \cline{2-5} 
         \multicolumn{1}{|c|}{}                                             & Baseline      & 18,445             & 3,042,357       & 29 bytes               \\ \hline          
     \end{tabular}
     \label{tab:NedisComparingBaselineAndWindowCalculations}
@@ -2647,6 +2652,8 @@ The traffic flows with packets in Figure \ref{fig:MillWindowPackets1} and \ref{f
     \caption{Graphical presentation of event and baseline window open calculations with packets and bytes, including average value extracted from Table \ref{tab:NedisComparingBaselineAndWindowCalculations} for Nedis}
     \label{fig:NedisWindowCalculations}
 \end{figure}
+
+The event is also shown graphically in four different figures. Figures \ref{fig:NedisWindowBytes1} and \ref{fig:NedisWindowBytes2} shows traffic flows with bytes and Figures \ref{fig:NedisWindowPackets1} and \ref{fig:NedisWindowPackets2} for packets. All graphs within the same figure have the equal minimum and maximum values for the x- and y-axis. The event graphs are placed on the left side of the figure and marked in red, while the comparing baseline graphs are placed on the right side of the figure and marked in blue. The event graphs also have a red area marked on the graphs for when the event was ongoing. 
 
 \begin{figure}[H]
     \begin{subfigure}[b]{0.47\textwidth}
@@ -2822,16 +2829,16 @@ The traffic flows with packets in Figure \ref{fig:MillWindowPackets1} and \ref{f
     \label{fig:NedisWindowBytes2}
 \end{figure}
 
-Comparing Table \ref{tab:NedisWindowCalculations} for events and \ref{tab:NedisBaselineWindowCalculations} for baseline calculations shows that both cases varies a lot in number of packets and bytes during the traffic capture. For both events and baseline, the number of packets varies from around 50,000 to over 100,000 packets, which is a big difference. The same applies to bytes where both varies from around 7,000,000 to over 15,000,000 bytes. There are no significant differences in the biggest packet sent during the capture, where all days within both the cases are between 400 and 500 bytes. Even though the number of packets and bytes varies much for each event and baseline day, they vary almost equally as the average value shown in Table \ref{tab:NedisComparingBaselineAndWindowCalculations} are almost the same. The graphs in Figure \ref{fig:NedisWindowCalculations} also demonstrates how much the packets vary, but still the average values are very close to each other. 
+Comparing Table \ref{tab:NedisWindowCalculations} for events and \ref{tab:NedisBaselineWindowCalculations} for baseline calculations shows that both cases varies a lot in number of packets and bytes during the traffic capture. For both events and baseline, the number of packets varies from around 50,000 to over 100,000 packets, which is a big difference. The same applies to bytes where both varies from around 7,000,000 to over 15,000,000 bytes. There are no significant differences in the biggest packet sent during the capture, where all days within both cases are between 400 and 500 bytes. Even though the number of packets and bytes varies much for each event and baseline day, they vary almost equally as the average value shown in Table \ref{tab:NedisComparingBaselineAndWindowCalculations} are almost the same. The graphs in Figure \ref{fig:NedisWindowCalculations} also demonstrates how much the packets vary, but still the average values are very close to each other. 
 
-For the packet traffic flows presented in Figure \ref{fig:NedisWindowPackets1} and \ref{fig:NedisWindowPackets2} the event graphs do have some more spikes overall compared to the baseline graphs. However, 4 out of 9 of the baseline days do also have spikes that are similar to the event days where there are only one spike included. The bytes traffic flows presented in Figure \ref{fig:NedisWindowBytes1} and \ref{fig:NedisWindowBytes2} shows well the variations that were visible in the calculations presented. Both on the left side with events and on the right side of the figure with the baseline traffic there are variations with a lot of bytes and fewer bytes sent and received easily visible. Therefore, there are no significant differences in events and baseline traffic as the variations are shown in both cases. 
+For the packet traffic flows presented in Figures \ref{fig:NedisWindowPackets1} and \ref{fig:NedisWindowPackets2} the event graphs do have some more spikes overall compared to the baseline graphs. However, 4 out of 9 of the baseline days also have spikes that are similar to the event days where there are only one spike included. The bytes traffic flows presented in Figures \ref{fig:NedisWindowBytes1} and \ref{fig:NedisWindowBytes2} shows well the variations that were visible in the calculations presented. Both on the left side with events and on the right side of the figure with the baseline traffic there are variations with a lot of bytes and fewer bytes sent and received easily visible. Therefore, there are no significant differences in events and baseline traffic as the variations are shown in both cases. This results in that it is not possible to identify if a window is open in the environment compared to standard traffic which is not triggered by the same event. 
 
 
 \newpage
 \section{Test Case 4: Weekends}
-This chapter presents the results and analysis conducted on Test Case 4: Weekends. 
+This chapter presents the results and analysis for Test Case 4: Weekends. 
 \subsection{General}
-Test Case 4: Weekends are tested over the course of 14 different weekends. 7 weekends when the environment was occupied, meaning that the user was at home, and 7 when the environment were not occupied, meaning that user was not home during this time.. The different dates are described in Table \ref{tab:WeekendDates}. 
+Test Case 4: Weekends is tested over the course of 14 different weekends. 7 weekends when the environment was occupied, meaning that the user was at home, and 7 when the environment were not occupied, meaning that user was not home during this time. The different dates are described in Table \ref{tab:WeekendDates}. 
 \begin{table}[H]
     \centering
     \caption{Dates for Test Case 4: Weekends}
@@ -2845,7 +2852,7 @@ Test Case 4: Weekends are tested over the course of 14 different weekends. 7 wee
     \label{tab:WeekendDates}
 \end{table}
 
-The times for weekends at home and gone were from 16:00 at Friday to 22:00 at Sunday, which means that when a weekend gone were tested, the home was empty in those times. However, in a weekend were the home was occupied, it was variably occupied. Some weekends a lot of time were spent in the home and other weekends it was just occupied during evenings or daytime, but every occupied weekend were spent sleeping at night in the home. One weekend, 28.03.2023-30.03.2023, are actually Tuesday to Thursday, but are treated as Tuesday=Friday and Thursday=Sunday. 
+The times for weekends at home and gone were from 16:00 at Friday to 22:00 at Sunday. In a weekend were the home was occupied, it was variably occupied. Some weekends a lot of time were spent in the home and other weekends it was just occupied during evenings or daytime, but every occupied weekend were spent sleeping at night in the home. One weekend, 28.03.2023-30.03.2023, were tested from Tuesday to Thursday, but are treated as Tuesday=Friday and Thursday=Sunday. 
 
 This results in the following filter used on the pcaps to created the files: 
 
@@ -2855,7 +2862,7 @@ This results in the following filter used on the pcaps to created the files:
 
 \newpage
 \subsection{Netatmo}
-For the weekend test for Netatmo, both calculations and graphs of the traffic are presented. The calculations for the weekends are listed in Table \ref{tab:NetatmoHomeWeekends}, for weekends at home, and Table \ref{tab:NetatmoGoneWeekends}, for weekends gone. The different values included are total number of packets \gls{pkt} and bytes sent and received to the device during the packet capturing and the biggest packet sent in bytes, biggest src, and the biggest packet size in bytes received, biggest dst. Table \ref{tab:NetatmoWeekends} compares the average and \gls{SD} for the weekends at home and gone. 
+For the weekend test for Netatmo calculations are listed in Table \ref{tab:NetatmoHomeWeekends}, for weekends at home, and Table \ref{tab:NetatmoGoneWeekends}, for weekends gone. The different values are total number of packets and bytes during the packet capturing and the biggest packet sent in bytes, biggest src, and the biggest packet size in bytes received, biggest dst. Table \ref{tab:NetatmoWeekends} compares the average and \gls{SD} for all weekends. 
 
 \begin{table}[H]
     \centering
@@ -2905,7 +2912,7 @@ For the weekend test for Netatmo, both calculations and graphs of the traffic ar
     \label{tab:NetatmoWeekends}
 \end{table}
 
-Graphs of packets are presented in Figure \ref{fig:NetatmoWeekendPackets} and bytes in Figure \ref{fig:NetatmoWeekendBytes}. In these two figures, the weekends at home are framed with green and placed on the left side of the figure and the weekends gone are framed with orange and placed on the right side of the figure. All graphs in the same figure have the same maximum value on the y-axis and have the same amount of time on the x-axis to be easily comparable. 
+Graphs of packets are presented in Figure \ref{fig:NetatmoWeekendPackets} and bytes in Figure \ref{fig:NetatmoWeekendBytes}. In these figures, the weekends at home have a green frame and placed on the left side, while the weekends gone have an orange frame and placed on the right side of the figure. All graphs in the same figure have the same maximum value on the y-axis and have the same amount of time on the x-axis to be easily comparable. 
 
 \begin{figure} [H]
     \begin{subfigure}[b]{0.47\textwidth}
@@ -3007,9 +3014,9 @@ Graphs of packets are presented in Figure \ref{fig:NetatmoWeekendPackets} and by
     \label{fig:NetatmoWeekendBytes}
 \end{figure}
 
-Firstly, the calculations for weekends shows a significant difference from when the home is occupied to when its not. Comparing the total packets between Table \ref{tab:NetatmoHomeWeekends} and \ref{tab:NetatmoGoneWeekends} does not show a big difference with 26,647 packets at home to 22,019 packets when gone in average. However, in bytes the difference is more significant. The difference of the average value for weekends at home compared to gone is nearly 500,000 bytes, as shown in Table \ref{tab:NetatmoWeekends}. Another difference is in the biggest packet sent in the "biggest src" column. For the weekends gone, in Table \ref{tab:NetatmoGoneWeekends}, the biggest packet sent is only 134 bytes, while for the weekends at home in Table \ref{tab:NetatmoHomeWeekends}, the biggest packet sent is always much larger than 136 bytes with a variation from 407 bytes to 1,130 bytes.
+The calculations for weekends shows a significant difference from when the home is occupied to when its not. Comparing the total packets between Table \ref{tab:NetatmoHomeWeekends} and \ref{tab:NetatmoGoneWeekends} does not show a big difference with 26,647 packets at home to 22,019 packets when gone in average. However, in bytes the difference is more significant. The difference of the average value for weekends at home compared to gone is nearly 500,000 bytes, as shown in Table \ref{tab:NetatmoWeekends}. Another difference is in the biggest packet sent in the "biggest src" column. For the weekends gone, in Table \ref{tab:NetatmoGoneWeekends}, the biggest packet sent is only 134 bytes, while for the weekends at home in Table \ref{tab:NetatmoHomeWeekends}, the biggest packet sent is always much larger than 134 bytes with a variation from 407 bytes to 1,130 bytes. Since the biggest packet overall for gone weekend are 154 bytes, this will be used as a reference to look at differences to packets sent while at home. 
 
-The graphs in Figure \ref{fig:NetatmoWeekendPackets} with packets shows small differences in home and gone activity. The home graphs have more spikes, but there are also some graphs in gone that have small spikes and look similar to the home graphs. However, the graphs in Figure \ref{fig:NetatmoWeekendBytes} with bytes shows a clear difference to when the home is occupied or not. All the graphs for weekends at home, marked in green, shows a very different traffic pattern than the graphs for the weekends gone, marked in orange. This corresponds to the findings from the calculations in Table \ref{tab:NetatmoGoneWeekends} and \ref{tab:NetatmoHomeWeekends}.
+The graphs in Figure \ref{fig:NetatmoWeekendPackets} with packets shows small differences in home and gone activity. The home graphs have more spikes, but there are also some graphs for gone that have small spikes and look similar to the home graphs. However, for the graphs measured in bytes in Figure \ref{fig:NetatmoWeekendBytes} it is a clear difference to when the home is occupied or not. All the graphs for weekends at home, marked in green, shows a very different traffic pattern than the graphs for the weekends gone, marked in orange. This corresponds to the findings from the calculations in Table \ref{tab:NetatmoGoneWeekends} and \ref{tab:NetatmoHomeWeekends}.
 
 Since it is possible to see a difference in biggest packet during weekends at home and gone, it is also interesting to see if these bigger packets only occur a few times during the weekend or if it is sending larger packets during the whole weekend. Therefore, a new filter have been applied to the pcaps to see how many packets during a weekend at home is actually bigger than the traffic sent on a weekend gone. A filter filtering on only packets larger then 154 bytes have been applied to the pcaps, and have the following format:
 
@@ -3017,7 +3024,7 @@ Since it is possible to see a difference in biggest packet during weekends at ho
     \item frame.len > 154
 \end{itemize}
 
-Table \ref{tab:NetatmoBigPackets} shows the results from the filtering. The percentage of packets that are over 154 bytes in Table \ref{tab:NetatmoBigPackets} are very small. A graphical view is therefore presented in Figure \ref{fig:NetatmoBigPackets} to see if the amount is enough to see differences from the weekends gone which does not have any packets over 154 bytes.
+Table \ref{tab:NetatmoBigPackets} shows the results from the filtering. The percentage of packets that are over 154 bytes in Table \ref{tab:NetatmoBigPackets} are very small. A graphical view is therefore presented in Figure \ref{fig:NetatmoBigPackets} to see if the amount is enough to see differences from the weekends gone which does not have any packets over 154 bytes. The graphs in Figure \ref{fig:NetatmoBigPackets} shows that it is possible to see if a home is occupied by looking at the packet sizes that are sent. 
 
 \begin{table}[H]
     \centering
@@ -3065,7 +3072,7 @@ Table \ref{tab:NetatmoBigPackets} shows the results from the filtering. The perc
     \label{fig:NetatmoBigPackets}
 \end{figure}
 
-The graphs in Figure \ref{fig:NetatmoBigPackets} shows that it is possible to see if a home is occupied by looking at the packet sizes that are sent. The last evaluation on Netatmo weekend events are comparing the graphs for bytes in Figure \ref{fig:NetatmoWeekendBytes} against values from the application of the device, this figure displays the difference best. This is presented in Figure \ref{fig:NetatmoWeekendBytesandApp1} and \ref{fig:NetatmoWeekendBytesandApp2}. The graphs extracted from the app, Healthy Home Coach, and the sensor values are in \(CO_2\). The y-axis, which are measured in ppm are not equal for each of the graphs from the app, as this is not possible to change manually in the app. The x-axis is given in time. 
+The last evaluation on Netatmo weekend events is to compare the graphs for bytes in Figure \ref{fig:NetatmoWeekendBytes} against values from the application of the device. This is presented in Figure \ref{fig:NetatmoWeekendBytesandApp1} and \ref{fig:NetatmoWeekendBytesandApp2}. The graphs are extracted from the app, Healthy Home Coach, and the sensor values are in \(CO_2\). The y-axis, which are measured in ppm are not equal for each of the graphs from the app, as this is not possible to change manually in the app. The x-axis is given in time. 
 
 The Figures in \ref{fig:NetatmoWeekendBytesandApp1} and \ref{fig:NetatmoWeekendBytesandApp2} shows the same pattern as for the bytes from the traffic captures on the left side of the figure. When the home is not occupied, the \(CO_2\) value does not change much which the corresponding traffic flow in the byte-graphs shows, and when the home is occupied, the \(CO_2\) levels varies a lot and the corresponding traffic flow also varies a lot. 
 
@@ -3169,14 +3176,14 @@ The Figures in \ref{fig:NetatmoWeekendBytesandApp1} and \ref{fig:NetatmoWeekendB
 \end{figure}
 
 \subsection{Mill}
-For weekend testing with the device, Mill, Table \ref{tab:MillHomeWeekends} and \ref{tab:MillGoneWeekends} presents the calculations on the pcaps for respectively the weekends at home and gone. The values presented are total number of packets and bytes sent and received by the device during the packet capture and the biggest packet sent, biggest src, and received, biggest dst. Average and standard deviation values from the tables are combined and compared in Table \ref{tab:MillWeekends}. 
+For weekend testing with the device, Mill, Table \ref{tab:MillHomeWeekends} and \ref{tab:MillGoneWeekends} presents the calculations for the weekends at home and gone. The values presented are total number of packets and bytes sent and received and the biggest packet sent, biggest src, and received, biggest dst. Average and standard deviation values from the tables are combined and compared in Table \ref{tab:MillWeekends}. 
 
 \begin{table}[H]
     \centering
     \caption{Calculations for weekends at home for Mill}
     \begin{tabular}{|l|l|l|l|l|}
         \hline
-        \textbf{Date}    & \textbf{Total \gls{pkt}} & \textbf{Total bytes} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
+        \textbf{Date}    & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
         13.01-15.01      & 285,543            & 33,269,620           & 456 bytes            & 1,593 bytes          \\ \hline
         27.01-29.01      & 240,434            & 29,179,764           & 456 bytes            & 1,593 bytes          \\ \hline
         03.02-05.02      & 223,095            & 28,543,539           & 456 bytes            & 1,593 bytes          \\ \hline
@@ -3193,7 +3200,7 @@ For weekend testing with the device, Mill, Table \ref{tab:MillHomeWeekends} and 
     \caption{Calculations for weekends gone for Mill}
     \begin{tabular}{|l|l|l|l|l|}
         \hline
-        \textbf{Date}    & \textbf{Total \gls{pkt}} & \textbf{Total bytes} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
+        \textbf{Date}    & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
         23.12-25.12      & 259,516            & 34,066,162           & 456 bytes            & 421 bytes            \\ \hline
         30.12-01.01      & 255,487            & 32,809,172           & 456 bytes            & 421 bytes            \\ \hline
         20.01-22.01      & 256,455            & 29,417,721           & 456 bytes            & 421 bytes            \\ \hline
@@ -3219,7 +3226,7 @@ For weekend testing with the device, Mill, Table \ref{tab:MillHomeWeekends} and 
     \label{tab:MillWeekends}
 \end{table}
 
-Graphs of traffic flow are presented in Figure \ref{fig:MillWeekendBytes} for bytes and in Figure \ref{fig:MillWeekendPackets} for packets. The graphs marked in green on the figures are weekends at home and are placed on the left side of the figures, while the graphs marked in orange on the figures are weekends gone and placed on the right side of the figures. The graphs in the same figure all have the same maximum values for the y-axis to be easily comparable.
+Graphs of traffic flows are presented in Figure \ref{fig:MillWeekendBytes} for bytes and in Figure \ref{fig:MillWeekendPackets} for packets. The graphs marked in green on the figures are weekends at home and are placed on the left side of the figures, while the graphs marked in orange on the figures are weekends gone and placed on the right side of the figures. The graphs in the same figure all have the same maximum values for the y-axis to be easily comparable.
 
 \begin{figure} [H]
     \begin{subfigure}[b]{0.47\textwidth}
@@ -3321,18 +3328,18 @@ Graphs of traffic flow are presented in Figure \ref{fig:MillWeekendBytes} for by
     \label{fig:MillWeekendBytes}
 \end{figure}
 
-Looking at the values in Table \ref{tab:MillHomeWeekends} and \ref{tab:MillGoneWeekends}, the total packets and bytes in the pcaps remains the same whether or not it's a weekend at home or gone. In regards of the largest packets, all the weekends gone have the same size; 456 bytes for packets sent from the device and 421 bytes for packets sent to the device. For the first 5 weekends at home it looks like there's a pattern change that the device receives much bigger packets than during a weekend gone with a size 1,583 and 1,593 bytes, but as the last two weekends at home shows their biggest packet is actually the same as for a weekend gone. The graphs in Figure \ref{fig:MillWeekendPackets} and \ref{fig:MillWeekendBytes} shows that the traffic pattern for weekend at home or gone look the same. There are variations in the both weekend at home or gone, but not a constant same variation for all weekends in the same category. 
+Looking at the values in Table \ref{tab:MillHomeWeekends} and \ref{tab:MillGoneWeekends}, the total packets and bytes remains the same whether or not it's a weekend at home or gone. In regards of the largest packets, all the weekends gone have the same size; 456 bytes for packets sent from the device and 421 bytes for packets sent to the device. For the first 5 weekends at home it looks like there's a pattern change that the device receives much bigger packets than during a weekend gone with a size 1,583 and 1,593 bytes, but as the last two weekends at home shows their biggest packet is actually the same as for a weekend gone. The graphs in Figure \ref{fig:MillWeekendPackets} and \ref{fig:MillWeekendBytes} shows that the traffic pattern for weekend at home or gone look the same. There are variations in the both weekend at home or gone, but not a constant same variation for all weekends in the same category. This means that is it not possible to distinguish whether a user is home or not by looking at the traffic patterns for Mill.  
 
 \newpage
 \subsection{Nedis}
-For Weekend testing on the device Nedis, both tables for calculations and figures for graphs are presented to analyze the traffic patterns during the tests. In Table \ref{tab:NedisHomeWeekends} and \ref{tab:NedisGoneWeekends} the calculations for weekends at home or gone are presented. The values included are total amount of packets, the total number of bytes, the biggest packet sent in bytes, biggest src, and the biggest packet received in bytes, biggest dst. Table \ref{tab:NedisWeekends} compares the average and \gls{SD} values for respectively all the weekends at home and weekends gone.
+For Weekend testing on the device Nedis, tables for calculations and figures for graphs are presented to analyze the traffic patterns. In Table \ref{tab:NedisHomeWeekends} and \ref{tab:NedisGoneWeekends} the calculations for weekends at home and gone are presented. The values included are total amount of packets, total number of bytes, the biggest packet sent, biggest src, and the biggest packet received, biggest dst. Table \ref{tab:NedisWeekends} compares the average and \gls{SD} values for all the weekends at home and weekends gone.
 
 \begin{table}[H]
     \centering
     \caption{Calculations for weekends at home for Nedis}
     \begin{tabular}{|l|l|l|l|l|l|}
         \hline
-        \textbf{Date}    & \textbf{Total \gls{pkt}} & \textbf{Total bytes} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
+        \textbf{Date}    & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
         13.01-15.01      & 565,380            & 66,062,682           & 485 bytes            & 522 bytes            \\ \hline
         27.01-29.01      & 546,269            & 58,677,501           & 424 bytes            & 522 bytes            \\ \hline
         03.02-05.02      & 501,936            & 62,219,835           & 485 bytes            &    522 bytes            \\ \hline
@@ -3349,7 +3356,7 @@ For Weekend testing on the device Nedis, both tables for calculations and figure
     \caption{Calculations for weekends gone for Nedis}
     \begin{tabular}{|l|l|l|l|l|l|}
         \hline
-        \textbf{Date} & \textbf{Total \gls{pkt}} & \textbf{Total bytes} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
+        \textbf{Date} & \textbf{Packets} & \textbf{Bytes} & \textbf{Biggest src} & \textbf{Biggest dst} \\ \hline
         13.01-15.01   & 678,979            & 98,642,277           & 485 bytes            & 522 bytes            \\ \hline
         27.01-29.01   & 655,417            & 91,850,956           & 485 bytes            & 650 bytes            \\ \hline
         03.02-05.02   & 518,316            & 66,069,105           & 485 bytes            & 522 bytes            \\ \hline
@@ -3477,10 +3484,10 @@ For Weekend testing on the device Nedis, both tables for calculations and figure
     \label{fig:NedisWeekendBytes}
 \end{figure}
 
-The results in Table \ref{tab:NedisHomeWeekends} and \ref{tab:NedisGoneWeekends} shows that the amount of packets does not change whether its a weekend at home or gone. Both tables shows that there are sent and received around 500,000 to 600,000 packets regardless if the user is home or not. The amount of bytes varies a lot in both tables from 58,677,501 bytes to 81,810,849 bytes for the weekends at home and from 42,390,770 bytes to 98,642,277 bytes for the weekends gone. Looking at the biggest packet received and sent shows very similar values for both weekends at home and gone. Table \ref{tab:NedisWeekends} also gives the same results. Neither average values for packets, bytes or biggest packets received or sent differs significantly between a weekend at home or gone. The standard deviation for weekends gone are some higher than for weekends at home which means that the values differ more from each other, but since the average is similar and the values differ both higher and lower than the average, it is still not possible to see any significant differences here. 
+The results in Table \ref{tab:NedisHomeWeekends} and \ref{tab:NedisGoneWeekends} shows that the amount of packets does not change whether its a weekend at home or gone. Both tables shows that there are sent and received around 500,000 to 600,000 packets regardless if the user is home or not. The amount of bytes varies a lot in both tables from 58,677,501 bytes to 81,810,849 bytes for the weekends at home and from 42,390,770 bytes to 98,642,277 bytes for the weekends gone. Looking at the biggest packet received and sent shows very similar values for both weekends at home and gone. Table \ref{tab:NedisWeekends} also gives the same results. Neither average values for packets, bytes or biggest packets received or sent differs significantly between a weekend at home or gone. The standard deviation for weekends gone are some higher than for weekends at home which means that the values differ more from each other, but since the average is similar and the values differ both higher and lower than the average, it is still not possible to see any significant differences here. The results therefore shows that it is not possible to discovery if a user is home or not by looking at the traffic patterns from Nedis. 
 
 \section{Evaluating the Results Against the Research Questions}
-This section will discuss the research questions by using the results found in the four test cases stated in the section above. The questions will be answered sequentially. The research questions to be answered in this thesis are:
+This section discusses the research questions by using the results found in the four test cases stated in the section above. The questions will be answered sequentially. As presented in Chapter 1, the research questions to be answered in this thesis are:
 
 \begin{enumerate}
     \item What kind of information can be gathered from air quality monitors when carrying out a network eavesdropping attack?
@@ -3488,17 +3495,16 @@ This section will discuss the research questions by using the results found in t
     \item How can the private information gathered be misused by an adversary?
 \end{enumerate}
 
-In this research, four different test cases have been used to test if it is possible see traffic changes from when an event is triggered in the environment the device is. The baseline capturings showed that all the devices communicates with a layer of security as the packets sent on \gls{Wi-Fi} is encrypted and not readable while carrying out a passive network eavesdropping attack. Therefore it is not possible to gather private information sent in the payloads to and from the devices. 
+In this research, four different test cases have been used to test if it is possible see traffic pattern changes from when an event is triggered in the environment the device relies. The baseline capturings showed that all the devices communicates with a layer of security as the packets sent on \gls{Wi-Fi} is encrypted and not readable while carrying out a passive network eavesdropping attack. Therefore it is not possible to gather private information sent in the payloads to and from the devices. 
 
-For the routine behavioural events such as cooking, showering and window open, none of the devices showed a significant difference from when an event was triggered at a specific time compared to the traffic sent before and after the event or compared to the baseline capturings. By comparing the baseline traffic to the event traffic, the devices Nedis SmartLife and Mill Sense showed that there are visible differences in standby traffic and that the traffic can be affected by smaller indoor changes such as a season can change the indoor air quality. For example, during summer windows can be more open than during winter were ovens can be more used. 
+For the routine behavioural events defined as cooking, showering and window open, only showering and window open gave notifications of threshold values exceeded for all executions. None of the devices showed a significant difference from when an event was triggered at a specific time compared to the traffic sent before and after the event or compared to the baseline capturings. While comparing the baseline traffic to the event traffic, the devices Nedis SmartLife and Mill Sense showed that there are visible differences from the baseline capturings to right before and after the events which should expectedly have been the same. This can be a result that the traffic can be affected by smaller indoor changes such as a season can change the indoor air quality. For example, during summer windows can be more open than during winter were ovens can be more used. 
 
-However, for the weekend test, one of the devices shows a clear difference from when a user is home or gone during the time period of a weekend. When \gls{AQM} Netatmo Smart Indoor Air Quality Monitor was used, it shows that is is possible to distinguish whether a user is home or gone by looking at the total number of bytes sent and received to that device during the weekend and looking at size of the packets sent by the device which is never higher than 134 bytes when the user is gone for the weekend. This kind of information will expose private information about a user were it is possible to see whether the user is home or not for a longer period of time. For Mill Sense and Nedis SmartLife, no similar findings were discovered during the tests.
-
-The baseline capturings shows that the devices communicates differently. For Netatmo and Nedis, 
-most of the packets are outbound bytes meaning that these devices sends a lot more traffic than it receives. For Mill, inbound traffic was higher than outbound traffic. Also comparing the traffic from the three devices, as shown in Figure \ref{fig:ComparingBaselines}, shows that the traffic is different from the three devices. Netatmo has a more continuous line of the packets, while Mill sends traffic periodically and have more spikes and Nedis shows many spikes that are a lot higher than for the rest of the baseline period. These differences can be used to distinguish the traffic between the three air quality monitor from different vendors. 
-
-The differences in level of inference from the three different air quality monitors are only distinguishable when it comes to Test Case 4: Weekends. For the routine behavioural test cases, neither of the devices expose private information regarding when the event is ongoing or what kind of event is triggered. However, the results from the weekend test shows that Nedis and Mill is a more secure choice than Netatmo when it comes to selecting air quality monitor to install in our home. Also when it comes to identifying changes in traffic, Nedis and Mill shows that the baseline traffic can change on other factors than a triggered event and will therefore be harder for an attacker to understand normal traffic. It is good for users to know that one should consider more factors than just the appearance or functionality of the air quality monitor when selecting what device to install in their home. Knowing that the network traffic of an air quality monitor is not the same regardless of the manufacture, is important when selecting the right one. 
+However, for the weekend test, one of the devices shows a clear difference from when a user is home or gone during the time period of a weekend. When Netatmo Smart Indoor Air Quality Monitor was used, it shows that is is possible to distinguish whether a user is home or gone by looking at the total number of bytes sent and received to that device during the weekend and looking at size of the packets sent by the device which is never higher than 134 bytes when the user is gone for the weekend. This kind of information will expose private information about a user were it is possible to see whether the user is home or not for a longer period of time. These two factors proves that it is possible to infer private information form the device. For Mill Sense and Nedis SmartLife, no similar findings were discovered during the tests. 
 
 In the weekend testing, it looked like there were differences for both Mill and Netatmo for the first 5 weekends at home, but only Netatmo had the same significantly different pattern for weekends at home and gone. For Mill, the pattern changed for the two last weekends at home where the packet size were the same as for the weekends gone. This also shows the importance of including enough executions for each of the test cases. For Nedis, no significant differences were possible to see during the weekend testing and therefore private information about whether a user is at home or gone during the weekend was not possible to discover during these tests. 
 
-As only the weekend test for Netatmo exposed private information, only this specific test case can be used to evaluate how this information can be misused by an adversary. If an adversary have conducted a passive network eavesdropping attack against a user who has installed the Netatmo Smart Indoor Air Quality Monitor, it is possible to know if a user is gone for a longer period of time. Even though weekends were used in this test, the results will also be applicable for longer periods of time such as a week or several weeks. An adversary could use this private information to carry out actions against the users home such as a burglary. Another aspect is that an attacker could learn about our habits for being home or not, such as every Easter or Christmas, the user is gone or every weekend during winter the user is not home. 
+The baseline capturings shows that the devices communicates differently. For Netatmo and Nedis, most of the packets are outbound bytes meaning that these devices send a lot more traffic than they receive. For Mill, inbound traffic was higher than outbound traffic. Also comparing the traffic from the three devices, as shown in Figure \ref{fig:ComparingBaselines}, shows that the traffic is different from the three devices. Netatmo has a more continuous line of the packets, while Mill sends traffic periodically and have more spikes and Nedis shows many spikes that are a lot higher than for the rest of the baseline period. These differences can be used to distinguish the traffic between the three air quality monitor from different vendors. 
+
+The differences in level of inference from the three different air quality monitors are only distinguishable when it comes to Test Case 4: Weekends. For the routine behavioural test cases, neither of the devices expose private information regarding when the event is ongoing or what kind of event is triggered. However, the results from the weekend test shows that Nedis and Mill is a more secure choice than Netatmo when it comes to selecting air quality monitor to install in our home. Also when it comes to identifying changes in traffic, Nedis and Mill shows that the baseline traffic can change on other factors than a triggered event and it will therefore be harder for an attacker to understand normal traffic. It is good for users to know that one should consider more factors than just the appearance or functionality of the air quality monitor when selecting what device to install in their home. Knowing that the network traffic of an air quality monitor is not the same regardless of the manufacture, is important when selecting the right one. 
+
+As only the weekend test for Netatmo exposed private information, only this specific test case can be used to evaluate how this information can be misused by an adversary. If an adversary has conducted a passive network eavesdropping attack against a user who has installed the Netatmo Smart Indoor Air Quality Monitor, it is possible to know if a user is gone for a longer period of time. Even though weekends were used in this test, the results will also be applicable for longer periods of time such as a week or several weeks. An adversary could use this private information to carry out malicious actions against the users home such as a burglary. Another aspect is that an attacker could learn about our habits for being home or not, such as every Easter or Christmas, the user is gone or every weekend during winter the user is not home. 
