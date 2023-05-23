@@ -1,8 +1,8 @@
 \chapter{Method}
-This chapter describes the material and method used for testing, the environment setup and the test cases that has been conducted. First, a survey for selecting the air quality monitors that will be used in this research are introduced. Then, the method for creating the environment, carrying out the tests, and analyzing the results are presented in a method three and explained in details.  
+This chapter describes the material and method used for testing, the environment setup and the test cases that has been conducted. First, a survey for selecting the air quality monitors to be tested in this research are introduced. Then, the method for creating the environment, carrying out the tests, and analyzing the results are presented in a method tree and explained in details.  
 
 \section{Air Quality Monitor Survey}
-To select the air quality monitor to use in this thesis, the problem description and research questions have been used as a reference. In order to answer the RQs, the air quality monitors need to be manufactured from different vendors. To find the specific \gls{AQM}s to use in this research, several online sources were used and compared. As this research is conducted by NTNU Gjøvik in Norway, it is also preferable that the devices are bought and available in Norwegian stores or webpages. The devices chosen should also be popular and easy accessible for any user. 
+To select the air quality monitors to use in this thesis, the problem description and research questions have been used as a reference. In order to answer the RQs, the air quality monitors need to be manufactured from different vendors. To find the specific \gls{AQM}s to use in this research, several online sources were used and compared. As this research is conducted by NTNU Gjøvik in Norway, it is also preferable that the devices are bought and available in Norwegian stores or webpages. The devices chosen should also be popular and easy accessible for any user. 
 
 It exists many solutions that integrate air quality monitors within other devices, but as this thesis aims to investigate what private information is possible to infer from an air quality monitor, the devices should only have air quality monitoring functionality.  Considering these factors, the following criteria are made out to select the devices:
 \begin{itemize}
@@ -56,18 +56,16 @@ Mill Sense Air Quality Monitor measures the indoor air quality with 4 different 
     \begin{subfigure}{0.3\textwidth}
          \centering
          \includegraphics[width=1\textwidth]{figures/MillSense.jpg}
-         \caption{Mill Sense \cite{MillSense}}
          \label{fig:MillSenseDev}
      \end{subfigure}
      \hspace{2cm}
     \begin{subfigure}{0.3\textwidth}
          \centering
          \includegraphics[width=1\textwidth]{figures/MillSenseApp.png}
-         \caption{Mill Norway \cite{MillSense}}
          \label{fig:MillSenseApp}
      \end{subfigure}
      \hfill
-        \caption{Mill Sense and corresponding application Mill Norway}
+        \caption{Mill Sense and corresponding application Mill Norway \cite{MillSense}}
         \label{fig:MillSenseBoth}
 \end{figure}
 
@@ -77,20 +75,18 @@ The \gls{AQM} does not need power to stay connected and can be placed in any pre
 Nedis SmartLife Air Quality Monitor has 3 different indoor \gls{AQM} sensors: humidity, temperature and VOC \cite{NedisDevice}. The monitor communicates over \gls{Wi-Fi} to the app, Nedis SmartLife. As Nedis sells several other smart devices, the unit can be integrated in a smart environment together with other devices. Figure \ref{fig:NedisBoth} shows Nedis SmartLife Air Quality Monitor and its corresponding application, Nedis SmartLife. 
 \begin{figure} [H]
     \centering
-    \begin{subfigure}{0.35\textwidth}
+    \begin{subfigure}{0.3\textwidth}
          \centering
-         \includegraphics[width=1.2\textwidth]{figures/NedisDevice.jpg}
-         \caption{Nedis SmartLife Air Quality Monitor \cite{Nedis}}
+         \includegraphics[width=1\textwidth]{figures/NedisDevice.jpg}
          \label{fig:NedisApp}
      \end{subfigure}
-     \hspace{2cm}
-      \begin{subfigure}{0.35\textwidth}
+     \hspace{1cm}
+      \begin{subfigure}{0.3\textwidth}
          \centering
-         \includegraphics[width=1.2\textwidth]{figures/NedisApp.jpg}
-         \caption{Nedis SmartLife App \cite{Nedis}}
+         \includegraphics[width=1\textwidth]{figures/NedisApp.jpg}
          \label{fig:NedisDev}
      \end{subfigure}
-     \caption{Nedis SmartLife and corresponding application Nedis SmartLife}
+     \caption{Nedis SmartLife and corresponding application Nedis SmartLife \cite{Nedis}}
      \label{fig:NedisBoth}
 \end{figure}
 
@@ -122,7 +118,7 @@ Table \ref{tab:AQMSetup} describes each \gls{AQM}, their \gls{MAC} address and w
         \hline
         Netatmo & 70:EE:50:91:06:DE & \(CO_2\) > 1150 ppm \newline Noise > 62db \newline Humidity < 30\% \newline Humidity > 60\% \newline Temperature < 17 \degree C \newline Temperature > 26 \degree C \\
         \hline
-        Mill & B8:F0:09:B3:B3:78 & None \\
+        Mill & B8:F0:09:B3:B3:78 & N/A \\
         \hline
         Nedis & 2C:F4:32:29:36:DC & \(CO_2\) > 1000 ppm \newline Humidity < 30\%  \newline Humidity < 50\% \newline Temperature < 15 \degree C \newline Temperature > 25 \degree C \newline VOC > 99.9 ppm\\
         \hline
@@ -150,10 +146,10 @@ To set the device in monitoring mode, the is sniffer first plugged into a system
     sudo iwconfig
 \end{verbatim}
 
-Note that Wlan0 was the assigned wlan for the device when it was plugged it into the environment. The specific wlan addressed to the sniffer can vary from system to system so it needs to be checked with the device is plugged into the system. When the sniffer is configured in monitoring mode, the device is able to collect all \gls{Wi-Fi} traffic within its own signal range. In this way, the sniffer will be able to collect the traffic sent to and from the \gls{AQM}s installed in the environment. To verify that the sniffer is collecting traffic on the network, Wireshark were used with the corresponding wlan, Wlan0, as capturing interface. 
+Note that wlan0 was the assigned wlan for the device when it was plugged it into the environment. The specific wlan addressed to the sniffer can vary from system to system so it needs to be checked with the device is plugged into the system. When the sniffer is configured in monitoring mode, the device is able to collect all \gls{Wi-Fi} traffic within its own signal range. In this way, the sniffer will be able to collect the traffic sent to and from the \gls{AQM}s installed in the environment. To verify that the sniffer is collecting traffic on the network, Wireshark were used with the corresponding wlan, wlan0, as capturing interface. 
 \\\\
 \textbf{Tshark}\\
-In order to store and process the traffic that the sniffer collects, a monitoring software was used. Tshark \cite{Tshark} is an open and free network packet analyzer and were used to store packets. Tshark can be run from the command line interface and has the possibility of using capture filters based on a number of parameters, such as addresses, duration or size. In order to store the packets captured, tshark was run with the option of writing its results to an output file rather than directly in the command-line, as it does default. The packets collected in the output file by tshark are possible to open and analyze in Wireshark. 
+In order to store and process the traffic that the sniffer collects, a monitoring software was used. Tshark \cite{Tshark} is an open-source network packet analyzer and were used to store packets. Tshark can be run from the command line interface and has the possibility of using capture filters based on a number of parameters, such as addresses, duration or size. In order to store the packets captured, tshark was run with the option of writing its results to an output file rather than directly in the command-line, as it does default. The packets collected in the output file by tshark are possible to open and analyze in Wireshark. 
 
 To store packets from all the three air quality monitors, tshark was run from three different terminals with corresponding filter to the devices. The options of the command are explained in Table \ref{tab:tshark}.
 
@@ -173,14 +169,14 @@ To store packets from all the three air quality monitors, tshark was run from th
 
 \begin{verbatim}
 Netatmo:
-    tshark -i wlan0 -f ether.host == 70:EE:50:91:06:DE -w 
-    \\Documents\Netatmo
+    tshark -i wlan0 -f "ether.host == 70:EE:50:91:06:DE" -w 
+    "\\Documents\Netatmo"
 Mill:
-    tshark -i wlan0 -f ether.host == B8:F0:09:B3:B3:78 -w 
-    \\Documents\Mill
+    tshark -i wlan0 -f "ether.host == B8:F0:09:B3:B3:78" -w 
+    "\\Documents\Mill"
 Nedis:
-    tshark -i wlan0 -f ether.host == 2C:F4:32:29:36:DC -w 
-    \\Documents\Nedis
+    tshark -i wlan0 -f "ether.host == 2C:F4:32:29:36:DC" -w 
+    "\\Documents\Nedis"
 \end{verbatim}
 
 \noindent
@@ -190,7 +186,7 @@ To collect data and store it from the devices, an operating system running on a 
 \begin{figure} [H]
     \centering
     \includegraphics[width=1\textwidth]{figures/Environment.png}
-    \caption{\gls{Wi-Fi}: Environment setup with all devices \cite{MillSense}, \cite{NetatmoDevice}, \cite{NedisDevice}}
+    \caption{Environment setup with all devices \cite{MillSense}, \cite{NetatmoDevice}, \cite{NedisDevice}, \cite{Sniffer}, \cite{KaliLinux}}
     \label{fig:Environment}
 \end{figure}
 
