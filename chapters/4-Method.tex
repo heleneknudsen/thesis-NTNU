@@ -192,13 +192,7 @@ To collect data and store it from the devices, an operating system running on a 
 
 \subsection{Event Design}
 \textbf{Justification of test cases}\\
-In order to infer user behaviour from the devices, several test cases were designed. As the \gls{AQM}s are installed and monitors the home environment at all times, the test cases are not limited in time or place in the house as they can be moved. The traffic characteristics are unknown, and therefore a hypothesis tree is used to understand how to proceed based on the results from the traffic analysis. Figure \ref{fig:HypothesisTree} shows the hypothesis tree of this research:
-
-\begin{figure} [H]
-    \includegraphics[width=1\textwidth]{figures/Hypothesistree.png}
-    \caption{Hypothesis tree}
-    \label{fig:HypothesisTree}
-\end{figure}
+In order to infer user behaviour from the devices, several test cases were designed. As the \gls{AQM}s are installed and monitors the home environment at all times, the test cases are not limited in time or place in the house as they can be moved. 
 
 Looking at the different sensors and how they can be affected is important for understanding which user behaviour can possibly change traffic pattern. The sensors from all the devices combined are; \(eCO_2\), \(CO_2\), humidity, temperature, \gls{TVOC}, \gls{VOC}, HCHO and noise. Some of the sensors will be affected by the same actions, so they will be categorized together. The following significantly different categorized sensors will be used: \(CO_2\), humidity, temperature, VOC and noise. Examples of user behaviour in a home that affects the different sensors are:
 \begin{itemize}
@@ -214,6 +208,8 @@ Several of the proposed user behaviours will affect not only one, but several se
 The three different routinely test cases chosen are \textbf{cooking}, \textbf{showering} and \textbf{windows open at night}. Cooking is the most routinely behaviour in a home where dinner is normally made every day. The next test case is showering as this is a routine behaviour and will affect the sensors, particularly humidity and temperature in the bathroom. Showering can be routinely done at very different times, but evening showers are used in this case. Windows in a home can be open at several times, however, having a window open every night while sleeping can be common and should drastically change the indoor temperature and possibly humidity. Especially since the testing will be carried out during winter time in Norway. This is also a test that will last longer than the other two tests and can possibly give another aspect to the research. 
 
 Another test case that can be interesting to see if changes the traffic patterns when a user are home or not. Therefore, a weekend test will be carried out. The sniffer will gather traffic from several weekends when the user is present in the home environment and compare it to when the user is away for the weekend and look at the differences.
+
+The four test cases chosen are three routine test cases and one test case not based on routines. It is important to understand that the privacy of the different test cases are different. Knowing whether a user is cooking or showering are defined as the two test cases with the least dangerous private information exposed, while window open at night can rather indicate that a user is sleeping and the home environment is not watched. The private information exposed from the weekend test, is the most dangerous if revealed since it will indicate if a user is gone and therefore not in control of the home environment.
 
 \subsection{Baseline Capture}
 To be able to distinguish the events in the \gls{Wi-Fi} traffic, it is necessary to capture and analyze traffic from the devices when they are not affected by any events. This is necessary to understand what normal traffic from the devices is. During the baseline capture, the devices were installed and calibrated in the environment. All notifications that will be enabled during the event triggering were enabled. The devices were reachable through their app and communicate in their own pattern. The baseline capture was on-going for several days to ensure enough data and traffic was collected. During this capture, the devices were placed in the inner hallway of the apartment. It would have been ideally to have a baseline from each room of where the test cases will be located, but due to time constraints, they were placed in a room binding all the other rooms together. See Figure \ref{fig:Apartment} for an overview of the environment.
@@ -258,4 +254,97 @@ Figure \ref{fig:Apartment} shows an overview of the apartment layout, hereby cal
 When the events had been carried out, a mapping was made to see if information could be inferred. Each event is presented both graphically and numerically with different calculations to compare. Each event were extracted from the corresponding tshark capture saved in the pcap output file. A separate pcap file for each event was made, with the timing of the specific event to see differences. 
 
 \subsection{Result Analysis}
-The last activity is to analyze the results from the tests performed. For each event; cooking, showering, window open and weekend, several graphs and calculations are presented side by side to analyze. This is divided into categories with the three different devices. Then the actual events are compared to the baseline for each device to look further into differentiate the events from standard traffic. The results are commented and evaluated in the same sections that presents the results, and a separate subsection is presented to discuss and answer the research questions for this thesis. 
+The last activity is to analyze the results from the tests performed. Each event has initially been evaluated and analyzed with the same general procedure. Figure \ref{fig:GeneralProcedure} shows an overview of the steps each event has been through. The results from each event are presented and explained in each subsection and in some cases, the general procedure has given insights to further analysis which is also covered in the subsection.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/GeneralProcedure.png}
+    \caption{General procedure used to evaluate and analyze the test cases}
+    \label{fig:GeneralProcedure}
+\end{figure}
+
+To be able to run analysis on the data gathered from the different \gls{pcaps} and present it in an understandable way, two different programs were used; Wireshark and python scripts in \gls{VS Code} with pyshark, a tshark library. Wireshark was used to extract numbers and calculations from the pcaps and \gls{VS Code} was used to generate graphs from event \gls{pcaps}.
+
+When opening a pcap in Wireshark, several statistics are possible to extract. By choosing the option of "Capture File Properties", total number of packets and bytes in the capture file are shown and were extracted. The numbers from each pcap were noted down and used as event attributes to compare both the events to each other and to the baseline. 
+
+In \gls{VS Code}, python was used as the programming language as it includes the library pyshark which can be used towards the tshark capture files. Four scripts with a number of different if statements were used to generate different graphs depending on system arguments passed to the script. The scripts are used to generate two graphs: one with number of bytes or packets per execution of event and one for the corresponding baseline event. The code is displayed in its whole in Appendices \ref{app:GraphsByBytes}, \ref{app:GraphsByPackets}, \ref{app:GraphsByBytes_BaselineEvents} and \ref{app:GraphsByPackets_BaselineEvents}, and in pseudo code beneath in algorithm \ref{alg:GraphScript}. For each of the if statements, the same code block is included and are only shown once in algorithm \ref{alg:GraphScript}. The graphs are all generated with bytes and packets per 2 seconds, where the y-axis is defined in the number of packets or bytes and the x-axis defined as time. The scripts uses parts from the scripts explained in \cite{GraphsInspiration}.
+
+To create a file for each of the events, a time filter was applied to the pcaps and the remaining packets exported to a separate pcap creating one pcap file per captured event. These can be opened in Wireshark or make a graph out of to analyze each specific event. The time filter used followed the following format:
+
+\begin{itemize}
+\item \textbf{Format:} frame.time >= "Month Date, Year "Time"" \&\& frame.time <= "Month Date, Year "Time""//
+\item \textbf{Example:} frame.time >= "Jan 08, 2023 "19:30:00"" \&\& frame.time <= "Jan 08, 2023 "20:40:00""
+\end{itemize}
+
+Table \ref{tab:SystemArgumentsScripts} displays the different system arguments passed to the scripts to create the graphs and which values the arguments expect. 
+
+\begin{table}[H]
+    \centering
+    \caption{Overview of system arguments for scripts}
+    \begin{adjustbox}{width=1\textwidth}
+    \begin{tabular}{l|l|l|}
+        \cline{2-3} & \textbf{Description} & \textbf{Values}\\ \hline
+        \multicolumn{1}{|l|}{\textbf{Argument 1}} & Name of device & \begin{tabular}[c]{@{}l@{}}Netatmo\\ Mill\\ Nedis\end{tabular} \\ \hline
+        \multicolumn{1}{|l|}{\textbf{Argument 2}} & Which packets to include & \begin{tabular}[c]{@{}l@{}}Inbound packets and bytes\\ Outbound packets and bytes\\ Inbound and outbound packets and bytes\end{tabular} \\ \hline
+        \multicolumn{1}{|l|}{\textbf{Argument 3}} & Type of event & \begin{tabular}[c]{@{}l@{}}Cooking\\ Shower\\ Window\\ Weekend\\ Baseline\end{tabular} \\ \hline
+        \multicolumn{1}{|l|}{\textbf{Argument 4}} & Maximum value for y-axis, in bytes or packets & <Numeric value> \\ \hline
+    \end{tabular}
+    \end{adjustbox}
+    \label{tab:SystemArgumentsScripts}
+\end{table}
+
+\begin{algorithm}[H]
+\caption{Script for generating graphs}\label{alg:GraphScript}
+    \begin{algorithmic}[1]
+        \For{Each date of event} \Comment{Graph\_function start}
+            \State Extract the packets from the right pcap
+            \For{Each packet in pcap}
+                \State Extract packet length in byte and time or add packet count to time
+                \State Display graph
+            \EndFor
+        \EndFor \Comment{Graph\_function end}\\
+        \If{Argument 2 is Outbound} \Comment{Set display filter to outbound traffic}
+            \If{Argument 1 is Netatmo}
+                \State Set display filter to "wlan.sa == Netatmo \gls{MAC} address"
+            \ElsIf{Argument 1 is Mill}
+                \State Set display filter to "wlan.sa == Mill \gls{MAC} address"
+            \ElsIf{Argument 1 is Nedis}
+                \State Set display filter to "wlan.sa == Nedis \gls{MAC} address"    
+            \EndIf \\
+        \ElsIf{Argument 2 is Inbound} \Comment{Set display filter to inbound traffic}
+            \If{Argument 1 is Netatmo}
+                \State Set display filter to "wlan.da == Netatmo \gls{MAC} address"
+            \ElsIf{Argument 1 is Mill}
+                \State Set display filter to "wlan.da == Mill \gls{MAC} address"
+            \ElsIf{Argument 1 is Nedis}
+                \State Set display filter to "wlan.da == Nedis \gls{MAC} address"  
+            \EndIf
+        \EndIf \\
+        \If{Argument 3 is Shower} \Comment{Event if-cases start}
+            \State Set the dates from when the events occurred 
+            \State Graph\_function
+        \ElsIf{Argument 3 is Cooking}
+            \State Set the dates from when the events occurred 
+            \State Graph\_function
+        \ElsIf{Argument 3 is Window}
+            \State Set the dates from when the events occurred 
+            \State Graph\_function
+        \ElsIf{Argument 3 is Weekend}
+            \State Set the dates from when the events occurred 
+            \State Graph\_function
+        \ElsIf{Argument 3 is Baseline}
+            \State Set the dates from when the events occurred 
+            \State Graph\_function
+        \EndIf \Comment{Event if-cases end}
+    \end{algorithmic}
+\end{algorithm}
+
+To be able to look even further into differences in the traffic flow during an event and standard traffic, the baseline capturing were also extracted with the same time of day and duration as the corresponding events. To have the same start and finish time for the events and the baseline, timings for all executions of the events were used. The earliest starting time and the latest finish time for that event were used on every event, but also the baseline which was capturing one different dates than the events. This results in both event and corresponding baseline pcaps possible to compare as they all have the same time interval. 
+
+When these steps were finished for each execution of the events, graphs and calculations for each event were available to analyze. Average and standard deviation values were calculated for both the events and corresponding baseline \gls{pcaps}. To be able to conclude that there is a difference in traffic flow from when an event is ongoing, to standard traffic different measurements were used. The measurements are shown in both calculations and graphical views and then compared to each other. For calculations, the average value in packets and bytes for events, including standard deviation, needed to be smaller or bigger than the average value, including standard deviation, for the standard baseline traffic. These values are calculated and presented as: [Average value-Standard deviation, Average value+Standard deviation]. 
+
+The graphical measurement to analyze if there was a difference in traffic flow during the events, was if it was possible to see a constant difference in the traffic before and during an event. The baseline graphs were also used here to compare even more standard traffic, than the time period before the event and look further into if it was possible to see spikes or traffic flow changes during the events. The last numerical value analyzed is the biggest packet sent or received and can be used to see if there are bigger packets in the capture files while an event is ongoing, and if there are, look into if they are associated with the specific event time.
+
+The last numerical value analyzed is the biggest packet sent or received and can be used to see if there are bigger packets in the capture files while an event is ongoing, and if there are, look into if they are associated with the specific event time. This was included because we expect bigger packets to be sent or received by the device during an event to update sensor values or send notifications. 
+
+The measurements for calculations also needs to be seen in context with the graphical view as the calculations are not only made on traffic at the specific event time, but also includes traffic from a time period before and after the event. Since we do not expect the sensor values to change immediately when an event is triggered, the traffic before is better to use as a reference to look for changes. The traffic after an event can still be affected by the sensor values since stabilizing the indoor air may take time. To be able to compare the baseline to the event graphs, the time before an event and the baseline needs to follow the same pattern. If calculations or the graphical view showed the same significant difference from event and standard traffic, then it was possible to conclude that the device exposed private information for the test case. 
