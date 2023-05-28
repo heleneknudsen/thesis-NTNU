@@ -1,7 +1,7 @@
 \chapter{Method}
-This chapter describes the material and method used for testing, the environment setup and the test cases that has been conducted. First, a survey for selecting the air quality monitors to be tested in this research are introduced. Then, the method for creating the environment, carrying out the tests, and analyzing the results are presented in a method tree and explained in details.  
+This chapter describes the material and method used for testing, the environment setup and the test cases that have been conducted. First, a survey for selecting the air quality monitors to be tested in this research are introduced. Then, the method for creating the environment, carrying out the tests, and analyzing the results are presented in a method tree and explained in details.  
 
-\section{Air Quality Monitor Survey}
+\section{Air Quality Monitor Selection Survey}
 To select the air quality monitors to use in this thesis, the problem description and research questions have been used as a reference. In order to answer the RQs, the air quality monitors need to be manufactured from different vendors. To find the specific \gls{AQM}s to use in this research, several online sources were used and compared. As this research is conducted by NTNU Gjøvik in Norway, it is also preferable that the devices are bought and available in Norwegian stores or webpages. The devices chosen should also be popular and easy accessible for any user. 
 
 It exists many solutions that integrate air quality monitors within other devices, but as this thesis aims to investigate what private information is possible to infer from an air quality monitor, the devices should only have air quality monitoring functionality.  Considering these factors, the following criteria are made out to select the devices:
@@ -25,20 +25,21 @@ This research will consists of air quality monitors from the selected three diff
     \caption{Air quality monitor devices selected for this research}
     \begin{tabular}{| p{1.5cm} | p{5.5cm} | p{3cm} | p{2cm} |} 
         \hline
+        Netatmo & Smart Indoor Air Quality Monitor & WiFi & \(CO_2\) \newline Noise \newline Humidity \newline Temperature \\
+        \hline
         \textbf{Vendor} & \textbf{Air Quality Monitor} & \textbf{Communication protocol} & \textbf{Sensors} \\
         \hline
         Mill & Sense Smart Climatesensor & WiFi & \(eCO_2\) \newline Humidity \newline Temperature \newline \gls{TVOC} \\
         \hline
         Nedis & SmartLife Air Quality Monitor & WiFi & \(CO_2\) \newline HCHO \newline Humidity \newline Temperature \newline VOC \\
         \hline
-        Netatmo & Smart Indoor Air Quality Monitor & WiFi & \(CO_2\) \newline Noise \newline Humidity \newline Temperature \\
-        \hline
+
     \end{tabular}
     \label{tab:AQMSurvey}
 \end{table}
 
 \subsection{Netatmo Smart Indoor Air Quality Monitor}
-The Netatmo Smart Indoor Air Quality Monitor entails 4 different sensors: humidity, \(CO_2\), noise and temperature. It can be integrated with several smart indoor air quality monitor devices placed around in users home, using HomeKit. It communicates over WiFi to its own app called \textit{Healthy Home Coach}. Figure \ref{fig:Netatmo} shows Netatmo Smart Indoor Air Quality Monitor and its corresponding application, Healthy Home Coach. 
+The Netatmo Smart Indoor Air Quality Monitor entails 4 different sensors: humidity, \(CO_2\), noise and temperature. It can be integrated with several smart indoor air quality monitor devices installed in users home, using HomeKit. It communicates over WiFi to its own app called \textit{Healthy Home Coach}. Figure \ref{fig:Netatmo} shows Netatmo Smart Indoor Air Quality Monitor and its corresponding application, Healthy Home Coach. 
 \begin{figure} [H]
     \centering
     \includegraphics[width=0.4\textwidth]{figures/Netatmo.png}
@@ -46,10 +47,10 @@ The Netatmo Smart Indoor Air Quality Monitor entails 4 different sensors: humidi
     \label{fig:Netatmo}
 \end{figure}
 
-The Netatmo Smart Indoor Air Quality Monitor sends notifications to the user's application when the device sense high temperature, \(CO_2\), humidity or noise and low temperature or humidity. These are default enabled, but can be turned off by the user. The values cannot be changed, but are stated by Netatmo in the app. The unit displays live readings to the user, together with a graphical view of values over a longer period of time. When first installed, the device needs at least 7 days to finish calibrating and read the environment values correctly. 
+The Netatmo Smart Indoor Air Quality Monitor sends notifications to the user's application when the device sense high temperature, \(CO_2\), humidity or noise and low temperature or humidity. These are default enabled, but can be turned off by the user. The values cannot be changed, but are stated by Netatmo in the application. The unit displays live readings to the user, together with a graphical view of values over a longer period of time. When first installed, the device needs at least 7 days to finish calibrating and read the environment values correctly. 
 
 \subsection{Mill Sense Air Quality Monitor}
-Mill Sense Air Quality Monitor measures the indoor air quality with 4 different sensors: humidity, \gls{TVOC}, temperature and \(eCO_2\) \cite{Mill}. The monitor communicates to the user's mobile phone through Wi-Fi and connects its data to their application called \textit{Mill Norway}. It is possible to use Mill Sense together with other Mill units, such as heaters or air purifiers,  to change their values based on the sensor data from Mill Sense \cite{Mill}. Figure \ref{fig:MillSenseBoth} shows Mill Sense and its corresponding application, Mill Norway. 
+Mill Sense Air Quality Monitor measures the indoor air quality with 4 different sensors: humidity, \gls{TVOC}, temperature and \(eCO_2\) \cite{Mill}. The monitor communicates through Wi-Fi and connects its data to their application called \textit{Mill Norway}. It is possible to use Mill Sense together with other Mill units, such as heaters or air purifiers,  to change their values based on the sensor data from Mill Sense \cite{Mill}. Figure \ref{fig:MillSenseBoth} shows Mill Sense and its corresponding application, Mill Norway. 
 
 \begin{figure} [H]
     \centering
@@ -69,7 +70,7 @@ Mill Sense Air Quality Monitor measures the indoor air quality with 4 different 
         \label{fig:MillSenseBoth}
 \end{figure}
 
-The \gls{AQM} does not need power to stay connected and can be placed in any preferred room. The app does not provide notifications to users of threshold levels, but displays the current levels in the app together with graphs that shows variations back in time. Instead of sending notifications to a users phone, the device shows different light responses on the physical unit. These threshold values can be customized. The sensor data collected from the environment is sent to the cloud and back to the users app. It is possible to choose at what time interval the device will send sensor data, from every minute to every hour. When the unit is turned on for the first time and installed in the environment, the device needs at least 5 days to calibrate its sensors. 
+The \gls{AQM} does not need power to stay connected and can be placed in any preferred room. The application does not provide notifications to users of threshold levels, but displays the current levels in the app together with graphs that shows variations back in time. Instead of sending notifications to a users phone, the device shows different light responses on the physical unit. These threshold values can be customized. The sensor data collected from the environment is sent to the cloud and back to the users app. It is possible to choose at what time interval the device will send sensor data, from every minute to every hour. When the unit is turned on for the first time and installed in the environment, the device needs at least 5 days to calibrate its sensors. 
 
 \subsection{Nedis SmartLife Air Quality Monitor}
 Nedis SmartLife Air Quality Monitor has 3 different indoor \gls{AQM} sensors: humidity, temperature and VOC \cite{NedisDevice}. The monitor communicates over \gls{Wi-Fi} to the app, Nedis SmartLife. As Nedis sells several other smart devices, the unit can be integrated in a smart environment together with other devices. Figure \ref{fig:NedisBoth} shows Nedis SmartLife Air Quality Monitor and its corresponding application, Nedis SmartLife. 
@@ -102,7 +103,7 @@ This research is structured in six different main activities, shown in Figure \r
     \label{fig:MethodTree}
 \end{figure}
 \subsection{Environment Setup}
-The first main activity is to set up the environment with both hardware and software correctly configured. The air quality monitors, the sniffer, the hardware and software are explained beneath. 
+The first main activity is to set up the environment with both hardware and software correctly configured. First, the air quality monitors need to be functioning in the environment. Then a sniffer will be installed and tested to capture traffic sent to and from the devices. After this, the capturing and analysis platform is setup to store, process and analyze the data captured from the sniffer. On this platform, software designed to capture the necessary data needs to be installed and configured.  
 \\\\
 \textbf{Air Quality Monitors}\\
 The \gls{AQM}s need to be installed, connected to their app and calibrated. The devices were installed and connected to the app as explained in the user manual attached to the devices. It is desirable that the air quality monitors gives notifications when a certain threshold value is met. However, for Mill Sense it is not possible to set notifications, but Nedis SmartLife and Netatmo Smart Indoor Air Quality Monitor were set with the same threshold values for notifications. For Mill Sense the interval for sending sensor data to the application were set to every minute. The \gls{MAC} addresses for the air quality monitors can all be found in their corresponding apps, since identifying and discovering the devices are out of scope for this thesis. 
@@ -111,7 +112,7 @@ Table \ref{tab:AQMSetup} describes each \gls{AQM}, their \gls{MAC} address and w
  
 \begin{table}[H]
     \centering
-    \caption{MAC-address and notification threshold values for each \gls{AQM}}
+    \caption{MAC-address and notification threshold values for each AQM}
     \begin{tabular}{| p{3.5cm} | p{3.5cm} | p{5cm} |} 
         \hline
         \textbf{Air Quality Monitor} & \textbf{\gls{MAC} Address} & \textbf{Notification threshold values} \\
@@ -146,8 +147,19 @@ To set the device in monitoring mode, the is sniffer first plugged into a system
     sudo iwconfig
 \end{verbatim}
 
-Note that wlan0 was the assigned wlan for the device when it was plugged it into the environment. The specific wlan addressed to the sniffer can vary from system to system so it needs to be checked with the device is plugged into the system. When the sniffer is configured in monitoring mode, the device is able to collect all \gls{Wi-Fi} traffic within its own signal range. In this way, the sniffer will be able to collect the traffic sent to and from the \gls{AQM}s installed in the environment. To verify that the sniffer is collecting traffic on the network, Wireshark were used with the corresponding wlan, wlan0, as capturing interface. 
+Note that wlan0 was the assigned wlan for the device when it was plugged it into the environment. The specific wlan addressed to the sniffer can vary from system to system so it needs to be checked with the device plugged into the system. When the sniffer is configured in monitoring mode, the device is able to collect all \gls{Wi-Fi} traffic within its own signal range. In this way, the sniffer will be able to collect the traffic sent to and from the \gls{AQM}s installed in the environment. To verify that the sniffer is collecting traffic on the network, Wireshark were used with the corresponding wlan, wlan0, as capturing interface. 
 \\\\
+\noindent
+\textbf{Platform}\\
+To collect data and store it from the devices, an operating system running on a hardware component with the possibility to connect the sniffer were setup. In this thesis, Raspberry Pi Model 3 B+ were chosen as it can continuously be powered on to capture traffic over longer periods of time. The Raspberry Pi was installed with Kali Linux version 2022.3, installed from \cite{KaliLinux}, which was beneficial as it includes all the needed software to capture the traffic and is compatible with the TP-link sniffer. As the analysis will be conducted on another computer, WinSCP were used to export the files from the Raspberry Pi over the network, downloaded from \cite{WinSCP}. Figure \ref{fig:Environment} shows a logical overview of the setup of the environment.  
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/Environment.png}
+    \caption{Environment setup with all devices \cite{MillSense}, \cite{NetatmoDevice}, \cite{NedisDevice}, \cite{Sniffer}, \cite{KaliLinux}}
+    \label{fig:Environment}
+\end{figure}
+
 \textbf{Tshark}\\
 In order to store and process the traffic that the sniffer collects, a monitoring software was used. Tshark \cite{Tshark} is an open-source network packet analyzer and were used to store packets. Tshark can be run from the command line interface and has the possibility of using capture filters based on a number of parameters, such as addresses, duration or size. In order to store the packets captured, tshark was run with the option of writing its results to an output file rather than directly in the command-line, as it does default. The packets collected in the output file by tshark are possible to open and analyze in Wireshark. 
 
@@ -179,19 +191,8 @@ Nedis:
     "\\Documents\Nedis"
 \end{verbatim}
 
-\noindent
-\textbf{Platform}\\
-To collect data and store it from the devices, an operating system running on a hardware component with the possibility to connect the sniffer were setup. In this thesis, Raspberry Pi Model 3 B+ were chosen as it can continuously be powered on to capture traffic over longer periods of time. The Raspberry Pi was installed with Kali Linux version 2022.3, installed from \cite{KaliLinux}, which was beneficial as it includes all the needed software to capture the traffic and is compatible with the TP-link sniffer. As the analysis will be conducted on another computer, WinSCP were used to download the files from the Raspberry Pi over the network, downloaded from \cite{WinSCP}. Figure \ref{fig:Environment} shows a logical overview of the setup of the environment.  
-
-\begin{figure} [H]
-    \centering
-    \includegraphics[width=1\textwidth]{figures/Environment.png}
-    \caption{Environment setup with all devices \cite{MillSense}, \cite{NetatmoDevice}, \cite{NedisDevice}, \cite{Sniffer}, \cite{KaliLinux}}
-    \label{fig:Environment}
-\end{figure}
 
 \subsection{Event Design}
-\textbf{Justification of test cases}\\
 In order to infer user behaviour from the devices, several test cases were designed. As the \gls{AQM}s are installed and monitors the home environment at all times, the test cases are not limited in time or place in the house as they can be moved. 
 
 Looking at the different sensors and how they can be affected is important for understanding which user behaviour can possibly change traffic pattern. The sensors from all the devices combined are; \(eCO_2\), \(CO_2\), humidity, temperature, \gls{TVOC}, \gls{VOC}, HCHO and noise. Some of the sensors will be affected by the same actions, so they will be categorized together. The following significantly different categorized sensors will be used: \(CO_2\), humidity, temperature, VOC and noise. Examples of user behaviour in a home that affects the different sensors are:
@@ -212,7 +213,7 @@ Another test case that can be interesting to see if changes the traffic patterns
 The four test cases chosen are three routine test cases and one test case not based on routines. It is important to understand that the privacy of the different test cases are different. Knowing whether a user is cooking or showering are defined as the two test cases with the least dangerous private information exposed, while window open at night can rather indicate that a user is sleeping and the home environment is not watched. The private information exposed from the weekend test, is the most dangerous if revealed since it will indicate if a user is gone and therefore not in control of the home environment.
 
 \subsection{Baseline Capture}
-To be able to distinguish the events in the \gls{Wi-Fi} traffic, it is necessary to capture and analyze traffic from the devices when they are not affected by any events. This is necessary to understand what normal traffic from the devices is. During the baseline capture, the devices were installed and calibrated in the environment. All notifications that will be enabled during the event triggering were enabled. The devices were reachable through their app and communicate in their own pattern. The baseline capture was on-going for several days to ensure enough data and traffic was collected. During this capture, the devices were placed in the inner hallway of the apartment. It would have been ideally to have a baseline from each room of where the test cases will be located, but due to time constraints, they were placed in a room binding all the other rooms together. See Figure \ref{fig:Apartment} for an overview of the environment.
+To be able to distinguish the events in the \gls{Wi-Fi} traffic, it is necessary to capture and analyze traffic from the devices when they are not affected by any events. This is necessary to understand what normal traffic from the devices is, like presented in \cite{NetAna}. During the baseline capture, the devices were installed and calibrated in the environment. All notifications that will be enabled during the event triggering were enabled. The devices were reachable through their app and communicate in their own pattern. The baseline capture was on-going for several days to ensure enough data and traffic was collected. During this capture, the devices were placed in the inner hallway of the apartment. It would have been ideally to have a baseline from each room of where the test cases will be located, but due to time constraints, they were placed in a room binding all the other rooms together. See Figure \ref{fig:Apartment} for an overview of the environment.
 
 \subsection{Event Triggering}
 In this activity, traffic from the devices were captured while the events were triggered. The routine events are each triggered 10 times and traffic from at least 1 hour before and after the event were captured to see the changes in traffic both before and after the events. Weekend testing were conducted in the course of 14 weekends, resulting in collected traffic from 7 weekends at home and 7 weekends gone. 
@@ -254,7 +255,7 @@ Figure \ref{fig:Apartment} shows an overview of the apartment layout, hereby cal
 When the events had been carried out, a mapping was made to see if information could be inferred. Each event is presented both graphically and numerically with different calculations to compare. Each event were extracted from the corresponding tshark capture saved in the pcap output file. A separate pcap file for each event was made, with the timing of the specific event to see differences. 
 
 \subsection{Result Analysis}
-The last activity is to analyze the results from the tests performed. Each event has initially been evaluated and analyzed with the same general procedure. Figure \ref{fig:GeneralProcedure} shows an overview of the steps each event has been through. The results from each event are presented and explained in each subsection and in some cases, the general procedure has given insights to further analysis which is also covered in the subsection.
+The last activity is to analyze the results from the tests performed. Each event has initially been evaluated and analyzed with the same general procedure. Figure \ref{fig:GeneralProcedure} shows an overview of the steps each event has been through. The results from each event are presented and explained in each subsection and in some cases, the general procedure has given insights to further analysis which is covered in the Evaluation and Analysis Results.
 
 \begin{figure}[H]
     \centering
@@ -263,11 +264,11 @@ The last activity is to analyze the results from the tests performed. Each event
     \label{fig:GeneralProcedure}
 \end{figure}
 
-To be able to run analysis on the data gathered from the different \gls{pcaps} and present it in an understandable way, two different programs were used; Wireshark and python scripts in \gls{VS Code} with pyshark, a tshark library. Wireshark was used to extract numbers and calculations from the pcaps and \gls{VS Code} was used to generate graphs from event \gls{pcaps}.
+To be able to run analysis on the data gathered from the different \gls{pcaps} and present it in an understandable way, two different programs were used: Wireshark and python scripts in \gls{VS Code} with pyshark, a tshark library. Wireshark was used to extract numbers and calculations from the pcaps and \gls{VS Code} was used to generate graphs from event \gls{pcaps}.
 
-When opening a pcap in Wireshark, several statistics are possible to extract. By choosing the option of "Capture File Properties", total number of packets and bytes in the capture file are shown and were extracted. The numbers from each pcap were noted down and used as event attributes to compare both the events to each other and to the baseline. 
+When opening a pcap in Wireshark, several statistics are possible to extract. By choosing the option of "Capture File Properties", total number of packets and bytes in the capture file are shown and were extracted. The numbers from each pcap were noted down and used as event attributes to compare both the events to each other and to the baseline. Another value used to analyze the events where packet lengths. The biggest packet from each capturing were noted down to use for comparing and looking for patterns and changes during an event. 
 
-In \gls{VS Code}, python was used as the programming language as it includes the library pyshark which can be used towards the tshark capture files. Four scripts with a number of different if statements were used to generate different graphs depending on system arguments passed to the script. The scripts are used to generate two graphs: one with number of bytes or packets per execution of event and one for the corresponding baseline event. The code is displayed in its whole in Appendices \ref{app:GraphsByBytes}, \ref{app:GraphsByPackets}, \ref{app:GraphsByBytes_BaselineEvents} and \ref{app:GraphsByPackets_BaselineEvents}, and in pseudo code beneath in algorithm \ref{alg:GraphScript}. For each of the if statements, the same code block is included and are only shown once in algorithm \ref{alg:GraphScript}. The graphs are all generated with bytes and packets per 2 seconds, where the y-axis is defined in the number of packets or bytes and the x-axis defined as time. The scripts uses parts from the scripts explained in \cite{GraphsInspiration}.
+In \gls{VS Code}, python was used as the programming language as it includes the library pyshark which can be used towards the tshark capture files. Four scripts with a number of different if statements were used to generate different graphs depending on system arguments passed to the script. The scripts were used to generate two graphs: one with number of bytes or packets per execution of event and one for the corresponding baseline event. The code is displayed in its whole in Appendices \ref{app:GraphsByBytes}, \ref{app:GraphsByPackets}, \ref{app:GraphsByBytes_BaselineEvents} and \ref{app:GraphsByPackets_BaselineEvents}, and in pseudo code beneath in Algorithm \ref{alg:GraphScript}. For each of the if statements, the same code block is included and are only shown once in Algorithm \ref{alg:GraphScript}. The graphs are all generated with bytes or packets per 2 seconds, where the y-axis is defined in the number of packets or bytes and the x-axis defined as time. The scripts uses parts from the scripts explained in \cite{GraphsInspiration}.
 
 To create a file for each of the events, a time filter was applied to the pcaps and the remaining packets exported to a separate pcap creating one pcap file per captured event. These can be opened in Wireshark or make a graph out of to analyze each specific event. The time filter used followed the following format:
 
@@ -339,12 +340,12 @@ Table \ref{tab:SystemArgumentsScripts} displays the different system arguments p
     \end{algorithmic}
 \end{algorithm}
 
-To be able to look even further into differences in the traffic flow during an event and standard traffic, the baseline capturing were also extracted with the same time of day and duration as the corresponding events. To have the same start and finish time for the events and the baseline, timings for all executions of the events were used. The earliest starting time and the latest finish time for that event were used on every event, but also the baseline which was capturing one different dates than the events. This results in both event and corresponding baseline pcaps possible to compare as they all have the same time interval. 
+To be able to look even further into differences in the traffic flow during an event and standard traffic, the baseline capturing were also extracted with the same time of day and duration as the corresponding events. To have the same start and finish time for the events and the baseline, timings for all executions of the events were used. The earliest starting time and the latest finish time for that event were used on every event, but also the baseline which was captured on different dates than the events. This results in both event and corresponding baseline pcaps possible to compare as they all have the same time interval. 
 
-When these steps were finished for each execution of the events, graphs and calculations for each event were available to analyze. Average and standard deviation values were calculated for both the events and corresponding baseline \gls{pcaps}. To be able to conclude that there is a difference in traffic flow from when an event is ongoing, to standard traffic different measurements were used. The measurements are shown in both calculations and graphical views and then compared to each other. For calculations, the average value in packets and bytes for events, including standard deviation, needed to be smaller or bigger than the average value, including standard deviation, for the standard baseline traffic. These values are calculated and presented as: [Average value-Standard deviation, Average value+Standard deviation]. 
+When these steps were finished for each execution of the events, graphs and calculations for the events were available to analyze. Average and standard deviation values were calculated for both the events and corresponding baseline \gls{pcaps}. To be able to conclude that there is a difference in traffic flow from when an event is ongoing, to standard traffic different measurements were used. The measurements are both calculations and graphical views and then compared to each other, using the same principles as proposed in \cite{SpyingonSmartHomes}. For calculations, the average value in packets and bytes for the baseline needed to be outside of the standard deviation for the event to conclude that there is possible to differentiate the events from other standard traffic.
 
-The graphical measurement to analyze if there was a difference in traffic flow during the events, was if it was possible to see a constant difference in the traffic before and during an event. The baseline graphs were also used here to compare even more standard traffic, than the time period before the event and look further into if it was possible to see spikes or traffic flow changes during the events. The last numerical value analyzed is the biggest packet sent or received and can be used to see if there are bigger packets in the capture files while an event is ongoing, and if there are, look into if they are associated with the specific event time.
+The calculations for the routine tests also needed to be seen in context with the the traffic flows, as the calculations are not only made on traffic at the specific event time, but also includes traffic from a time period before and after the event. Since we do not expect the sensor values to change immediately when an event is triggered or finished, the traffic before is used as a reference to compare daily baseline traffic with the standby reference. The traffic after an event can still be affected by the sensor values since stabilizing the indoor air may take time. To be able to compare event and baseline calculations, the time before an event and the baseline needs to follow the same pattern. If the average value of the baseline were outside of the standard deviation of the event, and the traffic flow before an event were equal to the baseline traffic, then it was possible to conclude that the device exposed private information about the test case. 
 
-The last numerical value analyzed is the biggest packet sent or received and can be used to see if there are bigger packets in the capture files while an event is ongoing, and if there are, look into if they are associated with the specific event time. This was included because we expect bigger packets to be sent or received by the device during an event to update sensor values or send notifications. 
+The graphical measurement to analyze if there was a difference in traffic flow during the events, was if it was possible to see a constant difference in the traffic before and during an event. The baseline graphs were also used here to compare even more standard traffic, than the time period before the event and look further into if it was possible to see spikes or traffic flow changes during the events.The last numerical value analyzed is the biggest packet sent or received and can be used to see if there are bigger packets in the capture files while an event is ongoing, and if there are, look into if they are associated with the specific event time. This was included because we expect bigger packets to be sent or received by the device during an event to update sensor values or send notifications. The last numerical value analyzed is the biggest packet sent or received and can be used to see if there are bigger packets in the capture files while an event is ongoing, and if there are, look into if they are associated with the specific event time. This was included because we expect bigger packets to be sent or received by the device during an event to update sensor values or send notifications, which was also possible to find in \cite{PassiveInferenceIoT}. 
 
-The measurements for calculations also needs to be seen in context with the graphical view as the calculations are not only made on traffic at the specific event time, but also includes traffic from a time period before and after the event. Since we do not expect the sensor values to change immediately when an event is triggered, the traffic before is better to use as a reference to look for changes. The traffic after an event can still be affected by the sensor values since stabilizing the indoor air may take time. To be able to compare the baseline to the event graphs, the time before an event and the baseline needs to follow the same pattern. If calculations or the graphical view showed the same significant difference from event and standard traffic, then it was possible to conclude that the device exposed private information for the test case. 
+However, for the weekend test, baseline traffic were not used to compare. In this test, the weekends at home and the weekends gone are compared to each other to look at differences in the same way as explained for the routine behavioural tests. If the calculations showed that the average values for packets and bytes during a weekend gone was smaller than the standard deviation for a weekend at home, we can conclude that it is possible to infer this private information on the device. For this test, the graphical view of the traffic flow were used to strengthen the result if they gave the same result as the calculations. 
